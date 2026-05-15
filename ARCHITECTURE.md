@@ -8,12 +8,12 @@
 
 Paperclip is an **AI agent control plane** — a platform for defining, running, and monitoring autonomous agents against issues and projects. It is organized as a **monorepo** with four primary layers:
 
-| Layer | Path | Purpose |
-|-------|------|---------|
-| **Server** | `server/` | Node.js API — route handlers, business services, agent runtime |
-| **UI** | `ui/` | React 19 SPA — control plane dashboard |
-| **CLI** | `cli/` | Command-line client for company/export operations |
-| **Packages** | `packages/` | Shared types, plugin SDK, and built-in plugins |
+| Layer              | Path          | Purpose                                                         |
+| ------------------ | ------------- | --------------------------------------------------------------- |
+| **Server**   | `server/`   | Node.js API — route handlers, business services, agent runtime |
+| **UI**       | `ui/`       | React 19 SPA — control plane dashboard                         |
+| **CLI**      | `cli/`      | Command-line client for company/export operations               |
+| **Packages** | `packages/` | Shared types, plugin SDK, and built-in plugins                  |
 
 The system is designed around **company-scoped workspaces**. Every entity (agent, issue, project, routine) belongs to a company, and all routing — both HTTP and client-side — is prefixed with a company slug.
 
@@ -23,31 +23,32 @@ The system is designed around **company-scoped workspaces**. Every entity (agent
 
 Ranked by symbol count and cohesion score:
 
-| Cluster | Symbols | Cohesion | Role |
-|---------|---------|----------|------|
-| **Services** | 1,067 | 85% | Core business logic — heartbeat engine, issues, plugin host, recovery, portability |
-| **Components** | 529 | 63% | Reusable React components — IssuesList, EntityRow, StatusBadge, etc. |
-| **Pages** | 495 | 62% | Page-level views — RoutineDetail, ExecutionWorkspaceDetail, CompanyExport, PluginSettings |
-| **Server** | 289 | 73% | Server infrastructure — middleware, DB, session, app bootstrap |
-| **Stories** | 236 | 70% | Storybook component stories for design system validation |
-| **Ui** | 201 | 83% | shadcn/ui primitives — Button, Card, Dialog, Input, Badge |
-| **Routes** | 147 | 79% | HTTP route handlers — agents, companies, plugins, adapters |
-| **Scripts** | 135 | 77% | Build, migration, and utility scripts |
-| **Wiki** | 109 | 57% | LLM wiki plugin — resolves and reconciles wiki project resources |
-| **Adapters** | 67 | 77% | Integration adapters for external services |
-| **Recovery** | 64 | 74% | Run recovery service — detects and repairs stalled/failed executions |
-| **Commands** | 56 | 78% | Server-side command handlers |
-| **Client** | 54 | 82% | CLI client commands — company export, import, management |
-| **Secrets** | 44 | 86% | Secret management layer |
-| **Plugins** | 34 | 76% | UI plugin slot system — bridge, module loader, slot mounts |
-| **Context** | 32 | 80% | React context providers |
-| **Config** | 19 | 97% | Static configuration (highest cohesion — tightest module) |
+| Cluster              | Symbols | Cohesion | Role                                                                                       |
+| -------------------- | ------- | -------- | ------------------------------------------------------------------------------------------ |
+| **Services**   | 1,067   | 85%      | Core business logic — heartbeat engine, issues, plugin host, recovery, portability        |
+| **Components** | 529     | 63%      | Reusable React components — IssuesList, EntityRow, StatusBadge, etc.                      |
+| **Pages**      | 495     | 62%      | Page-level views — RoutineDetail, ExecutionWorkspaceDetail, CompanyExport, PluginSettings |
+| **Server**     | 289     | 73%      | Server infrastructure — middleware, DB, session, app bootstrap                            |
+| **Stories**    | 236     | 70%      | Storybook component stories for design system validation                                   |
+| **Ui**         | 201     | 83%      | shadcn/ui primitives — Button, Card, Dialog, Input, Badge                                 |
+| **Routes**     | 147     | 79%      | HTTP route handlers — agents, companies, plugins, adapters                                |
+| **Scripts**    | 135     | 77%      | Build, migration, and utility scripts                                                      |
+| **Wiki**       | 109     | 57%      | LLM wiki plugin — resolves and reconciles wiki project resources                          |
+| **Adapters**   | 67      | 77%      | Integration adapters for external services                                                 |
+| **Recovery**   | 64      | 74%      | Run recovery service — detects and repairs stalled/failed executions                      |
+| **Commands**   | 56      | 78%      | Server-side command handlers                                                               |
+| **Client**     | 54      | 82%      | CLI client commands — company export, import, management                                  |
+| **Secrets**    | 44      | 86%      | Secret management layer                                                                    |
+| **Plugins**    | 34      | 76%      | UI plugin slot system — bridge, module loader, slot mounts                                |
+| **Context**    | 32      | 80%      | React context providers                                                                    |
+| **Config**     | 19      | 97%      | Static configuration (highest cohesion — tightest module)                                 |
 
 ---
 
 ## Key Execution Flows
 
 ### 1. Agent Run Execution (`heartbeat.ts`)
+
 The core of the platform. A single massive service orchestrates the full agent lifecycle.
 
 ```
@@ -65,6 +66,7 @@ Files: `server/src/services/heartbeat.ts`
 ---
 
 ### 2. Issue Management & Filtering (`IssuesList`)
+
 Cross-community flow spanning Storybook stories → UI components → filter library.
 
 ```
@@ -82,6 +84,7 @@ Files: `ui/storybook/stories/issue-management.stories.tsx`, `ui/src/components/I
 ---
 
 ### 3. Company-Scoped Routing (`boardRoutes`)
+
 All navigation flows through company prefix resolution.
 
 ```
@@ -96,6 +99,7 @@ Files: `ui/src/App.tsx`, `ui/src/lib/router.tsx`, `ui/src/lib/company-routes.ts`
 ---
 
 ### 4. Plugin Module Loading (dual-sided)
+
 Plugins execute server-side in a sandbox and mount client-side via slots.
 
 ```
@@ -114,6 +118,7 @@ Files: `server/src/services/plugin-loader.ts`, `server/src/services/plugin-runti
 ---
 
 ### 5. Company Portability (Export/Import)
+
 Full company data bundle — agents, projects, tasks, issues.
 
 ```
@@ -210,14 +215,18 @@ paperclip/
 ## Key Design Patterns
 
 ### Company-Scoped Everything
+
 All routes, contexts, and navigations resolve through `applyCompanyPrefix` / `normalizeCompanyPrefix`. No entity exists outside a company scope.
 
 ### Heartbeat-Driven Agent Execution
+
 Agents do not push — the server **claims** runs via a heartbeat poll loop (`claimQueuedRun`). This prevents double-execution and enables graceful recovery.
 
 ### Dual-Sided Plugin Architecture
+
 - **Server:** Plugins load in a sandboxed Node VM (`plugin-runtime-sandbox.ts`), communicate via RPC (`worker-rpc-host.ts`), and surface capabilities through `plugin-host-services.ts`
 - **Client:** The `PluginBridgeRegistry` maps slot names to dynamically loaded plugin UI modules (`slots.tsx`)
 
 ### Recovery Service
+
 `server/src/services/recovery/service.ts` runs independently, detecting stalled executions via `hasActiveExecutionPath` and `hasActiveRunForIssueId`, then re-queuing or cancelling as needed.
