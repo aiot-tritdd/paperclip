@@ -1,0 +1,972 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/adapters/claude-local/src/server/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/claude-local/src/server/index.ts",
+      "summary": "Server-side barrel for the claude-local adapter, re-exporting all public server functions including execute, quota, skills, parse, and auth helpers.",
+      "tags": ["entry-point", "barrel", "service"],
+      "complexity": "moderate",
+      "languageNotes": "Re-exports a sessionCodec alongside functional exports, indicating codec-based serialization for session state."
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/models.ts",
+      "type": "file",
+      "name": "models.ts",
+      "filePath": "packages/adapters/claude-local/src/server/models.ts",
+      "summary": "Provides model listing and detection helpers for the Claude local adapter, including Bedrock environment detection and model ID pattern matching.",
+      "tags": ["utility", "data-model", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/models.ts:listClaudeModels",
+      "type": "function",
+      "name": "listClaudeModels",
+      "filePath": "packages/adapters/claude-local/src/server/models.ts",
+      "lineRange": [25, 27],
+      "summary": "Returns the list of Claude models appropriate for the current environment, switching to Bedrock models when a Bedrock base URL is configured.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/parse.test.ts",
+      "type": "file",
+      "name": "parse.test.ts",
+      "filePath": "packages/adapters/claude-local/src/server/parse.test.ts",
+      "summary": "Unit tests for the Claude stream JSON parsing and error/retry detection functions in parse.ts.",
+      "tags": ["test", "validation", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "type": "file",
+      "name": "parse.ts",
+      "filePath": "packages/adapters/claude-local/src/server/parse.ts",
+      "summary": "Core output parsing library for the Claude local adapter, converting raw CLI stdout JSON into structured results and detecting transient errors, login requirements, rate-limit reset times, and max-turns conditions.",
+      "tags": ["utility", "serialization", "validation", "service"],
+      "complexity": "complex",
+      "languageNotes": "Uses Intl.DateTimeFormat for timezone-aware reset clock parsing, handling AM/PM, DST transitions, and multi-timezone wall-clock rounding."
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/parse.ts:parseClaudeStreamJson",
+      "type": "function",
+      "name": "parseClaudeStreamJson",
+      "filePath": "packages/adapters/claude-local/src/server/parse.ts",
+      "lineRange": [17, 86],
+      "summary": "Parses newline-delimited JSON from Claude CLI stdout into a structured result including assistant text, usage tokens, tool calls, and error conditions.",
+      "tags": ["serialization", "utility", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/parse.ts:extractClaudeRetryNotBefore",
+      "type": "function",
+      "name": "extractClaudeRetryNotBefore",
+      "filePath": "packages/adapters/claude-local/src/server/parse.ts",
+      "lineRange": [355, 368],
+      "summary": "Extracts a rate-limit retry timestamp from Claude CLI output by scanning for clock-time reset strings and computing the next occurrence in the relevant timezone.",
+      "tags": ["utility", "service", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/parse.ts:isClaudeTransientUpstreamError",
+      "type": "function",
+      "name": "isClaudeTransientUpstreamError",
+      "filePath": "packages/adapters/claude-local/src/server/parse.ts",
+      "lineRange": [370, 391],
+      "summary": "Detects whether a Claude CLI response represents a transient upstream error that can safely be retried, excluding max-turns, unknown sessions, and login-required conditions.",
+      "tags": ["validation", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/permissions.ts",
+      "type": "file",
+      "name": "permissions.ts",
+      "filePath": "packages/adapters/claude-local/src/server/permissions.ts",
+      "summary": "Builds Claude CLI permission argument arrays for both probe invocations and full execution, mapping adapter configuration to --allow-file and --deny-file flags.",
+      "tags": ["utility", "service", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/permissions.ts:buildClaudeProbePermissionArgs",
+      "type": "function",
+      "name": "buildClaudeProbePermissionArgs",
+      "filePath": "packages/adapters/claude-local/src/server/permissions.ts",
+      "lineRange": [20, 32],
+      "summary": "Constructs the permission CLI arguments for a probe (test) invocation of Claude, applying allowed and denied file patterns from adapter config.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/permissions.ts:buildClaudeExecutionPermissionArgs",
+      "type": "function",
+      "name": "buildClaudeExecutionPermissionArgs",
+      "filePath": "packages/adapters/claude-local/src/server/permissions.ts",
+      "lineRange": [34, 43],
+      "summary": "Constructs the permission CLI arguments for a full execution invocation of Claude, applying allowed and denied file patterns from adapter config.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "type": "file",
+      "name": "prompt-cache.ts",
+      "filePath": "packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "summary": "Manages the Claude prompt bundle cache, hashing skill and system-prompt file contents to produce a deterministic cache key, and ensuring the bundle files are written atomically to a managed directory.",
+      "tags": ["service", "utility", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/prompt-cache.ts:prepareClaudePromptBundle",
+      "type": "function",
+      "name": "prepareClaudePromptBundle",
+      "filePath": "packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "lineRange": [134, 174],
+      "summary": "Orchestrates prompt bundle preparation: computes a content hash key, resolves the cache directory, ensures skill symlinks and system-prompt files are written, and returns the final bundle paths.",
+      "tags": ["service", "middleware", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/prompt-cache.ts:hashPathContents",
+      "type": "function",
+      "name": "hashPathContents",
+      "filePath": "packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "lineRange": [42, 86],
+      "summary": "Recursively hashes the contents of a file or directory tree into a running hash, following symlinks once and sorting directory entries for determinism.",
+      "tags": ["utility", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "type": "file",
+      "name": "quota.ts",
+      "filePath": "packages/adapters/claude-local/src/server/quota.ts",
+      "summary": "Comprehensive quota and authentication module for the Claude local adapter, fetching usage windows from both the Claude REST API and the CLI usage panel, and providing auth-token and config-dir resolution utilities.",
+      "tags": ["service", "utility", "api-handler"],
+      "complexity": "complex",
+      "languageNotes": "Parses terminal ANSI/backspace escape codes from the Claude CLI interactive usage panel to extract quota percentages and reset times."
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/quota.ts:getQuotaWindows",
+      "type": "function",
+      "name": "getQuotaWindows",
+      "filePath": "packages/adapters/claude-local/src/server/quota.ts",
+      "lineRange": [481, 541],
+      "summary": "Aggregates quota usage windows from the Claude REST API and CLI usage panel, merging results and returning combined quota state with per-source error tracking.",
+      "tags": ["service", "api-handler", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/quota.ts:fetchClaudeQuota",
+      "type": "function",
+      "name": "fetchClaudeQuota",
+      "filePath": "packages/adapters/claude-local/src/server/quota.ts",
+      "lineRange": [212, 275],
+      "summary": "Fetches quota windows from the Claude API using a bearer token, mapping each rate-limit window type (hourly, daily, etc.) to a normalized percentage and extra-usage label.",
+      "tags": ["api-handler", "service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/quota.ts:parseClaudeCliUsageText",
+      "type": "function",
+      "name": "parseClaudeCliUsageText",
+      "filePath": "packages/adapters/claude-local/src/server/quota.ts",
+      "lineRange": [387, 425],
+      "summary": "Parses terminal output from the Claude CLI usage panel into structured quota windows with percentage and reset detail, sectioned by usage label headers.",
+      "tags": ["utility", "serialization", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/quota.ts:captureClaudeCliUsageText",
+      "type": "function",
+      "name": "captureClaudeCliUsageText",
+      "filePath": "packages/adapters/claude-local/src/server/quota.ts",
+      "lineRange": [440, 469],
+      "summary": "Invokes the Claude CLI usage probe command in a PTY-like shell and captures the resulting terminal output, retrying if the first attempt does not produce complete usage data.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/skills.ts",
+      "type": "file",
+      "name": "skills.ts",
+      "filePath": "packages/adapters/claude-local/src/server/skills.ts",
+      "summary": "Manages Claude skill snapshots for the local adapter — discovering available runtime skills, mapping desired skill names to installed symlink targets, and providing list and sync operations.",
+      "tags": ["service", "utility", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/skills.ts:buildClaudeSkillSnapshot",
+      "type": "function",
+      "name": "buildClaudeSkillSnapshot",
+      "filePath": "packages/adapters/claude-local/src/server/skills.ts",
+      "lineRange": [31, 103],
+      "summary": "Builds a complete snapshot of installed and desired Claude skills, resolving installed symlink targets against available runtime entries and flagging missing or extra skill entries.",
+      "tags": ["service", "factory", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/server/test.ts",
+      "type": "file",
+      "name": "test.ts",
+      "filePath": "packages/adapters/claude-local/src/server/test.ts",
+      "summary": "Implements the testEnvironment handler for the Claude local adapter, running a probe invocation of Claude with sanitized arguments to verify the environment, auth, model, and permissions are correctly configured.",
+      "tags": ["service", "validation", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/server/test.ts:testEnvironment",
+      "type": "function",
+      "name": "testEnvironment",
+      "filePath": "packages/adapters/claude-local/src/server/test.ts",
+      "lineRange": [60, 290],
+      "summary": "Runs a comprehensive environment health-check for the Claude local adapter, executing a probe invocation and collecting pass/warn/fail checks for auth, model validity, permissions, and response content.",
+      "tags": ["validation", "service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/ui/build-config.ts",
+      "type": "file",
+      "name": "build-config.ts",
+      "filePath": "packages/adapters/claude-local/src/ui/build-config.ts",
+      "summary": "Parses raw UI form values into a structured ClaudeLocalConfig object, handling comma-delimited args, environment variable bindings, and JSON object fields.",
+      "tags": ["utility", "config", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/ui/build-config.ts:buildClaudeLocalConfig",
+      "type": "function",
+      "name": "buildClaudeLocalConfig",
+      "filePath": "packages/adapters/claude-local/src/ui/build-config.ts",
+      "lineRange": [65, 99],
+      "summary": "Constructs a typed ClaudeLocalConfig from raw form input, parsing and normalizing environment bindings, extra args, and skill configuration fields.",
+      "tags": ["factory", "config", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/ui/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/claude-local/src/ui/index.ts",
+      "summary": "UI barrel for the claude-local adapter, re-exporting parseClaudeStdoutLine and buildClaudeLocalConfig for consumption by the frontend.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/src/ui/parse-stdout.ts",
+      "type": "file",
+      "name": "parse-stdout.ts",
+      "filePath": "packages/adapters/claude-local/src/ui/parse-stdout.ts",
+      "summary": "Parses a single Claude CLI stdout JSON line in the UI context, producing structured log entries for assistant messages, tool calls, usage stats, and errors to display in the agent activity feed.",
+      "tags": ["utility", "serialization", "component"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/claude-local/src/ui/parse-stdout.ts:parseClaudeStdoutLine",
+      "type": "function",
+      "name": "parseClaudeStdoutLine",
+      "filePath": "packages/adapters/claude-local/src/ui/parse-stdout.ts",
+      "lineRange": [37, 144],
+      "summary": "Deserializes a single newline-delimited JSON event from Claude CLI stdout into one or more typed activity-feed entries covering text messages, tool uses, tool results, and usage summaries.",
+      "tags": ["serialization", "utility", "component"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:packages/adapters/claude-local/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/adapters/claude-local/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the claude-local adapter package, extending the monorepo base config with adapter-specific include paths.",
+      "tags": ["configuration", "build-system", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/claude-local/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/adapters/claude-local/vitest.config.ts",
+      "summary": "Vitest configuration for the claude-local adapter package, wiring up the test runner for the adapter's unit tests.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/adapters/codex-local/CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "packages/adapters/codex-local/CHANGELOG.md",
+      "summary": "Version history for the @paperclipai/adapter-codex-local package, covering versions 0.2.1 through 0.3.1 with patch and minor change notes.",
+      "tags": ["documentation", "changelog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/adapters/codex-local/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/adapters/codex-local/package.json",
+      "summary": "Package manifest for the @paperclipai/adapter-codex-local npm package, declaring exports for server and CLI entry points, build scripts, and dependencies including picocolors and the shared paperclip adapter base.",
+      "tags": ["configuration", "build-system", "deployment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/cli/format-event.ts",
+      "type": "file",
+      "name": "format-event.ts",
+      "filePath": "packages/adapters/codex-local/src/cli/format-event.ts",
+      "summary": "Formats and prints Codex CLI stream events to the terminal using picocolors, converting raw JSON events into human-readable colored output for tool use, completions, usage stats, and errors.",
+      "tags": ["utility", "component", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/cli/format-event.ts:printCodexStreamEvent",
+      "type": "function",
+      "name": "printCodexStreamEvent",
+      "filePath": "packages/adapters/codex-local/src/cli/format-event.ts",
+      "lineRange": [142, 229],
+      "summary": "Dispatches a raw Codex CLI JSON event to the appropriate printer (session started, item started/completed, usage, error) with colored terminal output.",
+      "tags": ["utility", "component", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/cli/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/codex-local/src/cli/index.ts",
+      "summary": "CLI barrel for the codex-local adapter, re-exporting printCodexStreamEvent for use by the CLI entry point.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/cli/quota-probe.ts",
+      "type": "file",
+      "name": "quota-probe.ts",
+      "filePath": "packages/adapters/codex-local/src/cli/quota-probe.ts",
+      "summary": "Standalone CLI script that probes OpenAI/Codex quota sources (RPC, REST, and CLI quota windows) and prints JSON results, used internally for quota diagnostics.",
+      "tags": ["utility", "service", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/cli/quota-probe.ts:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "packages/adapters/codex-local/src/cli/quota-probe.ts",
+      "lineRange": [29, 110],
+      "summary": "Entry point for the quota probe script, reading auth info and sequentially querying the Codex RPC quota, REST quota, and platform quota windows before printing JSON results.",
+      "tags": ["entry-point", "api-handler", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/codex-local/src/index.ts",
+      "summary": "Main entry point for the codex-local adapter package, exporting adapter metadata (type, label), model constants, model lists, and model profile/configuration documentation for the UI.",
+      "tags": ["entry-point", "data-model", "barrel"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/codex-args.test.ts",
+      "type": "file",
+      "name": "codex-args.test.ts",
+      "filePath": "packages/adapters/codex-local/src/server/codex-args.test.ts",
+      "summary": "Unit tests for buildCodexExecArgs, verifying that Codex CLI argument arrays are correctly assembled for various model, reasoning, and fast-mode configurations.",
+      "tags": ["test", "validation", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "type": "file",
+      "name": "codex-args.ts",
+      "filePath": "packages/adapters/codex-local/src/server/codex-args.ts",
+      "summary": "Builds the Codex CLI argument array from an adapter config object, handling model selection, reasoning effort, fast-mode detection, and extra args passthrough.",
+      "tags": ["utility", "service", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/codex-args.ts:buildCodexExecArgs",
+      "type": "function",
+      "name": "buildCodexExecArgs",
+      "filePath": "packages/adapters/codex-local/src/server/codex-args.ts",
+      "lineRange": [31, 78],
+      "summary": "Assembles the full Codex CLI argument list from config, including model, reasoning effort, fast-mode flags, and environment-specific overrides with helpful error messaging for unsupported models.",
+      "tags": ["factory", "utility", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/codex-home.ts",
+      "type": "file",
+      "name": "codex-home.ts",
+      "filePath": "packages/adapters/codex-local/src/server/codex-home.ts",
+      "summary": "Manages the Codex home directory setup for the managed execution environment, resolving home paths, creating auth.json files, symlinking shared config, and handling worktree-mode isolation.",
+      "tags": ["service", "utility", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/codex-home.ts:prepareManagedCodexHome",
+      "type": "function",
+      "name": "prepareManagedCodexHome",
+      "filePath": "packages/adapters/codex-local/src/server/codex-home.ts",
+      "lineRange": [90, 144],
+      "summary": "Orchestrates setup of the isolated Codex home directory: resolves paths, creates directory structure, links shared config files, writes API key auth JSON, and logs each preparation step.",
+      "tags": ["factory", "service", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/execute.remote.test.ts",
+      "type": "file",
+      "name": "execute.remote.test.ts",
+      "filePath": "packages/adapters/codex-local/src/server/execute.remote.test.ts",
+      "summary": "Integration-style tests for the codex-local execute function exercising remote execution scenarios, session resumption, transient error handling, and quota fallback flows.",
+      "tags": ["test", "service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "type": "file",
+      "name": "execute.ts",
+      "filePath": "packages/adapters/codex-local/src/server/execute.ts",
+      "summary": "Core execution engine for the codex-local adapter — spawning Codex CLI processes, managing session state, streaming output events, handling transient retries, injecting skills, and routing billing between subscription and API-key modes.",
+      "tags": ["service", "api-handler", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/execute.ts:execute",
+      "type": "function",
+      "name": "execute",
+      "filePath": "packages/adapters/codex-local/src/server/execute.ts",
+      "lineRange": [285, 857],
+      "summary": "Main execution handler for the codex-local adapter — resolves billing type, prepares the Codex home directory and skills, constructs CLI args, spawns the process, streams events, and manages retries on transient failures.",
+      "tags": ["service", "api-handler", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/execute.ts:ensureCodexSkillsInjected",
+      "type": "function",
+      "name": "ensureCodexSkillsInjected",
+      "filePath": "packages/adapters/codex-local/src/server/execute.ts",
+      "lineRange": [220, 283],
+      "summary": "Ensures required Paperclip skill symlinks are injected into the Codex skills directory, pruning stale or unavailable skill symlinks before establishing new ones.",
+      "tags": ["service", "utility", "middleware"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "file:packages/adapters/claude-local/src/server/models.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "file:packages/adapters/claude-local/src/server/skills.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "file:packages/adapters/claude-local/src/server/test.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "function:packages/adapters/claude-local/src/server/models.ts:listClaudeModels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:parseClaudeStreamJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:getQuotaWindows",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/index.ts",
+      "target": "function:packages/adapters/claude-local/src/server/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/models.ts",
+      "target": "function:packages/adapters/claude-local/src/server/models.ts:listClaudeModels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/models.ts",
+      "target": "function:packages/adapters/claude-local/src/server/models.ts:listClaudeModels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:parseClaudeStreamJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:extractClaudeRetryNotBefore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:isClaudeTransientUpstreamError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:parseClaudeStreamJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:extractClaudeRetryNotBefore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "function:packages/adapters/claude-local/src/server/parse.ts:isClaudeTransientUpstreamError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.test.ts",
+      "target": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "target": "file:packages/adapters/claude-local/src/server/parse.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/permissions.ts",
+      "target": "function:packages/adapters/claude-local/src/server/permissions.ts:buildClaudeProbePermissionArgs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/permissions.ts",
+      "target": "function:packages/adapters/claude-local/src/server/permissions.ts:buildClaudeExecutionPermissionArgs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/permissions.ts",
+      "target": "function:packages/adapters/claude-local/src/server/permissions.ts:buildClaudeProbePermissionArgs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/permissions.ts",
+      "target": "function:packages/adapters/claude-local/src/server/permissions.ts:buildClaudeExecutionPermissionArgs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "target": "function:packages/adapters/claude-local/src/server/prompt-cache.ts:prepareClaudePromptBundle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "target": "function:packages/adapters/claude-local/src/server/prompt-cache.ts:hashPathContents",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/prompt-cache.ts",
+      "target": "function:packages/adapters/claude-local/src/server/prompt-cache.ts:prepareClaudePromptBundle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:getQuotaWindows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:fetchClaudeQuota",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:parseClaudeCliUsageText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:captureClaudeCliUsageText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:getQuotaWindows",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:fetchClaudeQuota",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:parseClaudeCliUsageText",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/quota.ts",
+      "target": "function:packages/adapters/claude-local/src/server/quota.ts:captureClaudeCliUsageText",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/skills.ts",
+      "target": "function:packages/adapters/claude-local/src/server/skills.ts:buildClaudeSkillSnapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/test.ts",
+      "target": "function:packages/adapters/claude-local/src/server/test.ts:testEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/test.ts",
+      "target": "function:packages/adapters/claude-local/src/server/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/test.ts",
+      "target": "file:packages/adapters/claude-local/src/server/parse.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/test.ts",
+      "target": "file:packages/adapters/claude-local/src/server/permissions.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/server/test.ts",
+      "target": "file:packages/adapters/claude-local/src/server/models.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/build-config.ts",
+      "target": "function:packages/adapters/claude-local/src/ui/build-config.ts:buildClaudeLocalConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/build-config.ts",
+      "target": "function:packages/adapters/claude-local/src/ui/build-config.ts:buildClaudeLocalConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/index.ts",
+      "target": "file:packages/adapters/claude-local/src/ui/parse-stdout.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/index.ts",
+      "target": "file:packages/adapters/claude-local/src/ui/build-config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/index.ts",
+      "target": "function:packages/adapters/claude-local/src/ui/parse-stdout.ts:parseClaudeStdoutLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/index.ts",
+      "target": "function:packages/adapters/claude-local/src/ui/build-config.ts:buildClaudeLocalConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/claude-local/src/ui/parse-stdout.ts:parseClaudeStdoutLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/claude-local/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/claude-local/src/ui/parse-stdout.ts:parseClaudeStdoutLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:packages/adapters/claude-local/tsconfig.json",
+      "target": "file:packages/adapters/claude-local/src/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/claude-local/vitest.config.ts",
+      "target": "file:packages/adapters/claude-local/src/server/parse.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/cli/format-event.ts",
+      "target": "function:packages/adapters/codex-local/src/cli/format-event.ts:printCodexStreamEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/cli/format-event.ts",
+      "target": "function:packages/adapters/codex-local/src/cli/format-event.ts:printCodexStreamEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/cli/index.ts",
+      "target": "file:packages/adapters/codex-local/src/cli/format-event.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/cli/index.ts",
+      "target": "function:packages/adapters/codex-local/src/cli/format-event.ts:printCodexStreamEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/cli/quota-probe.ts",
+      "target": "function:packages/adapters/codex-local/src/cli/quota-probe.ts:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "target": "function:packages/adapters/codex-local/src/server/codex-args.ts:buildCodexExecArgs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "target": "function:packages/adapters/codex-local/src/server/codex-args.ts:buildCodexExecArgs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "target": "file:packages/adapters/codex-local/src/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-args.test.ts",
+      "target": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "target": "file:packages/adapters/codex-local/src/server/codex-args.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-home.ts",
+      "target": "function:packages/adapters/codex-local/src/server/codex-home.ts:prepareManagedCodexHome",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/codex-home.ts",
+      "target": "function:packages/adapters/codex-local/src/server/codex-home.ts:prepareManagedCodexHome",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "function:packages/adapters/codex-local/src/server/execute.ts:execute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "function:packages/adapters/codex-local/src/server/execute.ts:ensureCodexSkillsInjected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "function:packages/adapters/codex-local/src/server/execute.ts:execute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "function:packages/adapters/codex-local/src/server/execute.ts:ensureCodexSkillsInjected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "file:packages/adapters/codex-local/src/server/codex-args.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "file:packages/adapters/codex-local/src/server/codex-home.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.remote.test.ts",
+      "target": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "target": "file:packages/adapters/codex-local/src/server/execute.remote.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/adapters/codex-local/package.json",
+      "target": "file:packages/adapters/codex-local/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/codex-local/package.json",
+      "target": "file:packages/adapters/codex-local/src/server/execute.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/codex-local/package.json",
+      "target": "file:packages/adapters/codex-local/src/cli/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/adapters/codex-local/CHANGELOG.md",
+      "target": "file:packages/adapters/codex-local/src/index.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

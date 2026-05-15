@@ -1,0 +1,588 @@
+{
+  "batchIndex": 23,
+  "nodes": [
+    {
+      "id": "file:packages/db/src/migrations/0058_wealthy_starbolt.sql",
+      "type": "table",
+      "name": "0058_wealthy_starbolt.sql",
+      "filePath": "packages/db/src/migrations/0058_wealthy_starbolt.sql",
+      "summary": "Adds liveness tracking columns (liveness_state, liveness_reason, continuation_attempt, last_useful_action_at, next_action) to the heartbeat_runs table and creates a supporting btree index for company-scoped liveness queries.",
+      "tags": ["database", "migration", "liveness", "heartbeat"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 6
+    },
+    {
+      "id": "file:packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "type": "table",
+      "name": "0059_plugin_database_namespaces.sql",
+      "filePath": "packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "summary": "Creates the plugin_database_namespaces and plugin_migrations tables, enabling plugins to manage their own isolated database namespaces and track migration history with status, checksums, and versioning.",
+      "tags": ["database", "migration", "plugin", "schema-definition"],
+      "complexity": "moderate",
+      "language": "sql",
+      "sizeLines": 41
+    },
+    {
+      "id": "table:packages/db/src/migrations/0059_plugin_database_namespaces.sql:plugin_database_namespaces",
+      "type": "table",
+      "name": "plugin_database_namespaces",
+      "filePath": "packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "summary": "Stores plugin-owned database namespace registrations, tracking namespace name, mode, and lifecycle status per plugin.",
+      "tags": ["database", "plugin", "namespace"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0059_plugin_database_namespaces.sql:plugin_migrations",
+      "type": "table",
+      "name": "plugin_migrations",
+      "filePath": "packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "summary": "Tracks migration files applied to plugin database namespaces, including checksum, plugin version, status, and error messages for safe idempotent migration management.",
+      "tags": ["database", "plugin", "migration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0060_orange_annihilus.sql",
+      "type": "table",
+      "name": "0060_orange_annihilus.sql",
+      "filePath": "packages/db/src/migrations/0060_orange_annihilus.sql",
+      "summary": "Creates the issue_reference_mentions table, which records cross-issue reference detection (source/target issue pairs, mention context, and document key), with unique constraints to prevent duplicate mention records.",
+      "tags": ["database", "migration", "issue-tracking", "references"],
+      "complexity": "moderate",
+      "language": "sql",
+      "sizeLines": 50
+    },
+    {
+      "id": "table:packages/db/src/migrations/0060_orange_annihilus.sql:issue_reference_mentions",
+      "type": "table",
+      "name": "issue_reference_mentions",
+      "filePath": "packages/db/src/migrations/0060_orange_annihilus.sql",
+      "summary": "Stores detected cross-issue reference mentions, linking source and target issues with context about where and how the reference appeared (document key, matched text, source record).",
+      "tags": ["database", "issue-tracking", "references"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0061_lively_thor_girl.sql",
+      "type": "table",
+      "name": "0061_lively_thor_girl.sql",
+      "filePath": "packages/db/src/migrations/0061_lively_thor_girl.sql",
+      "summary": "Adds scheduled retry tracking columns (scheduled_retry_at, scheduled_retry_attempt, scheduled_retry_reason) to the heartbeat_runs table to support deferred retry logic.",
+      "tags": ["database", "migration", "heartbeat", "retry"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 3
+    },
+    {
+      "id": "file:packages/db/src/migrations/0062_routine_run_dispatch_fingerprint.sql",
+      "type": "table",
+      "name": "0062_routine_run_dispatch_fingerprint.sql",
+      "filePath": "packages/db/src/migrations/0062_routine_run_dispatch_fingerprint.sql",
+      "summary": "Adds dispatch_fingerprint to routine_runs and origin_fingerprint to issues, then rebuilds the routine execution uniqueness index to incorporate fingerprints for more granular deduplication of dispatched routine runs.",
+      "tags": ["database", "migration", "routine", "deduplication"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 9
+    },
+    {
+      "id": "file:packages/db/src/migrations/0063_issue_thread_interactions.sql",
+      "type": "table",
+      "name": "0063_issue_thread_interactions.sql",
+      "filePath": "packages/db/src/migrations/0063_issue_thread_interactions.sql",
+      "summary": "Creates the issue_thread_interactions table, capturing structured human-agent interactions within issue threads (approvals, questions, continuation policies) with full actor attribution and resolution tracking.",
+      "tags": ["database", "migration", "issue-tracking", "agent-interaction"],
+      "complexity": "moderate",
+      "language": "sql",
+      "sizeLines": 65
+    },
+    {
+      "id": "table:packages/db/src/migrations/0063_issue_thread_interactions.sql:issue_thread_interactions",
+      "type": "table",
+      "name": "issue_thread_interactions",
+      "filePath": "packages/db/src/migrations/0063_issue_thread_interactions.sql",
+      "summary": "Records structured interactions on issue threads (e.g., agent approval requests, user responses), tracking kind, status, continuation policy, associated run, actor attribution for both creation and resolution, and full payload/result.",
+      "tags": ["database", "issue-tracking", "agent-interaction", "approval"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0064_issue_thread_interaction_idempotency.sql",
+      "type": "table",
+      "name": "0064_issue_thread_interaction_idempotency.sql",
+      "filePath": "packages/db/src/migrations/0064_issue_thread_interaction_idempotency.sql",
+      "summary": "Adds a unique index on issue_thread_interactions to enforce idempotency by preventing duplicate interactions for the same company, issue, and idempotency key combination.",
+      "tags": ["database", "migration", "idempotency", "issue-tracking"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 4
+    },
+    {
+      "id": "file:packages/db/src/migrations/0065_environments.sql",
+      "type": "table",
+      "name": "0065_environments.sql",
+      "filePath": "packages/db/src/migrations/0065_environments.sql",
+      "summary": "Creates the environments and environment_leases tables, establishing the execution environment management subsystem with support for pluggable drivers, lease lifecycle tracking, and linkage to issues and heartbeat runs.",
+      "tags": ["database", "migration", "environments", "execution"],
+      "complexity": "moderate",
+      "language": "sql",
+      "sizeLines": 50
+    },
+    {
+      "id": "table:packages/db/src/migrations/0065_environments.sql:environments",
+      "type": "table",
+      "name": "environments",
+      "filePath": "packages/db/src/migrations/0065_environments.sql",
+      "summary": "Defines execution environments with configurable drivers, storing name, description, driver type, status, config, and metadata per company.",
+      "tags": ["database", "environments", "execution"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0065_environments.sql:environment_leases",
+      "type": "table",
+      "name": "environment_leases",
+      "filePath": "packages/db/src/migrations/0065_environments.sql",
+      "summary": "Tracks active and historical leases on execution environments, linking each lease to an environment, execution workspace, issue, and heartbeat run with full lifecycle timestamps and cleanup status.",
+      "tags": ["database", "environments", "leases", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "type": "table",
+      "name": "0066_issue_tree_holds.sql",
+      "filePath": "packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "summary": "Creates issue_tree_holds and issue_tree_hold_members tables, implementing a mechanism to pause entire issue subtrees with actor attribution, release policy, and per-member status snapshots for coordinated hold/release operations.",
+      "tags": ["database", "migration", "issue-tracking", "orchestration"],
+      "complexity": "complex",
+      "language": "sql",
+      "sizeLines": 107
+    },
+    {
+      "id": "table:packages/db/src/migrations/0066_issue_tree_holds.sql:issue_tree_holds",
+      "type": "table",
+      "name": "issue_tree_holds",
+      "filePath": "packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "summary": "Represents a hold placed on an issue tree rooted at root_issue_id, tracking mode, status, reason, release policy, and full actor attribution for both creation and release events.",
+      "tags": ["database", "issue-tracking", "orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0066_issue_tree_holds.sql:issue_tree_hold_members",
+      "type": "table",
+      "name": "issue_tree_hold_members",
+      "filePath": "packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "summary": "Snapshots individual issues within an issue tree hold, capturing depth, parent linkage, assignment, active run, and skip status at the time the hold was created.",
+      "tags": ["database", "issue-tracking", "orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0067_agent_default_environment.sql",
+      "type": "table",
+      "name": "0067_agent_default_environment.sql",
+      "filePath": "packages/db/src/migrations/0067_agent_default_environment.sql",
+      "summary": "Adds a default_environment_id foreign key to the agents table, allowing each agent to be assigned a preferred execution environment by default.",
+      "tags": ["database", "migration", "agents", "environments"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 3
+    },
+    {
+      "id": "file:packages/db/src/migrations/0068_environment_local_driver_unique.sql",
+      "type": "table",
+      "name": "0068_environment_local_driver_unique.sql",
+      "filePath": "packages/db/src/migrations/0068_environment_local_driver_unique.sql",
+      "summary": "Replaces the environments company/driver index with a partial unique index ensuring only one local-driver environment can exist per company.",
+      "tags": ["database", "migration", "environments", "uniqueness"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 2
+    },
+    {
+      "id": "file:packages/db/src/migrations/0069_liveness_recovery_dedupe.sql",
+      "type": "table",
+      "name": "0069_liveness_recovery_dedupe.sql",
+      "filePath": "packages/db/src/migrations/0069_liveness_recovery_dedupe.sql",
+      "summary": "Adds two partial unique indexes on the issues table to deduplicate liveness recovery incident and leaf issues by origin kind, id, and fingerprint, preventing concurrent duplicate recovery runs.",
+      "tags": ["database", "migration", "liveness", "deduplication"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 13
+    },
+    {
+      "id": "file:packages/db/src/migrations/0070_active_run_output_watchdog.sql",
+      "type": "table",
+      "name": "0070_active_run_output_watchdog.sql",
+      "filePath": "packages/db/src/migrations/0070_active_run_output_watchdog.sql",
+      "summary": "Creates the heartbeat_run_watchdog_decisions table and adds supporting indexes to heartbeat_runs, implementing a watchdog subsystem that records snooze/action decisions for stale agent runs.",
+      "tags": ["database", "migration", "watchdog", "heartbeat"],
+      "complexity": "moderate",
+      "language": "sql",
+      "sizeLines": 70
+    },
+    {
+      "id": "table:packages/db/src/migrations/0070_active_run_output_watchdog.sql:heartbeat_run_watchdog_decisions",
+      "type": "table",
+      "name": "heartbeat_run_watchdog_decisions",
+      "filePath": "packages/db/src/migrations/0070_active_run_output_watchdog.sql",
+      "summary": "Records watchdog evaluation decisions for individual heartbeat runs, capturing the decision type, snooze deadline, reason, and full actor attribution (agent, user, or run).",
+      "tags": ["database", "watchdog", "heartbeat"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0071_default_hire_approval_off.sql",
+      "type": "table",
+      "name": "0071_default_hire_approval_off.sql",
+      "filePath": "packages/db/src/migrations/0071_default_hire_approval_off.sql",
+      "summary": "Changes the default value of the require_board_approval_for_new_agents column on companies to false, disabling mandatory hire approval by default.",
+      "tags": ["database", "migration", "companies", "configuration"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 1
+    },
+    {
+      "id": "file:packages/db/src/migrations/0072_large_sandman.sql",
+      "type": "table",
+      "name": "0072_large_sandman.sql",
+      "filePath": "packages/db/src/migrations/0072_large_sandman.sql",
+      "summary": "Adds a partial unique index on issues for stranded issue recovery deduplication, ensuring only one active recovery issue exists per origin kind/id combination.",
+      "tags": ["database", "migration", "issue-tracking", "deduplication"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 6
+    },
+    {
+      "id": "file:packages/db/src/migrations/0073_shiny_salo.sql",
+      "type": "table",
+      "name": "0073_shiny_salo.sql",
+      "filePath": "packages/db/src/migrations/0073_shiny_salo.sql",
+      "summary": "Adds the attachment_max_bytes column to the companies table with a default of 10 MB (10485760 bytes), enabling per-company attachment size limits.",
+      "tags": ["database", "migration", "companies", "configuration"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 1
+    },
+    {
+      "id": "file:packages/db/src/migrations/0074_striped_genesis.sql",
+      "type": "table",
+      "name": "0074_striped_genesis.sql",
+      "filePath": "packages/db/src/migrations/0074_striped_genesis.sql",
+      "summary": "Adds a partial unique index on issues to deduplicate productivity review issues, ensuring only one active productivity review issue exists per origin kind/id combination.",
+      "tags": ["database", "migration", "issue-tracking", "deduplication"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 4
+    },
+    {
+      "id": "file:packages/db/src/migrations/0075_cultured_sebastian_shaw.sql",
+      "type": "table",
+      "name": "0075_cultured_sebastian_shaw.sql",
+      "filePath": "packages/db/src/migrations/0075_cultured_sebastian_shaw.sql",
+      "summary": "Adds monitor scheduling columns (monitor_next_check_at, monitor_wake_requested_at, monitor_last_triggered_at, monitor_attempt_count, monitor_notes, monitor_scheduled_by) to the issues table and creates a covering index for efficient monitor due-date queries.",
+      "tags": ["database", "migration", "issue-tracking", "monitoring"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 7
+    },
+    {
+      "id": "file:packages/db/src/migrations/0076_useful_elektra.sql",
+      "type": "table",
+      "name": "0076_useful_elektra.sql",
+      "filePath": "packages/db/src/migrations/0076_useful_elektra.sql",
+      "summary": "Creates the plugin_managed_resources table, allowing plugins to register and manage external resources (by kind and key) with default config, with a unique constraint per company/plugin/resource combination.",
+      "tags": ["database", "migration", "plugin", "resources"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 29
+    },
+    {
+      "id": "table:packages/db/src/migrations/0076_useful_elektra.sql:plugin_managed_resources",
+      "type": "table",
+      "name": "plugin_managed_resources",
+      "filePath": "packages/db/src/migrations/0076_useful_elektra.sql",
+      "summary": "Tracks external resources managed by plugins, identified by plugin key, resource kind, and resource key, with optional defaults JSON for provisioning configuration.",
+      "tags": ["database", "plugin", "resources"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0077_unusual_karnak.sql",
+      "type": "table",
+      "name": "0077_unusual_karnak.sql",
+      "filePath": "packages/db/src/migrations/0077_unusual_karnak.sql",
+      "summary": "Creates the routine_revisions table and backfills initial revisions from existing routines, establishing a versioned snapshot history for routines with full actor attribution and self-referential restore tracking.",
+      "tags": ["database", "migration", "routine", "versioning"],
+      "complexity": "complex",
+      "language": "sql",
+      "sizeLines": 140
+    },
+    {
+      "id": "table:packages/db/src/migrations/0077_unusual_karnak.sql:routine_revisions",
+      "type": "table",
+      "name": "routine_revisions",
+      "filePath": "packages/db/src/migrations/0077_unusual_karnak.sql",
+      "summary": "Stores versioned snapshots of routines as immutable revisions, supporting change summaries, restore-from-revision linkage, and full actor attribution (agent, user, or run) for audit trail and rollback.",
+      "tags": ["database", "routine", "versioning"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/migrations/0078_white_darwin.sql",
+      "type": "table",
+      "name": "0078_white_darwin.sql",
+      "filePath": "packages/db/src/migrations/0078_white_darwin.sql",
+      "summary": "Adds author_type, presentation, and metadata columns to issue_comments, enabling typed comment authorship and rich presentation metadata for agent-authored comments.",
+      "tags": ["database", "migration", "issue-tracking", "comments"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 3
+    },
+    {
+      "id": "file:packages/db/src/migrations/0079_company_search_document_indexes.sql",
+      "type": "table",
+      "name": "0079_company_search_document_indexes.sql",
+      "filePath": "packages/db/src/migrations/0079_company_search_document_indexes.sql",
+      "summary": "Creates GIN trigram indexes on documents.title and documents.latest_body to enable fast fuzzy full-text search across document content.",
+      "tags": ["database", "migration", "search", "full-text-search"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 2
+    },
+    {
+      "id": "file:packages/db/src/migrations/0080_company_search_fuzzystrmatch.sql",
+      "type": "table",
+      "name": "0080_company_search_fuzzystrmatch.sql",
+      "filePath": "packages/db/src/migrations/0080_company_search_fuzzystrmatch.sql",
+      "summary": "Installs the PostgreSQL fuzzystrmatch extension to enable phonetic and fuzzy string matching algorithms (Soundex, Levenshtein, Metaphone) for company search features.",
+      "tags": ["database", "migration", "search", "postgresql-extension"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 1
+    },
+    {
+      "id": "file:packages/db/src/migrations/0081_optimal_dormammu.sql",
+      "type": "table",
+      "name": "0081_optimal_dormammu.sql",
+      "filePath": "packages/db/src/migrations/0081_optimal_dormammu.sql",
+      "summary": "Adds the work_mode column to the issues table with a default value of 'standard', enabling per-issue work mode configuration for future execution mode differentiation.",
+      "tags": ["database", "migration", "issue-tracking", "configuration"],
+      "complexity": "simple",
+      "language": "sql",
+      "sizeLines": 0
+    },
+    {
+      "id": "file:packages/db/src/migrations/0082_dry_vision.sql",
+      "type": "table",
+      "name": "0082_dry_vision.sql",
+      "filePath": "packages/db/src/migrations/0082_dry_vision.sql",
+      "summary": "Creates company_secret_bindings and secret_access_events tables, implementing the secrets management subsystem with binding of secrets to agents/plugins, version selectors, required flags, and a complete audit log of secret access events.",
+      "tags": ["database", "migration", "security", "secrets-management"],
+      "complexity": "complex",
+      "language": "sql",
+      "sizeLines": 124
+    },
+    {
+      "id": "table:packages/db/src/migrations/0082_dry_vision.sql:company_secret_bindings",
+      "type": "table",
+      "name": "company_secret_bindings",
+      "filePath": "packages/db/src/migrations/0082_dry_vision.sql",
+      "summary": "Binds company secrets to specific targets (agents, plugins, etc.) with config path mapping, version selector, required flag, and human-readable label for secret injection management.",
+      "tags": ["database", "security", "secrets-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0082_dry_vision.sql:secret_access_events",
+      "type": "table",
+      "name": "secret_access_events",
+      "filePath": "packages/db/src/migrations/0082_dry_vision.sql",
+      "summary": "Immutable audit log of every secret access event, capturing secret id, version, provider, actor (type and id), consumer (type and id), associated issue/run/plugin, and outcome for compliance and debugging.",
+      "tags": ["database", "security", "audit", "secrets-management"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "target": "table:packages/db/src/migrations/0059_plugin_database_namespaces.sql:plugin_database_namespaces",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "target": "table:packages/db/src/migrations/0059_plugin_database_namespaces.sql:plugin_migrations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0060_orange_annihilus.sql",
+      "target": "table:packages/db/src/migrations/0060_orange_annihilus.sql:issue_reference_mentions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0063_issue_thread_interactions.sql",
+      "target": "table:packages/db/src/migrations/0063_issue_thread_interactions.sql:issue_thread_interactions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0065_environments.sql",
+      "target": "table:packages/db/src/migrations/0065_environments.sql:environments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0065_environments.sql",
+      "target": "table:packages/db/src/migrations/0065_environments.sql:environment_leases",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "target": "table:packages/db/src/migrations/0066_issue_tree_holds.sql:issue_tree_holds",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "target": "table:packages/db/src/migrations/0066_issue_tree_holds.sql:issue_tree_hold_members",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0070_active_run_output_watchdog.sql",
+      "target": "table:packages/db/src/migrations/0070_active_run_output_watchdog.sql:heartbeat_run_watchdog_decisions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0076_useful_elektra.sql",
+      "target": "table:packages/db/src/migrations/0076_useful_elektra.sql:plugin_managed_resources",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0077_unusual_karnak.sql",
+      "target": "table:packages/db/src/migrations/0077_unusual_karnak.sql:routine_revisions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0082_dry_vision.sql",
+      "target": "table:packages/db/src/migrations/0082_dry_vision.sql:company_secret_bindings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0082_dry_vision.sql",
+      "target": "table:packages/db/src/migrations/0082_dry_vision.sql:secret_access_events",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/migrations/0058_wealthy_starbolt.sql",
+      "target": "file:packages/db/src/migrations/0061_lively_thor_girl.sql",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/src/migrations/0058_wealthy_starbolt.sql",
+      "target": "file:packages/db/src/migrations/0070_active_run_output_watchdog.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0064_issue_thread_interaction_idempotency.sql",
+      "target": "table:packages/db/src/migrations/0063_issue_thread_interactions.sql:issue_thread_interactions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/src/migrations/0067_agent_default_environment.sql",
+      "target": "table:packages/db/src/migrations/0065_environments.sql:environments",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/src/migrations/0068_environment_local_driver_unique.sql",
+      "target": "table:packages/db/src/migrations/0065_environments.sql:environments",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/src/migrations/0069_liveness_recovery_dedupe.sql",
+      "target": "file:packages/db/src/migrations/0062_routine_run_dispatch_fingerprint.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0065_environments.sql",
+      "target": "table:packages/db/src/migrations/0065_environments.sql:environment_leases",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "target": "table:packages/db/src/migrations/0059_plugin_database_namespaces.sql:plugin_migrations",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0076_useful_elektra.sql",
+      "target": "file:packages/db/src/migrations/0059_plugin_database_namespaces.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0082_dry_vision.sql",
+      "target": "table:packages/db/src/migrations/0082_dry_vision.sql:secret_access_events",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0079_company_search_document_indexes.sql",
+      "target": "file:packages/db/src/migrations/0080_company_search_fuzzystrmatch.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0066_issue_tree_holds.sql",
+      "target": "table:packages/db/src/migrations/0066_issue_tree_holds.sql:issue_tree_hold_members",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0072_large_sandman.sql",
+      "target": "file:packages/db/src/migrations/0069_liveness_recovery_dedupe.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/0074_striped_genesis.sql",
+      "target": "file:packages/db/src/migrations/0072_large_sandman.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

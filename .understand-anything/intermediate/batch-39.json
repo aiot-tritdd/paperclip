@@ -1,0 +1,535 @@
+{
+  "batchIndex": 39,
+  "nodes": [
+    {
+      "id": "file:packages/shared/src/telemetry/config.ts",
+      "type": "file",
+      "name": "config.ts",
+      "filePath": "packages/shared/src/telemetry/config.ts",
+      "summary": "Resolves the telemetry configuration by merging file-based settings with environment variables, and detects CI environments to disable telemetry automatically.",
+      "tags": ["configuration", "telemetry", "utility"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 25
+    },
+    {
+      "id": "file:packages/shared/src/telemetry/events.ts",
+      "type": "file",
+      "name": "events.ts",
+      "filePath": "packages/shared/src/telemetry/events.ts",
+      "summary": "Provides typed event-tracking helpers for all platform lifecycle events (install, agent creation, task completion, etc.), each delegating to a shared telemetry client's track method.",
+      "tags": ["telemetry", "event-handler", "utility"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 98
+    },
+    {
+      "id": "file:packages/shared/src/telemetry/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/shared/src/telemetry/index.ts",
+      "summary": "Barrel entry point for the telemetry subsystem, re-exporting the client class, config resolver, state loader, all event tracking functions, and the shared type definitions.",
+      "tags": ["barrel", "entry-point", "telemetry"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 24
+    },
+    {
+      "id": "file:packages/shared/src/telemetry/state.ts",
+      "type": "file",
+      "name": "state.ts",
+      "filePath": "packages/shared/src/telemetry/state.ts",
+      "summary": "Loads or creates a persistent telemetry state file containing a stable install ID and salt, stored in the given state directory for anonymous session correlation.",
+      "tags": ["telemetry", "state", "utility"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 31
+    },
+    {
+      "id": "file:packages/shared/src/telemetry/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/shared/src/telemetry/types.ts",
+      "summary": "Defines the core telemetry type contracts: TelemetryState, TelemetryConfig, TelemetryEvent, TelemetryEventEnvelope, and the exhaustive TelemetryEventName union type.",
+      "tags": ["type-definition", "telemetry", "schema-definition"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 44
+    },
+    {
+      "id": "file:packages/shared/src/types/access.ts",
+      "type": "file",
+      "name": "access.ts",
+      "filePath": "packages/shared/src/types/access.ts",
+      "summary": "Defines access-control and membership type contracts: company memberships, permission grants, user profiles, invites, join requests, and role grants used throughout the authorization layer.",
+      "tags": ["type-definition", "access-control", "authorization"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 170
+    },
+    {
+      "id": "file:packages/shared/src/types/activity.ts",
+      "type": "file",
+      "name": "activity.ts",
+      "filePath": "packages/shared/src/types/activity.ts",
+      "summary": "Defines the ActivityEvent type representing timeline activity entries surfaced in user profiles and dashboards.",
+      "tags": ["type-definition", "activity", "event-handler"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 13
+    },
+    {
+      "id": "file:packages/shared/src/types/adapter-skills.ts",
+      "type": "file",
+      "name": "adapter-skills.ts",
+      "filePath": "packages/shared/src/types/adapter-skills.ts",
+      "summary": "Defines types for agent skill synchronization modes, states, origins, and sync-request/snapshot structures used between agents and the adapter layer.",
+      "tags": ["type-definition", "adapter", "agent"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 45
+    },
+    {
+      "id": "file:packages/shared/src/types/agent.ts",
+      "type": "file",
+      "name": "agent.ts",
+      "filePath": "packages/shared/src/types/agent.ts",
+      "summary": "Defines the comprehensive Agent and AgentDetail type contracts — runtime config, model profiles, permissions, instruction bundles, config revisions, and adapter environment check types.",
+      "tags": ["type-definition", "agent", "data-model"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 141
+    },
+    {
+      "id": "file:packages/shared/src/types/approval.ts",
+      "type": "file",
+      "name": "approval.ts",
+      "filePath": "packages/shared/src/types/approval.ts",
+      "summary": "Defines Approval and ApprovalComment types representing human review/approval records attached to agent execution flows.",
+      "tags": ["type-definition", "approval", "workflow"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 27
+    },
+    {
+      "id": "file:packages/shared/src/types/asset.ts",
+      "type": "file",
+      "name": "asset.ts",
+      "filePath": "packages/shared/src/types/asset.ts",
+      "summary": "Defines AssetImage type used for brand/logo image references across company and agent entities.",
+      "tags": ["type-definition", "asset", "utility"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 16
+    },
+    {
+      "id": "file:packages/shared/src/types/budget.ts",
+      "type": "file",
+      "name": "budget.ts",
+      "filePath": "packages/shared/src/types/budget.ts",
+      "summary": "Defines budget policy, incident, overview, and upsert/resolution input types that govern per-scope token/cost spending limits with configurable hard-stop and notification behaviour.",
+      "tags": ["type-definition", "budget", "cost-management"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 99
+    },
+    {
+      "id": "file:packages/shared/src/types/company-portability.ts",
+      "type": "file",
+      "name": "company-portability.ts",
+      "filePath": "packages/shared/src/types/company-portability.ts",
+      "summary": "Defines the full set of import/export manifest entry types, preview plan structures, collision strategies, and request/result types for Paperclip's company data portability feature.",
+      "tags": ["type-definition", "portability", "data-model"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 333
+    },
+    {
+      "id": "file:packages/shared/src/types/company-skill.ts",
+      "type": "file",
+      "name": "company-skill.ts",
+      "filePath": "packages/shared/src/types/company-skill.ts",
+      "summary": "Defines types for company-level skills: source types, trust levels, compatibility ratings, file inventory, import/update requests, and scan results used in the skill management subsystem.",
+      "tags": ["type-definition", "skill", "company"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 157
+    },
+    {
+      "id": "file:packages/shared/src/types/company.ts",
+      "type": "file",
+      "name": "company.ts",
+      "filePath": "packages/shared/src/types/company.ts",
+      "summary": "Defines the Company entity type with core identity fields, branding, feedback consent, and approval-policy settings for a Paperclip organization.",
+      "tags": ["type-definition", "company", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 25
+    },
+    {
+      "id": "file:packages/shared/src/types/cost.ts",
+      "type": "file",
+      "name": "cost.ts",
+      "filePath": "packages/shared/src/types/cost.ts",
+      "summary": "Defines cost event and aggregation types (CostEvent, CostSummary, CostByAgent, CostByProviderModel, etc.) that track per-run LLM token spending across the platform.",
+      "tags": ["type-definition", "cost-management", "data-model"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 128
+    },
+    {
+      "id": "file:packages/shared/src/types/dashboard.ts",
+      "type": "file",
+      "name": "dashboard.ts",
+      "filePath": "packages/shared/src/types/dashboard.ts",
+      "summary": "Defines DashboardSummary and DashboardRunActivityDay types providing aggregated statistics for the platform home dashboard.",
+      "tags": ["type-definition", "dashboard", "analytics"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 36
+    },
+    {
+      "id": "file:packages/shared/src/types/environment.ts",
+      "type": "file",
+      "name": "environment.ts",
+      "filePath": "packages/shared/src/types/environment.ts",
+      "summary": "Defines execution environment types (local, SSH, sandbox, plugin) alongside lease management and probing result structures used to abstract agent runtime environments.",
+      "tags": ["type-definition", "environment", "infrastructure"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 90
+    },
+    {
+      "id": "file:packages/shared/src/types/feedback.ts",
+      "type": "file",
+      "name": "feedback.ts",
+      "filePath": "packages/shared/src/types/feedback.ts",
+      "summary": "Defines feedback vote/trace types and exports runtime constant arrays (target types, vote values, sharing preferences) used in the human-feedback collection subsystem.",
+      "tags": ["type-definition", "feedback", "data-model"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 120
+    },
+    {
+      "id": "file:packages/shared/src/types/finance.ts",
+      "type": "file",
+      "name": "finance.ts",
+      "filePath": "packages/shared/src/types/finance.ts",
+      "summary": "Defines FinanceEvent and aggregation types (FinanceSummary, FinanceByBiller, FinanceByKind) for financial reporting across the platform, complementing the cost subsystem.",
+      "tags": ["type-definition", "finance", "cost-management"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 60
+    },
+    {
+      "id": "file:packages/shared/src/types/goal.ts",
+      "type": "file",
+      "name": "goal.ts",
+      "filePath": "packages/shared/src/types/goal.ts",
+      "summary": "Defines the Goal entity type representing high-level project objectives that issues can be grouped under.",
+      "tags": ["type-definition", "goal", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 14
+    },
+    {
+      "id": "file:packages/shared/src/types/heartbeat.ts",
+      "type": "file",
+      "name": "heartbeat.ts",
+      "filePath": "packages/shared/src/types/heartbeat.ts",
+      "summary": "Defines the rich HeartbeatRun type and associated wakeup/session types representing individual agent task executions, their lifecycle states, log references, and scheduler integration.",
+      "tags": ["type-definition", "heartbeat", "agent"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 180
+    },
+    {
+      "id": "file:packages/shared/src/types/inbox-dismissal.ts",
+      "type": "file",
+      "name": "inbox-dismissal.ts",
+      "filePath": "packages/shared/src/types/inbox-dismissal.ts",
+      "summary": "Defines the InboxDismissal type representing a user's dismissal record for inbox notification items.",
+      "tags": ["type-definition", "inbox", "notification"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 9
+    },
+    {
+      "id": "file:packages/shared/src/types/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/shared/src/types/index.ts",
+      "summary": "Master barrel that re-exports every type, interface, and constant from all domain type modules in the shared package, serving as the single import surface for the entire type system.",
+      "tags": ["barrel", "entry-point", "type-definition"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 412,
+      "languageNotes": "Exports ~389 named symbols across all domain modules making it the central type gateway for the entire Paperclip platform."
+    },
+    {
+      "id": "file:packages/shared/src/types/instance.ts",
+      "type": "file",
+      "name": "instance.ts",
+      "filePath": "packages/shared/src/types/instance.ts",
+      "summary": "Defines InstanceSettings (general and experimental) and backup-retention types alongside preset constants for backup window durations and issue-graph liveness recovery lookback bounds.",
+      "tags": ["type-definition", "instance", "configuration"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 74
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/shared/src/telemetry/index.ts",
+      "target": "file:packages/shared/src/telemetry/config.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/telemetry/index.ts",
+      "target": "file:packages/shared/src/telemetry/events.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/telemetry/index.ts",
+      "target": "file:packages/shared/src/telemetry/state.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/telemetry/index.ts",
+      "target": "file:packages/shared/src/telemetry/types.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/access.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/activity.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/adapter-skills.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/agent.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/approval.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/asset.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/budget.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/company-portability.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/company-skill.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/company.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/cost.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/dashboard.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/environment.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/feedback.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/finance.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/goal.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/heartbeat.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/inbox-dismissal.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/index.ts",
+      "target": "file:packages/shared/src/types/instance.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/types/agent.ts",
+      "target": "file:packages/shared/src/types/access.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/shared/src/types/budget.ts",
+      "target": "file:packages/shared/src/types/cost.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/cost.ts",
+      "target": "file:packages/shared/src/types/finance.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/budget.ts",
+      "target": "file:packages/shared/src/types/finance.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/agent.ts",
+      "target": "file:packages/shared/src/types/heartbeat.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/environment.ts",
+      "target": "file:packages/shared/src/types/access.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/company-portability.ts",
+      "target": "file:packages/shared/src/types/company.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/company-skill.ts",
+      "target": "file:packages/shared/src/types/company.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/adapter-skills.ts",
+      "target": "file:packages/shared/src/types/agent.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/approval.ts",
+      "target": "file:packages/shared/src/types/agent.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/goal.ts",
+      "target": "file:packages/shared/src/types/agent.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/dashboard.ts",
+      "target": "file:packages/shared/src/types/activity.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/instance.ts",
+      "target": "file:packages/shared/src/types/environment.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

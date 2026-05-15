@@ -1,0 +1,882 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/src/routes/secrets.ts",
+      "type": "file",
+      "name": "secrets.ts",
+      "filePath": "server/src/routes/secrets.ts",
+      "summary": "Express router exposing CRUD endpoints for secret providers, provider configs, and secret management (create, rotate, import, delete) with company-scoped access control and activity logging.",
+      "tags": ["api-handler", "service", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/routes/secrets.ts:secretRoutes",
+      "type": "function",
+      "name": "secretRoutes",
+      "filePath": "server/src/routes/secrets.ts",
+      "lineRange": [17, 478],
+      "summary": "Builds and returns an Express Router with all secret management routes, wiring board/company auth checks and activity logging throughout.",
+      "tags": ["api-handler", "security", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/routes/sidebar-badges.ts",
+      "type": "file",
+      "name": "sidebar-badges.ts",
+      "filePath": "server/src/routes/sidebar-badges.ts",
+      "summary": "Express router endpoint that aggregates sidebar badge counts (failed runs, alerts, join requests, approvals, inbox total) for the company dashboard sidebar.",
+      "tags": ["api-handler", "component", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/routes/sidebar-badges.ts:sidebarBadgeRoutes",
+      "type": "function",
+      "name": "sidebarBadgeRoutes",
+      "filePath": "server/src/routes/sidebar-badges.ts",
+      "lineRange": [19, 83],
+      "summary": "Creates the Express router for GET /companies/:companyId/sidebar-badges, computing badge counts based on join requests, dismissals, alerts, and approvals.",
+      "tags": ["api-handler", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/routes/sidebar-preferences.ts",
+      "type": "file",
+      "name": "sidebar-preferences.ts",
+      "filePath": "server/src/routes/sidebar-preferences.ts",
+      "summary": "Express router providing GET/PUT endpoints for per-user sidebar ordering preferences at both global and company scope.",
+      "tags": ["api-handler", "component", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/routes/sidebar-preferences.ts:sidebarPreferenceRoutes",
+      "type": "function",
+      "name": "sidebarPreferenceRoutes",
+      "filePath": "server/src/routes/sidebar-preferences.ts",
+      "lineRange": [17, 71],
+      "summary": "Builds the Express router for sidebar preference CRUD operations (company order and project order) with board-user authentication enforcement.",
+      "tags": ["api-handler", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/routes/user-profiles.ts",
+      "type": "file",
+      "name": "user-profiles.ts",
+      "filePath": "server/src/routes/user-profiles.ts",
+      "summary": "Express router providing user profile endpoints with activity window statistics, daily contribution timelines, and slug-based user resolution for the company context.",
+      "tags": ["api-handler", "data-model", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/routes/user-profiles.ts:userProfileRoutes",
+      "type": "function",
+      "name": "userProfileRoutes",
+      "filePath": "server/src/routes/user-profiles.ts",
+      "lineRange": [300, 436],
+      "summary": "Builds the Express router for user profile lookup endpoints, including window stats and daily activity breakdowns per user slug.",
+      "tags": ["api-handler", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/routes/user-profiles.ts:resolveCompanyUser",
+      "type": "function",
+      "name": "resolveCompanyUser",
+      "filePath": "server/src/routes/user-profiles.ts",
+      "lineRange": [63, 91],
+      "summary": "Looks up a company membership row matching a slug against user name, email, or principal ID candidates.",
+      "tags": ["utility", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/routes/user-profiles.ts:loadWindowStats",
+      "type": "function",
+      "name": "loadWindowStats",
+      "filePath": "server/src/routes/user-profiles.ts",
+      "lineRange": [130, 205],
+      "summary": "Queries the database to compute aggregated activity window stats (issues, comments, cost) for a given user within a time window.",
+      "tags": ["utility", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/routes/user-profiles.ts:loadDailyStats",
+      "type": "function",
+      "name": "loadDailyStats",
+      "filePath": "server/src/routes/user-profiles.ts",
+      "lineRange": [207, 298],
+      "summary": "Queries the database to generate per-day activity points for a user profile chart view.",
+      "tags": ["utility", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/routes/workspace-command-authz.ts",
+      "type": "file",
+      "name": "workspace-command-authz.ts",
+      "filePath": "server/src/routes/workspace-command-authz.ts",
+      "summary": "Authorization helpers that collect workspace command mutation paths from structured configs and assert agents cannot modify host-executed workspace commands.",
+      "tags": ["middleware", "security", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/routes/workspace-command-authz.ts:assertNoAgentHostWorkspaceCommandMutation",
+      "type": "function",
+      "name": "assertNoAgentHostWorkspaceCommandMutation",
+      "filePath": "server/src/routes/workspace-command-authz.ts",
+      "lineRange": [43, 48],
+      "summary": "Throws a forbidden error if the requesting actor is an agent and the patch touches host-executed workspace command fields.",
+      "tags": ["middleware", "security", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/routes/workspace-command-authz.ts:collectExecutionWorkspaceCommandPaths",
+      "type": "function",
+      "name": "collectExecutionWorkspaceCommandPaths",
+      "filePath": "server/src/routes/workspace-command-authz.ts",
+      "lineRange": [106, 118],
+      "summary": "Recursively collects all command path strings found in an execution workspace config patch object.",
+      "tags": ["utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/routes/workspace-runtime-service-authz.ts",
+      "type": "file",
+      "name": "workspace-runtime-service-authz.ts",
+      "filePath": "server/src/routes/workspace-runtime-service-authz.ts",
+      "summary": "Authorization utilities that enforce agents can only manage runtime services for workspaces on issues within their reporting subtree, used as middleware guards on workspace service routes.",
+      "tags": ["middleware", "security", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/routes/workspace-runtime-service-authz.ts:assertCanManageProjectWorkspaceRuntimeServices",
+      "type": "function",
+      "name": "assertCanManageProjectWorkspaceRuntimeServices",
+      "filePath": "server/src/routes/workspace-runtime-service-authz.ts",
+      "lineRange": [113, 124],
+      "summary": "Entry-point authorization check that verifies the actor can manage runtime services for a project workspace.",
+      "tags": ["middleware", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/routes/workspace-runtime-service-authz.ts:assertCanManageExecutionWorkspaceRuntimeServices",
+      "type": "function",
+      "name": "assertCanManageExecutionWorkspaceRuntimeServices",
+      "filePath": "server/src/routes/workspace-runtime-service-authz.ts",
+      "lineRange": [126, 138],
+      "summary": "Entry-point authorization check that verifies the actor can manage runtime services for an execution workspace.",
+      "tags": ["middleware", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/runtime-api.ts",
+      "type": "file",
+      "name": "runtime-api.ts",
+      "filePath": "server/src/runtime-api.ts",
+      "summary": "Utilities for determining the primary runtime API URL and collecting reachable candidate URLs from network interfaces, used during server startup to decide the URL agents should call back on.",
+      "tags": ["utility", "service", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/runtime-api.ts:choosePrimaryRuntimeApiUrl",
+      "type": "function",
+      "name": "choosePrimaryRuntimeApiUrl",
+      "filePath": "server/src/runtime-api.ts",
+      "lineRange": [49, 77],
+      "summary": "Selects the best runtime API base URL from explicit config, allowed hostnames, bind host, or falls back to localhost.",
+      "tags": ["utility", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/runtime-api.ts:buildRuntimeApiCandidateUrls",
+      "type": "function",
+      "name": "buildRuntimeApiCandidateUrls",
+      "filePath": "server/src/runtime-api.ts",
+      "lineRange": [107, 167],
+      "summary": "Builds an ordered, de-duplicated list of candidate runtime API URLs from configured sources and reachable interface addresses.",
+      "tags": ["utility", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/secrets/aws-secrets-manager-provider.ts",
+      "type": "file",
+      "name": "aws-secrets-manager-provider.ts",
+      "filePath": "server/src/secrets/aws-secrets-manager-provider.ts",
+      "summary": "Full AWS Secrets Manager secret provider implementation including SigV4 request signing, credential caching, managed/external secret lifecycle, and health-check logic with over 30 helpers.",
+      "tags": ["security", "service", "singleton"],
+      "complexity": "complex",
+      "languageNotes": "Implements AWS SigV4 signing from scratch using Node.js crypto rather than the AWS SDK's built-in signer, giving fine-grained control over credential caching and request timeouts."
+    },
+    {
+      "id": "class:server/src/secrets/aws-secrets-manager-provider.ts:AwsSecretsManagerJsonGateway",
+      "type": "class",
+      "name": "AwsSecretsManagerJsonGateway",
+      "filePath": "server/src/secrets/aws-secrets-manager-provider.ts",
+      "lineRange": [652, 764],
+      "summary": "Low-level HTTP gateway that signs and dispatches JSON requests to the AWS Secrets Manager REST API, handling retries and error normalization.",
+      "tags": ["service", "singleton"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/secrets/aws-secrets-manager-provider.ts:createAwsSecretsManagerProvider",
+      "type": "function",
+      "name": "createAwsSecretsManagerProvider",
+      "filePath": "server/src/secrets/aws-secrets-manager-provider.ts",
+      "lineRange": [766, 1051],
+      "summary": "Factory that returns the full SecretProviderModule object for AWS Secrets Manager, including all CRUD operations and health checks.",
+      "tags": ["factory", "security", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/secrets/configured-provider.ts",
+      "type": "file",
+      "name": "configured-provider.ts",
+      "filePath": "server/src/secrets/configured-provider.ts",
+      "summary": "Tiny utility that reads the PAPERCLIP_SECRETS_PROVIDER environment variable and returns the active secret provider identifier, defaulting to local_encrypted.",
+      "tags": ["configuration", "utility", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/secrets/external-stub-providers.ts",
+      "type": "file",
+      "name": "external-stub-providers.ts",
+      "filePath": "server/src/secrets/external-stub-providers.ts",
+      "summary": "Stub provider modules for AWS Secrets Manager, GCP Secret Manager, and HashiCorp Vault that allow external-reference linking without runtime resolution when those backends are not configured.",
+      "tags": ["security", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/secrets/local-encrypted-provider.ts",
+      "type": "file",
+      "name": "local-encrypted-provider.ts",
+      "filePath": "server/src/secrets/local-encrypted-provider.ts",
+      "summary": "AES-256-GCM local encryption secret provider that manages a persistent master key file and encrypts secret values at rest on the server filesystem.",
+      "tags": ["security", "service", "singleton"],
+      "complexity": "complex",
+      "languageNotes": "Uses AES-256-GCM with per-secret random IVs and authentication tags; master key is auto-generated with restrictive file permissions (0o600) on first startup."
+    },
+    {
+      "id": "file:server/src/secrets/provider-registry.ts",
+      "type": "file",
+      "name": "provider-registry.ts",
+      "filePath": "server/src/secrets/provider-registry.ts",
+      "summary": "Registry that assembles all secret provider modules into a lookup map, exposing helper functions to retrieve a provider by ID, list all descriptors, and run health checks.",
+      "tags": ["security", "service", "singleton"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/secrets/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "server/src/secrets/types.ts",
+      "summary": "Core TypeScript interfaces and the SecretProviderClientError class for the secrets subsystem, defining the SecretProviderModule contract, health-check shapes, and typed error codes.",
+      "tags": ["type-definition", "security", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:server/src/secrets/types.ts:SecretProviderClientError",
+      "type": "class",
+      "name": "SecretProviderClientError",
+      "filePath": "server/src/secrets/types.ts",
+      "lineRange": [73, 96],
+      "summary": "Typed error class for secret provider client failures, carrying provider, operation, error code, and HTTP status for consistent error surfacing.",
+      "tags": ["type-definition", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/access.ts",
+      "type": "file",
+      "name": "access.ts",
+      "filePath": "server/src/services/access.ts",
+      "summary": "Core access-control service providing permission checks, membership management (add, update, archive), and principal permission grants for users and agents within companies.",
+      "tags": ["service", "security", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/access.ts:accessService",
+      "type": "function",
+      "name": "accessService",
+      "filePath": "server/src/services/access.ts",
+      "lineRange": [26, 791],
+      "summary": "Factory returning the full access-control service object with methods for membership CRUD, permission grant/revoke, and role checks across user and agent principals.",
+      "tags": ["service", "security", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/activity-log.ts",
+      "type": "file",
+      "name": "activity-log.ts",
+      "filePath": "server/src/services/activity-log.ts",
+      "summary": "Activity logging utility that writes audit records to the database, forwards matching domain actions as plugin events via a wired PluginEventBus, and applies username redaction.",
+      "tags": ["service", "event-handler", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/activity-log.ts:logActivity",
+      "type": "function",
+      "name": "logActivity",
+      "filePath": "server/src/services/activity-log.ts",
+      "lineRange": [65, 119],
+      "summary": "Persists an activity log entry with sanitized/redacted details, emits a live event, and forwards matching actions as typed plugin domain events.",
+      "tags": ["service", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/activity.ts",
+      "type": "file",
+      "name": "activity.ts",
+      "filePath": "server/src/services/activity.ts",
+      "summary": "Activity service that queries and hydrates the activity feed for a company, enriching log entries with agent, issue, comment, run, and workspace operation details.",
+      "tags": ["service", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/activity.ts:activityService",
+      "type": "function",
+      "name": "activityService",
+      "filePath": "server/src/services/activity.ts",
+      "lineRange": [37, 587],
+      "summary": "Factory that returns the activity service object with list and backfill methods for the enriched activity feed, including run liveness scheduling.",
+      "tags": ["service", "data-model", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/adapter-plugin-store.ts",
+      "type": "file",
+      "name": "adapter-plugin-store.ts",
+      "filePath": "server/src/services/adapter-plugin-store.ts",
+      "summary": "JSON-file-backed persistent store for external adapter plugin registrations, with in-memory caching and functions to list, add, remove, and disable adapter plugins.",
+      "tags": ["service", "singleton", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/agent-instructions.ts",
+      "type": "file",
+      "name": "agent-instructions.ts",
+      "filePath": "server/src/services/agent-instructions.ts",
+      "summary": "Service managing agent instruction bundles on the filesystem, supporting both managed (Paperclip-controlled) and external (user-provided) bundle modes with file listing, reading, and config sync.",
+      "tags": ["service", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/agent-instructions.ts:agentInstructionsService",
+      "type": "function",
+      "name": "agentInstructionsService",
+      "filePath": "server/src/services/agent-instructions.ts",
+      "lineRange": [454, 735],
+      "summary": "Factory returning the agent instructions service with methods to get/set bundle config, list and read instruction files, and write bundle content.",
+      "tags": ["service", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/agent-permissions.ts",
+      "type": "file",
+      "name": "agent-permissions.ts",
+      "filePath": "server/src/services/agent-permissions.ts",
+      "summary": "Helpers to compute default and normalized agent permissions from role strings, currently controlling whether an agent can create sub-agents.",
+      "tags": ["utility", "security", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/agent-start-lock.ts",
+      "type": "file",
+      "name": "agent-start-lock.ts",
+      "filePath": "server/src/services/agent-start-lock.ts",
+      "summary": "In-memory per-agent start lock that serializes concurrent agent-start operations with stale-lock timeout handling to prevent race conditions during startup.",
+      "tags": ["service", "utility", "singleton"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/agent-start-lock.ts:withAgentStartLock",
+      "type": "function",
+      "name": "withAgentStartLock",
+      "filePath": "server/src/services/agent-start-lock.ts",
+      "lineRange": [32, 48],
+      "summary": "Acquires an in-memory start lock for the given agent, serializing the callback execution behind any previous in-flight start with timeout-based stale lock recovery.",
+      "tags": ["utility", "singleton"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/agents.ts",
+      "type": "file",
+      "name": "agents.ts",
+      "filePath": "server/src/services/agents.ts",
+      "summary": "Core agent management service with CRUD operations, API key management, config revision tracking, config diffing, and runtime state queries for Paperclip agents.",
+      "tags": ["service", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/agents.ts:agentService",
+      "type": "function",
+      "name": "agentService",
+      "filePath": "server/src/services/agents.ts",
+      "lineRange": [214, 750],
+      "summary": "Factory that returns the full agent CRUD service, including create, update, delete, API key rotation, config revisions, and wakeup-request management.",
+      "tags": ["service", "factory", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/approvals.ts",
+      "type": "file",
+      "name": "approvals.ts",
+      "filePath": "server/src/services/approvals.ts",
+      "summary": "Service managing approval workflows including creating, resolving, and requesting revisions on approvals, with budget enforcement and hire-hook notifications on approval.",
+      "tags": ["service", "data-model", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/approvals.ts:approvalService",
+      "type": "function",
+      "name": "approvalService",
+      "filePath": "server/src/services/approvals.ts",
+      "lineRange": [11, 272],
+      "summary": "Factory returning the approval service with methods for listing, creating, approving, rejecting, and requesting revision on approval records.",
+      "tags": ["service", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/assets.ts",
+      "type": "file",
+      "name": "assets.ts",
+      "filePath": "server/src/services/assets.ts",
+      "summary": "Minimal asset service providing database create and getById operations for the assets table.",
+      "tags": ["service", "data-model", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/board-auth.ts",
+      "type": "file",
+      "name": "board-auth.ts",
+      "filePath": "server/src/services/board-auth.ts",
+      "summary": "Board authentication service managing API key issuance, CLI auth challenge flows, token hashing, and board access resolution with company membership checks.",
+      "tags": ["service", "security", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/board-auth.ts:boardAuthService",
+      "type": "function",
+      "name": "boardAuthService",
+      "filePath": "server/src/services/board-auth.ts",
+      "lineRange": [52, 359],
+      "summary": "Factory returning the board auth service with methods for creating/validating board API keys, managing CLI auth challenges, and resolving board access for users.",
+      "tags": ["service", "security", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/budgets.ts",
+      "type": "file",
+      "name": "budgets.ts",
+      "filePath": "server/src/services/budgets.ts",
+      "summary": "Comprehensive budget enforcement service that tracks cost spending against policy thresholds, triggers incidents on soft/hard threshold crossings, resolves incidents, and can pause work when budgets are exhausted.",
+      "tags": ["service", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/budgets.ts:budgetService",
+      "type": "function",
+      "name": "budgetService",
+      "filePath": "server/src/services/budgets.ts",
+      "lineRange": [212, 958],
+      "summary": "Factory returning the budget service with CRUD operations for budget policies, incident lifecycle management, and threshold enforcement with configurable hooks.",
+      "tags": ["service", "factory", "data-model"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/routes/secrets.ts",
+      "target": "function:server/src/routes/secrets.ts:secretRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/secrets.ts",
+      "target": "function:server/src/routes/secrets.ts:secretRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/sidebar-badges.ts",
+      "target": "function:server/src/routes/sidebar-badges.ts:sidebarBadgeRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/sidebar-badges.ts",
+      "target": "function:server/src/routes/sidebar-badges.ts:sidebarBadgeRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/sidebar-preferences.ts",
+      "target": "function:server/src/routes/sidebar-preferences.ts:sidebarPreferenceRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/sidebar-preferences.ts",
+      "target": "function:server/src/routes/sidebar-preferences.ts:sidebarPreferenceRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/user-profiles.ts",
+      "target": "function:server/src/routes/user-profiles.ts:userProfileRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/user-profiles.ts",
+      "target": "function:server/src/routes/user-profiles.ts:userProfileRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/user-profiles.ts",
+      "target": "function:server/src/routes/user-profiles.ts:resolveCompanyUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/user-profiles.ts",
+      "target": "function:server/src/routes/user-profiles.ts:loadWindowStats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/user-profiles.ts",
+      "target": "function:server/src/routes/user-profiles.ts:loadDailyStats",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/workspace-command-authz.ts",
+      "target": "function:server/src/routes/workspace-command-authz.ts:assertNoAgentHostWorkspaceCommandMutation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/workspace-command-authz.ts",
+      "target": "function:server/src/routes/workspace-command-authz.ts:assertNoAgentHostWorkspaceCommandMutation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/workspace-command-authz.ts",
+      "target": "function:server/src/routes/workspace-command-authz.ts:collectExecutionWorkspaceCommandPaths",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/workspace-command-authz.ts",
+      "target": "function:server/src/routes/workspace-command-authz.ts:collectExecutionWorkspaceCommandPaths",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/workspace-runtime-service-authz.ts",
+      "target": "function:server/src/routes/workspace-runtime-service-authz.ts:assertCanManageProjectWorkspaceRuntimeServices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/workspace-runtime-service-authz.ts",
+      "target": "function:server/src/routes/workspace-runtime-service-authz.ts:assertCanManageProjectWorkspaceRuntimeServices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/routes/workspace-runtime-service-authz.ts",
+      "target": "function:server/src/routes/workspace-runtime-service-authz.ts:assertCanManageExecutionWorkspaceRuntimeServices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/routes/workspace-runtime-service-authz.ts",
+      "target": "function:server/src/routes/workspace-runtime-service-authz.ts:assertCanManageExecutionWorkspaceRuntimeServices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/runtime-api.ts",
+      "target": "function:server/src/runtime-api.ts:choosePrimaryRuntimeApiUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/runtime-api.ts",
+      "target": "function:server/src/runtime-api.ts:choosePrimaryRuntimeApiUrl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/runtime-api.ts",
+      "target": "function:server/src/runtime-api.ts:buildRuntimeApiCandidateUrls",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/runtime-api.ts",
+      "target": "function:server/src/runtime-api.ts:buildRuntimeApiCandidateUrls",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/secrets/aws-secrets-manager-provider.ts",
+      "target": "class:server/src/secrets/aws-secrets-manager-provider.ts:AwsSecretsManagerJsonGateway",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/secrets/aws-secrets-manager-provider.ts",
+      "target": "function:server/src/secrets/aws-secrets-manager-provider.ts:createAwsSecretsManagerProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/secrets/aws-secrets-manager-provider.ts",
+      "target": "function:server/src/secrets/aws-secrets-manager-provider.ts:createAwsSecretsManagerProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/secrets/types.ts",
+      "target": "class:server/src/secrets/types.ts:SecretProviderClientError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/secrets/types.ts",
+      "target": "class:server/src/secrets/types.ts:SecretProviderClientError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/access.ts",
+      "target": "function:server/src/services/access.ts:accessService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/access.ts",
+      "target": "function:server/src/services/access.ts:accessService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/activity-log.ts",
+      "target": "function:server/src/services/activity-log.ts:logActivity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/activity-log.ts",
+      "target": "function:server/src/services/activity-log.ts:logActivity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/activity.ts",
+      "target": "function:server/src/services/activity.ts:activityService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/activity.ts",
+      "target": "function:server/src/services/activity.ts:activityService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/agent-instructions.ts",
+      "target": "function:server/src/services/agent-instructions.ts:agentInstructionsService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/agent-instructions.ts",
+      "target": "function:server/src/services/agent-instructions.ts:agentInstructionsService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/agent-start-lock.ts",
+      "target": "function:server/src/services/agent-start-lock.ts:withAgentStartLock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/agent-start-lock.ts",
+      "target": "function:server/src/services/agent-start-lock.ts:withAgentStartLock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/agents.ts",
+      "target": "function:server/src/services/agents.ts:agentService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/agents.ts",
+      "target": "function:server/src/services/agents.ts:agentService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/approvals.ts",
+      "target": "function:server/src/services/approvals.ts:approvalService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/approvals.ts",
+      "target": "function:server/src/services/approvals.ts:approvalService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/board-auth.ts",
+      "target": "function:server/src/services/board-auth.ts:boardAuthService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/board-auth.ts",
+      "target": "function:server/src/services/board-auth.ts:boardAuthService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/budgets.ts",
+      "target": "function:server/src/services/budgets.ts:budgetService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/budgets.ts",
+      "target": "function:server/src/services/budgets.ts:budgetService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/secrets/provider-registry.ts",
+      "target": "file:server/src/secrets/aws-secrets-manager-provider.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/secrets/provider-registry.ts",
+      "target": "file:server/src/secrets/local-encrypted-provider.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/secrets/provider-registry.ts",
+      "target": "file:server/src/secrets/external-stub-providers.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/secrets/provider-registry.ts",
+      "target": "file:server/src/secrets/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/secrets/aws-secrets-manager-provider.ts",
+      "target": "file:server/src/secrets/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/secrets/local-encrypted-provider.ts",
+      "target": "file:server/src/secrets/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/secrets/external-stub-providers.ts",
+      "target": "file:server/src/secrets/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/routes/secrets.ts",
+      "target": "file:server/src/secrets/configured-provider.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/approvals.ts",
+      "target": "file:server/src/services/agents.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/approvals.ts",
+      "target": "file:server/src/services/budgets.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/budgets.ts",
+      "target": "file:server/src/services/activity-log.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

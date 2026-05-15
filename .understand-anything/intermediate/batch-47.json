@@ -1,0 +1,591 @@
+{
+  "batchIndex": 47,
+  "nodes": [
+    {
+      "id": "file:server/src/__tests__/claude-local-adapter-environment.test.ts",
+      "type": "file",
+      "name": "claude-local-adapter-environment.test.ts",
+      "filePath": "server/src/__tests__/claude-local-adapter-environment.test.ts",
+      "language": "typescript",
+      "sizeLines": 281,
+      "summary": "Tests the environment diagnostic logic for the claude-local adapter, verifying that ANTHROPIC_API_KEY, CLAUDE_CODE_USE_BEDROCK, and ANTHROPIC_BEDROCK_BASE_URL environment variables produce correct warnings or errors under various configuration states.",
+      "tags": ["test", "adapter", "environment", "claude"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/claude-local-adapter.test.ts",
+      "type": "file",
+      "name": "claude-local-adapter.test.ts",
+      "filePath": "server/src/__tests__/claude-local-adapter.test.ts",
+      "language": "typescript",
+      "sizeLines": 205,
+      "summary": "Integration tests for the claude-local adapter unit logic including JSONL output parsing, ANSI stripping, session ID extraction, and token usage aggregation from Claude CLI stdout streams.",
+      "tags": ["test", "adapter", "claude", "parser"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/claude-local-execute.test.ts",
+      "type": "file",
+      "name": "claude-local-execute.test.ts",
+      "filePath": "server/src/__tests__/claude-local-execute.test.ts",
+      "language": "typescript",
+      "sizeLines": 1096,
+      "summary": "Comprehensive integration tests for the claude-local adapter `execute` function, using fake Claude CLI scripts written to temp directories to simulate success, failure, retry, skill injection, config directory setup, and environment variable passing end-to-end.",
+      "tags": ["test", "adapter", "claude", "execution", "integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/claude-local-skill-sync.test.ts",
+      "type": "file",
+      "name": "claude-local-skill-sync.test.ts",
+      "filePath": "server/src/__tests__/claude-local-skill-sync.test.ts",
+      "language": "typescript",
+      "sizeLines": 110,
+      "summary": "Tests the skill synchronization logic for the claude-local adapter, verifying that skill directories are correctly written and discovered from temp filesystem structures.",
+      "tags": ["test", "adapter", "claude", "skill-sync"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/cleanup-removal-service.test.ts",
+      "type": "file",
+      "name": "cleanup-removal-service.test.ts",
+      "filePath": "server/src/__tests__/cleanup-removal-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 231,
+      "summary": "Integration tests for the cleanup-removal service, seeding companies, agents, issues, and heartbeat runs into a test database and asserting that stale records are purged correctly.",
+      "tags": ["test", "service", "cleanup", "database"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/cli-auth-routes.test.ts",
+      "type": "file",
+      "name": "cli-auth-routes.test.ts",
+      "filePath": "server/src/__tests__/cli-auth-routes.test.ts",
+      "language": "typescript",
+      "sizeLines": 305,
+      "summary": "HTTP route tests for CLI authentication flows (challenge creation, approval, cancellation, and API key revocation) using supertest against a mocked Express app wired to boardAuthService stubs.",
+      "tags": ["test", "api-handler", "auth", "cli"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/codex-local-adapter-environment.test.ts",
+      "type": "file",
+      "name": "codex-local-adapter-environment.test.ts",
+      "filePath": "server/src/__tests__/codex-local-adapter-environment.test.ts",
+      "language": "typescript",
+      "sizeLines": 142,
+      "summary": "Tests the environment diagnostic logic for the codex-local adapter, verifying that OPENAI_API_KEY, CODEX_HOME, and related environment variables produce correct warnings or errors.",
+      "tags": ["test", "adapter", "codex", "environment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/codex-local-adapter.test.ts",
+      "type": "file",
+      "name": "codex-local-adapter.test.ts",
+      "filePath": "server/src/__tests__/codex-local-adapter.test.ts",
+      "language": "typescript",
+      "sizeLines": 252,
+      "summary": "Unit tests for the codex-local adapter output parser, verifying that thread.started, item.completed, turn.completed, and error JSONL events are correctly parsed into Paperclip's normalized execution result format.",
+      "tags": ["test", "adapter", "codex", "parser"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/codex-local-execute.test.ts",
+      "type": "file",
+      "name": "codex-local-execute.test.ts",
+      "filePath": "server/src/__tests__/codex-local-execute.test.ts",
+      "language": "typescript",
+      "sizeLines": 1236,
+      "summary": "Comprehensive integration tests for the codex-local adapter `execute` function, using fake Codex CLI scripts to simulate success, failure, prompt injection, skill injection, environment variable passing, and wake payload handling end-to-end.",
+      "tags": ["test", "adapter", "codex", "execution", "integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/codex-local-skill-injection.test.ts",
+      "type": "file",
+      "name": "codex-local-skill-injection.test.ts",
+      "filePath": "server/src/__tests__/codex-local-skill-injection.test.ts",
+      "language": "typescript",
+      "sizeLines": 192,
+      "summary": "Tests skill injection into the codex-local adapter, verifying that both Paperclip-repo skills and custom skills are correctly written into the expected filesystem layout and surfaced during execution.",
+      "tags": ["test", "adapter", "codex", "skill-injection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/codex-local-skill-sync.test.ts",
+      "type": "file",
+      "name": "codex-local-skill-sync.test.ts",
+      "filePath": "server/src/__tests__/codex-local-skill-sync.test.ts",
+      "language": "typescript",
+      "sizeLines": 128,
+      "summary": "Tests the skill synchronization logic for the codex-local adapter, ensuring that skill directories are properly created and listed from temporary filesystem structures.",
+      "tags": ["test", "adapter", "codex", "skill-sync"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/companies-route-path-guard.test.ts",
+      "type": "file",
+      "name": "companies-route-path-guard.test.ts",
+      "filePath": "server/src/__tests__/companies-route-path-guard.test.ts",
+      "language": "typescript",
+      "sizeLines": 62,
+      "summary": "Tests the path-guard middleware on company routes, verifying that requests with missing or malformed company IDs in the URL path are rejected with appropriate HTTP error responses.",
+      "tags": ["test", "middleware", "routing", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/company-branding-route.test.ts",
+      "type": "file",
+      "name": "company-branding-route.test.ts",
+      "filePath": "server/src/__tests__/company-branding-route.test.ts",
+      "language": "typescript",
+      "sizeLines": 207,
+      "summary": "HTTP route tests for company branding endpoints, covering GET and PUT operations for logo and color configuration with authorization checks via a supertest Express harness.",
+      "tags": ["test", "api-handler", "company", "branding"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/company-portability-routes.test.ts",
+      "type": "file",
+      "name": "company-portability-routes.test.ts",
+      "filePath": "server/src/__tests__/company-portability-routes.test.ts",
+      "language": "typescript",
+      "sizeLines": 429,
+      "summary": "HTTP route tests for the company portability API (export preview, import preview, export bundle, import bundle), using heavily mocked service stubs and supertest to assert correct HTTP responses and authorization enforcement.",
+      "tags": ["test", "api-handler", "company", "portability"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/company-portability.test.ts",
+      "type": "file",
+      "name": "company-portability.test.ts",
+      "filePath": "server/src/__tests__/company-portability.test.ts",
+      "language": "typescript",
+      "sizeLines": 3165,
+      "summary": "Massive unit-test suite for the company portability service covering all aspects of export and import: agents, projects, issues, issue comments, routines, company skills (including file bundles), secrets normalization, asset references, member permissions, and round-trip fidelity across bundle versions.",
+      "tags": ["test", "service", "company", "portability"],
+      "complexity": "complex",
+      "languageNotes": "At 3165 lines this is the single largest test file in the codebase; it systematically exercises every entity type managed by CompanyPortabilityService using vi.fn stubs in place of all collaborating services."
+    },
+    {
+      "id": "file:server/src/__tests__/company-search-rate-limit-routes.test.ts",
+      "type": "file",
+      "name": "company-search-rate-limit-routes.test.ts",
+      "filePath": "server/src/__tests__/company-search-rate-limit-routes.test.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "summary": "Tests that the company search routes enforce rate limiting, verifying that rapid repeated requests from the same IP are throttled with 429 responses after the allowed burst window.",
+      "tags": ["test", "api-handler", "rate-limiting", "company-search"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/company-search-service.test.ts",
+      "type": "file",
+      "name": "company-search-service.test.ts",
+      "filePath": "server/src/__tests__/company-search-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 454,
+      "summary": "Integration tests for the company search service running against an embedded PostgreSQL database with the pg_trgm extension, covering full-text search, pagination, scope filtering, and query length clamping.",
+      "tags": ["test", "service", "company-search", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/company-skills-detail.test.ts",
+      "type": "file",
+      "name": "company-skills-detail.test.ts",
+      "filePath": "server/src/__tests__/company-skills-detail.test.ts",
+      "language": "typescript",
+      "sizeLines": 232,
+      "summary": "Tests the detailed company skills query builder, verifying that implicit column selects are correctly injected via a proxy-based tracked DB and that the SQL shape matches the expected structure.",
+      "tags": ["test", "service", "company-skills", "database"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/company-skills-routes.test.ts",
+      "type": "file",
+      "name": "company-skills-routes.test.ts",
+      "filePath": "server/src/__tests__/company-skills-routes.test.ts",
+      "language": "typescript",
+      "sizeLines": 324,
+      "summary": "HTTP route tests for company skill management endpoints (import from source, delete skill) with authorization checks, using vi.doMock to swap in controlled service stubs on a per-test basis.",
+      "tags": ["test", "api-handler", "company-skills", "authorization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/company-skills-service.test.ts",
+      "type": "file",
+      "name": "company-skills-service.test.ts",
+      "filePath": "server/src/__tests__/company-skills-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 99,
+      "summary": "Unit tests for the company skills service, covering skill listing, metadata extraction, and validation of skill package file imports against schema constraints.",
+      "tags": ["test", "service", "company-skills", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/company-skills.test.ts",
+      "type": "file",
+      "name": "company-skills.test.ts",
+      "filePath": "server/src/__tests__/company-skills.test.ts",
+      "language": "typescript",
+      "sizeLines": 229,
+      "summary": "Integration tests for the end-to-end company skills pipeline, reading real skill directory structures from temp filesystem paths and verifying that the skill loader surfaces correct metadata and file contents.",
+      "tags": ["test", "service", "company-skills", "filesystem"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/company-user-directory-route.test.ts",
+      "type": "file",
+      "name": "company-user-directory-route.test.ts",
+      "filePath": "server/src/__tests__/company-user-directory-route.test.ts",
+      "language": "typescript",
+      "sizeLines": 132,
+      "summary": "HTTP route tests for the company user directory endpoint, using a hand-crafted DB stub that simulates membership and auth-user table queries to verify that the route returns correct user lists with authorization gating.",
+      "tags": ["test", "api-handler", "company", "user-directory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/costs-service.test.ts",
+      "type": "file",
+      "name": "costs-service.test.ts",
+      "filePath": "server/src/__tests__/costs-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 846,
+      "summary": "Extensive tests for the costs service and cost routes, combining mock-DB unit tests for cost event creation, quota window checks, and budget enforcement, with embedded-PostgreSQL integration tests for actual spend aggregation and finance event recording.",
+      "tags": ["test", "service", "costs", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/cursor-local-adapter-environment.test.ts",
+      "type": "file",
+      "name": "cursor-local-adapter-environment.test.ts",
+      "filePath": "server/src/__tests__/cursor-local-adapter-environment.test.ts",
+      "language": "typescript",
+      "sizeLines": 302,
+      "summary": "Integration tests for the cursor-local adapter environment diagnostic, writing fake agent binaries into temp directories and verifying that PATH, binary discovery, and missing-binary errors are reported correctly.",
+      "tags": ["test", "adapter", "cursor", "environment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/cursor-local-adapter.test.ts",
+      "type": "file",
+      "name": "cursor-local-adapter.test.ts",
+      "filePath": "server/src/__tests__/cursor-local-adapter.test.ts",
+      "language": "typescript",
+      "sizeLines": 405,
+      "summary": "Unit tests for the cursor-local adapter's JSONL parser, UI stdout line parser, CLI stream printer, and stale-session error detector, covering prefixed and unprefixed output formats, thinking blocks, tool lifecycle events, and error propagation.",
+      "tags": ["test", "adapter", "cursor", "parser"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/__tests__/claude-local-adapter-environment.test.ts",
+      "target": "file:server/src/adapters/claude-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/claude-local-adapter.test.ts",
+      "target": "file:server/src/adapters/claude-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/claude-local-execute.test.ts",
+      "target": "file:server/src/adapters/claude-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/claude-local-skill-sync.test.ts",
+      "target": "file:server/src/adapters/claude-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/claude-local-adapter.test.ts",
+      "target": "file:server/src/__tests__/claude-local-execute.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/claude-local-adapter-environment.test.ts",
+      "target": "file:server/src/__tests__/claude-local-execute.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/claude-local-skill-sync.test.ts",
+      "target": "file:server/src/__tests__/claude-local-execute.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-adapter-environment.test.ts",
+      "target": "file:server/src/adapters/codex-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-adapter.test.ts",
+      "target": "file:server/src/adapters/codex-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-execute.test.ts",
+      "target": "file:server/src/adapters/codex-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-skill-injection.test.ts",
+      "target": "file:server/src/adapters/codex-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-skill-sync.test.ts",
+      "target": "file:server/src/adapters/codex-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-adapter.test.ts",
+      "target": "file:server/src/__tests__/codex-local-execute.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-skill-injection.test.ts",
+      "target": "file:server/src/__tests__/codex-local-execute.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/codex-local-skill-sync.test.ts",
+      "target": "file:server/src/__tests__/codex-local-execute.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/cleanup-removal-service.test.ts",
+      "target": "file:server/src/services/cleanup-removal.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/cli-auth-routes.test.ts",
+      "target": "file:server/src/routes/access.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/cli-auth-routes.test.ts",
+      "target": "file:server/src/services/board-auth.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/companies-route-path-guard.test.ts",
+      "target": "file:server/src/routes/companies.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-branding-route.test.ts",
+      "target": "file:server/src/routes/companies.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-portability-routes.test.ts",
+      "target": "file:server/src/routes/companies.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-portability-routes.test.ts",
+      "target": "file:server/src/services/company-portability.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/company-portability.test.ts",
+      "target": "file:server/src/services/company-portability.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-portability-routes.test.ts",
+      "target": "file:server/src/__tests__/company-portability.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-search-rate-limit-routes.test.ts",
+      "target": "file:server/src/routes/company-search.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-search-service.test.ts",
+      "target": "file:server/src/services/company-search.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-search-rate-limit-routes.test.ts",
+      "target": "file:server/src/__tests__/company-search-service.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-detail.test.ts",
+      "target": "file:server/src/services/company-skills.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-routes.test.ts",
+      "target": "file:server/src/routes/company-skills.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-routes.test.ts",
+      "target": "file:server/src/services/company-skills.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-service.test.ts",
+      "target": "file:server/src/services/company-skills.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills.test.ts",
+      "target": "file:server/src/services/company-skills.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-detail.test.ts",
+      "target": "file:server/src/__tests__/company-skills.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-service.test.ts",
+      "target": "file:server/src/__tests__/company-skills.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-skills-routes.test.ts",
+      "target": "file:server/src/__tests__/company-skills.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-user-directory-route.test.ts",
+      "target": "file:server/src/routes/companies.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/costs-service.test.ts",
+      "target": "file:server/src/services/costs.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/costs-service.test.ts",
+      "target": "file:server/src/services/finance.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/cursor-local-adapter-environment.test.ts",
+      "target": "file:server/src/adapters/cursor-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/cursor-local-adapter.test.ts",
+      "target": "file:server/src/adapters/cursor-local/server.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/cursor-local-adapter.test.ts",
+      "target": "file:server/src/__tests__/cursor-local-adapter-environment.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/companies-route-path-guard.test.ts",
+      "target": "file:server/src/__tests__/company-branding-route.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-branding-route.test.ts",
+      "target": "file:server/src/__tests__/company-portability-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/company-user-directory-route.test.ts",
+      "target": "file:server/src/__tests__/company-branding-route.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

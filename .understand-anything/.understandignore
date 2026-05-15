@@ -1,0 +1,63 @@
+# .understandignore — patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions — uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+# --- From .gitignore (uncomment to exclude) ---
+
+# **/node_modules
+# **/node_modules/
+# ui/storybook-static/
+# .env
+# *.tsbuildinfo
+# drizzle/meta/
+# .vite/
+# .DS_Store
+# data/
+# .paperclip/
+# .pnpm-store/
+# tmp-*
+# cli/tmp/
+# check-*.mjs
+# !scripts/check-*.mjs
+# new-agent*.json
+# newcompany.json
+# seed-*.mjs
+# server/check-*.mjs
+# server/seed-*.mjs
+# packages/db/seed-*.mjs
+# cli/package.dev.json
+# server/src/**/*.js
+# server/src/**/*.js.map
+# server/src/**/*.d.ts
+# server/src/**/*.d.ts.map
+# tmp/
+# feedback-export-*
+# diagnostics/
+# *.tmp
+# .claude/settings.local.json
+# .paperclip-local/
+# /.idea/
+# /.agents/
+# .doc-review-cursor
+# tests/e2e/test-results/
+# tests/e2e/playwright-report/
+# tests/release-smoke/test-results/
+# tests/release-smoke/playwright-report/
+# .superset/
+# .claude/worktrees/
+
+# --- Detected directories (uncomment to exclude) ---
+
+# tests/
+# docs/
+# scripts/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# *.test.*
+# *.spec.*
+# *.snap

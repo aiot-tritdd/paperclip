@@ -1,0 +1,1104 @@
+{
+  "batchIndex": 28,
+  "nodes": [
+    {
+      "id": "file:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts",
+      "type": "file",
+      "name": "heartbeat_run_watchdog_decisions.ts",
+      "filePath": "packages/db/src/schema/heartbeat_run_watchdog_decisions.ts",
+      "label": "heartbeat_run_watchdog_decisions.ts",
+      "summary": "Drizzle ORM schema for the heartbeat_run_watchdog_decisions table, recording watchdog evaluation decisions (snooze, escalate, etc.) made per heartbeat run, linking back to the run, issuing issue, and the agent or run that created the decision.",
+      "tags": ["schema-definition", "database", "agent-orchestration", "heartbeat"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 34,
+      "exports": ["heartbeatRunWatchdogDecisions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts:heartbeat_run_watchdog_decisions",
+      "type": "table",
+      "name": "heartbeat_run_watchdog_decisions",
+      "filePath": "packages/db/src/schema/heartbeat_run_watchdog_decisions.ts",
+      "label": "heartbeat_run_watchdog_decisions",
+      "summary": "Records watchdog decisions per heartbeat run (decision text, optional snooze timestamp, reason), linked to company, heartbeat run, optional evaluation issue, and the agent or run that created the record.",
+      "tags": ["schema-definition", "database", "heartbeat", "agent-orchestration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/heartbeat_runs.ts",
+      "type": "file",
+      "name": "heartbeat_runs.ts",
+      "filePath": "packages/db/src/schema/heartbeat_runs.ts",
+      "label": "heartbeat_runs.ts",
+      "summary": "Drizzle ORM schema for the heartbeat_runs table, capturing the full lifecycle of agent execution runs including status, process metadata, log references, liveness state, retry tracking, and session snapshots.",
+      "tags": ["schema-definition", "database", "agent-orchestration", "heartbeat"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 82,
+      "exports": ["heartbeatRuns"]
+    },
+    {
+      "id": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "table",
+      "name": "heartbeat_runs",
+      "filePath": "packages/db/src/schema/heartbeat_runs.ts",
+      "label": "heartbeat_runs",
+      "summary": "Central execution run record for an agent heartbeat: tracks status, process PID, stdout/stderr excerpts, log store reference, liveness state, retry policy, continuation attempts, context snapshot, and wakeup request linkage.",
+      "tags": ["schema-definition", "database", "agent-orchestration", "heartbeat"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/src/schema/inbox_dismissals.ts",
+      "type": "file",
+      "name": "inbox_dismissals.ts",
+      "filePath": "packages/db/src/schema/inbox_dismissals.ts",
+      "label": "inbox_dismissals.ts",
+      "summary": "Drizzle ORM schema for the inbox_dismissals table, tracking when a user dismisses a specific inbox item key within a company.",
+      "tags": ["schema-definition", "database", "inbox", "user-preferences"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 24,
+      "exports": ["inboxDismissals"]
+    },
+    {
+      "id": "table:packages/db/src/schema/inbox_dismissals.ts:inbox_dismissals",
+      "type": "table",
+      "name": "inbox_dismissals",
+      "filePath": "packages/db/src/schema/inbox_dismissals.ts",
+      "label": "inbox_dismissals",
+      "summary": "Records per-user, per-company dismissal of inbox items identified by itemKey, with a unique constraint preventing duplicate dismissals.",
+      "tags": ["schema-definition", "database", "inbox", "user-preferences"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/db/src/schema/index.ts",
+      "label": "index.ts",
+      "summary": "Barrel entry point for the entire db/schema package, re-exporting all 86 Drizzle table definitions across companies, agents, issues, routines, heartbeats, plugins, secrets, and more.",
+      "tags": ["entry-point", "barrel", "schema-definition", "database"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 78,
+      "exports": ["companies", "companyLogos", "authUsers", "authSessions", "authAccounts", "authVerifications", "instanceSettings", "instanceUserRoles", "userSidebarPreferences", "agents", "boardApiKeys", "cliAuthChallenges", "companyMemberships", "companyUserSidebarPreferences", "principalPermissionGrants", "invites", "joinRequests", "budgetPolicies", "budgetIncidents", "agentConfigRevisions", "agentApiKeys", "agentRuntimeState", "agentTaskSessions", "agentWakeupRequests", "projects", "projectWorkspaces", "executionWorkspaces", "environments", "environmentLeases", "workspaceOperations", "workspaceRuntimeServices", "projectGoals", "goals", "issues", "issueRecoveryActions", "issueReferenceMentions", "issueRelations", "routines", "routineRevisions", "routineTriggers", "routineRuns", "issueWorkProducts", "labels", "issueLabels", "issueApprovals", "issueComments", "issueThreadInteractions", "issueTreeHolds", "issueTreeHoldMembers", "issueExecutionDecisions", "issueInboxArchives", "inboxDismissals", "feedbackVotes", "feedbackExports", "issueReadStates", "assets", "issueAttachments", "documents", "documentRevisions", "issueDocuments", "heartbeatRuns", "heartbeatRunEvents", "heartbeatRunWatchdogDecisions", "costEvents", "financeEvents", "approvals", "approvalComments", "activityLog", "companySecretProviderConfigs", "companySecrets", "companySecretVersions", "companySecretBindings", "secretAccessEvents", "companySkills", "plugins", "pluginConfig", "pluginCompanySettings", "pluginManagedResources", "pluginState", "pluginEntities", "pluginDatabaseNamespaces", "pluginMigrations", "pluginJobs", "pluginJobRuns", "pluginWebhookDeliveries", "pluginLogs"]
+    },
+    {
+      "id": "file:packages/db/src/schema/instance_settings.ts",
+      "type": "file",
+      "name": "instance_settings.ts",
+      "filePath": "packages/db/src/schema/instance_settings.ts",
+      "label": "instance_settings.ts",
+      "summary": "Drizzle ORM schema for the instance_settings table, a singleton configuration record holding general and experimental JSONB settings for the Paperclip instance.",
+      "tags": ["schema-definition", "database", "configuration", "singleton"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 16,
+      "exports": ["instanceSettings"]
+    },
+    {
+      "id": "table:packages/db/src/schema/instance_settings.ts:instance_settings",
+      "type": "table",
+      "name": "instance_settings",
+      "filePath": "packages/db/src/schema/instance_settings.ts",
+      "label": "instance_settings",
+      "summary": "Singleton table (enforced by unique singletonKey) storing JSONB-typed general and experimental configuration blobs for the running Paperclip instance.",
+      "tags": ["schema-definition", "database", "configuration", "singleton"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/instance_user_roles.ts",
+      "type": "file",
+      "name": "instance_user_roles.ts",
+      "filePath": "packages/db/src/schema/instance_user_roles.ts",
+      "label": "instance_user_roles.ts",
+      "summary": "Drizzle ORM schema for the instance_user_roles table, granting instance-level administrative roles (e.g., instance_admin) to specific user IDs.",
+      "tags": ["schema-definition", "database", "access-control", "admin"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 16,
+      "exports": ["instanceUserRoles"]
+    },
+    {
+      "id": "table:packages/db/src/schema/instance_user_roles.ts:instance_user_roles",
+      "type": "table",
+      "name": "instance_user_roles",
+      "filePath": "packages/db/src/schema/instance_user_roles.ts",
+      "label": "instance_user_roles",
+      "summary": "Maps user IDs to instance-scoped roles (default: instance_admin) with a unique constraint per user-role pair.",
+      "tags": ["schema-definition", "database", "access-control", "admin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/invites.ts",
+      "type": "file",
+      "name": "invites.ts",
+      "filePath": "packages/db/src/schema/invites.ts",
+      "label": "invites.ts",
+      "summary": "Drizzle ORM schema for the invites table, representing invitation tokens for joining a company with expiry, revocation, and acceptance lifecycle tracking.",
+      "tags": ["schema-definition", "database", "auth", "onboarding"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 29,
+      "exports": ["invites"]
+    },
+    {
+      "id": "table:packages/db/src/schema/invites.ts:invites",
+      "type": "table",
+      "name": "invites",
+      "filePath": "packages/db/src/schema/invites.ts",
+      "label": "invites",
+      "summary": "Stores invite tokens (hashed) scoped to a company with type (company_join), allowed join types, expiry, issuer, revocation and acceptance timestamps.",
+      "tags": ["schema-definition", "database", "auth", "onboarding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_approvals.ts",
+      "type": "file",
+      "name": "issue_approvals.ts",
+      "filePath": "packages/db/src/schema/issue_approvals.ts",
+      "label": "issue_approvals.ts",
+      "summary": "Drizzle ORM schema for the issue_approvals join table, linking issues to approval records with a composite primary key on issueId and approvalId.",
+      "tags": ["schema-definition", "database", "issue-tracking", "approvals"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 23,
+      "exports": ["issueApprovals"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_approvals.ts:issue_approvals",
+      "type": "table",
+      "name": "issue_approvals",
+      "filePath": "packages/db/src/schema/issue_approvals.ts",
+      "label": "issue_approvals",
+      "summary": "Join table with composite PK (issueId, approvalId) that associates an issue with an approval record, recording which agent or user created the link.",
+      "tags": ["schema-definition", "database", "issue-tracking", "approvals"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_attachments.ts",
+      "type": "file",
+      "name": "issue_attachments.ts",
+      "filePath": "packages/db/src/schema/issue_attachments.ts",
+      "label": "issue_attachments.ts",
+      "summary": "Drizzle ORM schema for the issue_attachments table, linking file assets to issues and optionally to a specific issue comment.",
+      "tags": ["schema-definition", "database", "issue-tracking", "file-storage"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 23,
+      "exports": ["issueAttachments"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_attachments.ts:issue_attachments",
+      "type": "table",
+      "name": "issue_attachments",
+      "filePath": "packages/db/src/schema/issue_attachments.ts",
+      "label": "issue_attachments",
+      "summary": "Associates uploaded assets (assetId) with an issue and optional comment, with a unique constraint ensuring each asset is attached only once.",
+      "tags": ["schema-definition", "database", "issue-tracking", "file-storage"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_comments.ts",
+      "type": "file",
+      "name": "issue_comments.ts",
+      "filePath": "packages/db/src/schema/issue_comments.ts",
+      "label": "issue_comments.ts",
+      "summary": "Drizzle ORM schema for the issue_comments table, storing comments on issues with author attribution (agent or user), run linkage, body text, and rich presentation/metadata JSONB fields.",
+      "tags": ["schema-definition", "database", "issue-tracking", "comments"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 40,
+      "exports": ["issueComments"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_comments.ts:issue_comments",
+      "type": "table",
+      "name": "issue_comments",
+      "filePath": "packages/db/src/schema/issue_comments.ts",
+      "label": "issue_comments",
+      "summary": "Stores issue comments with body text, authorAgentId or authorUserId, optional heartbeat run link, and typed JSONB presentation/metadata fields; includes GIN trigram index on body for full-text search.",
+      "tags": ["schema-definition", "database", "issue-tracking", "comments"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_documents.ts",
+      "type": "file",
+      "name": "issue_documents.ts",
+      "filePath": "packages/db/src/schema/issue_documents.ts",
+      "label": "issue_documents.ts",
+      "summary": "Drizzle ORM schema for the issue_documents join table, associating documents with issues via a keyed reference, enforcing uniqueness of the key per issue and one-to-one between document and issue.",
+      "tags": ["schema-definition", "database", "issue-tracking", "documents"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 30,
+      "exports": ["issueDocuments"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_documents.ts:issue_documents",
+      "type": "table",
+      "name": "issue_documents",
+      "filePath": "packages/db/src/schema/issue_documents.ts",
+      "label": "issue_documents",
+      "summary": "Links a document to an issue with a named key; unique constraints enforce one document per issue-key combination and ensure each document belongs to only one issue.",
+      "tags": ["schema-definition", "database", "issue-tracking", "documents"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_execution_decisions.ts",
+      "type": "file",
+      "name": "issue_execution_decisions.ts",
+      "filePath": "packages/db/src/schema/issue_execution_decisions.ts",
+      "label": "issue_execution_decisions.ts",
+      "summary": "Drizzle ORM schema for the issue_execution_decisions table, recording stage-level execution outcomes (approve, reject, etc.) made by agents or users during issue processing.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 27,
+      "exports": ["issueExecutionDecisions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_execution_decisions.ts:issue_execution_decisions",
+      "type": "table",
+      "name": "issue_execution_decisions",
+      "filePath": "packages/db/src/schema/issue_execution_decisions.ts",
+      "label": "issue_execution_decisions",
+      "summary": "Captures per-stage execution decisions on an issue (stageId, stageType, outcome, body), attributed to an agent or user and optionally linked to the creating heartbeat run.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_inbox_archives.ts",
+      "type": "file",
+      "name": "issue_inbox_archives.ts",
+      "filePath": "packages/db/src/schema/issue_inbox_archives.ts",
+      "label": "issue_inbox_archives.ts",
+      "summary": "Drizzle ORM schema for the issue_inbox_archives table, tracking per-user archival of issues from their inbox with a unique constraint preventing duplicate archives.",
+      "tags": ["schema-definition", "database", "inbox", "issue-tracking"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 25,
+      "exports": ["issueInboxArchives"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_inbox_archives.ts:issue_inbox_archives",
+      "type": "table",
+      "name": "issue_inbox_archives",
+      "filePath": "packages/db/src/schema/issue_inbox_archives.ts",
+      "label": "issue_inbox_archives",
+      "summary": "Records when a user archives an issue from their inbox (userId, issueId, archivedAt), with a unique constraint per company-issue-user triplet.",
+      "tags": ["schema-definition", "database", "inbox", "issue-tracking"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_labels.ts",
+      "type": "file",
+      "name": "issue_labels.ts",
+      "filePath": "packages/db/src/schema/issue_labels.ts",
+      "label": "issue_labels.ts",
+      "summary": "Drizzle ORM schema for the issue_labels many-to-many join table, associating label records with issues using a composite primary key.",
+      "tags": ["schema-definition", "database", "issue-tracking", "labels"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 20,
+      "exports": ["issueLabels"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_labels.ts:issue_labels",
+      "type": "table",
+      "name": "issue_labels",
+      "filePath": "packages/db/src/schema/issue_labels.ts",
+      "label": "issue_labels",
+      "summary": "Many-to-many join table between issues and labels (composite PK on issueId+labelId) scoped to a company, with cascade deletes on both sides.",
+      "tags": ["schema-definition", "database", "issue-tracking", "labels"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_read_states.ts",
+      "type": "file",
+      "name": "issue_read_states.ts",
+      "filePath": "packages/db/src/schema/issue_read_states.ts",
+      "label": "issue_read_states.ts",
+      "summary": "Drizzle ORM schema for the issue_read_states table, recording the last time each user read each issue to power unread-state indicators.",
+      "tags": ["schema-definition", "database", "issue-tracking", "user-preferences"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 25,
+      "exports": ["issueReadStates"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_read_states.ts:issue_read_states",
+      "type": "table",
+      "name": "issue_read_states",
+      "filePath": "packages/db/src/schema/issue_read_states.ts",
+      "label": "issue_read_states",
+      "summary": "Tracks lastReadAt timestamp per user per issue per company; unique constraint on (companyId, issueId, userId) enables upsert-based read-state management.",
+      "tags": ["schema-definition", "database", "issue-tracking", "user-preferences"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_recovery_actions.ts",
+      "type": "file",
+      "name": "issue_recovery_actions.ts",
+      "filePath": "packages/db/src/schema/issue_recovery_actions.ts",
+      "label": "issue_recovery_actions.ts",
+      "summary": "Drizzle ORM schema for the issue_recovery_actions table, modeling automated recovery workflows triggered on stalled or failed issues, including ownership, cause fingerprinting, retry policy, and escalation linkage.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 68,
+      "exports": ["issueRecoveryActions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_recovery_actions.ts:issue_recovery_actions",
+      "type": "table",
+      "name": "issue_recovery_actions",
+      "filePath": "packages/db/src/schema/issue_recovery_actions.ts",
+      "label": "issue_recovery_actions",
+      "summary": "Tracks automated recovery attempts for a source issue (kind, cause, fingerprint, status, attemptCount, maxAttempts), with optional escalation to a recovery issue and partial unique indexes ensuring one active recovery per issue and per cause fingerprint.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_reference_mentions.ts",
+      "type": "file",
+      "name": "issue_reference_mentions.ts",
+      "filePath": "packages/db/src/schema/issue_reference_mentions.ts",
+      "label": "issue_reference_mentions.ts",
+      "summary": "Drizzle ORM schema for the issue_reference_mentions table, capturing cross-issue mentions found in titles, descriptions, comments, or documents with deduplication constraints.",
+      "tags": ["schema-definition", "database", "issue-tracking", "cross-referencing"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 48,
+      "exports": ["issueReferenceMentions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_reference_mentions.ts:issue_reference_mentions",
+      "type": "table",
+      "name": "issue_reference_mentions",
+      "filePath": "packages/db/src/schema/issue_reference_mentions.ts",
+      "label": "issue_reference_mentions",
+      "summary": "Records mention relationships between issues (sourceIssueId → targetIssueId) with sourceKind (title/description/comment/document), sourceRecordId, and conditional unique indexes to prevent duplicate mention records.",
+      "tags": ["schema-definition", "database", "issue-tracking", "cross-referencing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_relations.ts",
+      "type": "file",
+      "name": "issue_relations.ts",
+      "filePath": "packages/db/src/schema/issue_relations.ts",
+      "label": "issue_relations.ts",
+      "summary": "Drizzle ORM schema for the issue_relations table, modeling directed typed relationships (currently \"blocks\") between pairs of issues within a company.",
+      "tags": ["schema-definition", "database", "issue-tracking", "graph"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 30,
+      "exports": ["issueRelations"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_relations.ts:issue_relations",
+      "type": "table",
+      "name": "issue_relations",
+      "filePath": "packages/db/src/schema/issue_relations.ts",
+      "label": "issue_relations",
+      "summary": "Stores typed directed edges between issues (currently only type='blocks'), with a unique constraint on the (companyId, issueId, relatedIssueId, type) quadruplet.",
+      "tags": ["schema-definition", "database", "issue-tracking", "graph"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_thread_interactions.ts",
+      "type": "file",
+      "name": "issue_thread_interactions.ts",
+      "filePath": "packages/db/src/schema/issue_thread_interactions.ts",
+      "label": "issue_thread_interactions.ts",
+      "summary": "Drizzle ORM schema for the issue_thread_interactions table, tracking structured interaction events on an issue thread (questions, approvals, etc.) with typed payload/result JSONB, continuation policy, and idempotency support.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 54,
+      "exports": ["issueThreadInteractions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_thread_interactions.ts:issue_thread_interactions",
+      "type": "table",
+      "name": "issue_thread_interactions",
+      "filePath": "packages/db/src/schema/issue_thread_interactions.ts",
+      "label": "issue_thread_interactions",
+      "summary": "Models structured interactions on an issue thread (kind, status, continuationPolicy, idempotencyKey) with typed IssueThreadInteractionPayload/Result JSONB, resolution tracking, and links to source comment and heartbeat run.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_tree_hold_members.ts",
+      "type": "file",
+      "name": "issue_tree_hold_members.ts",
+      "filePath": "packages/db/src/schema/issue_tree_hold_members.ts",
+      "label": "issue_tree_hold_members.ts",
+      "summary": "Drizzle ORM schema for the issue_tree_hold_members table, capturing a snapshot of issues included in an issue tree hold with their depth, status, assignment, and active run at the time of hold creation.",
+      "tags": ["schema-definition", "database", "issue-tracking", "tree-hold"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 33,
+      "exports": ["issueTreeHoldMembers"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_tree_hold_members.ts:issue_tree_hold_members",
+      "type": "table",
+      "name": "issue_tree_hold_members",
+      "filePath": "packages/db/src/schema/issue_tree_hold_members.ts",
+      "label": "issue_tree_hold_members",
+      "summary": "Snapshot record of an issue within a hold (holdId FK), storing depth, issueStatus, assigneeAgentId, activeRunId, and skipped flag; unique on (holdId, issueId).",
+      "tags": ["schema-definition", "database", "issue-tracking", "tree-hold"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_tree_holds.ts",
+      "type": "file",
+      "name": "issue_tree_holds.ts",
+      "filePath": "packages/db/src/schema/issue_tree_holds.ts",
+      "label": "issue_tree_holds.ts",
+      "summary": "Drizzle ORM schema for the issue_tree_holds table, representing a temporary hold placed on an entire issue subtree to pause agent execution, with release tracking and policies.",
+      "tags": ["schema-definition", "database", "issue-tracking", "tree-hold"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 39,
+      "exports": ["issueTreeHolds"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_tree_holds.ts:issue_tree_holds",
+      "type": "table",
+      "name": "issue_tree_holds",
+      "filePath": "packages/db/src/schema/issue_tree_holds.ts",
+      "label": "issue_tree_holds",
+      "summary": "Represents a hold on a root issue's subtree (mode, status, releasePolicy JSONB), recording who created and released the hold (agent/user/run) and the associated release reason and metadata.",
+      "tags": ["schema-definition", "database", "issue-tracking", "tree-hold"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/issue_work_products.ts",
+      "type": "file",
+      "name": "issue_work_products.ts",
+      "filePath": "packages/db/src/schema/issue_work_products.ts",
+      "label": "issue_work_products.ts",
+      "summary": "Drizzle ORM schema for the issue_work_products table, tracking external artifacts (PRs, deployments, etc.) produced by agents while working on an issue, with provider/externalId linkage and health status.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 64,
+      "exports": ["issueWorkProducts"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issue_work_products.ts:issue_work_products",
+      "type": "table",
+      "name": "issue_work_products",
+      "filePath": "packages/db/src/schema/issue_work_products.ts",
+      "label": "issue_work_products",
+      "summary": "Tracks work products (type, provider, externalId, url, status, reviewState, isPrimary, healthStatus) produced for an issue, linked to execution workspace, runtime service, and the creating heartbeat run.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/issues.ts",
+      "type": "file",
+      "name": "issues.ts",
+      "filePath": "packages/db/src/schema/issues.ts",
+      "label": "issues.ts",
+      "summary": "Drizzle ORM schema for the central issues table, the core entity of the Paperclip platform representing a unit of agent-executable work with status, priority, assignment, execution run linkage, monitor scheduling, and numerous GIN/composite indexes for search and query performance.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 143,
+      "exports": ["issues"]
+    },
+    {
+      "id": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "table",
+      "name": "issues",
+      "filePath": "packages/db/src/schema/issues.ts",
+      "label": "issues",
+      "summary": "Core issue entity with 40+ columns: status/priority/workMode, agent and user assignment, checkout/execution run IDs, monitor scheduling fields, execution workspace linkage, origin tracing, requestDepth, JSONB execution policy/state, and GIN trigram indexes on title, identifier, and description for full-text search.",
+      "tags": ["schema-definition", "database", "issue-tracking", "agent-orchestration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/src/schema/join_requests.ts",
+      "type": "file",
+      "name": "join_requests.ts",
+      "filePath": "packages/db/src/schema/join_requests.ts",
+      "label": "join_requests.ts",
+      "summary": "Drizzle ORM schema for the join_requests table, handling both human user and agent onboarding flows via invite link, including claim secret lifecycle and approval/rejection tracking.",
+      "tags": ["schema-definition", "database", "auth", "onboarding"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 48,
+      "exports": ["joinRequests"]
+    },
+    {
+      "id": "table:packages/db/src/schema/join_requests.ts:join_requests",
+      "type": "table",
+      "name": "join_requests",
+      "filePath": "packages/db/src/schema/join_requests.ts",
+      "label": "join_requests",
+      "summary": "Records company join requests tied to an invite (inviteId), with requestType (human/agent), status, claim secret hash and expiry, agent defaults payload, and approval/rejection timestamps; partial unique indexes prevent duplicate pending requests per user or email.",
+      "tags": ["schema-definition", "database", "auth", "onboarding"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/labels.ts",
+      "type": "file",
+      "name": "labels.ts",
+      "filePath": "packages/db/src/schema/labels.ts",
+      "label": "labels.ts",
+      "summary": "Drizzle ORM schema for the labels table, storing company-scoped label definitions with name and color for tagging issues.",
+      "tags": ["schema-definition", "database", "issue-tracking", "labels"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 18,
+      "exports": ["labels"]
+    },
+    {
+      "id": "table:packages/db/src/schema/labels.ts:labels",
+      "type": "table",
+      "name": "labels",
+      "filePath": "packages/db/src/schema/labels.ts",
+      "label": "labels",
+      "summary": "Company-scoped label definitions (name, color) with a unique constraint on (companyId, name) ensuring label names are unique within each company.",
+      "tags": ["schema-definition", "database", "issue-tracking", "labels"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts",
+      "target": "table:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts:heartbeat_run_watchdog_decisions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/heartbeat_runs.ts",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/inbox_dismissals.ts",
+      "target": "table:packages/db/src/schema/inbox_dismissals.ts:inbox_dismissals",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/instance_settings.ts",
+      "target": "table:packages/db/src/schema/instance_settings.ts:instance_settings",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/instance_user_roles.ts",
+      "target": "table:packages/db/src/schema/instance_user_roles.ts:instance_user_roles",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/invites.ts",
+      "target": "table:packages/db/src/schema/invites.ts:invites",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_approvals.ts",
+      "target": "table:packages/db/src/schema/issue_approvals.ts:issue_approvals",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_attachments.ts",
+      "target": "table:packages/db/src/schema/issue_attachments.ts:issue_attachments",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_comments.ts",
+      "target": "table:packages/db/src/schema/issue_comments.ts:issue_comments",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_documents.ts",
+      "target": "table:packages/db/src/schema/issue_documents.ts:issue_documents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_execution_decisions.ts",
+      "target": "table:packages/db/src/schema/issue_execution_decisions.ts:issue_execution_decisions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_inbox_archives.ts",
+      "target": "table:packages/db/src/schema/issue_inbox_archives.ts:issue_inbox_archives",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_labels.ts",
+      "target": "table:packages/db/src/schema/issue_labels.ts:issue_labels",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_read_states.ts",
+      "target": "table:packages/db/src/schema/issue_read_states.ts:issue_read_states",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_recovery_actions.ts",
+      "target": "table:packages/db/src/schema/issue_recovery_actions.ts:issue_recovery_actions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_reference_mentions.ts",
+      "target": "table:packages/db/src/schema/issue_reference_mentions.ts:issue_reference_mentions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_relations.ts",
+      "target": "table:packages/db/src/schema/issue_relations.ts:issue_relations",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_thread_interactions.ts",
+      "target": "table:packages/db/src/schema/issue_thread_interactions.ts:issue_thread_interactions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_tree_hold_members.ts",
+      "target": "table:packages/db/src/schema/issue_tree_hold_members.ts:issue_tree_hold_members",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_tree_holds.ts",
+      "target": "table:packages/db/src/schema/issue_tree_holds.ts:issue_tree_holds",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issue_work_products.ts",
+      "target": "table:packages/db/src/schema/issue_work_products.ts:issue_work_products",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/issues.ts",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/join_requests.ts",
+      "target": "table:packages/db/src/schema/join_requests.ts:join_requests",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/labels.ts",
+      "target": "table:packages/db/src/schema/labels.ts:labels",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/heartbeat_runs.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/inbox_dismissals.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/instance_settings.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/instance_user_roles.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/invites.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_approvals.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_attachments.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_comments.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_documents.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_execution_decisions.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_inbox_archives.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_labels.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_read_states.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_recovery_actions.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_reference_mentions.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_relations.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_thread_interactions.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_tree_hold_members.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_tree_holds.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issue_work_products.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/issues.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/join_requests.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/index.ts",
+      "target": "file:packages/db/src/schema/labels.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts:heartbeat_run_watchdog_decisions",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/heartbeat_run_watchdog_decisions.ts:heartbeat_run_watchdog_decisions",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issues.ts:issues",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_recovery_actions.ts:issue_recovery_actions",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_reference_mentions.ts:issue_reference_mentions",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_relations.ts:issue_relations",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_thread_interactions.ts:issue_thread_interactions",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_thread_interactions.ts:issue_thread_interactions",
+      "target": "table:packages/db/src/schema/issue_comments.ts:issue_comments",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_thread_interactions.ts:issue_thread_interactions",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_tree_hold_members.ts:issue_tree_hold_members",
+      "target": "table:packages/db/src/schema/issue_tree_holds.ts:issue_tree_holds",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_tree_hold_members.ts:issue_tree_hold_members",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_tree_holds.ts:issue_tree_holds",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_work_products.ts:issue_work_products",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_work_products.ts:issue_work_products",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_comments.ts:issue_comments",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_comments.ts:issue_comments",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_approvals.ts:issue_approvals",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_attachments.ts:issue_attachments",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_attachments.ts:issue_attachments",
+      "target": "table:packages/db/src/schema/issue_comments.ts:issue_comments",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_documents.ts:issue_documents",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_execution_decisions.ts:issue_execution_decisions",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_execution_decisions.ts:issue_execution_decisions",
+      "target": "table:packages/db/src/schema/heartbeat_runs.ts:heartbeat_runs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_inbox_archives.ts:issue_inbox_archives",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_labels.ts:issue_labels",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_labels.ts:issue_labels",
+      "target": "table:packages/db/src/schema/labels.ts:labels",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/issue_read_states.ts:issue_read_states",
+      "target": "table:packages/db/src/schema/issues.ts:issues",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/inbox_dismissals.ts:inbox_dismissals",
+      "target": "table:packages/db/src/schema/issue_inbox_archives.ts:issue_inbox_archives",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/join_requests.ts:join_requests",
+      "target": "table:packages/db/src/schema/invites.ts:invites",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

@@ -1,0 +1,587 @@
+{
+  "batchIndex": 26,
+  "nodes": [
+    {
+      "id": "config:packages/db/src/migrations/meta/0055_snapshot.json",
+      "type": "config",
+      "name": "0055_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0055_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0055, including table definitions for activity_log, agents, and related tables with column types, constraints, and indexes.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 13205
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0056_snapshot.json",
+      "type": "config",
+      "name": "0056_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0056_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0056, tracking incremental schema changes from the previous snapshot.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 13387
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0057_snapshot.json",
+      "type": "config",
+      "name": "0057_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0057_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0057, providing a point-in-time record of all tables, columns, and indexes.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 13431
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0058_snapshot.json",
+      "type": "config",
+      "name": "0058_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0058_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0058, used by Drizzle Kit to generate safe migration diffs.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 13489
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0060_snapshot.json",
+      "type": "config",
+      "name": "0060_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0060_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0060, reflecting schema growth with additional tables and relationships.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 14023
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0061_snapshot.json",
+      "type": "config",
+      "name": "0061_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0061_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0061, closely following 0060 with minor incremental changes.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 14041
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0072_snapshot.json",
+      "type": "config",
+      "name": "0072_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0072_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0072, representing a significantly grown schema with many tables and indexes.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 15851
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0073_snapshot.json",
+      "type": "config",
+      "name": "0073_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0073_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0073, incrementally evolving from the 0072 baseline.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 15859
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0074_snapshot.json",
+      "type": "config",
+      "name": "0074_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0074_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0074, continuing the schema evolution sequence.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 15887
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0075_snapshot.json",
+      "type": "config",
+      "name": "0075_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0075_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0075, used by Drizzle Kit for safe schema diffing.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 15944
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0077_snapshot.json",
+      "type": "config",
+      "name": "0077_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0077_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0077, representing one of the largest schema snapshots in the series.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 16355
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0078_snapshot.json",
+      "type": "config",
+      "name": "0078_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0078_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0078, closely tracking the 0077 baseline with minor incremental additions.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 16372
+    },
+    {
+      "id": "config:packages/db/src/migrations/meta/0081_snapshot.json",
+      "type": "config",
+      "name": "0081_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0081_snapshot.json",
+      "summary": "Drizzle ORM migration meta snapshot capturing the full PostgreSQL schema state after migration 0081, one of the final snapshots in this series representing the near-current schema.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 16380
+    },
+    {
+      "id": "file:packages/db/src/runtime-config.test.ts",
+      "type": "file",
+      "name": "runtime-config.test.ts",
+      "filePath": "packages/db/src/runtime-config.test.ts",
+      "summary": "Test suite for the runtime-config module, verifying that resolveDatabaseTarget correctly reads and merges Paperclip config files, env files, and DATABASE_URL environment variables to produce the correct database connection target.",
+      "tags": ["test", "configuration", "database"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 129
+    },
+    {
+      "id": "file:packages/db/src/runtime-config.ts",
+      "type": "file",
+      "name": "runtime-config.ts",
+      "filePath": "packages/db/src/runtime-config.ts",
+      "summary": "Resolves the Paperclip database connection target at runtime by reading config.json and .env files from the filesystem, supporting embedded-postgres and external postgres modes with legacy config migration.",
+      "tags": ["configuration", "database", "utility", "service"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 236
+    },
+    {
+      "id": "function:packages/db/src/runtime-config.ts:resolveDatabaseTarget",
+      "type": "function",
+      "name": "resolveDatabaseTarget",
+      "filePath": "packages/db/src/runtime-config.ts",
+      "lineRange": [184, 236],
+      "summary": "Main exported function that orchestrates reading the Paperclip config path, env file, and DATABASE_URL to determine and return the final database target (mode, connection string or data dir, and source provenance).",
+      "tags": ["configuration", "database", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/db/src/runtime-config.ts:readConfig",
+      "type": "function",
+      "name": "readConfig",
+      "filePath": "packages/db/src/runtime-config.ts",
+      "lineRange": [142, 182],
+      "summary": "Reads and validates the Paperclip config.json file from disk, migrating legacy config shapes and coercing typed fields like port numbers.",
+      "tags": ["configuration", "utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/db/src/runtime-config.ts:parseEnvFile",
+      "type": "function",
+      "name": "parseEnvFile",
+      "filePath": "packages/db/src/runtime-config.ts",
+      "lineRange": [68, 97],
+      "summary": "Parses the contents of a .env file into a key-value record, handling quoted values, inline comments, and blank lines.",
+      "tags": ["utility", "configuration", "parsing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/db/src/runtime-config.ts:migrateLegacyConfig",
+      "type": "function",
+      "name": "migrateLegacyConfig",
+      "filePath": "packages/db/src/runtime-config.ts",
+      "lineRange": [104, 134],
+      "summary": "Transforms older config.json shapes into the current PartialConfig structure, ensuring backward compatibility for users upgrading from earlier Paperclip versions.",
+      "tags": ["configuration", "migration", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/activity_log.ts",
+      "type": "file",
+      "name": "activity_log.ts",
+      "filePath": "packages/db/src/schema/activity_log.ts",
+      "summary": "Drizzle ORM table definition for activity_log, which records actor-driven events (create, update, delete) on entities with references to companies, agents, and heartbeat runs.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 26
+    },
+    {
+      "id": "table:packages/db/src/schema/activity_log.ts:activity_log",
+      "type": "table",
+      "name": "activity_log",
+      "filePath": "packages/db/src/schema/activity_log.ts",
+      "summary": "PostgreSQL table storing audit-trail events with actor type/id, action, entity type/id, optional agent and run references, JSONB details, and a company-scoped timestamp index.",
+      "tags": ["database", "audit-log", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/agent_api_keys.ts",
+      "type": "file",
+      "name": "agent_api_keys.ts",
+      "filePath": "packages/db/src/schema/agent_api_keys.ts",
+      "summary": "Drizzle ORM table definition for agent_api_keys, storing hashed API keys scoped to agents and companies with revocation timestamps.",
+      "tags": ["database", "schema-definition", "data-model", "security"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 21
+    },
+    {
+      "id": "table:packages/db/src/schema/agent_api_keys.ts:agent_api_keys",
+      "type": "table",
+      "name": "agent_api_keys",
+      "filePath": "packages/db/src/schema/agent_api_keys.ts",
+      "summary": "PostgreSQL table storing hashed API keys for agents with creation, last-use, and revocation timestamps; indexed by key_hash and company+agent composite.",
+      "tags": ["database", "security", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/agent_config_revisions.ts",
+      "type": "file",
+      "name": "agent_config_revisions.ts",
+      "filePath": "packages/db/src/schema/agent_config_revisions.ts",
+      "summary": "Drizzle ORM table definition for agent_config_revisions, capturing before/after JSONB snapshots of agent configuration changes with authorship and rollback metadata.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28
+    },
+    {
+      "id": "table:packages/db/src/schema/agent_config_revisions.ts:agent_config_revisions",
+      "type": "table",
+      "name": "agent_config_revisions",
+      "filePath": "packages/db/src/schema/agent_config_revisions.ts",
+      "summary": "PostgreSQL table tracking versioned config changes for agents with before/after JSONB payloads, changed key lists, source, rollback reference, and author tracking.",
+      "tags": ["database", "versioning", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/agent_runtime_state.ts",
+      "type": "file",
+      "name": "agent_runtime_state.ts",
+      "filePath": "packages/db/src/schema/agent_runtime_state.ts",
+      "summary": "Drizzle ORM table definition for agent_runtime_state, which stores the live execution state and token/cost counters for each agent keyed by agent_id.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28
+    },
+    {
+      "id": "table:packages/db/src/schema/agent_runtime_state.ts:agent_runtime_state",
+      "type": "table",
+      "name": "agent_runtime_state",
+      "filePath": "packages/db/src/schema/agent_runtime_state.ts",
+      "summary": "PostgreSQL table with one row per agent storing adapter type, session id, JSONB state, last run status, accumulated token/cost bigint counters, and last error.",
+      "tags": ["database", "runtime-state", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/agent_task_sessions.ts",
+      "type": "file",
+      "name": "agent_task_sessions.ts",
+      "filePath": "packages/db/src/schema/agent_task_sessions.ts",
+      "summary": "Drizzle ORM table definition for agent_task_sessions, tracking long-lived task sessions per agent and adapter with a unique constraint on company+agent+adapter+task key.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 39
+    },
+    {
+      "id": "table:packages/db/src/schema/agent_task_sessions.ts:agent_task_sessions",
+      "type": "table",
+      "name": "agent_task_sessions",
+      "filePath": "packages/db/src/schema/agent_task_sessions.ts",
+      "summary": "PostgreSQL table for agent task sessions with unique (company, agent, adapter, task_key) constraint, optional session parameters JSONB, last run reference, and error tracking.",
+      "tags": ["database", "session-management", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/agent_wakeup_requests.ts",
+      "type": "file",
+      "name": "agent_wakeup_requests.ts",
+      "filePath": "packages/db/src/schema/agent_wakeup_requests.ts",
+      "summary": "Drizzle ORM table definition for agent_wakeup_requests, modeling the queue of pending agent activation requests with status lifecycle, coalescing, and idempotency key support.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 40
+    },
+    {
+      "id": "table:packages/db/src/schema/agent_wakeup_requests.ts:agent_wakeup_requests",
+      "type": "table",
+      "name": "agent_wakeup_requests",
+      "filePath": "packages/db/src/schema/agent_wakeup_requests.ts",
+      "summary": "PostgreSQL table for agent wakeup queue entries tracking source, trigger, payload JSONB, status (queued/claimed/done), coalesced count, idempotency key, and claimed/finished timestamps.",
+      "tags": ["database", "queue", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/agents.ts",
+      "type": "file",
+      "name": "agents.ts",
+      "filePath": "packages/db/src/schema/agents.ts",
+      "summary": "Drizzle ORM table definition for the core agents table, storing agent identity, role, adapter config, runtime config, budget, permissions, and heartbeat timestamps with self-referential hierarchy support.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 45
+    },
+    {
+      "id": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "table",
+      "name": "agents",
+      "filePath": "packages/db/src/schema/agents.ts",
+      "summary": "Core PostgreSQL table for AI agents with name, role, status, self-referential reports_to hierarchy, adapter type and JSONB config, budget/spend tracking, permissions JSONB, and heartbeat timestamp.",
+      "tags": ["database", "data-model", "agents"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/approval_comments.ts",
+      "type": "file",
+      "name": "approval_comments.ts",
+      "filePath": "packages/db/src/schema/approval_comments.ts",
+      "summary": "Drizzle ORM table definition for approval_comments, linking threaded comments to approvals with author attribution from either agents or human users.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 26
+    },
+    {
+      "id": "table:packages/db/src/schema/approval_comments.ts:approval_comments",
+      "type": "table",
+      "name": "approval_comments",
+      "filePath": "packages/db/src/schema/approval_comments.ts",
+      "summary": "PostgreSQL table for comments on approval requests, with approval_id FK, optional author_agent_id or author_user_id, body text, and approval+created composite index.",
+      "tags": ["database", "comments", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/approvals.ts",
+      "type": "file",
+      "name": "approvals.ts",
+      "filePath": "packages/db/src/schema/approvals.ts",
+      "summary": "Drizzle ORM table definition for approvals, representing human-in-the-loop decision requests raised by agents with status lifecycle, payload JSONB, and decision attribution.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28
+    },
+    {
+      "id": "table:packages/db/src/schema/approvals.ts:approvals",
+      "type": "table",
+      "name": "approvals",
+      "filePath": "packages/db/src/schema/approvals.ts",
+      "summary": "PostgreSQL table for human-in-the-loop approval requests with type, status (pending/approved/rejected), payload JSONB, requester and decider attribution, and decision note.",
+      "tags": ["database", "workflow", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/assets.ts",
+      "type": "file",
+      "name": "assets.ts",
+      "filePath": "packages/db/src/schema/assets.ts",
+      "summary": "Drizzle ORM table definition for assets, tracking uploaded binary objects by provider, object key, content type, byte size, and SHA-256 hash with company-scoped uniqueness.",
+      "tags": ["database", "schema-definition", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 26
+    },
+    {
+      "id": "table:packages/db/src/schema/assets.ts:assets",
+      "type": "table",
+      "name": "assets",
+      "filePath": "packages/db/src/schema/assets.ts",
+      "summary": "PostgreSQL table for stored file assets with provider, object_key, content_type, byte_size, sha256, creator attribution, and a unique company+object_key constraint.",
+      "tags": ["database", "file-storage", "data-model"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/db/src/runtime-config.ts",
+      "target": "function:packages/db/src/runtime-config.ts:resolveDatabaseTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/runtime-config.ts",
+      "target": "function:packages/db/src/runtime-config.ts:resolveDatabaseTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/runtime-config.ts",
+      "target": "function:packages/db/src/runtime-config.ts:readConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/runtime-config.ts",
+      "target": "function:packages/db/src/runtime-config.ts:parseEnvFile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/runtime-config.ts",
+      "target": "function:packages/db/src/runtime-config.ts:migrateLegacyConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/runtime-config.test.ts",
+      "target": "file:packages/db/src/runtime-config.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/schema/activity_log.ts",
+      "target": "table:packages/db/src/schema/activity_log.ts:activity_log",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/agent_api_keys.ts",
+      "target": "table:packages/db/src/schema/agent_api_keys.ts:agent_api_keys",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/agent_config_revisions.ts",
+      "target": "table:packages/db/src/schema/agent_config_revisions.ts:agent_config_revisions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/agent_runtime_state.ts",
+      "target": "table:packages/db/src/schema/agent_runtime_state.ts:agent_runtime_state",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/agent_task_sessions.ts",
+      "target": "table:packages/db/src/schema/agent_task_sessions.ts:agent_task_sessions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/agent_wakeup_requests.ts",
+      "target": "table:packages/db/src/schema/agent_wakeup_requests.ts:agent_wakeup_requests",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/agents.ts",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/approval_comments.ts",
+      "target": "table:packages/db/src/schema/approval_comments.ts:approval_comments",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/approvals.ts",
+      "target": "table:packages/db/src/schema/approvals.ts:approvals",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/assets.ts",
+      "target": "table:packages/db/src/schema/assets.ts:assets",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/activity_log.ts:activity_log",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/agent_api_keys.ts:agent_api_keys",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/agent_config_revisions.ts:agent_config_revisions",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/agent_runtime_state.ts:agent_runtime_state",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/agent_task_sessions.ts:agent_task_sessions",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/agent_wakeup_requests.ts:agent_wakeup_requests",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/approval_comments.ts:approval_comments",
+      "target": "table:packages/db/src/schema/approvals.ts:approvals",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/approvals.ts:approvals",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:packages/db/src/schema/assets.ts:assets",
+      "target": "table:packages/db/src/schema/agents.ts:agents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

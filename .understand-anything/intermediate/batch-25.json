@@ -1,0 +1,450 @@
+{
+  "batchIndex": 25,
+  "nodes": [
+    {
+      "id": "file:packages/db/src/migrations/meta/0027_snapshot.json",
+      "type": "config",
+      "label": "0027_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0027_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0027 capturing 37 PostgreSQL tables including core agent, issue, project, company, and workspace tables without plugin or document support.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 6204
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0028_snapshot.json",
+      "type": "config",
+      "label": "0028_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0028_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0028 with 40 tables, introducing document_revisions, documents, and issue_documents tables to add document management capability.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 6709
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0029_snapshot.json",
+      "type": "config",
+      "label": "0029_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0029_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0029 with 49 tables, adding a full plugin subsystem including plugin_company_settings, plugin_config, plugin_entities, plugin_job_runs, plugin_jobs, plugin_logs, plugin_state, plugin_webhook_deliveries, and plugins.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 7898
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0030_snapshot.json",
+      "type": "config",
+      "label": "0030_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0030_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0030 with 50 tables, adding company_logos table for branding support alongside the full plugin subsystem.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 8002
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0031_snapshot.json",
+      "type": "config",
+      "label": "0031_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0031_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0031 with 41 tables, removing plugin tables and adding finance_events for financial tracking; represents a plugin system rollback or restructure.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 7242
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0032_snapshot.json",
+      "type": "config",
+      "label": "0032_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0032_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0032 with 43 tables, introducing budget_incidents and budget_policies tables to support budget enforcement and policy management.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 7733
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0033_snapshot.json",
+      "type": "config",
+      "label": "0033_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0033_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0033 with 53 tables, re-introducing the full plugin subsystem and company_logos alongside budgeting tables, merging capabilities from prior snapshots.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 9038
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0034_snapshot.json",
+      "type": "config",
+      "label": "0034_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0034_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0034 with 53 tables, identical table count to 0033 but with schema column or constraint refinements within the existing table set.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 9038
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0035_snapshot.json",
+      "type": "config",
+      "label": "0035_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0035_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0035 with 55 tables, adding execution_workspaces and issue_work_products tables to track agent execution context and issue output artifacts.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 9958
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0036_snapshot.json",
+      "type": "config",
+      "label": "0036_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0036_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0036 with 56 tables, adding instance_settings table for global instance-level configuration management.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 10022
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0037_snapshot.json",
+      "type": "config",
+      "label": "0037_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0037_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0037 with 57 tables, adding workspace_operations table to track long-running workspace-scoped operations.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 10262
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0038_snapshot.json",
+      "type": "config",
+      "label": "0038_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0038_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0038 with 61 tables, adding company_skills, routine_runs, routine_triggers, and routines tables to enable recurring scheduled agent tasks.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 11350
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0039_snapshot.json",
+      "type": "config",
+      "label": "0039_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0039_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0039 with 57 tables, removing routines/routine_runs/routine_triggers and company_skills, indicating a rollback or branch divergence in routine support.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 10308
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0040_snapshot.json",
+      "type": "config",
+      "label": "0040_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0040_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0040 with 58 tables, re-adding company_skills alongside the base workspace and plugin tables without routines.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 10480
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0041_snapshot.json",
+      "type": "config",
+      "label": "0041_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0041_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0041 with 61 tables, fully restoring routines, routine_triggers, and routine_runs alongside company_skills for complete scheduling infrastructure.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 11393
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0044_snapshot.json",
+      "type": "config",
+      "label": "0044_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0044_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0044 with 63 tables, adding board_api_keys and cli_auth_challenges tables to support board-level API authentication and CLI login flows.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 11700
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0045_snapshot.json",
+      "type": "config",
+      "label": "0045_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0045_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0045 with 64 tables, adding issue_inbox_archives to support archiving of issue inbox entries.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 11856
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0046_snapshot.json",
+      "type": "config",
+      "label": "0046_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0046_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0046 with 64 tables, same table count as 0045 reflecting column-level schema adjustments within existing tables.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 11869
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0047_snapshot.json",
+      "type": "config",
+      "label": "0047_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0047_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0047 with 66 tables, introducing feedback_exports and feedback_votes tables for user feedback collection and export workflows.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 12538
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0048_snapshot.json",
+      "type": "config",
+      "label": "0048_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0048_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0048 with 66 tables, same table set as 0047 with internal column or index refinements.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 12545
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0049_snapshot.json",
+      "type": "config",
+      "label": "0049_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0049_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0049 with 67 tables, adding issue_relations to model relationships between issues such as blocking, duplicate, or parent-child links.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 12765
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0050_snapshot.json",
+      "type": "config",
+      "label": "0050_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0050_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0050 with 67 tables, same table set as 0049 with column-level changes in existing tables.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 12771
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0051_snapshot.json",
+      "type": "config",
+      "label": "0051_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0051_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0051 with 67 tables, maintaining the same table set as 0050 with further schema refinements.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 12835
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0052_snapshot.json",
+      "type": "config",
+      "label": "0052_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0052_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0052 with 68 tables, adding issue_execution_decisions to record agent execution decision records tied to issues.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 13056
+    },
+    {
+      "id": "file:packages/db/src/migrations/meta/0053_snapshot.json",
+      "type": "config",
+      "label": "0053_snapshot.json",
+      "filePath": "packages/db/src/migrations/meta/0053_snapshot.json",
+      "summary": "Drizzle ORM schema snapshot for migration 0053 with 68 tables, swapping issue_execution_decisions for inbox_dismissals to support inbox notification dismissal tracking.",
+      "tags": ["database", "migration", "schema-definition", "configuration"],
+      "complexity": "complex",
+      "language": "json",
+      "sizeLines": 12978
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/db/src/migrations/meta/0027_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0028_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0028_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0029_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0029_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0030_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0030_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0031_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0031_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0032_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0032_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0033_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0033_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0034_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0034_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0035_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0035_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0036_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0036_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0037_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0037_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0038_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0038_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0039_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0039_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0040_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0040_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0041_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0041_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0044_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0044_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0045_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0045_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0046_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0046_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0047_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0047_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0048_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0048_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0049_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0049_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0050_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0050_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0051_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0051_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0052_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/db/src/migrations/meta/0052_snapshot.json",
+      "target": "file:packages/db/src/migrations/meta/0053_snapshot.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

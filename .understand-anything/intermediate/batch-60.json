@@ -1,0 +1,1344 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/src/services/goals.ts",
+      "type": "file",
+      "name": "goals.ts",
+      "filePath": "server/src/services/goals.ts",
+      "summary": "Provides goal data access and a factory service for querying company goals from the database, including fetching the default active company-level goal.",
+      "tags": ["service", "data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/goals.ts:getDefaultCompanyGoal",
+      "type": "function",
+      "name": "getDefaultCompanyGoal",
+      "filePath": "server/src/services/goals.ts",
+      "lineRange": [7, 43],
+      "summary": "Queries the database for the default active company-level goal for a given company, returning the first result ordered by creation date.",
+      "tags": ["data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/goals.ts:goalService",
+      "type": "function",
+      "name": "goalService",
+      "filePath": "server/src/services/goals.ts",
+      "lineRange": [45, 80],
+      "summary": "Factory function that returns a service object with goal CRUD and query operations bound to the provided database instance.",
+      "tags": ["service", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/heartbeat-run-summary.ts",
+      "type": "file",
+      "name": "heartbeat-run-summary.ts",
+      "filePath": "server/src/services/heartbeat-run-summary.ts",
+      "summary": "Provides utilities for summarizing and truncating heartbeat run result JSON, including merging run summaries and building issue comments from run results.",
+      "tags": ["utility", "service", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-run-summary.ts:mergeHeartbeatRunResultJson",
+      "type": "function",
+      "name": "mergeHeartbeatRunResultJson",
+      "filePath": "server/src/services/heartbeat-run-summary.ts",
+      "lineRange": [20, 46],
+      "summary": "Merges a heartbeat run result JSON object with a summary structure, normalizing and bounding fields for storage.",
+      "tags": ["serialization", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-run-summary.ts:summarizeHeartbeatRunResultJson",
+      "type": "function",
+      "name": "summarizeHeartbeatRunResultJson",
+      "filePath": "server/src/services/heartbeat-run-summary.ts",
+      "lineRange": [48, 93],
+      "summary": "Extracts a structured summary from a raw heartbeat run result JSON, truncating fields to configured maximums for display and storage.",
+      "tags": ["serialization", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-run-summary.ts:buildHeartbeatRunIssueComment",
+      "type": "function",
+      "name": "buildHeartbeatRunIssueComment",
+      "filePath": "server/src/services/heartbeat-run-summary.ts",
+      "lineRange": [95, 108],
+      "summary": "Builds an issue comment object from a heartbeat run result JSON for posting run results as issue timeline events.",
+      "tags": ["utility", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "type": "file",
+      "name": "heartbeat-stop-metadata.ts",
+      "filePath": "server/src/services/heartbeat-stop-metadata.ts",
+      "summary": "Provides logic for inferring heartbeat run stop reasons, resolving timeout policies per adapter type, and building/merging stop metadata for run records.",
+      "tags": ["service", "utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-stop-metadata.ts:resolveHeartbeatRunTimeoutPolicy",
+      "type": "function",
+      "name": "resolveHeartbeatRunTimeoutPolicy",
+      "filePath": "server/src/services/heartbeat-stop-metadata.ts",
+      "lineRange": [50, 78],
+      "summary": "Determines the effective timeout policy for a heartbeat run given the adapter type and adapter configuration, falling back to per-adapter defaults.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-stop-metadata.ts:inferHeartbeatRunStopReason",
+      "type": "function",
+      "name": "inferHeartbeatRunStopReason",
+      "filePath": "server/src/services/heartbeat-stop-metadata.ts",
+      "lineRange": [80, 97],
+      "summary": "Infers the stop reason for a heartbeat run based on run state and timeout conditions, classifying outcomes as timeout, max-turn, or normal completion.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-stop-metadata.ts:buildHeartbeatRunStopMetadata",
+      "type": "function",
+      "name": "buildHeartbeatRunStopMetadata",
+      "filePath": "server/src/services/heartbeat-stop-metadata.ts",
+      "lineRange": [99, 113],
+      "summary": "Constructs a stop metadata record for a heartbeat run by combining inferred stop reason with timing and policy details.",
+      "tags": ["service", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/heartbeat-stop-metadata.ts:mergeHeartbeatRunStopMetadata",
+      "type": "function",
+      "name": "mergeHeartbeatRunStopMetadata",
+      "filePath": "server/src/services/heartbeat-stop-metadata.ts",
+      "lineRange": [115, 129],
+      "summary": "Merges stop metadata into a heartbeat run result JSON object, persisting the stop reason and policy for downstream consumption.",
+      "tags": ["serialization", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/heartbeat.ts",
+      "type": "file",
+      "name": "heartbeat.ts",
+      "filePath": "server/src/services/heartbeat.ts",
+      "summary": "The core heartbeat service managing AI agent execution runs: scheduling, executing, monitoring, logging, billing, workspace management, session state, and wake/continuation logic across the full lifecycle of agent runs.",
+      "tags": ["service", "entry-point", "event-handler", "middleware"],
+      "complexity": "complex",
+      "languageNotes": "At nearly 10K lines, this is the largest service in the codebase, containing 88 exported and internal functions and the primary heartbeatService factory function spanning lines 2313-9812."
+    },
+    {
+      "id": "function:server/src/services/heartbeat.ts:heartbeatService",
+      "type": "function",
+      "name": "heartbeatService",
+      "filePath": "server/src/services/heartbeat.ts",
+      "lineRange": [2313, 9812],
+      "summary": "The primary factory for the heartbeat service, providing all operations for managing agent run lifecycles including starting, stopping, monitoring, billing, and session continuation.",
+      "tags": ["service", "factory", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/heartbeat.ts:buildPaperclipWakePayload",
+      "type": "function",
+      "name": "buildPaperclipWakePayload",
+      "filePath": "server/src/services/heartbeat.ts",
+      "lineRange": [1883, 2063],
+      "summary": "Constructs the full wake payload for a Paperclip agent run, assembling context snapshots, session overrides, workspace config, and interaction state for the next execution turn.",
+      "tags": ["service", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/heartbeat.ts:resolveExecutionRunAdapterConfig",
+      "type": "function",
+      "name": "resolveExecutionRunAdapterConfig",
+      "filePath": "server/src/services/heartbeat.ts",
+      "lineRange": [329, 383],
+      "summary": "Resolves the effective adapter configuration for an execution run by merging issue settings, agent defaults, and run-scoped overrides.",
+      "tags": ["service", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/heartbeat.ts:enrichWakeContextSnapshot",
+      "type": "function",
+      "name": "enrichWakeContextSnapshot",
+      "filePath": "server/src/services/heartbeat.ts",
+      "lineRange": [1771, 1827],
+      "summary": "Enriches a wake context snapshot with additional runtime data such as interaction IDs and session metadata before passing it to the wake payload builder.",
+      "tags": ["service", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/heartbeat.ts:resolveRuntimeSessionParamsForWorkspace",
+      "type": "function",
+      "name": "resolveRuntimeSessionParamsForWorkspace",
+      "filePath": "server/src/services/heartbeat.ts",
+      "lineRange": [1448, 1514],
+      "summary": "Determines the effective runtime session parameters (compaction policy, model profile, etc.) for an agent workspace before a run is dispatched.",
+      "tags": ["service", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/heartbeat.ts:buildPaperclipTaskMarkdown",
+      "type": "function",
+      "name": "buildPaperclipTaskMarkdown",
+      "filePath": "server/src/services/heartbeat.ts",
+      "lineRange": [2085, 2153],
+      "summary": "Renders a Paperclip task as structured Markdown for injection into agent context, including issue details, blockers, and continuation state.",
+      "tags": ["utility", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/hire-hook.ts",
+      "type": "file",
+      "name": "hire-hook.ts",
+      "filePath": "server/src/services/hire-hook.ts",
+      "summary": "Implements the notification hook triggered when an agent hire request is approved, sending relevant notifications to the requesting user.",
+      "tags": ["service", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/hire-hook.ts:notifyHireApproved",
+      "type": "function",
+      "name": "notifyHireApproved",
+      "filePath": "server/src/services/hire-hook.ts",
+      "lineRange": [24, 113],
+      "summary": "Sends a notification to the appropriate user when an agent hire request is approved, creating the relevant activity or notification record.",
+      "tags": ["event-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/inbox-dismissals.ts",
+      "type": "file",
+      "name": "inbox-dismissals.ts",
+      "filePath": "server/src/services/inbox-dismissals.ts",
+      "summary": "Provides a service factory for managing inbox dismissal records, allowing users to dismiss items from their issue inbox.",
+      "tags": ["service", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/inbox-dismissals.ts:inboxDismissalService",
+      "type": "function",
+      "name": "inboxDismissalService",
+      "filePath": "server/src/services/inbox-dismissals.ts",
+      "lineRange": [5, 41],
+      "summary": "Factory function returning a service for creating and querying inbox dismissal records for a given database.",
+      "tags": ["service", "factory"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "server/src/services/index.ts",
+      "summary": "Barrel file that re-exports all service factories, utility functions, and type definitions from the services directory, providing a single unified import point for the entire services layer.",
+      "tags": ["barrel", "entry-point", "exports"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/instance-settings.ts",
+      "type": "file",
+      "name": "instance-settings.ts",
+      "filePath": "server/src/services/instance-settings.ts",
+      "summary": "Manages instance-level configuration settings including general and experimental feature flags, with normalization and persistence logic for server instance settings.",
+      "tags": ["service", "configuration", "singleton"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/instance-settings.ts:instanceSettingsService",
+      "type": "function",
+      "name": "instanceSettingsService",
+      "filePath": "server/src/services/instance-settings.ts",
+      "lineRange": [71, 165],
+      "summary": "Factory returning a service for reading and updating instance-level settings, with caching and validation of general and experimental configuration.",
+      "tags": ["service", "factory", "singleton"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/invite-grants.ts",
+      "type": "file",
+      "name": "invite-grants.ts",
+      "filePath": "server/src/services/invite-grants.ts",
+      "summary": "Provides utilities for deriving default permission grants for human and agent members joining a company via invites.",
+      "tags": ["service", "utility", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/issue-approvals.ts",
+      "type": "file",
+      "name": "issue-approvals.ts",
+      "filePath": "server/src/services/issue-approvals.ts",
+      "summary": "Implements the issue approval service managing creation, querying, and lifecycle of approval requests attached to issues.",
+      "tags": ["service", "data-model", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/issue-approvals.ts:issueApprovalService",
+      "type": "function",
+      "name": "issueApprovalService",
+      "filePath": "server/src/services/issue-approvals.ts",
+      "lineRange": [12, 174],
+      "summary": "Factory returning a service for managing issue approval records — creating, listing, and resolving approvals on issues.",
+      "tags": ["service", "factory", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/issue-assignment-wakeup.ts",
+      "type": "file",
+      "name": "issue-assignment-wakeup.ts",
+      "filePath": "server/src/services/issue-assignment-wakeup.ts",
+      "summary": "Provides a utility to enqueue a wakeup request for an issue when it is assigned to an agent, ensuring the agent receives the assignment wake signal.",
+      "tags": ["service", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/issue-assignment-wakeup.ts:queueIssueAssignmentWakeup",
+      "type": "function",
+      "name": "queueIssueAssignmentWakeup",
+      "filePath": "server/src/services/issue-assignment-wakeup.ts",
+      "lineRange": [21, 48],
+      "summary": "Inserts an agent wakeup request into the queue when an issue is assigned, triggering the assigned agent to start working.",
+      "tags": ["event-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/issue-continuation-summary.ts",
+      "type": "file",
+      "name": "issue-continuation-summary.ts",
+      "filePath": "server/src/services/issue-continuation-summary.ts",
+      "summary": "Manages issue continuation summary documents that capture the agent's progress state — extracting next actions, mode inference, and refreshing the persisted summary document between runs.",
+      "tags": ["service", "serialization", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-continuation-summary.ts:buildContinuationSummaryMarkdown",
+      "type": "function",
+      "name": "buildContinuationSummaryMarkdown",
+      "filePath": "server/src/services/issue-continuation-summary.ts",
+      "lineRange": [135, 208],
+      "summary": "Builds a Markdown document summarizing the agent's continuation state, including mode, next action, and extracted work context from the run result.",
+      "tags": ["serialization", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-continuation-summary.ts:getIssueContinuationSummaryDocument",
+      "type": "function",
+      "name": "getIssueContinuationSummaryDocument",
+      "filePath": "server/src/services/issue-continuation-summary.ts",
+      "lineRange": [210, 237],
+      "summary": "Retrieves the current continuation summary document for an issue from the database.",
+      "tags": ["data-model", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/issue-continuation-summary.ts:refreshIssueContinuationSummary",
+      "type": "function",
+      "name": "refreshIssueContinuationSummary",
+      "filePath": "server/src/services/issue-continuation-summary.ts",
+      "lineRange": [239, 281],
+      "summary": "Generates and upserts a fresh continuation summary document for an issue after a run completes, persisting the agent's progress state for future context.",
+      "tags": ["service", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/issue-execution-policy.ts",
+      "type": "file",
+      "name": "issue-execution-policy.ts",
+      "filePath": "server/src/services/issue-execution-policy.ts",
+      "summary": "Implements the full state machine for issue execution policies including multi-stage approval workflows, monitor scheduling, and state transitions with side-effect patch generation.",
+      "tags": ["service", "validation", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-execution-policy.ts:applyIssueExecutionStageTransition",
+      "type": "function",
+      "name": "applyIssueExecutionStageTransition",
+      "filePath": "server/src/services/issue-execution-policy.ts",
+      "lineRange": [607, 873],
+      "summary": "Applies a stage transition in the multi-stage approval workflow, computing the resulting patch for issue state, assignees, and execution policy based on the actor's decision.",
+      "tags": ["service", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-execution-policy.ts:applyMonitorTransition",
+      "type": "function",
+      "name": "applyMonitorTransition",
+      "filePath": "server/src/services/issue-execution-policy.ts",
+      "lineRange": [875, 960],
+      "summary": "Applies a monitor state transition for an issue, computing the patch to update monitor scheduling and wake state.",
+      "tags": ["service", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-execution-policy.ts:normalizeIssueExecutionPolicy",
+      "type": "function",
+      "name": "normalizeIssueExecutionPolicy",
+      "filePath": "server/src/services/issue-execution-policy.ts",
+      "lineRange": [339, 398],
+      "summary": "Validates and normalizes an issue execution policy object, ensuring all stage configurations are well-formed and participants are valid.",
+      "tags": ["validation", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/issue-execution-policy.ts:applyIssueExecutionPolicyTransition",
+      "type": "function",
+      "name": "applyIssueExecutionPolicyTransition",
+      "filePath": "server/src/services/issue-execution-policy.ts",
+      "lineRange": [1045, 1050],
+      "summary": "Top-level entry point for applying an execution policy transition, dispatching to stage or monitor transition handlers as appropriate.",
+      "tags": ["service", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/issue-goal-fallback.ts",
+      "type": "file",
+      "name": "issue-goal-fallback.ts",
+      "filePath": "server/src/services/issue-goal-fallback.ts",
+      "summary": "Provides fallback resolution logic for determining the appropriate goal ID for an issue when no explicit goal is set, traversing the issue tree and company defaults.",
+      "tags": ["service", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/issue-goal-fallback.ts:resolveNextIssueGoalId",
+      "type": "function",
+      "name": "resolveNextIssueGoalId",
+      "filePath": "server/src/services/issue-goal-fallback.ts",
+      "lineRange": [14, 56],
+      "summary": "Resolves the next goal ID for an issue by walking up the parent hierarchy and falling back to the company default goal.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/issue-liveness.ts",
+      "type": "file",
+      "name": "issue-liveness.ts",
+      "filePath": "server/src/services/issue-liveness.ts",
+      "summary": "Re-exports the issue graph liveness classifier and all related type definitions from the liveness analysis module.",
+      "tags": ["barrel", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/issue-recovery-actions.ts",
+      "type": "file",
+      "name": "issue-recovery-actions.ts",
+      "filePath": "server/src/services/issue-recovery-actions.ts",
+      "summary": "Implements the service for managing issue recovery actions — creating, listing, and applying recovery entries that help agents self-heal from failure states.",
+      "tags": ["service", "data-model", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-recovery-actions.ts:issueRecoveryActionService",
+      "type": "function",
+      "name": "issueRecoveryActionService",
+      "filePath": "server/src/services/issue-recovery-actions.ts",
+      "lineRange": [96, 295],
+      "summary": "Factory returning a service for CRUD operations on issue recovery actions, including conflict detection and bulk application to agent runs.",
+      "tags": ["service", "factory", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/issue-references.ts",
+      "type": "file",
+      "name": "issue-references.ts",
+      "filePath": "server/src/services/issue-references.ts",
+      "summary": "Implements the issue reference service for querying and computing cross-issue relationships, including related work summaries and reference diff tracking.",
+      "tags": ["service", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-references.ts:issueReferenceService",
+      "type": "function",
+      "name": "issueReferenceService",
+      "filePath": "server/src/services/issue-references.ts",
+      "lineRange": [109, 407],
+      "summary": "Factory returning a service for computing and persisting issue cross-references, including related work discovery and summary diffing.",
+      "tags": ["service", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/issue-thread-interactions.ts",
+      "type": "file",
+      "name": "issue-thread-interactions.ts",
+      "filePath": "server/src/services/issue-thread-interactions.ts",
+      "summary": "Implements the issue thread interaction service handling agent-user interaction flows such as question/answer, task suggestions, confirmation requests, and their resolution lifecycle.",
+      "tags": ["service", "api-handler", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-thread-interactions.ts:issueThreadInteractionService",
+      "type": "function",
+      "name": "issueThreadInteractionService",
+      "filePath": "server/src/services/issue-thread-interactions.ts",
+      "lineRange": [429, 1210],
+      "summary": "Factory returning a service for creating, resolving, accepting, rejecting, and managing all forms of agent-user interaction within issue threads.",
+      "tags": ["service", "factory", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-thread-interactions.ts:hydrateInteraction",
+      "type": "function",
+      "name": "hydrateInteraction",
+      "filePath": "server/src/services/issue-thread-interactions.ts",
+      "lineRange": [99, 134],
+      "summary": "Enriches a raw interaction database row with associated comments and documents to produce a fully hydrated interaction object.",
+      "tags": ["data-model", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/issue-thread-interactions.ts:resolveSelectedSuggestedTasks",
+      "type": "function",
+      "name": "resolveSelectedSuggestedTasks",
+      "filePath": "server/src/services/issue-thread-interactions.ts",
+      "lineRange": [193, 231],
+      "summary": "Resolves which suggested tasks have been selected by the user from a suggest-tasks interaction for creation as child issues.",
+      "tags": ["service", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/issue-tree-control.ts",
+      "type": "file",
+      "name": "issue-tree-control.ts",
+      "filePath": "server/src/services/issue-tree-control.ts",
+      "summary": "Manages pause/hold and cancel operations on issue trees — applying tree-wide holds, restoring statuses, and verifying interaction wake requests for tree control actions.",
+      "tags": ["service", "api-handler", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-tree-control.ts:issueTreeControlService",
+      "type": "function",
+      "name": "issueTreeControlService",
+      "filePath": "server/src/services/issue-tree-control.ts",
+      "lineRange": [411, 1198],
+      "summary": "Factory returning a service for applying and releasing pause/hold and cancel operations across issue trees, with verification and conflict detection.",
+      "tags": ["service", "factory", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issue-tree-control.ts:isVerifiedIssueTreeControlInteractionWake",
+      "type": "function",
+      "name": "isVerifiedIssueTreeControlInteractionWake",
+      "filePath": "server/src/services/issue-tree-control.ts",
+      "lineRange": [169, 224],
+      "summary": "Verifies that a wake request for issue tree control originated from a trusted interaction source before permitting the operation.",
+      "tags": ["validation", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/issues.ts",
+      "type": "file",
+      "name": "issues.ts",
+      "filePath": "server/src/services/issues.ts",
+      "summary": "The central issue service implementing the full CRUD lifecycle for issues including creation, status transitions, comment management, workspace configuration, blocker tracking, and productivity reviews.",
+      "tags": ["service", "data-model", "api-handler"],
+      "complexity": "complex",
+      "languageNotes": "At over 4K lines with 55 internal helper functions and the issueService factory spanning lines 1780–4470, this is one of the most critical services in the backend."
+    },
+    {
+      "id": "function:server/src/services/issues.ts:issueService",
+      "type": "function",
+      "name": "issueService",
+      "filePath": "server/src/services/issues.ts",
+      "lineRange": [1780, 4470],
+      "summary": "The main issue service factory providing all issue lifecycle operations including creation, updates, comments, labels, attachments, assignments, and workspace config.",
+      "tags": ["service", "factory", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issues.ts:listIssueBlockerAttentionMap",
+      "type": "function",
+      "name": "listIssueBlockerAttentionMap",
+      "filePath": "server/src/services/issues.ts",
+      "lineRange": [1147, 1527],
+      "summary": "Computes a map of blocker attention entries for a set of issues, traversing dependency chains to determine which issues are actively blocked and by what.",
+      "tags": ["data-model", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/issues.ts:deriveIssueUserContext",
+      "type": "function",
+      "name": "deriveIssueUserContext",
+      "filePath": "server/src/services/issues.ts",
+      "lineRange": [721, 759],
+      "summary": "Derives per-user contextual data for an issue such as read state, last comment timestamp, and participation flags for personalized issue views.",
+      "tags": ["data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/issues.ts:deriveIssueCommentRunLogAttribution",
+      "type": "function",
+      "name": "deriveIssueCommentRunLogAttribution",
+      "filePath": "server/src/services/issues.ts",
+      "lineRange": [151, 205],
+      "summary": "Attributes issue comment run log entries to their originating heartbeat run, computing display metadata for agent-generated comments.",
+      "tags": ["data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/json-schema-secret-refs.ts",
+      "type": "file",
+      "name": "json-schema-secret-refs.ts",
+      "filePath": "server/src/services/json-schema-secret-refs.ts",
+      "summary": "Provides utilities for finding secret references within JSON schema config values, reading and writing config values at paths, and identifying UUID-based secret references.",
+      "tags": ["utility", "validation", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/live-events.ts",
+      "type": "file",
+      "name": "live-events.ts",
+      "filePath": "server/src/services/live-events.ts",
+      "summary": "Provides publish/subscribe utilities for broadcasting live events to company or global event streams, enabling real-time updates to connected clients.",
+      "tags": ["service", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/live-events.ts:publishLiveEvent",
+      "type": "function",
+      "name": "publishLiveEvent",
+      "filePath": "server/src/services/live-events.ts",
+      "lineRange": [27, 35],
+      "summary": "Publishes a live event to the company-scoped event stream for real-time propagation to subscribed clients.",
+      "tags": ["event-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/live-events.ts:subscribeCompanyLiveEvents",
+      "type": "function",
+      "name": "subscribeCompanyLiveEvents",
+      "filePath": "server/src/services/live-events.ts",
+      "lineRange": [46, 49],
+      "summary": "Returns a subscriber for the company-scoped live event stream, enabling downstream consumers to react to real-time events.",
+      "tags": ["event-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/local-service-supervisor.ts",
+      "type": "file",
+      "name": "local-service-supervisor.ts",
+      "filePath": "server/src/services/local-service-supervisor.ts",
+      "summary": "Manages the lifecycle of local runtime services — tracking process registrations, detecting adoptable services, checking liveness, and terminating stale processes via a file-based registry.",
+      "tags": ["service", "infrastructure", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/local-service-supervisor.ts:terminateLocalService",
+      "type": "function",
+      "name": "terminateLocalService",
+      "filePath": "server/src/services/local-service-supervisor.ts",
+      "lineRange": [292, 332],
+      "summary": "Sends termination signals to a local service process and waits for it to stop, cleaning up the registry record on success.",
+      "tags": ["infrastructure", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/local-service-supervisor.ts:findAdoptableLocalService",
+      "type": "function",
+      "name": "findAdoptableLocalService",
+      "filePath": "server/src/services/local-service-supervisor.ts",
+      "lineRange": [250, 273],
+      "summary": "Searches the local service registry for a running process that can be adopted by a new run based on matching service key and liveness checks.",
+      "tags": ["service", "infrastructure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/local-service-supervisor.ts:listLocalServiceRegistryRecords",
+      "type": "function",
+      "name": "listLocalServiceRegistryRecords",
+      "filePath": "server/src/services/local-service-supervisor.ts",
+      "lineRange": [155, 178],
+      "summary": "Reads and returns all records from the local service registry directory, normalizing each entry.",
+      "tags": ["infrastructure", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/plugin-capability-validator.ts",
+      "type": "file",
+      "name": "plugin-capability-validator.ts",
+      "filePath": "server/src/services/plugin-capability-validator.ts",
+      "summary": "Validates plugin capability declarations against the set of allowed and required capabilities, ensuring plugins do not exceed their declared permissions or omit required entries.",
+      "tags": ["service", "validation", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-capability-validator.ts:pluginCapabilityValidator",
+      "type": "function",
+      "name": "pluginCapabilityValidator",
+      "filePath": "server/src/services/plugin-capability-validator.ts",
+      "lineRange": [321, 495],
+      "summary": "Factory returning a validator for plugin capability declarations, checking allowlists, required fields, and configuration schemas for each declared capability.",
+      "tags": ["validation", "factory", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-config-validator.ts",
+      "type": "file",
+      "name": "plugin-config-validator.ts",
+      "filePath": "server/src/services/plugin-config-validator.ts",
+      "summary": "Validates plugin instance configuration against the plugin's declared JSON schema, returning structured validation errors.",
+      "tags": ["service", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/plugin-config-validator.ts:validateInstanceConfig",
+      "type": "function",
+      "name": "validateInstanceConfig",
+      "filePath": "server/src/services/plugin-config-validator.ts",
+      "lineRange": [27, 54],
+      "summary": "Validates a plugin instance's config object against the plugin's JSON schema, returning a list of validation errors or null if valid.",
+      "tags": ["validation", "utility"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/services/goals.ts",
+      "target": "function:server/src/services/goals.ts:getDefaultCompanyGoal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/goals.ts",
+      "target": "function:server/src/services/goals.ts:goalService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/goals.ts",
+      "target": "function:server/src/services/goals.ts:getDefaultCompanyGoal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/goals.ts",
+      "target": "function:server/src/services/goals.ts:goalService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-run-summary.ts",
+      "target": "function:server/src/services/heartbeat-run-summary.ts:mergeHeartbeatRunResultJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-run-summary.ts",
+      "target": "function:server/src/services/heartbeat-run-summary.ts:summarizeHeartbeatRunResultJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-run-summary.ts",
+      "target": "function:server/src/services/heartbeat-run-summary.ts:buildHeartbeatRunIssueComment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-run-summary.ts",
+      "target": "function:server/src/services/heartbeat-run-summary.ts:mergeHeartbeatRunResultJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-run-summary.ts",
+      "target": "function:server/src/services/heartbeat-run-summary.ts:summarizeHeartbeatRunResultJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-run-summary.ts",
+      "target": "function:server/src/services/heartbeat-run-summary.ts:buildHeartbeatRunIssueComment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:resolveHeartbeatRunTimeoutPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:inferHeartbeatRunStopReason",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:buildHeartbeatRunStopMetadata",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:mergeHeartbeatRunStopMetadata",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:resolveHeartbeatRunTimeoutPolicy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:inferHeartbeatRunStopReason",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:buildHeartbeatRunStopMetadata",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "target": "function:server/src/services/heartbeat-stop-metadata.ts:mergeHeartbeatRunStopMetadata",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:heartbeatService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:buildPaperclipWakePayload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:resolveExecutionRunAdapterConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:enrichWakeContextSnapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:resolveRuntimeSessionParamsForWorkspace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:buildPaperclipTaskMarkdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:heartbeatService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:resolveExecutionRunAdapterConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "function:server/src/services/heartbeat.ts:buildPaperclipTaskMarkdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "file:server/src/services/heartbeat-run-summary.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "file:server/src/services/heartbeat-stop-metadata.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/heartbeat.ts",
+      "target": "file:server/src/services/live-events.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/hire-hook.ts",
+      "target": "function:server/src/services/hire-hook.ts:notifyHireApproved",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/hire-hook.ts",
+      "target": "function:server/src/services/hire-hook.ts:notifyHireApproved",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/inbox-dismissals.ts",
+      "target": "function:server/src/services/inbox-dismissals.ts:inboxDismissalService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/inbox-dismissals.ts",
+      "target": "function:server/src/services/inbox-dismissals.ts:inboxDismissalService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/instance-settings.ts",
+      "target": "function:server/src/services/instance-settings.ts:instanceSettingsService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/instance-settings.ts",
+      "target": "function:server/src/services/instance-settings.ts:instanceSettingsService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-approvals.ts",
+      "target": "function:server/src/services/issue-approvals.ts:issueApprovalService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-approvals.ts",
+      "target": "function:server/src/services/issue-approvals.ts:issueApprovalService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-assignment-wakeup.ts",
+      "target": "function:server/src/services/issue-assignment-wakeup.ts:queueIssueAssignmentWakeup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-assignment-wakeup.ts",
+      "target": "function:server/src/services/issue-assignment-wakeup.ts:queueIssueAssignmentWakeup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-continuation-summary.ts",
+      "target": "function:server/src/services/issue-continuation-summary.ts:buildContinuationSummaryMarkdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-continuation-summary.ts",
+      "target": "function:server/src/services/issue-continuation-summary.ts:getIssueContinuationSummaryDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-continuation-summary.ts",
+      "target": "function:server/src/services/issue-continuation-summary.ts:refreshIssueContinuationSummary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-continuation-summary.ts",
+      "target": "function:server/src/services/issue-continuation-summary.ts:buildContinuationSummaryMarkdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-continuation-summary.ts",
+      "target": "function:server/src/services/issue-continuation-summary.ts:getIssueContinuationSummaryDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-continuation-summary.ts",
+      "target": "function:server/src/services/issue-continuation-summary.ts:refreshIssueContinuationSummary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-execution-policy.ts",
+      "target": "function:server/src/services/issue-execution-policy.ts:applyIssueExecutionStageTransition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-execution-policy.ts",
+      "target": "function:server/src/services/issue-execution-policy.ts:applyMonitorTransition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-execution-policy.ts",
+      "target": "function:server/src/services/issue-execution-policy.ts:normalizeIssueExecutionPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-execution-policy.ts",
+      "target": "function:server/src/services/issue-execution-policy.ts:applyIssueExecutionPolicyTransition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-execution-policy.ts",
+      "target": "function:server/src/services/issue-execution-policy.ts:normalizeIssueExecutionPolicy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-execution-policy.ts",
+      "target": "function:server/src/services/issue-execution-policy.ts:applyIssueExecutionPolicyTransition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-goal-fallback.ts",
+      "target": "function:server/src/services/issue-goal-fallback.ts:resolveNextIssueGoalId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-goal-fallback.ts",
+      "target": "function:server/src/services/issue-goal-fallback.ts:resolveNextIssueGoalId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-recovery-actions.ts",
+      "target": "function:server/src/services/issue-recovery-actions.ts:issueRecoveryActionService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-recovery-actions.ts",
+      "target": "function:server/src/services/issue-recovery-actions.ts:issueRecoveryActionService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-references.ts",
+      "target": "function:server/src/services/issue-references.ts:issueReferenceService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-references.ts",
+      "target": "function:server/src/services/issue-references.ts:issueReferenceService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-thread-interactions.ts",
+      "target": "function:server/src/services/issue-thread-interactions.ts:issueThreadInteractionService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-thread-interactions.ts",
+      "target": "function:server/src/services/issue-thread-interactions.ts:hydrateInteraction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-thread-interactions.ts",
+      "target": "function:server/src/services/issue-thread-interactions.ts:resolveSelectedSuggestedTasks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-thread-interactions.ts",
+      "target": "function:server/src/services/issue-thread-interactions.ts:issueThreadInteractionService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-thread-interactions.ts",
+      "target": "file:server/src/services/issues.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/issue-tree-control.ts",
+      "target": "function:server/src/services/issue-tree-control.ts:issueTreeControlService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-tree-control.ts",
+      "target": "function:server/src/services/issue-tree-control.ts:isVerifiedIssueTreeControlInteractionWake",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issue-tree-control.ts",
+      "target": "function:server/src/services/issue-tree-control.ts:issueTreeControlService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issue-tree-control.ts",
+      "target": "function:server/src/services/issue-tree-control.ts:isVerifiedIssueTreeControlInteractionWake",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:issueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:listIssueBlockerAttentionMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:deriveIssueUserContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:deriveIssueCommentRunLogAttribution",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:issueService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:deriveIssueUserContext",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "function:server/src/services/issues.ts:deriveIssueCommentRunLogAttribution",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "file:server/src/services/goals.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "file:server/src/services/issue-execution-policy.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "file:server/src/services/issue-goal-fallback.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "file:server/src/services/issue-tree-control.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/issues.ts",
+      "target": "file:server/src/services/instance-settings.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/live-events.ts",
+      "target": "function:server/src/services/live-events.ts:publishLiveEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/live-events.ts",
+      "target": "function:server/src/services/live-events.ts:subscribeCompanyLiveEvents",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/live-events.ts",
+      "target": "function:server/src/services/live-events.ts:publishLiveEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/live-events.ts",
+      "target": "function:server/src/services/live-events.ts:subscribeCompanyLiveEvents",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/local-service-supervisor.ts",
+      "target": "function:server/src/services/local-service-supervisor.ts:terminateLocalService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/local-service-supervisor.ts",
+      "target": "function:server/src/services/local-service-supervisor.ts:findAdoptableLocalService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/local-service-supervisor.ts",
+      "target": "function:server/src/services/local-service-supervisor.ts:listLocalServiceRegistryRecords",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/local-service-supervisor.ts",
+      "target": "function:server/src/services/local-service-supervisor.ts:terminateLocalService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/local-service-supervisor.ts",
+      "target": "function:server/src/services/local-service-supervisor.ts:findAdoptableLocalService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/local-service-supervisor.ts",
+      "target": "function:server/src/services/local-service-supervisor.ts:listLocalServiceRegistryRecords",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-capability-validator.ts",
+      "target": "function:server/src/services/plugin-capability-validator.ts:pluginCapabilityValidator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-capability-validator.ts",
+      "target": "function:server/src/services/plugin-capability-validator.ts:pluginCapabilityValidator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-config-validator.ts",
+      "target": "function:server/src/services/plugin-config-validator.ts:validateInstanceConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-config-validator.ts",
+      "target": "function:server/src/services/plugin-config-validator.ts:validateInstanceConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

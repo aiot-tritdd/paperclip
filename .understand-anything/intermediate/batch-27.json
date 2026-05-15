@@ -1,0 +1,1014 @@
+{
+  "batchIndex": 27,
+  "nodes": [
+    {
+      "id": "file:packages/db/src/schema/auth.ts",
+      "type": "file",
+      "name": "auth.ts",
+      "filePath": "packages/db/src/schema/auth.ts",
+      "summary": "Defines the core authentication tables (users, sessions, accounts, verifications) using Drizzle ORM, forming the foundation of the Better Auth integration in Paperclip.",
+      "tags": ["data-model", "schema-definition", "authentication", "database"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 47,
+      "exports": ["authUsers", "authSessions", "authAccounts", "authVerifications"]
+    },
+    {
+      "id": "table:packages/db/src/schema/auth.ts:authUsers",
+      "type": "table",
+      "name": "authUsers",
+      "filePath": "packages/db/src/schema/auth.ts",
+      "summary": "Core user table (mapped to 'user' in PostgreSQL) storing identity fields — id, name, email, emailVerified, image — with created/updated timestamps. Primary key is a text id.",
+      "tags": ["authentication", "user", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/schema/auth.ts:authSessions",
+      "type": "table",
+      "name": "authSessions",
+      "filePath": "packages/db/src/schema/auth.ts",
+      "summary": "Session table storing active user sessions with token, IP address, user agent, expiry, and a cascade-delete foreign key to authUsers.",
+      "tags": ["authentication", "session", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/schema/auth.ts:authAccounts",
+      "type": "table",
+      "name": "authAccounts",
+      "filePath": "packages/db/src/schema/auth.ts",
+      "summary": "OAuth/credential account table linking provider accounts to users; stores access/refresh tokens, provider id, and expiry metadata with cascade-delete on user removal.",
+      "tags": ["authentication", "oauth", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/schema/auth.ts:authVerifications",
+      "type": "table",
+      "name": "authVerifications",
+      "filePath": "packages/db/src/schema/auth.ts",
+      "summary": "Verification token table for email verification and password reset flows; stores identifier, value, and expiry without a direct user foreign key.",
+      "tags": ["authentication", "verification", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/board_api_keys.ts",
+      "type": "file",
+      "name": "board_api_keys.ts",
+      "filePath": "packages/db/src/schema/board_api_keys.ts",
+      "summary": "Defines the board_api_keys table for user-scoped API key management, storing hashed keys with revocation and expiry timestamps and unique hash/user indexes.",
+      "tags": ["data-model", "schema-definition", "api-key", "security"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 20,
+      "exports": ["boardApiKeys"]
+    },
+    {
+      "id": "table:packages/db/src/schema/board_api_keys.ts:boardApiKeys",
+      "type": "table",
+      "name": "boardApiKeys",
+      "filePath": "packages/db/src/schema/board_api_keys.ts",
+      "summary": "API key table with uuid pk, userId FK to authUsers (cascade), hashed key material, and lifecycle timestamps (lastUsedAt, revokedAt, expiresAt). Unique index on keyHash.",
+      "tags": ["api-key", "security", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/budget_incidents.ts",
+      "type": "file",
+      "name": "budget_incidents.ts",
+      "filePath": "packages/db/src/schema/budget_incidents.ts",
+      "summary": "Defines the budget_incidents table recording threshold violations detected by budget policies, including scope, metric window, observed vs limit amounts, and approval linkage.",
+      "tags": ["data-model", "schema-definition", "budget", "monitoring"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 42,
+      "exports": ["budgetIncidents"]
+    },
+    {
+      "id": "table:packages/db/src/schema/budget_incidents.ts:budgetIncidents",
+      "type": "table",
+      "name": "budgetIncidents",
+      "filePath": "packages/db/src/schema/budget_incidents.ts",
+      "summary": "Records budget threshold violations per company/policy/scope with window timing, observed vs limit amounts, status (open/dismissed/resolved), and optional approval FK. Partial unique index excludes dismissed incidents.",
+      "tags": ["budget", "monitoring", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/budget_policies.ts",
+      "type": "file",
+      "name": "budget_policies.ts",
+      "filePath": "packages/db/src/schema/budget_policies.ts",
+      "summary": "Defines the budget_policies table for per-company spend control rules, including scope targeting, metric/window configuration, warn percent, hard stop flag, and active status.",
+      "tags": ["data-model", "schema-definition", "budget", "policy"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 43,
+      "exports": ["budgetPolicies"]
+    },
+    {
+      "id": "table:packages/db/src/schema/budget_policies.ts:budgetPolicies",
+      "type": "table",
+      "name": "budgetPolicies",
+      "filePath": "packages/db/src/schema/budget_policies.ts",
+      "summary": "Budget policy table scoped to a company/scope pair, defining a metric (e.g. billed_cents), window kind, amount limit, warn percent, hard stop, and active flag. Unique index enforces one policy per company+scope+metric+window combination.",
+      "tags": ["budget", "policy", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/cli_auth_challenges.ts",
+      "type": "file",
+      "name": "cli_auth_challenges.ts",
+      "filePath": "packages/db/src/schema/cli_auth_challenges.ts",
+      "summary": "Defines the cli_auth_challenges table managing the CLI device-authorization flow — storing challenge secrets, pending key material, approval state, and references to company, user, and board API key.",
+      "tags": ["data-model", "schema-definition", "authentication", "cli"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 30,
+      "exports": ["cliAuthChallenges"]
+    },
+    {
+      "id": "table:packages/db/src/schema/cli_auth_challenges.ts:cliAuthChallenges",
+      "type": "table",
+      "name": "cliAuthChallenges",
+      "filePath": "packages/db/src/schema/cli_auth_challenges.ts",
+      "summary": "CLI auth challenge table with secret hash, command, pending key hash/name, optional approval by user and resulting boardApiKey FK, and expiry/cancel timestamps to track the device-auth lifecycle.",
+      "tags": ["authentication", "cli", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/companies.ts",
+      "type": "file",
+      "name": "companies.ts",
+      "filePath": "packages/db/src/schema/companies.ts",
+      "summary": "Defines the core companies table — the top-level organizational unit in Paperclip — with status, budget tracking, issue counter, attachment limits, and feedback-sharing consent fields.",
+      "tags": ["data-model", "schema-definition", "company", "core"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 35,
+      "exports": ["companies"]
+    },
+    {
+      "id": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "table",
+      "name": "companies",
+      "filePath": "packages/db/src/schema/companies.ts",
+      "summary": "Core organizational unit table with uuid pk, name, status, issue prefix/counter, monthly budget/spend in cents, attachment size limit, agent approval flag, feedback sharing consent, and brand color. Unique index on issuePrefix.",
+      "tags": ["company", "core", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_logos.ts",
+      "type": "file",
+      "name": "company_logos.ts",
+      "filePath": "packages/db/src/schema/company_logos.ts",
+      "summary": "Defines the company_logos join table linking a company to an asset record for its logo image, with unique constraints enforcing one logo per company and one logo per asset.",
+      "tags": ["data-model", "schema-definition", "company", "asset"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 18,
+      "exports": ["companyLogos"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_logos.ts:companyLogos",
+      "type": "table",
+      "name": "companyLogos",
+      "filePath": "packages/db/src/schema/company_logos.ts",
+      "summary": "Join table with cascade-delete FKs to companies and assets; unique indexes on companyId and assetId ensure exactly one logo-asset mapping per company.",
+      "tags": ["company", "asset", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_memberships.ts",
+      "type": "file",
+      "name": "company_memberships.ts",
+      "filePath": "packages/db/src/schema/company_memberships.ts",
+      "summary": "Defines the company_memberships table modeling the many-to-many relationship between companies and principals (users or agents) with role and status, plus composite unique and status indexes.",
+      "tags": ["data-model", "schema-definition", "membership", "authorization"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 29,
+      "exports": ["companyMemberships"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_memberships.ts:companyMemberships",
+      "type": "table",
+      "name": "companyMemberships",
+      "filePath": "packages/db/src/schema/company_memberships.ts",
+      "summary": "Membership table linking a company to a polymorphic principal (principalType + principalId) with status and membershipRole; unique index prevents duplicate memberships per company/principal pair.",
+      "tags": ["membership", "authorization", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_secret_bindings.ts",
+      "type": "file",
+      "name": "company_secret_bindings.ts",
+      "filePath": "packages/db/src/schema/company_secret_bindings.ts",
+      "summary": "Defines the company_secret_bindings table that maps a company secret to a target entity (e.g. an agent or skill) at a specific config path, controlling which secrets are injected where.",
+      "tags": ["data-model", "schema-definition", "secret", "security"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 31,
+      "exports": ["companySecretBindings"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_secret_bindings.ts:companySecretBindings",
+      "type": "table",
+      "name": "companySecretBindings",
+      "filePath": "packages/db/src/schema/company_secret_bindings.ts",
+      "summary": "Secret binding table with FKs to companies and companySecrets (cascade), polymorphic target (targetType+targetId), configPath, versionSelector, and required flag. Unique index on company+target+configPath prevents duplicate bindings.",
+      "tags": ["secret", "security", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_secret_provider_configs.ts",
+      "type": "file",
+      "name": "company_secret_provider_configs.ts",
+      "filePath": "packages/db/src/schema/company_secret_provider_configs.ts",
+      "summary": "Defines the company_secret_provider_configs table for external secret provider integrations (e.g. Vault, AWS Secrets Manager) per company, including health check state and JSONB config.",
+      "tags": ["data-model", "schema-definition", "secret", "integration"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 33,
+      "exports": ["companySecretProviderConfigs"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_secret_provider_configs.ts:companySecretProviderConfigs",
+      "type": "table",
+      "name": "companySecretProviderConfigs",
+      "filePath": "packages/db/src/schema/company_secret_provider_configs.ts",
+      "summary": "Secret provider config table per company with provider type, display name, status, isDefault flag, JSONB config, health check fields, and optional createdByAgentId FK. Partial unique index enforces one default per company+provider.",
+      "tags": ["secret", "integration", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_secret_versions.ts",
+      "type": "file",
+      "name": "company_secret_versions.ts",
+      "filePath": "packages/db/src/schema/company_secret_versions.ts",
+      "summary": "Defines the company_secret_versions table storing versioned secret material with SHA-256 hashes for integrity verification, rotation job tracking, and agent attribution.",
+      "tags": ["data-model", "schema-definition", "secret", "versioning"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28,
+      "exports": ["companySecretVersions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_secret_versions.ts:companySecretVersions",
+      "type": "table",
+      "name": "companySecretVersions",
+      "filePath": "packages/db/src/schema/company_secret_versions.ts",
+      "summary": "Versioned secret material table with FK to companySecrets (cascade), version number, encrypted JSONB material, value and fingerprint SHA-256 hashes, status, rotation job id, and optional agent attribution.",
+      "tags": ["secret", "versioning", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_secrets.ts",
+      "type": "file",
+      "name": "company_secrets.ts",
+      "filePath": "packages/db/src/schema/company_secrets.ts",
+      "summary": "Defines the company_secrets table as the canonical secret registry per company, storing key, name, provider type, managed mode, external reference, provider config FK, and version tracking.",
+      "tags": ["data-model", "schema-definition", "secret", "security"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 36,
+      "exports": ["companySecrets"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_secrets.ts:companySecrets",
+      "type": "table",
+      "name": "companySecrets",
+      "filePath": "packages/db/src/schema/company_secrets.ts",
+      "summary": "Secret registry table per company with unique key and name, provider type, managed mode (paperclip_managed vs external), optional providerConfigId FK, JSONB provider metadata, latest version number, and rotation/resolution timestamps.",
+      "tags": ["secret", "security", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_skills.ts",
+      "type": "file",
+      "name": "company_skills.ts",
+      "filePath": "packages/db/src/schema/company_skills.ts",
+      "summary": "Defines the company_skills table storing agent skill definitions per company — including markdown content, source locator, trust level, compatibility, and JSONB file inventory.",
+      "tags": ["data-model", "schema-definition", "skill", "agent"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 36,
+      "exports": ["companySkills"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_skills.ts:companySkills",
+      "type": "table",
+      "name": "companySkills",
+      "filePath": "packages/db/src/schema/company_skills.ts",
+      "summary": "Skill definition table per company with key (unique), slug, name, markdown content, sourceType/locator/ref for loading, trust level, compatibility status, and JSONB file inventory and metadata.",
+      "tags": ["skill", "agent", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/company_user_sidebar_preferences.ts",
+      "type": "file",
+      "name": "company_user_sidebar_preferences.ts",
+      "filePath": "packages/db/src/schema/company_user_sidebar_preferences.ts",
+      "summary": "Defines the company_user_sidebar_preferences table persisting per-user, per-company UI sidebar settings such as project order, with a unique constraint per company+user pair.",
+      "tags": ["data-model", "schema-definition", "preferences", "ui"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 22,
+      "exports": ["companyUserSidebarPreferences"]
+    },
+    {
+      "id": "table:packages/db/src/schema/company_user_sidebar_preferences.ts:companyUserSidebarPreferences",
+      "type": "table",
+      "name": "companyUserSidebarPreferences",
+      "filePath": "packages/db/src/schema/company_user_sidebar_preferences.ts",
+      "summary": "Sidebar preference table with companyId FK (cascade) and text userId, storing a JSONB array of project order. Unique index enforces one row per company+user.",
+      "tags": ["preferences", "ui", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/cost_events.ts",
+      "type": "file",
+      "name": "cost_events.ts",
+      "filePath": "packages/db/src/schema/cost_events.ts",
+      "summary": "Defines the cost_events table recording fine-grained AI model usage and billing data per agent invocation, linking to company, agent, issue, project, goal, and heartbeat run.",
+      "tags": ["data-model", "schema-definition", "billing", "observability"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 53,
+      "exports": ["costEvents"]
+    },
+    {
+      "id": "table:packages/db/src/schema/cost_events.ts:costEvents",
+      "type": "table",
+      "name": "costEvents",
+      "filePath": "packages/db/src/schema/cost_events.ts",
+      "summary": "Cost event table capturing LLM token usage (input, cached input, output tokens) and costCents per model call, with FKs to company, agent, issue, project, goal, and heartbeatRun for multi-dimensional cost attribution.",
+      "tags": ["billing", "observability", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/document_revisions.ts",
+      "type": "file",
+      "name": "document_revisions.ts",
+      "filePath": "packages/db/src/schema/document_revisions.ts",
+      "summary": "Defines the document_revisions table storing numbered revisions of agent-authored documents, linking revision bodies and change summaries to the parent document with agent/run attribution.",
+      "tags": ["data-model", "schema-definition", "document", "versioning"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 34,
+      "exports": ["documentRevisions"]
+    },
+    {
+      "id": "table:packages/db/src/schema/document_revisions.ts:documentRevisions",
+      "type": "table",
+      "name": "documentRevisions",
+      "filePath": "packages/db/src/schema/document_revisions.ts",
+      "summary": "Document revision table with cascade-delete FK to documents, sequential revisionNumber, title, format, full body text, change summary, and attribution to agent/user/heartbeatRun. Unique index on documentId+revisionNumber.",
+      "tags": ["document", "versioning", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/documents.ts",
+      "type": "file",
+      "name": "documents.ts",
+      "filePath": "packages/db/src/schema/documents.ts",
+      "summary": "Defines the documents table as the primary record for agent-authored documents per company, storing the latest body inline and tracking the latest revision pointer, with GIN full-text search indexes.",
+      "tags": ["data-model", "schema-definition", "document", "search"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28,
+      "exports": ["documents"]
+    },
+    {
+      "id": "table:packages/db/src/schema/documents.ts:documents",
+      "type": "table",
+      "name": "documents",
+      "filePath": "packages/db/src/schema/documents.ts",
+      "summary": "Document table per company with title, format, latestBody text, latestRevisionId/Number pointer, agent/user attribution for create and update, and GIN trigram indexes on title and body for full-text search.",
+      "tags": ["document", "search", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/environment_leases.ts",
+      "type": "file",
+      "name": "environment_leases.ts",
+      "filePath": "packages/db/src/schema/environment_leases.ts",
+      "summary": "Defines the environment_leases table tracking active leases on compute environments acquired by execution workspaces or heartbeat runs, including lease policy, provider reference, and cleanup state.",
+      "tags": ["data-model", "schema-definition", "environment", "execution"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 46,
+      "exports": ["environmentLeases"]
+    },
+    {
+      "id": "table:packages/db/src/schema/environment_leases.ts:environmentLeases",
+      "type": "table",
+      "name": "environmentLeases",
+      "filePath": "packages/db/src/schema/environment_leases.ts",
+      "summary": "Environment lease table with FKs to companies, environments (cascade), executionWorkspaces (set null), issues (set null), and heartbeatRuns (set null), tracking lease status, policy, provider lease id, and cleanup lifecycle.",
+      "tags": ["environment", "execution", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/environments.ts",
+      "type": "file",
+      "name": "environments.ts",
+      "filePath": "packages/db/src/schema/environments.ts",
+      "summary": "Defines the environments table representing compute environment configurations per company (e.g. local, remote Docker), with driver type, status, and JSONB config.",
+      "tags": ["data-model", "schema-definition", "environment", "infrastructure"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 26,
+      "exports": ["environments"]
+    },
+    {
+      "id": "table:packages/db/src/schema/environments.ts:environments",
+      "type": "table",
+      "name": "environments",
+      "filePath": "packages/db/src/schema/environments.ts",
+      "summary": "Environment config table per company with name, description, driver type, status, JSONB config and metadata. Partial unique index ensures only one 'local' driver environment per company.",
+      "tags": ["environment", "infrastructure", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/execution_workspaces.ts",
+      "type": "file",
+      "name": "execution_workspaces.ts",
+      "filePath": "packages/db/src/schema/execution_workspaces.ts",
+      "summary": "Defines the execution_workspaces table representing a code workspace (git repo state) used during agent execution — tracking branch, cwd, strategy, provider type, and self-referential derivation lineage.",
+      "tags": ["data-model", "schema-definition", "execution", "workspace"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 68,
+      "exports": ["executionWorkspaces"]
+    },
+    {
+      "id": "table:packages/db/src/schema/execution_workspaces.ts:executionWorkspaces",
+      "type": "table",
+      "name": "executionWorkspaces",
+      "filePath": "packages/db/src/schema/execution_workspaces.ts",
+      "summary": "Execution workspace table with FKs to companies, projects (cascade), projectWorkspaces (set null), and sourceIssue (set null); stores mode, strategy, cwd, repoUrl, branchName, providerType/ref, and self-referential derivedFrom FK for workspace cloning lineage.",
+      "tags": ["execution", "workspace", "database", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/src/schema/feedback_exports.ts",
+      "type": "file",
+      "name": "feedback_exports.ts",
+      "filePath": "packages/db/src/schema/feedback_exports.ts",
+      "summary": "Defines the feedback_exports table tracking the export lifecycle of user feedback votes to external labs/telemetry destinations, including payload snapshots, redaction summaries, and versioned schema/bundle identifiers.",
+      "tags": ["data-model", "schema-definition", "feedback", "export"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 45,
+      "exports": ["feedbackExports"]
+    },
+    {
+      "id": "table:packages/db/src/schema/feedback_exports.ts:feedbackExports",
+      "type": "table",
+      "name": "feedbackExports",
+      "filePath": "packages/db/src/schema/feedback_exports.ts",
+      "summary": "Feedback export table with FKs to companies, feedbackVotes (cascade), issues (cascade), and projects (set null); tracks export status, destination, consent version, JSONB payload snapshot and redaction summary, and retry count.",
+      "tags": ["feedback", "export", "database", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/src/schema/feedback_votes.ts",
+      "type": "file",
+      "name": "feedback_votes.ts",
+      "filePath": "packages/db/src/schema/feedback_votes.ts",
+      "summary": "Defines the feedback_votes table recording user thumbs-up/down votes on agent outputs per issue/target, with consent tracking and a unique constraint preventing duplicate votes per user/target.",
+      "tags": ["data-model", "schema-definition", "feedback", "rating"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 34,
+      "exports": ["feedbackVotes"]
+    },
+    {
+      "id": "table:packages/db/src/schema/feedback_votes.ts:feedbackVotes",
+      "type": "table",
+      "name": "feedbackVotes",
+      "filePath": "packages/db/src/schema/feedback_votes.ts",
+      "summary": "Feedback vote table with FKs to companies and issues, polymorphic target (targetType+targetId), authorUserId, vote value, reason, sharedWithLabs flag, consent version, and JSONB redaction summary. Unique on company+target+author.",
+      "tags": ["feedback", "rating", "database", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/src/schema/finance_events.ts",
+      "type": "file",
+      "name": "finance_events.ts",
+      "filePath": "packages/db/src/schema/finance_events.ts",
+      "summary": "Defines the finance_events table as the financial ledger for Paperclip, recording debit/credit events with biller, provider, amount in cents, and multi-dimensional FKs to cost events, agents, issues, goals, and heartbeat runs.",
+      "tags": ["data-model", "schema-definition", "billing", "finance"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 67,
+      "exports": ["financeEvents"]
+    },
+    {
+      "id": "table:packages/db/src/schema/finance_events.ts:financeEvents",
+      "type": "table",
+      "name": "financeEvents",
+      "filePath": "packages/db/src/schema/finance_events.ts",
+      "summary": "Financial ledger table with FKs to companies, agents, issues, projects, goals, heartbeatRuns, and costEvents; stores eventKind, direction (debit/credit), biller, amountCents, currency, estimated flag, and JSONB metadata.",
+      "tags": ["billing", "finance", "database", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/src/schema/goals.ts",
+      "type": "file",
+      "name": "goals.ts",
+      "filePath": "packages/db/src/schema/goals.ts",
+      "summary": "Defines the goals table for hierarchical task planning in Paperclip, with self-referential parent FK, level/status fields, and optional owner agent assignment.",
+      "tags": ["data-model", "schema-definition", "goal", "planning"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 29,
+      "exports": ["goals"]
+    },
+    {
+      "id": "table:packages/db/src/schema/goals.ts:goals",
+      "type": "table",
+      "name": "goals",
+      "filePath": "packages/db/src/schema/goals.ts",
+      "summary": "Hierarchical goal table per company with title, description, level (task/project/etc), status (planned/in-progress/done), self-referential parentId FK, and optional ownerAgentId FK to agents.",
+      "tags": ["goal", "planning", "database", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/src/schema/heartbeat_run_events.ts",
+      "type": "file",
+      "name": "heartbeat_run_events.ts",
+      "filePath": "packages/db/src/schema/heartbeat_run_events.ts",
+      "summary": "Defines the heartbeat_run_events table as an append-only event stream for agent heartbeat runs, recording typed events with sequence numbers, stream, level, and JSONB payloads using bigserial for high-throughput ids.",
+      "tags": ["data-model", "schema-definition", "event-stream", "observability"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28,
+      "exports": ["heartbeatRunEvents"]
+    },
+    {
+      "id": "table:packages/db/src/schema/heartbeat_run_events.ts:heartbeatRunEvents",
+      "type": "table",
+      "name": "heartbeatRunEvents",
+      "filePath": "packages/db/src/schema/heartbeat_run_events.ts",
+      "summary": "High-throughput event log table using bigserial pk, with FKs to companies, heartbeatRuns, and agents; stores seq, eventType, stream/level/color, text message, and JSONB payload for structured agent execution tracing.",
+      "tags": ["event-stream", "observability", "database", "data-model"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/db/src/schema/auth.ts",
+      "target": "table:packages/db/src/schema/auth.ts:authUsers",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/auth.ts",
+      "target": "table:packages/db/src/schema/auth.ts:authSessions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/auth.ts",
+      "target": "table:packages/db/src/schema/auth.ts:authAccounts",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/auth.ts",
+      "target": "table:packages/db/src/schema/auth.ts:authVerifications",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/auth.ts:authSessions",
+      "target": "table:packages/db/src/schema/auth.ts:authUsers",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/auth.ts:authAccounts",
+      "target": "table:packages/db/src/schema/auth.ts:authUsers",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/board_api_keys.ts",
+      "target": "table:packages/db/src/schema/board_api_keys.ts:boardApiKeys",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/board_api_keys.ts:boardApiKeys",
+      "target": "table:packages/db/src/schema/auth.ts:authUsers",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/budget_incidents.ts",
+      "target": "table:packages/db/src/schema/budget_incidents.ts:budgetIncidents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/budget_incidents.ts:budgetIncidents",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/budget_incidents.ts:budgetIncidents",
+      "target": "table:packages/db/src/schema/budget_policies.ts:budgetPolicies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/budget_policies.ts",
+      "target": "table:packages/db/src/schema/budget_policies.ts:budgetPolicies",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/budget_policies.ts:budgetPolicies",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/cli_auth_challenges.ts",
+      "target": "table:packages/db/src/schema/cli_auth_challenges.ts:cliAuthChallenges",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/cli_auth_challenges.ts:cliAuthChallenges",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/cli_auth_challenges.ts:cliAuthChallenges",
+      "target": "table:packages/db/src/schema/auth.ts:authUsers",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/cli_auth_challenges.ts:cliAuthChallenges",
+      "target": "table:packages/db/src/schema/board_api_keys.ts:boardApiKeys",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/companies.ts",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/db/src/schema/company_logos.ts",
+      "target": "table:packages/db/src/schema/company_logos.ts:companyLogos",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_logos.ts:companyLogos",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_memberships.ts",
+      "target": "table:packages/db/src/schema/company_memberships.ts:companyMemberships",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_memberships.ts:companyMemberships",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_secret_bindings.ts",
+      "target": "table:packages/db/src/schema/company_secret_bindings.ts:companySecretBindings",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_secret_bindings.ts:companySecretBindings",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/company_secret_bindings.ts:companySecretBindings",
+      "target": "table:packages/db/src/schema/company_secrets.ts:companySecrets",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_secret_provider_configs.ts",
+      "target": "table:packages/db/src/schema/company_secret_provider_configs.ts:companySecretProviderConfigs",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_secret_provider_configs.ts:companySecretProviderConfigs",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_secret_versions.ts",
+      "target": "table:packages/db/src/schema/company_secret_versions.ts:companySecretVersions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_secret_versions.ts:companySecretVersions",
+      "target": "table:packages/db/src/schema/company_secrets.ts:companySecrets",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_secrets.ts",
+      "target": "table:packages/db/src/schema/company_secrets.ts:companySecrets",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_secrets.ts:companySecrets",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/company_secrets.ts:companySecrets",
+      "target": "table:packages/db/src/schema/company_secret_provider_configs.ts:companySecretProviderConfigs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_skills.ts",
+      "target": "table:packages/db/src/schema/company_skills.ts:companySkills",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_skills.ts:companySkills",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/company_user_sidebar_preferences.ts",
+      "target": "table:packages/db/src/schema/company_user_sidebar_preferences.ts:companyUserSidebarPreferences",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/company_user_sidebar_preferences.ts:companyUserSidebarPreferences",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/cost_events.ts",
+      "target": "table:packages/db/src/schema/cost_events.ts:costEvents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/cost_events.ts:costEvents",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/cost_events.ts:costEvents",
+      "target": "table:packages/db/src/schema/goals.ts:goals",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/document_revisions.ts",
+      "target": "table:packages/db/src/schema/document_revisions.ts:documentRevisions",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/document_revisions.ts:documentRevisions",
+      "target": "table:packages/db/src/schema/documents.ts:documents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/document_revisions.ts:documentRevisions",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/documents.ts",
+      "target": "table:packages/db/src/schema/documents.ts:documents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/documents.ts:documents",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/environment_leases.ts",
+      "target": "table:packages/db/src/schema/environment_leases.ts:environmentLeases",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/environment_leases.ts:environmentLeases",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/environment_leases.ts:environmentLeases",
+      "target": "table:packages/db/src/schema/environments.ts:environments",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/environment_leases.ts:environmentLeases",
+      "target": "table:packages/db/src/schema/execution_workspaces.ts:executionWorkspaces",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/environments.ts",
+      "target": "table:packages/db/src/schema/environments.ts:environments",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/environments.ts:environments",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/execution_workspaces.ts",
+      "target": "table:packages/db/src/schema/execution_workspaces.ts:executionWorkspaces",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/execution_workspaces.ts:executionWorkspaces",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/feedback_exports.ts",
+      "target": "table:packages/db/src/schema/feedback_exports.ts:feedbackExports",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/feedback_exports.ts:feedbackExports",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/feedback_exports.ts:feedbackExports",
+      "target": "table:packages/db/src/schema/feedback_votes.ts:feedbackVotes",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/feedback_votes.ts",
+      "target": "table:packages/db/src/schema/feedback_votes.ts:feedbackVotes",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/feedback_votes.ts:feedbackVotes",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/finance_events.ts",
+      "target": "table:packages/db/src/schema/finance_events.ts:financeEvents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/finance_events.ts:financeEvents",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/finance_events.ts:financeEvents",
+      "target": "table:packages/db/src/schema/cost_events.ts:costEvents",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "table:packages/db/src/schema/finance_events.ts:financeEvents",
+      "target": "table:packages/db/src/schema/goals.ts:goals",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/src/schema/goals.ts",
+      "target": "table:packages/db/src/schema/goals.ts:goals",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/goals.ts:goals",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/db/src/schema/heartbeat_run_events.ts",
+      "target": "table:packages/db/src/schema/heartbeat_run_events.ts:heartbeatRunEvents",
+      "type": "defines",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "table:packages/db/src/schema/heartbeat_run_events.ts:heartbeatRunEvents",
+      "target": "table:packages/db/src/schema/companies.ts:companies",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.9
+    }
+  ]
+}

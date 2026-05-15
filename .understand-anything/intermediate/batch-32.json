@@ -1,0 +1,506 @@
+{
+  "batchIndex": 32,
+  "nodes": [
+    {
+      "id": "config:packages/plugins/examples/plugin-orchestration-smoke-example/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/package.json",
+      "summary": "Package manifest for the plugin-orchestration-smoke-example plugin, defining build scripts, the paperclipPlugin entry, dependencies on the plugin-sdk, and peer dependencies on the Paperclip server.",
+      "tags": ["configuration", "build-system", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/examples/plugin-orchestration-smoke-example/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/README.md",
+      "summary": "Developer guide for the orchestration smoke example plugin covering what orchestration APIs it exercises, development workflow, installation into Paperclip, and the scoped route smoke test.",
+      "tags": ["documentation", "development", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/examples/plugin-orchestration-smoke-example/rollup.config.mjs",
+      "type": "file",
+      "name": "rollup.config.mjs",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/rollup.config.mjs",
+      "summary": "Rollup build configuration for the orchestration smoke plugin, bundling both the worker and UI entrypoints with TypeScript and node-resolve plugins.",
+      "tags": ["build-system", "configuration", "bundler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "type": "file",
+      "name": "manifest.ts",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "summary": "Plugin manifest for the orchestration smoke example declaring its id, capabilities (database, issues, relations, orchestration, UI), API routes for initialize/summary, and three UI slots (dashboard widget, issue panel, settings page).",
+      "tags": ["configuration", "plugin", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "summary": "UI entrypoint for the orchestration smoke plugin exporting React components for the dashboard widget, issue detail panel (with initialize/refresh actions), and settings page.",
+      "tags": ["component", "ui", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:DashboardWidget",
+      "type": "function",
+      "name": "DashboardWidget",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "lineRange": [60, 76],
+      "summary": "React component for the dashboard widget slot that reads plugin data via usePluginData and renders smoke summary rows.",
+      "tags": ["component", "ui", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:IssuePanel",
+      "type": "function",
+      "name": "IssuePanel",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "lineRange": [78, 117],
+      "summary": "React component for the issue detail tab that exposes initialize and refresh plugin actions and renders the orchestration smoke summary for a specific issue.",
+      "tags": ["component", "ui", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:SettingsPage",
+      "type": "function",
+      "name": "SettingsPage",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "lineRange": [119, 134],
+      "summary": "React component for the plugin settings page that reads and displays current plugin data.",
+      "tags": ["component", "ui", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "file",
+      "name": "worker.ts",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "summary": "Worker entrypoint for the orchestration smoke plugin implementing database setup, issue creation with relations and documents, wakeup scheduling, data registration, and scoped API route handlers for multi-agent orchestration scenarios.",
+      "tags": ["service", "plugin", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/examples/plugin-orchestration-smoke-example/tests/plugin.spec.ts",
+      "type": "file",
+      "name": "plugin.spec.ts",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/tests/plugin.spec.ts",
+      "summary": "End-to-end smoke tests for the orchestration plugin verifying issue creation, child issue relations, billing codes, orchestration summaries, and API route behaviour under various agent scenarios.",
+      "tags": ["test", "plugin", "integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:packages/plugins/examples/plugin-orchestration-smoke-example/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the orchestration smoke example plugin specifying compiler options, source inclusions, and node_modules exclusion.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/examples/plugin-orchestration-smoke-example/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/plugins/examples/plugin-orchestration-smoke-example/vitest.config.ts",
+      "summary": "Vitest configuration for the orchestration smoke example plugin, setting up the test runner environment.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/plugins/paperclip-plugin-fake-sandbox/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/package.json",
+      "summary": "Package manifest for the fake-sandbox provider plugin, defining its exports, paperclipPlugin entry, build and test scripts, and dependencies on the plugin-sdk.",
+      "tags": ["configuration", "build-system", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/index.ts",
+      "summary": "Barrel file for the fake-sandbox plugin that re-exports the manifest and plugin objects as the package's public API.",
+      "tags": ["barrel", "entry-point", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/manifest.ts",
+      "type": "file",
+      "name": "manifest.ts",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/manifest.ts",
+      "summary": "Plugin manifest for the fake-sandbox provider declaring its id, the environment driver capability, and a configSchema for image label, timeout, and lease reuse options.",
+      "tags": ["configuration", "plugin", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.test.ts",
+      "type": "file",
+      "name": "plugin.test.ts",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.test.ts",
+      "summary": "Integration tests for the fake-sandbox plugin covering the full environment driver lifecycle: config validation, probe, lease acquisition/resume/release/destroy, workspace realization, and command execution.",
+      "tags": ["test", "plugin", "integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "file",
+      "name": "plugin.ts",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "summary": "Core implementation of the fake-sandbox environment driver plugin, managing lease state in a local temp directory, spawning commands with timeout handling, and wiring up all sandbox lifecycle hooks.",
+      "tags": ["service", "plugin", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts:runCommand",
+      "type": "function",
+      "name": "runCommand",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "lineRange": [98, 155],
+      "summary": "Spawns a shell command inside the fake sandbox with dual timeout guards (soft kill then SIGKILL), captures stdout/stderr, and resolves or rejects based on exit code.",
+      "tags": ["service", "sandbox", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts:createLeaseState",
+      "type": "function",
+      "name": "createLeaseState",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "lineRange": [49, 66],
+      "summary": "Creates an isolated lease state by provisioning a temporary directory structure for the sandbox environment and registering it in the in-memory lease map.",
+      "tags": ["factory", "sandbox", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/worker.ts",
+      "type": "file",
+      "name": "worker.ts",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/src/worker.ts",
+      "summary": "Minimal worker entrypoint for the fake-sandbox plugin that re-exports from the plugin module.",
+      "tags": ["entry-point", "plugin", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/plugins/paperclip-plugin-fake-sandbox/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the fake-sandbox plugin extending a shared base config with project-specific source inclusions.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/paperclip-plugin-fake-sandbox/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/plugins/paperclip-plugin-fake-sandbox/vitest.config.ts",
+      "summary": "Vitest configuration for the fake-sandbox plugin test suite.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/agents/wiki-maintainer/AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/agents/wiki-maintainer/AGENTS.md",
+      "summary": "Agent definition for the LLM wiki maintainer agent, describing its identity, operating loop (ingest raw sources, update wiki, query, lint), and available skills for maintaining the LLM wiki knowledge base.",
+      "tags": ["documentation", "agent", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/esbuild.config.mjs",
+      "type": "file",
+      "name": "esbuild.config.mjs",
+      "filePath": "packages/plugins/plugin-llm-wiki/esbuild.config.mjs",
+      "summary": "ESBuild configuration for the LLM wiki plugin bundling the worker entrypoint for production.",
+      "tags": ["build-system", "configuration", "bundler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/fixtures/basic-root/AGENTS.md",
+      "summary": "Fixture file defining the LLM wiki schema for test scenarios: specifies the wiki directory layout, page conventions, supported operations (ingest, project updates, query, lint), and the index.md/log.md formats.",
+      "tags": ["documentation", "schema-definition", "test-fixture"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/IDEA.md",
+      "type": "document",
+      "name": "IDEA.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/fixtures/basic-root/IDEA.md",
+      "summary": "Concept document outlining the core LLM wiki idea: a structured knowledge base maintained by LLM agents, covering architecture, ingest/query/lint operations, indexing strategy, and rationale.",
+      "tags": ["documentation", "design", "architecture"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/fixtures/basic-root/raw/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/fixtures/basic-root/raw/.gitkeep",
+      "summary": "Empty placeholder file to preserve the raw input directory in version control for the LLM wiki test fixture.",
+      "tags": ["placeholder", "test-fixture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/raw/plugin-boundaries.md",
+      "type": "document",
+      "name": "plugin-boundaries.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/fixtures/basic-root/raw/plugin-boundaries.md",
+      "summary": "Minimal raw source fixture document used as input for the LLM wiki ingest operation tests.",
+      "tags": ["documentation", "test-fixture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/wiki/areas/knowledge.md",
+      "type": "document",
+      "name": "knowledge.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/fixtures/basic-root/wiki/areas/knowledge.md",
+      "summary": "Fixture wiki area page representing a knowledge area entry in the LLM wiki test fixture.",
+      "tags": ["documentation", "test-fixture"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/fixtures/basic-root/wiki/concepts/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/fixtures/basic-root/wiki/concepts/.gitkeep",
+      "summary": "Empty placeholder file to preserve the concepts directory in version control for the LLM wiki test fixture.",
+      "tags": ["placeholder", "test-fixture"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:packages/plugins/examples/plugin-orchestration-smoke-example/package.json",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/examples/plugin-orchestration-smoke-example/package.json",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/examples/plugin-orchestration-smoke-example/tsconfig.json",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/examples/plugin-orchestration-smoke-example/tsconfig.json",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/plugins/examples/plugin-orchestration-smoke-example/README.md",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:DashboardWidget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:IssuePanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:SettingsPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:DashboardWidget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:IssuePanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "function:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx:SettingsPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/ui/index.tsx",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/tests/plugin.spec.ts",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/worker.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/examples/plugin-orchestration-smoke-example/tests/plugin.spec.ts",
+      "target": "file:packages/plugins/examples/plugin-orchestration-smoke-example/src/manifest.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/plugins/paperclip-plugin-fake-sandbox/package.json",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/paperclip-plugin-fake-sandbox/package.json",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/paperclip-plugin-fake-sandbox/tsconfig.json",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/index.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/manifest.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/index.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/manifest.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/manifest.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/worker.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "target": "function:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts:runCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "target": "function:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts:createLeaseState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.test.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.test.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/manifest.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/worker.ts",
+      "target": "file:packages/plugins/paperclip-plugin-fake-sandbox/src/plugin.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/AGENTS.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/raw/plugin-boundaries.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/AGENTS.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/wiki/areas/knowledge.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/IDEA.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/AGENTS.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/agents/wiki-maintainer/AGENTS.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/fixtures/basic-root/AGENTS.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

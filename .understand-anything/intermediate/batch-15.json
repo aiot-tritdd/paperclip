@@ -1,0 +1,799 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/adapters/codex-local/src/server/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/codex-local/src/server/index.ts",
+      "summary": "Barrel entry point for the codex-local server adapter, re-exporting execute, skills, test, parse, and quota utilities along with a session codec definition.",
+      "tags": ["entry-point", "barrel", "service", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/parse.test.ts",
+      "type": "file",
+      "name": "parse.test.ts",
+      "filePath": "packages/adapters/codex-local/src/server/parse.test.ts",
+      "summary": "Unit tests for the codex-local parse module, verifying JSONL parsing, timezone-aware retry-time extraction, and transient upstream error detection.",
+      "tags": ["test", "utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "type": "file",
+      "name": "parse.ts",
+      "filePath": "packages/adapters/codex-local/src/server/parse.ts",
+      "summary": "Parses Codex CLI JSONL stdout output into structured events and implements timezone-aware retry-time extraction plus transient/unknown-session error classification.",
+      "tags": ["utility", "serialization", "service", "validation"],
+      "complexity": "complex",
+      "languageNotes": "Uses Intl.DateTimeFormat for wall-clock timezone arithmetic to determine retry-not-before timestamps from Codex quota error messages."
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/parse.ts:parseCodexJsonl",
+      "type": "function",
+      "name": "parseCodexJsonl",
+      "filePath": "packages/adapters/codex-local/src/server/parse.ts",
+      "lineRange": [14, 73],
+      "summary": "Splits a Codex CLI stdout string by newlines and parses each JSON line into typed event objects (message, tool_call, usage, error).",
+      "tags": ["utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/parse.ts:isCodexTransientUpstreamError",
+      "type": "function",
+      "name": "isCodexTransientUpstreamError",
+      "filePath": "packages/adapters/codex-local/src/server/parse.ts",
+      "lineRange": [248, 261],
+      "summary": "Determines whether a Codex error represents a transient upstream condition (rate limit, high demand, compaction) that should trigger a retry.",
+      "tags": ["utility", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/parse.ts:extractCodexRetryNotBefore",
+      "type": "function",
+      "name": "extractCodexRetryNotBefore",
+      "filePath": "packages/adapters/codex-local/src/server/parse.ts",
+      "lineRange": [237, 246],
+      "summary": "Extracts a retry-not-before Date from Codex error text by matching clock-time patterns and converting them to absolute timestamps.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/quota-spawn-error.test.ts",
+      "type": "file",
+      "name": "quota-spawn-error.test.ts",
+      "filePath": "packages/adapters/codex-local/src/server/quota-spawn-error.test.ts",
+      "summary": "Tests edge cases in quota.ts around child process spawn errors emitted on a microtask, ensuring quota fetching handles early process failures gracefully.",
+      "tags": ["test", "service", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "type": "file",
+      "name": "quota.ts",
+      "filePath": "packages/adapters/codex-local/src/server/quota.ts",
+      "summary": "Implements Codex quota fetching via both REST and RPC (JSON-RPC over a child process), reading auth credentials from disk and aggregating rate-limit windows for display.",
+      "tags": ["service", "api-handler", "utility"],
+      "complexity": "complex",
+      "languageNotes": "CodexRpcClient wraps a spawned codex child process using JSON-RPC over stdin/stdout with timeout-based pending request management."
+    },
+    {
+      "id": "class:packages/adapters/codex-local/src/server/quota.ts:CodexRpcClient",
+      "type": "class",
+      "name": "CodexRpcClient",
+      "filePath": "packages/adapters/codex-local/src/server/quota.ts",
+      "lineRange": [409, 512],
+      "summary": "JSON-RPC client that communicates with a spawned Codex process over stdin/stdout to fetch rate limits and account information.",
+      "tags": ["service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/quota.ts:getQuotaWindows",
+      "type": "function",
+      "name": "getQuotaWindows",
+      "filePath": "packages/adapters/codex-local/src/server/quota.ts",
+      "lineRange": [533, 563],
+      "summary": "Aggregates quota windows from both RPC and REST sources, collecting errors from each provider and returning combined usage data.",
+      "tags": ["service", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/quota.ts:fetchCodexRpcQuota",
+      "type": "function",
+      "name": "fetchCodexRpcQuota",
+      "filePath": "packages/adapters/codex-local/src/server/quota.ts",
+      "lineRange": [514, 526],
+      "summary": "Spawns a CodexRpcClient, initializes it, fetches rate limits and account data in parallel, maps the result, then shuts down the client.",
+      "tags": ["service", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/quota.ts:fetchCodexQuota",
+      "type": "function",
+      "name": "fetchCodexQuota",
+      "filePath": "packages/adapters/codex-local/src/server/quota.ts",
+      "lineRange": [226, 279],
+      "summary": "Fetches Codex usage quota via the REST API using the user's bearer token, returning structured usage windows.",
+      "tags": ["service", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/quota.ts:readCodexAuthInfo",
+      "type": "function",
+      "name": "readCodexAuthInfo",
+      "filePath": "packages/adapters/codex-local/src/server/quota.ts",
+      "lineRange": [110, 162],
+      "summary": "Reads and parses Codex auth credentials from disk (codex.json or auth.json), decoding JWT tokens to extract plan and email.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/skills.ts",
+      "type": "file",
+      "name": "skills.ts",
+      "filePath": "packages/adapters/codex-local/src/server/skills.ts",
+      "summary": "Manages Codex skill injection lifecycle: builds snapshots of available/desired skills, lists current skill state, and syncs skills into the Codex home directory.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/test.remote.test.ts",
+      "type": "file",
+      "name": "test.remote.test.ts",
+      "filePath": "packages/adapters/codex-local/src/server/test.remote.test.ts",
+      "summary": "Integration/remote tests for the codex-local testEnvironment function, exercising the full Codex hello-probe flow against a real Codex binary.",
+      "tags": ["test", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/server/test.ts",
+      "type": "file",
+      "name": "test.ts",
+      "filePath": "packages/adapters/codex-local/src/server/test.ts",
+      "summary": "Implements testEnvironment for the codex-local adapter, running a hello-probe against the Codex CLI to validate auth, binary availability, and execution capability.",
+      "tags": ["service", "utility", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/test.ts:testEnvironment",
+      "type": "function",
+      "name": "testEnvironment",
+      "filePath": "packages/adapters/codex-local/src/server/test.ts",
+      "lineRange": [157, 391],
+      "summary": "Runs a series of checks (binary presence, auth, workspace, hello-probe execution) to validate that the codex-local environment is properly configured.",
+      "tags": ["service", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/server/test.ts:prepareCodexHelloProbe",
+      "type": "function",
+      "name": "prepareCodexHelloProbe",
+      "filePath": "packages/adapters/codex-local/src/server/test.ts",
+      "lineRange": [64, 155],
+      "summary": "Prepares a lightweight Codex probe task — creating a managed home directory and temp workspace — to test that the Codex CLI can execute a trivial task.",
+      "tags": ["service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/ui/build-config.test.ts",
+      "type": "file",
+      "name": "build-config.test.ts",
+      "filePath": "packages/adapters/codex-local/src/ui/build-config.test.ts",
+      "summary": "Unit tests for buildCodexLocalConfig, verifying that form values from the adapter configuration UI are correctly parsed into a typed config object.",
+      "tags": ["test", "config", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/ui/build-config.ts",
+      "type": "file",
+      "name": "build-config.ts",
+      "filePath": "packages/adapters/codex-local/src/ui/build-config.ts",
+      "summary": "Parses raw UI form values for the codex-local adapter into a validated configuration object, handling env bindings, comma-separated args, and JSON overrides.",
+      "tags": ["config", "validation", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/ui/build-config.ts:buildCodexLocalConfig",
+      "type": "function",
+      "name": "buildCodexLocalConfig",
+      "filePath": "packages/adapters/codex-local/src/ui/build-config.ts",
+      "lineRange": [69, 106],
+      "summary": "Transforms raw adapter form values into a structured CodexLocalConfig, parsing env bindings, extra args, model selection, and JSON extra env.",
+      "tags": ["config", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/ui/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/codex-local/src/ui/index.ts",
+      "summary": "UI barrel for the codex-local adapter, re-exporting parseCodexStdoutLine and buildCodexLocalConfig as the public UI interface.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/ui/parse-stdout.test.ts",
+      "type": "file",
+      "name": "parse-stdout.test.ts",
+      "filePath": "packages/adapters/codex-local/src/ui/parse-stdout.test.ts",
+      "summary": "Unit tests for parseCodexStdoutLine, verifying parsing of message, tool-call, usage, and error events from Codex CLI stdout for UI rendering.",
+      "tags": ["test", "utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "type": "file",
+      "name": "parse-stdout.ts",
+      "filePath": "packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "summary": "Parses individual Codex CLI stdout JSON lines into richly-typed UI event objects covering messages, tool uses, file changes, token usage, and errors.",
+      "tags": ["utility", "serialization", "component"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/codex-local/src/ui/parse-stdout.ts:parseCodexStdoutLine",
+      "type": "function",
+      "name": "parseCodexStdoutLine",
+      "filePath": "packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "lineRange": [224, 299],
+      "summary": "Top-level dispatcher that parses a single Codex stdout JSON line into a typed UI event by delegating to specialized item parsers.",
+      "tags": ["utility", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:packages/adapters/codex-local/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/adapters/codex-local/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the codex-local adapter package, extending a root tsconfig with package-specific include paths.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/codex-local/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/adapters/codex-local/vitest.config.ts",
+      "summary": "Vitest configuration for the codex-local adapter package, setting up the test runner for unit and integration tests.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/adapters/cursor-cloud/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/adapters/cursor-cloud/package.json",
+      "summary": "Package manifest for the cursor-cloud adapter, declaring exports for server and CLI sub-paths, build scripts, and dependencies on the Cursor SDK.",
+      "tags": ["configuration", "build-system", "deployment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/cli/format-event.ts",
+      "type": "file",
+      "name": "format-event.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/cli/format-event.ts",
+      "summary": "Provides printCursorCloudEvent, a CLI utility that parses a raw Cursor Cloud stdout line and prints it to the terminal with picocolors-based color coding by event type.",
+      "tags": ["utility", "component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/cli/format-event.ts:printCursorCloudEvent",
+      "type": "function",
+      "name": "printCursorCloudEvent",
+      "filePath": "packages/adapters/cursor-cloud/src/cli/format-event.ts",
+      "lineRange": [4, 42],
+      "summary": "Parses a raw Cursor Cloud event line and pretty-prints it to stdout using color-coded output per event field (status, message, tool calls, errors).",
+      "tags": ["utility", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/cli/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/cli/index.ts",
+      "summary": "CLI barrel for the cursor-cloud adapter, re-exporting printCursorCloudEvent as the public CLI interface.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/index.ts",
+      "summary": "Public entry point for the cursor-cloud adapter package, exporting the adapter type identifier, display label, and agent configuration documentation.",
+      "tags": ["entry-point", "barrel", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/server/execute.test.ts",
+      "type": "file",
+      "name": "execute.test.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/server/execute.test.ts",
+      "summary": "Comprehensive unit tests for the cursor-cloud execute function, covering session matching, wake env construction, run lifecycle, and error handling with mocked SDK agents.",
+      "tags": ["test", "service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "type": "file",
+      "name": "execute.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/server/execute.ts",
+      "summary": "Core execution engine for the cursor-cloud adapter — builds wake environment, initializes a Cursor SDK agent session, streams run events back through the Paperclip log callback, and handles retry and error states.",
+      "tags": ["service", "api-handler", "event-handler"],
+      "complexity": "complex",
+      "languageNotes": "Uses the Cursor SDK's asyncDispose pattern and streams run events via an async iterator, translating them into Paperclip log events."
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/server/execute.ts:execute",
+      "type": "function",
+      "name": "execute",
+      "filePath": "packages/adapters/cursor-cloud/src/server/execute.ts",
+      "lineRange": [321, 607],
+      "summary": "Main execution handler for cursor-cloud adapter tasks: attaches or creates a Cursor SDK run, streams events, maps outcomes to Paperclip result objects, and manages session lifecycle.",
+      "tags": ["service", "api-handler", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/server/execute.ts:buildWakeEnv",
+      "type": "function",
+      "name": "buildWakeEnv",
+      "filePath": "packages/adapters/cursor-cloud/src/server/execute.ts",
+      "lineRange": [103, 152],
+      "summary": "Constructs the PAPERCLIP_* environment variable payload injected into the Cursor Cloud agent's shell environment at task wake time.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/server/execute.ts:readSession",
+      "type": "function",
+      "name": "readSession",
+      "filePath": "packages/adapters/cursor-cloud/src/server/execute.ts",
+      "lineRange": [203, 233],
+      "summary": "Deserializes and validates a raw session record from adapter parameters into a typed session object with repos, env type, and connection details.",
+      "tags": ["utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/server/index.ts",
+      "summary": "Server barrel for the cursor-cloud adapter, re-exporting execute, testEnvironment, sessionCodec and exposing getConfigSchema with the Zod-based configuration schema.",
+      "tags": ["entry-point", "barrel", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/server/index.ts:getConfigSchema",
+      "type": "function",
+      "name": "getConfigSchema",
+      "filePath": "packages/adapters/cursor-cloud/src/server/index.ts",
+      "lineRange": [7, 70],
+      "summary": "Returns the Zod schema describing the cursor-cloud adapter configuration fields (model, environment, instructions file, extra env, etc.).",
+      "tags": ["config", "validation", "type-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/server/session.test.ts",
+      "type": "file",
+      "name": "session.test.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/server/session.test.ts",
+      "summary": "Unit tests for the cursor-cloud sessionCodec, verifying normalization and deserialization of session data including repos arrays.",
+      "tags": ["test", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/server/session.ts",
+      "type": "file",
+      "name": "session.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/server/session.ts",
+      "summary": "Defines and exports sessionCodec for the cursor-cloud adapter, normalizing raw session payloads into typed session objects with repo URLs and connection metadata.",
+      "tags": ["serialization", "type-definition", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/server/test.ts",
+      "type": "file",
+      "name": "test.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/server/test.ts",
+      "summary": "Implements testEnvironment for the cursor-cloud adapter, validating the session config by checking for a valid repo URL and accessible Cursor Cloud credentials.",
+      "tags": ["service", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/server/test.ts:testEnvironment",
+      "type": "function",
+      "name": "testEnvironment",
+      "filePath": "packages/adapters/cursor-cloud/src/server/test.ts",
+      "lineRange": [33, 118],
+      "summary": "Validates cursor-cloud adapter environment configuration by checking for a non-empty session with a recognizable repo URL and verifying the Cursor Cloud API is reachable.",
+      "tags": ["service", "validation"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "target": "function:packages/adapters/codex-local/src/server/parse.ts:parseCodexJsonl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "target": "function:packages/adapters/codex-local/src/server/parse.ts:isCodexTransientUpstreamError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "target": "function:packages/adapters/codex-local/src/server/parse.ts:extractCodexRetryNotBefore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "target": "function:packages/adapters/codex-local/src/server/parse.ts:parseCodexJsonl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "target": "function:packages/adapters/codex-local/src/server/parse.ts:isCodexTransientUpstreamError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "target": "function:packages/adapters/codex-local/src/server/parse.ts:extractCodexRetryNotBefore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "class:packages/adapters/codex-local/src/server/quota.ts:CodexRpcClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:getQuotaWindows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:fetchCodexRpcQuota",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:fetchCodexQuota",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:readCodexAuthInfo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:getQuotaWindows",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:fetchCodexRpcQuota",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:fetchCodexQuota",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "target": "function:packages/adapters/codex-local/src/server/quota.ts:readCodexAuthInfo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/test.ts",
+      "target": "function:packages/adapters/codex-local/src/server/test.ts:testEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/test.ts",
+      "target": "function:packages/adapters/codex-local/src/server/test.ts:prepareCodexHelloProbe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/test.ts",
+      "target": "function:packages/adapters/codex-local/src/server/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/build-config.ts",
+      "target": "function:packages/adapters/codex-local/src/ui/build-config.ts:buildCodexLocalConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/build-config.ts",
+      "target": "function:packages/adapters/codex-local/src/ui/build-config.ts:buildCodexLocalConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/codex-local/src/ui/parse-stdout.ts:parseCodexStdoutLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/codex-local/src/ui/parse-stdout.ts:parseCodexStdoutLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/cli/format-event.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/cli/format-event.ts:printCursorCloudEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/cli/format-event.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/cli/format-event.ts:printCursorCloudEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/execute.ts:execute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/execute.ts:buildWakeEnv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/execute.ts:readSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/execute.ts:execute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/index.ts:getConfigSchema",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/index.ts:getConfigSchema",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/session.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/server/test.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/test.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/test.ts:testEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/test.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/server/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/parse.test.ts",
+      "target": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/quota-spawn-error.test.ts",
+      "target": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/test.remote.test.ts",
+      "target": "file:packages/adapters/codex-local/src/server/test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/build-config.test.ts",
+      "target": "file:packages/adapters/codex-local/src/ui/build-config.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/parse-stdout.test.ts",
+      "target": "file:packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/execute.test.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/session.test.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/server/session.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/adapters/codex-local/tsconfig.json",
+      "target": "file:packages/adapters/codex-local/src/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/codex-local/tsconfig.json",
+      "target": "file:packages/adapters/codex-local/src/ui/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/vitest.config.ts",
+      "target": "file:packages/adapters/codex-local/src/server/parse.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/cursor-cloud/package.json",
+      "target": "file:packages/adapters/cursor-cloud/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/cursor-cloud/package.json",
+      "target": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/index.ts",
+      "target": "file:packages/adapters/codex-local/src/ui/parse-stdout.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/ui/index.ts",
+      "target": "file:packages/adapters/codex-local/src/ui/build-config.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/index.ts",
+      "target": "file:packages/adapters/codex-local/src/server/parse.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/index.ts",
+      "target": "file:packages/adapters/codex-local/src/server/quota.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/index.ts",
+      "target": "file:packages/adapters/codex-local/src/server/skills.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/codex-local/src/server/index.ts",
+      "target": "file:packages/adapters/codex-local/src/server/test.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/cli/index.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/cli/format-event.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/server/execute.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/server/session.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/server/test.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

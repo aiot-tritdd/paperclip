@@ -1,0 +1,1634 @@
+{
+  "nodes": [
+    {
+      "id": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "type": "file",
+      "name": "ActiveAgentsPanel.tsx",
+      "filePath": "ui/src/components/ActiveAgentsPanel.tsx",
+      "summary": "Displays a live panel of actively running agent sessions, fetching heartbeat data and per-issue details to render run cards with recovery chip overlays.",
+      "tags": ["component", "dashboard", "agent", "real-time"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/ActiveAgentsPanel.tsx:ActiveAgentsPanel",
+      "type": "function",
+      "name": "ActiveAgentsPanel",
+      "filePath": "ui/src/components/ActiveAgentsPanel.tsx",
+      "lineRange": [66, 152],
+      "summary": "Main panel component that queries live runs, resolves associated issues, and renders run cards with configurable limits and grid layout.",
+      "tags": ["component", "dashboard", "real-time"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/ActiveAgentsPanel.tsx:RunCardRecoveryChip",
+      "type": "function",
+      "name": "RunCardRecoveryChip",
+      "filePath": "ui/src/components/ActiveAgentsPanel.tsx",
+      "lineRange": [19, 40],
+      "summary": "Renders a small recovery action chip on a run card that indicates the current recovery state and offers user interaction.",
+      "tags": ["component", "ui", "recovery"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/ActivityCharts.tsx",
+      "type": "file",
+      "name": "ActivityCharts.tsx",
+      "filePath": "ui/src/components/ActivityCharts.tsx",
+      "summary": "Provides a suite of dashboard chart components for visualizing agent run activity, issue priority distribution, issue status trends, and success rates over the last 14 days.",
+      "tags": ["component", "dashboard", "charts", "analytics"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/ActivityCharts.tsx:RunActivityChart",
+      "type": "function",
+      "name": "RunActivityChart",
+      "filePath": "ui/src/components/ActivityCharts.tsx",
+      "lineRange": [87, 122],
+      "summary": "Renders a stacked bar chart of agent run completions and failures grouped by day over the last 14 days.",
+      "tags": ["component", "chart", "analytics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ActivityCharts.tsx:PriorityChart",
+      "type": "function",
+      "name": "PriorityChart",
+      "filePath": "ui/src/components/ActivityCharts.tsx",
+      "lineRange": [133, 175],
+      "summary": "Renders a stacked bar chart showing issues created per day broken down by priority level.",
+      "tags": ["component", "chart", "analytics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ActivityCharts.tsx:IssueStatusChart",
+      "type": "function",
+      "name": "IssueStatusChart",
+      "filePath": "ui/src/components/ActivityCharts.tsx",
+      "lineRange": [197, 242],
+      "summary": "Renders a stacked bar chart of issues grouped by status category over the last 14 days.",
+      "tags": ["component", "chart", "analytics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ActivityCharts.tsx:SuccessRateChart",
+      "type": "function",
+      "name": "SuccessRateChart",
+      "filePath": "ui/src/components/ActivityCharts.tsx",
+      "lineRange": [244, 273],
+      "summary": "Renders a line chart of agent run success rate percentage over the last 14 days.",
+      "tags": ["component", "chart", "analytics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/ActivityRow.tsx",
+      "type": "file",
+      "name": "ActivityRow.tsx",
+      "filePath": "ui/src/components/ActivityRow.tsx",
+      "summary": "Renders a single activity feed row with actor identity, action verb, entity links, and relative timestamp for audit/activity stream display.",
+      "tags": ["component", "activity-feed", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ActivityRow.tsx:ActivityRow",
+      "type": "function",
+      "name": "ActivityRow",
+      "filePath": "ui/src/components/ActivityRow.tsx",
+      "lineRange": [31, 94],
+      "summary": "Renders an activity feed row, resolving agent or user identity and building entity links for the event target.",
+      "tags": ["component", "activity-feed"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/agent-config-defaults.ts",
+      "type": "file",
+      "name": "agent-config-defaults.ts",
+      "filePath": "ui/src/components/agent-config-defaults.ts",
+      "summary": "Exports the default initial values object used when creating a new agent configuration form.",
+      "tags": ["configuration", "utility", "agent"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/agent-config-primitives.tsx",
+      "type": "file",
+      "name": "agent-config-primitives.tsx",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "summary": "Provides a comprehensive set of low-level form primitives for agent configuration, including toggle fields, draft inputs, collapsible sections, and a file-path chooser.",
+      "tags": ["component", "form", "utility", "agent"],
+      "complexity": "complex",
+      "languageNotes": "Uses draft-commit pattern for all input primitives to buffer edits before committing to parent state."
+    },
+    {
+      "id": "function:ui/src/components/agent-config-primitives.tsx:ToggleWithNumber",
+      "type": "function",
+      "name": "ToggleWithNumber",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "lineRange": [140, 190],
+      "summary": "Combines a boolean toggle with an optional numeric input that appears when the toggle is enabled, used for rate-limit style settings.",
+      "tags": ["component", "form", "agent"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/agent-config-primitives.tsx:CollapsibleSection",
+      "type": "function",
+      "name": "CollapsibleSection",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "lineRange": [192, 220],
+      "summary": "Renders a collapsible form section with a title, optional icon, and open/close toggle for grouping related config fields.",
+      "tags": ["component", "form", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/components/agent-config-primitives.tsx:AutoExpandTextarea",
+      "type": "function",
+      "name": "AutoExpandTextarea",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "lineRange": [222, 260],
+      "summary": "A textarea that automatically expands its height to fit content, with a configurable minimum row count.",
+      "tags": ["component", "form", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/agent-config-primitives.tsx:DraftInput",
+      "type": "function",
+      "name": "DraftInput",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "lineRange": [266, 295],
+      "summary": "Text input that holds a local draft state and commits the value on blur or Enter, preventing excessive parent re-renders.",
+      "tags": ["component", "form", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/agent-config-primitives.tsx:DraftTextarea",
+      "type": "function",
+      "name": "DraftTextarea",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "lineRange": [300, 346],
+      "summary": "Auto-expanding textarea with draft-commit pattern, deferring value propagation until blur or keyboard commit.",
+      "tags": ["component", "form", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/agent-config-primitives.tsx:ChoosePathButton",
+      "type": "function",
+      "name": "ChoosePathButton",
+      "filePath": "ui/src/components/agent-config-primitives.tsx",
+      "lineRange": [388, 451],
+      "summary": "A button that opens a dialog for the user to select a file system path, returning the chosen path to the parent config form.",
+      "tags": ["component", "form", "file-picker"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/AgentActionButtons.tsx",
+      "type": "file",
+      "name": "AgentActionButtons.tsx",
+      "filePath": "ui/src/components/AgentActionButtons.tsx",
+      "summary": "Exports RunButton and PauseResumeButton UI components for triggering and pausing/resuming agent execution.",
+      "tags": ["component", "agent", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/AgentConfigForm.tsx",
+      "type": "file",
+      "name": "AgentConfigForm.tsx",
+      "filePath": "ui/src/components/AgentConfigForm.tsx",
+      "summary": "The main agent configuration form (1840 lines) encompassing all settings for creating and editing agents, including adapter selection, model picker, environment variables, and advanced options.",
+      "tags": ["component", "form", "agent", "configuration"],
+      "complexity": "complex",
+      "languageNotes": "Massive single-file form with 12 sub-components covering adapter configuration, model selection, and thinking effort settings."
+    },
+    {
+      "id": "function:ui/src/components/AgentConfigForm.tsx:AgentConfigForm",
+      "type": "function",
+      "name": "AgentConfigForm",
+      "filePath": "ui/src/components/AgentConfigForm.tsx",
+      "lineRange": [196, 1298],
+      "summary": "Core form component that manages the full agent creation/edit lifecycle, coordinating between adapter config, model selection, secrets, environments, and overlay state.",
+      "tags": ["component", "form", "agent"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/AgentConfigForm.tsx:ModelDropdown",
+      "type": "function",
+      "name": "ModelDropdown",
+      "filePath": "ui/src/components/AgentConfigForm.tsx",
+      "lineRange": [1410, 1727],
+      "summary": "Complex model selection dropdown that supports grouping by provider, custom model creation, model detection, and refresh, with an experimental badge for preview models.",
+      "tags": ["component", "form", "model-selection"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/AgentConfigForm.tsx:AdapterTypeDropdown",
+      "type": "function",
+      "name": "AdapterTypeDropdown",
+      "filePath": "ui/src/components/AgentConfigForm.tsx",
+      "lineRange": [1337, 1400],
+      "summary": "Dropdown for selecting the agent adapter type, filtering out disabled types and rendering descriptive labels.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/AgentConfigForm.tsx:CheapModelSection",
+      "type": "function",
+      "name": "CheapModelSection",
+      "filePath": "ui/src/components/AgentConfigForm.tsx",
+      "lineRange": [1729, 1793],
+      "summary": "Config section for enabling and selecting a cheaper secondary model for cost-reduction on less critical tasks.",
+      "tags": ["component", "form", "model-selection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/AgentIconPicker.tsx",
+      "type": "file",
+      "name": "AgentIconPicker.tsx",
+      "filePath": "ui/src/components/AgentIconPicker.tsx",
+      "summary": "Provides an icon picker popover for selecting a custom emoji/icon for an agent, along with a display component for the chosen icon.",
+      "tags": ["component", "ui", "agent"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/components/AgentIconPicker.tsx:AgentIconPicker",
+      "type": "function",
+      "name": "AgentIconPicker",
+      "filePath": "ui/src/components/AgentIconPicker.tsx",
+      "lineRange": [33, 80],
+      "summary": "Popover-based icon picker that renders available agent icons as a grid and calls back with the selected icon name.",
+      "tags": ["component", "ui", "picker"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/AgentProperties.tsx",
+      "type": "file",
+      "name": "AgentProperties.tsx",
+      "filePath": "ui/src/components/AgentProperties.tsx",
+      "summary": "Displays a key-value properties panel for an agent, including adapter type, model, status badge, and reports-to identity.",
+      "tags": ["component", "agent", "display"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/AgentProperties.tsx:AgentProperties",
+      "type": "function",
+      "name": "AgentProperties",
+      "filePath": "ui/src/components/AgentProperties.tsx",
+      "lineRange": [29, 96],
+      "summary": "Renders the agent property sidebar panel, fetching the agent's config and resolving adapter/model display names.",
+      "tags": ["component", "agent", "display"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/ApprovalCard.tsx",
+      "type": "file",
+      "name": "ApprovalCard.tsx",
+      "filePath": "ui/src/components/ApprovalCard.tsx",
+      "summary": "Renders a card for a human-approval request showing the requester identity, approval payload, timestamp, and current approval status.",
+      "tags": ["component", "approval", "card"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ApprovalCard.tsx:ApprovalCard",
+      "type": "function",
+      "name": "ApprovalCard",
+      "filePath": "ui/src/components/ApprovalCard.tsx",
+      "lineRange": [25, 152],
+      "summary": "Main approval card component that combines identity display, payload renderer, and status icon into a single tappable card layout.",
+      "tags": ["component", "approval"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/ApprovalPayload.tsx",
+      "type": "file",
+      "name": "ApprovalPayload.tsx",
+      "filePath": "ui/src/components/ApprovalPayload.tsx",
+      "summary": "Provides typed payload renderer components for various approval request types (hire-agent, CEO strategy, budget override, board approval) with a dispatch component.",
+      "tags": ["component", "approval", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/ApprovalPayload.tsx:BoardApprovalPayloadContent",
+      "type": "function",
+      "name": "BoardApprovalPayloadContent",
+      "filePath": "ui/src/components/ApprovalPayload.tsx",
+      "lineRange": [164, 230],
+      "summary": "Renders the detailed content of a board approval payload, including structured fields and skill list for complex approval flows.",
+      "tags": ["component", "approval", "board"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ApprovalPayload.tsx:ApprovalPayloadRenderer",
+      "type": "function",
+      "name": "ApprovalPayloadRenderer",
+      "filePath": "ui/src/components/ApprovalPayload.tsx",
+      "lineRange": [232, 247],
+      "summary": "Dispatcher component that selects the correct payload renderer based on the approval type field.",
+      "tags": ["component", "approval", "factory"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/AsciiArtAnimation.tsx",
+      "type": "file",
+      "name": "AsciiArtAnimation.tsx",
+      "filePath": "ui/src/components/AsciiArtAnimation.tsx",
+      "summary": "Canvas-based ASCII art animation component that renders animated sprite frames measured per character using a custom sprite sizing algorithm.",
+      "tags": ["component", "animation", "canvas", "ui"],
+      "complexity": "complex",
+      "languageNotes": "Uses canvas character measurement to compute sprite dimensions for pixel-perfect ASCII art rendering."
+    },
+    {
+      "id": "function:ui/src/components/AsciiArtAnimation.tsx:AsciiArtAnimation",
+      "type": "function",
+      "name": "AsciiArtAnimation",
+      "filePath": "ui/src/components/AsciiArtAnimation.tsx",
+      "lineRange": [62, 348],
+      "summary": "Core animation component managing RAF-based frame cycling, canvas sizing, and character-grid rendering for ASCII sprite sheets.",
+      "tags": ["component", "animation", "canvas"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/BillerSpendCard.tsx",
+      "type": "file",
+      "name": "BillerSpendCard.tsx",
+      "filePath": "ui/src/components/BillerSpendCard.tsx",
+      "summary": "Displays a spend summary card for a billing entity, showing current period usage and quota bar visualization.",
+      "tags": ["component", "billing", "dashboard"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/BillerSpendCard.tsx:BillerSpendCard",
+      "type": "function",
+      "name": "BillerSpendCard",
+      "filePath": "ui/src/components/BillerSpendCard.tsx",
+      "lineRange": [15, 145],
+      "summary": "Renders the biller spend card with usage breakdown, quota progress bar, and rollover date.",
+      "tags": ["component", "billing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/BreadcrumbBar.tsx",
+      "type": "file",
+      "name": "BreadcrumbBar.tsx",
+      "filePath": "ui/src/components/BreadcrumbBar.tsx",
+      "summary": "Top-of-page breadcrumb navigation bar that renders context-aware breadcrumbs from BreadcrumbContext and integrates sidebar toggle and plugin toolbar slots.",
+      "tags": ["component", "navigation", "layout"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/BreadcrumbBar.tsx:BreadcrumbBar",
+      "type": "function",
+      "name": "BreadcrumbBar",
+      "filePath": "ui/src/components/BreadcrumbBar.tsx",
+      "lineRange": [33, 121],
+      "summary": "Renders the breadcrumb header bar with responsive sidebar toggle, breadcrumb trail, and plugin-injected toolbar actions.",
+      "tags": ["component", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/BudgetIncidentCard.tsx",
+      "type": "file",
+      "name": "BudgetIncidentCard.tsx",
+      "filePath": "ui/src/components/BudgetIncidentCard.tsx",
+      "summary": "Displays and allows editing of a budget incident record, showing the spend amount, state label, and inline dollar input for resolution.",
+      "tags": ["component", "budget", "card"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/BudgetIncidentCard.tsx:BudgetIncidentCard",
+      "type": "function",
+      "name": "BudgetIncidentCard",
+      "filePath": "ui/src/components/BudgetIncidentCard.tsx",
+      "lineRange": [28, 115],
+      "summary": "Renders the budget incident card with editable spend amount, state label, and action buttons for resolving or dismissing the incident.",
+      "tags": ["component", "budget"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/BudgetPolicyCard.tsx",
+      "type": "file",
+      "name": "BudgetPolicyCard.tsx",
+      "filePath": "ui/src/components/BudgetPolicyCard.tsx",
+      "summary": "Renders a budget policy card with editable spend limit, window type selector, status indicator, and save/delete controls.",
+      "tags": ["component", "budget", "policy", "form"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/BudgetPolicyCard.tsx:BudgetPolicyCard",
+      "type": "function",
+      "name": "BudgetPolicyCard",
+      "filePath": "ui/src/components/BudgetPolicyCard.tsx",
+      "lineRange": [31, 219],
+      "summary": "Full budget policy card with inline editing for limit amount and window, optimistic save/delete mutations, and status-color feedback.",
+      "tags": ["component", "budget", "policy"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/BudgetSidebarMarker.tsx",
+      "type": "file",
+      "name": "BudgetSidebarMarker.tsx",
+      "filePath": "ui/src/components/BudgetSidebarMarker.tsx",
+      "summary": "Small sidebar indicator component that shows a budget status dot in the navigation sidebar for budget-aware pages.",
+      "tags": ["component", "budget", "navigation", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/ClaudeSubscriptionPanel.tsx",
+      "type": "file",
+      "name": "ClaudeSubscriptionPanel.tsx",
+      "filePath": "ui/src/components/ClaudeSubscriptionPanel.tsx",
+      "summary": "Displays Claude API subscription quota information organized by billing windows, with fill-level indicators and window period labels.",
+      "tags": ["component", "subscription", "billing", "claude"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ClaudeSubscriptionPanel.tsx:ClaudeSubscriptionPanel",
+      "type": "function",
+      "name": "ClaudeSubscriptionPanel",
+      "filePath": "ui/src/components/ClaudeSubscriptionPanel.tsx",
+      "lineRange": [54, 140],
+      "summary": "Renders the Claude subscription panel listing quota windows with usage bars and detail text for each window.",
+      "tags": ["component", "subscription", "billing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/CloudAccessGate.tsx",
+      "type": "file",
+      "name": "CloudAccessGate.tsx",
+      "filePath": "ui/src/components/CloudAccessGate.tsx",
+      "summary": "Gate component that restricts access to cloud-only features, rendering pending bootstrap or no-access pages when the user lacks required board permissions.",
+      "tags": ["component", "access-control", "gate"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/CloudAccessGate.tsx:CloudAccessGate",
+      "type": "function",
+      "name": "CloudAccessGate",
+      "filePath": "ui/src/components/CloudAccessGate.tsx",
+      "lineRange": [43, 114],
+      "summary": "Renders children when cloud access is granted, otherwise shows bootstrap-pending or no-access placeholder pages.",
+      "tags": ["component", "access-control"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/CodexSubscriptionPanel.tsx",
+      "type": "file",
+      "name": "CodexSubscriptionPanel.tsx",
+      "filePath": "ui/src/components/CodexSubscriptionPanel.tsx",
+      "summary": "Displays Codex subscription quota information with model-specific and aggregate quota rows, fill-level indicators, and window period details.",
+      "tags": ["component", "subscription", "billing", "codex"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/CodexSubscriptionPanel.tsx:CodexSubscriptionPanel",
+      "type": "function",
+      "name": "CodexSubscriptionPanel",
+      "filePath": "ui/src/components/CodexSubscriptionPanel.tsx",
+      "lineRange": [55, 115],
+      "summary": "Renders the Codex subscription panel with per-model and aggregate quota window rows.",
+      "tags": ["component", "subscription", "billing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/CommandPalette.tsx",
+      "type": "file",
+      "name": "CommandPalette.tsx",
+      "filePath": "ui/src/components/CommandPalette.tsx",
+      "summary": "Global command palette overlay that searches across issues, agents, and projects, providing keyboard-driven navigation shortcuts throughout the application.",
+      "tags": ["component", "navigation", "search", "keyboard"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/CommandPalette.tsx:CommandPalette",
+      "type": "function",
+      "name": "CommandPalette",
+      "filePath": "ui/src/components/CommandPalette.tsx",
+      "lineRange": [43, 292],
+      "summary": "Full command palette component with multi-entity search, keyboard navigation, recent items, and router-integrated navigation actions.",
+      "tags": ["component", "navigation", "search"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/CommentThread.tsx",
+      "type": "file",
+      "name": "CommentThread.tsx",
+      "filePath": "ui/src/components/CommentThread.tsx",
+      "summary": "The primary issue comment thread component (1085 lines) rendering comment cards, timeline events, approvals, and the compose editor with draft persistence and markdown support.",
+      "tags": ["component", "comments", "timeline", "markdown"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/CommentThread.tsx:CommentThread",
+      "type": "function",
+      "name": "CommentThread",
+      "filePath": "ui/src/components/CommentThread.tsx",
+      "lineRange": [723, 1085],
+      "summary": "Top-level comment thread component managing comment list, timeline events, compose box with draft persistence, and optimistic submission.",
+      "tags": ["component", "comments", "timeline"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/CommentThread.tsx:CommentCard",
+      "type": "function",
+      "name": "CommentCard",
+      "filePath": "ui/src/components/CommentThread.tsx",
+      "lineRange": [315, 471],
+      "summary": "Renders a single comment with author identity, markdown body, reactions, approval content, and copy/edit actions.",
+      "tags": ["component", "comments"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/CommentThread.tsx:TimelineEventCard",
+      "type": "function",
+      "name": "TimelineEventCard",
+      "filePath": "ui/src/components/CommentThread.tsx",
+      "lineRange": [479, 556],
+      "summary": "Renders a structured timeline event (status change, assignment, run status) with actor name, action label, and timestamp.",
+      "tags": ["component", "timeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/CompanyPatternIcon.tsx",
+      "type": "file",
+      "name": "CompanyPatternIcon.tsx",
+      "filePath": "ui/src/components/CompanyPatternIcon.tsx",
+      "summary": "Generates and renders a deterministic SVG pattern avatar for a company based on hashing the company name, producing a unique geometric data-URL image.",
+      "tags": ["component", "avatar", "canvas", "utility"],
+      "complexity": "complex",
+      "languageNotes": "Implements a custom mulberry32 PRNG seeded from the company name hash to produce deterministic color/pattern generation."
+    },
+    {
+      "id": "function:ui/src/components/CompanyPatternIcon.tsx:makeCompanyPatternDataUrl",
+      "type": "function",
+      "name": "makeCompanyPatternDataUrl",
+      "filePath": "ui/src/components/CompanyPatternIcon.tsx",
+      "lineRange": [93, 162],
+      "summary": "Generates a canvas-based pattern data URL unique to a company name using deterministic PRNG-driven geometry and color.",
+      "tags": ["utility", "canvas", "avatar"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/CompanyPatternIcon.tsx:CompanyPatternIcon",
+      "type": "function",
+      "name": "CompanyPatternIcon",
+      "filePath": "ui/src/components/CompanyPatternIcon.tsx",
+      "lineRange": [164, 217],
+      "summary": "React component that renders a company avatar using the generated pattern data URL, with memoization and fallback initial support.",
+      "tags": ["component", "avatar"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/CompanySettingsSidebar.tsx",
+      "type": "file",
+      "name": "CompanySettingsSidebar.tsx",
+      "filePath": "ui/src/components/CompanySettingsSidebar.tsx",
+      "summary": "Renders the company settings navigation sidebar with section nav items linking to members, billing, secrets, and other company-level settings pages.",
+      "tags": ["component", "navigation", "settings", "sidebar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/CompanySwitcher.tsx",
+      "type": "file",
+      "name": "CompanySwitcher.tsx",
+      "filePath": "ui/src/components/CompanySwitcher.tsx",
+      "summary": "Renders a list of available companies in the sidebar switcher with status dots, allowing the user to navigate between company workspaces.",
+      "tags": ["component", "navigation", "multi-tenant"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/components/CompanySwitcher.tsx:CompanySwitcher",
+      "type": "function",
+      "name": "CompanySwitcher",
+      "filePath": "ui/src/components/CompanySwitcher.tsx",
+      "lineRange": [33, 90],
+      "summary": "Renders a company list with per-company status indicators, linking each to its dashboard and highlighting the active workspace.",
+      "tags": ["component", "navigation", "multi-tenant"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "function:ui/src/components/ActiveAgentsPanel.tsx:ActiveAgentsPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "function:ui/src/components/ActiveAgentsPanel.tsx:RunCardRecoveryChip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "function:ui/src/components/ActiveAgentsPanel.tsx:ActiveAgentsPanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/api/heartbeats.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/adapters/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/api/issues.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/components/Identity.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/components/RunChatSurface.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActiveAgentsPanel.tsx",
+      "target": "file:ui/src/components/transcript/useLiveRunTranscripts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:RunActivityChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:PriorityChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:IssueStatusChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:SuccessRateChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:RunActivityChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:PriorityChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:IssueStatusChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ActivityCharts.tsx",
+      "target": "function:ui/src/components/ActivityCharts.tsx:SuccessRateChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "function:ui/src/components/ActivityRow.tsx:ActivityRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "function:ui/src/components/ActivityRow.tsx:ActivityRow",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "file:ui/src/components/Identity.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "file:ui/src/components/IssueReferenceActivitySummary.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "file:ui/src/lib/timeAgo.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "file:ui/src/lib/activity-format.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ActivityRow.tsx",
+      "target": "file:ui/src/lib/company-members.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:ToggleWithNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:CollapsibleSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:AutoExpandTextarea",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:DraftInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:DraftTextarea",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:ChoosePathButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:ToggleWithNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:CollapsibleSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:AutoExpandTextarea",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:DraftInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:DraftTextarea",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "function:ui/src/components/agent-config-primitives.tsx:ChoosePathButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/agent-config-primitives.tsx",
+      "target": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "function:ui/src/components/AgentConfigForm.tsx:AgentConfigForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "function:ui/src/components/AgentConfigForm.tsx:ModelDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "function:ui/src/components/AgentConfigForm.tsx:AdapterTypeDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "function:ui/src/components/AgentConfigForm.tsx:CheapModelSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "function:ui/src/components/AgentConfigForm.tsx:AgentConfigForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/api/environments.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/api/instanceSettings.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/api/secrets.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/api/assets.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/lib/model-utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/components/agent-config-defaults.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/adapters/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/components/MarkdownEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/components/OpenCodeLogoIcon.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/components/ReportsToPicker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/components/EnvVarEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/lib/legacy-agent-config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/adapters/metadata.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/adapters/use-disabled-adapters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/lib/agent-config-patch.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/adapters/use-adapter-capabilities.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentConfigForm.tsx",
+      "target": "file:ui/src/lib/acpx-model-filter.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentIconPicker.tsx",
+      "target": "function:ui/src/components/AgentIconPicker.tsx:AgentIconPicker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AgentIconPicker.tsx",
+      "target": "function:ui/src/components/AgentIconPicker.tsx:AgentIconPicker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/AgentIconPicker.tsx",
+      "target": "file:ui/src/lib/agent-icons.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "function:ui/src/components/AgentProperties.tsx:AgentProperties",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "function:ui/src/components/AgentProperties.tsx:AgentProperties",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/components/StatusBadge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/components/Identity.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AgentProperties.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ApprovalCard.tsx",
+      "target": "function:ui/src/components/ApprovalCard.tsx:ApprovalCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ApprovalCard.tsx",
+      "target": "function:ui/src/components/ApprovalCard.tsx:ApprovalCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ApprovalCard.tsx",
+      "target": "file:ui/src/components/Identity.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ApprovalCard.tsx",
+      "target": "file:ui/src/lib/timeAgo.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ApprovalPayload.tsx",
+      "target": "function:ui/src/components/ApprovalPayload.tsx:BoardApprovalPayloadContent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ApprovalPayload.tsx",
+      "target": "function:ui/src/components/ApprovalPayload.tsx:ApprovalPayloadRenderer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ApprovalPayload.tsx",
+      "target": "function:ui/src/components/ApprovalPayload.tsx:ApprovalPayloadRenderer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ApprovalPayload.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/AsciiArtAnimation.tsx",
+      "target": "function:ui/src/components/AsciiArtAnimation.tsx:AsciiArtAnimation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/AsciiArtAnimation.tsx",
+      "target": "function:ui/src/components/AsciiArtAnimation.tsx:AsciiArtAnimation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/BillerSpendCard.tsx",
+      "target": "function:ui/src/components/BillerSpendCard.tsx:BillerSpendCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/BillerSpendCard.tsx",
+      "target": "function:ui/src/components/BillerSpendCard.tsx:BillerSpendCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/BillerSpendCard.tsx",
+      "target": "file:ui/src/components/QuotaBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/BreadcrumbBar.tsx",
+      "target": "function:ui/src/components/BreadcrumbBar.tsx:BreadcrumbBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/BreadcrumbBar.tsx",
+      "target": "function:ui/src/components/BreadcrumbBar.tsx:BreadcrumbBar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/BreadcrumbBar.tsx",
+      "target": "file:ui/src/context/BreadcrumbContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/BreadcrumbBar.tsx",
+      "target": "file:ui/src/context/SidebarContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/BreadcrumbBar.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/BudgetIncidentCard.tsx",
+      "target": "function:ui/src/components/BudgetIncidentCard.tsx:BudgetIncidentCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/BudgetIncidentCard.tsx",
+      "target": "function:ui/src/components/BudgetIncidentCard.tsx:BudgetIncidentCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/BudgetIncidentCard.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/BudgetPolicyCard.tsx",
+      "target": "function:ui/src/components/BudgetPolicyCard.tsx:BudgetPolicyCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/BudgetPolicyCard.tsx",
+      "target": "function:ui/src/components/BudgetPolicyCard.tsx:BudgetPolicyCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/BudgetPolicyCard.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ClaudeSubscriptionPanel.tsx",
+      "target": "function:ui/src/components/ClaudeSubscriptionPanel.tsx:ClaudeSubscriptionPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ClaudeSubscriptionPanel.tsx",
+      "target": "function:ui/src/components/ClaudeSubscriptionPanel.tsx:ClaudeSubscriptionPanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CloudAccessGate.tsx",
+      "target": "function:ui/src/components/CloudAccessGate.tsx:CloudAccessGate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CloudAccessGate.tsx",
+      "target": "function:ui/src/components/CloudAccessGate.tsx:CloudAccessGate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CodexSubscriptionPanel.tsx",
+      "target": "function:ui/src/components/CodexSubscriptionPanel.tsx:CodexSubscriptionPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CodexSubscriptionPanel.tsx",
+      "target": "function:ui/src/components/CodexSubscriptionPanel.tsx:CodexSubscriptionPanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "function:ui/src/components/CommandPalette.tsx:CommandPalette",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "function:ui/src/components/CommandPalette.tsx:CommandPalette",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/context/SidebarContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/api/issues.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/api/projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/components/Identity.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommandPalette.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "function:ui/src/components/CommentThread.tsx:CommentThread",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "function:ui/src/components/CommentThread.tsx:CommentCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "function:ui/src/components/CommentThread.tsx:TimelineEventCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "function:ui/src/components/CommentThread.tsx:CommentThread",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/Identity.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/InlineEntitySelector.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/MarkdownBody.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/MarkdownEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/OutputFeedbackButtons.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/ApprovalCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/components/AgentIconPicker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/lib/assignees.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/lib/issue-timeline-events.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/lib/timeAgo.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CommentThread.tsx",
+      "target": "file:ui/src/lib/comment-submit-draft.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CompanyPatternIcon.tsx",
+      "target": "function:ui/src/components/CompanyPatternIcon.tsx:makeCompanyPatternDataUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CompanyPatternIcon.tsx",
+      "target": "function:ui/src/components/CompanyPatternIcon.tsx:CompanyPatternIcon",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CompanyPatternIcon.tsx",
+      "target": "function:ui/src/components/CompanyPatternIcon.tsx:CompanyPatternIcon",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CompanyPatternIcon.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CompanySettingsSidebar.tsx",
+      "target": "file:ui/src/components/SidebarNavItem.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/CompanySwitcher.tsx",
+      "target": "function:ui/src/components/CompanySwitcher.tsx:CompanySwitcher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/CompanySwitcher.tsx",
+      "target": "function:ui/src/components/CompanySwitcher.tsx:CompanySwitcher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/CompanySwitcher.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,1240 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/adapter-utils/src/execution-target.ts",
+      "type": "file",
+      "name": "execution-target.ts",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "summary": "Core adapter execution target module providing utilities to parse, configure, run processes, manage sandboxes, and proxy HTTP requests through the Paperclip bridge for both local and remote execution targets.",
+      "tags": ["service", "utility", "middleware", "adapter", "execution"],
+      "complexity": "complex",
+      "languageNotes": "Heavily function-oriented (44 functions, 0 classes), each function handles a specific facet of execution target lifecycle including process spawning, sandbox install probing, directory management, bridge proxying, and session identity."
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:runAdapterExecutionTargetProcess",
+      "type": "function",
+      "name": "runAdapterExecutionTargetProcess",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [397, 437],
+      "summary": "Spawns a process on the execution target (local or remote via SSH), wiring up the correct command runner based on target type.",
+      "tags": ["execution", "process-management", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:runAdapterExecutionTargetShellCommand",
+      "type": "function",
+      "name": "runAdapterExecutionTargetShellCommand",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [439, 533],
+      "summary": "Runs a shell command on the execution target and collects stdout/stderr, supporting both sandbox and remote execution modes.",
+      "tags": ["execution", "shell", "adapter"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:ensureSandboxCommandResolvable",
+      "type": "function",
+      "name": "ensureSandboxCommandResolvable",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [321, 381],
+      "summary": "Verifies a command is resolvable in the sandbox, running auto-install logic if the command is not found.",
+      "tags": ["validation", "sandbox", "installation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:maybeRunSandboxInstallCommand",
+      "type": "function",
+      "name": "maybeRunSandboxInstallCommand",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [549, 638],
+      "summary": "Conditionally runs a sandbox install command when a detection check indicates the runtime is not yet installed.",
+      "tags": ["sandbox", "installation", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:ensureAdapterExecutionTargetRuntimeCommandInstalled",
+      "type": "function",
+      "name": "ensureAdapterExecutionTargetRuntimeCommandInstalled",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [655, 738],
+      "summary": "Ensures the runtime command is installed on the execution target, running detection and install steps and emitting structured log events.",
+      "tags": ["execution", "installation", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:ensureAdapterExecutionTargetDirectory",
+      "type": "function",
+      "name": "ensureAdapterExecutionTargetDirectory",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [764, 810],
+      "summary": "Creates and validates a working directory on the execution target, supporting both local and remote paths.",
+      "tags": ["execution", "filesystem", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:parseAdapterExecutionTarget",
+      "type": "function",
+      "name": "parseAdapterExecutionTarget",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [845, 885],
+      "summary": "Parses a raw value into a typed AdapterExecutionTarget, branching on sandbox, remote, or SSH configuration.",
+      "tags": ["serialization", "validation", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:prepareAdapterExecutionTargetRuntime",
+      "type": "function",
+      "name": "prepareAdapterExecutionTargetRuntime",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [920, 991],
+      "summary": "Prepares the managed runtime for an execution target, dispatching to remote or command-based runtime preparation strategies.",
+      "tags": ["execution", "runtime", "adapter"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/execution-target.ts:startAdapterExecutionTargetPaperclipBridge",
+      "type": "function",
+      "name": "startAdapterExecutionTargetPaperclipBridge",
+      "filePath": "packages/adapter-utils/src/execution-target.ts",
+      "lineRange": [1051, 1196],
+      "summary": "Starts the Paperclip HTTP bridge that forwards API requests from a sandbox process back to the host Paperclip API server, managing lifecycle of bridge worker and server.",
+      "tags": ["middleware", "api-handler", "bridge"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapter-utils/src/index.ts",
+      "summary": "Barrel entry point for the adapter-utils package, re-exporting all public types, interfaces, constants, and functions from the package's sub-modules.",
+      "tags": ["barrel", "entry-point", "exports"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/log-redaction.ts",
+      "type": "file",
+      "name": "log-redaction.ts",
+      "filePath": "packages/adapter-utils/src/log-redaction.ts",
+      "summary": "Provides utilities to redact sensitive home-path user segments from log strings, arrays, objects, and transcript entries before they are exposed in logs.",
+      "tags": ["utility", "security", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/log-redaction.ts:redactHomePathUserSegmentsInValue",
+      "type": "function",
+      "name": "redactHomePathUserSegmentsInValue",
+      "filePath": "packages/adapter-utils/src/log-redaction.ts",
+      "lineRange": [45, 61],
+      "summary": "Recursively redacts home path user segments in strings, arrays, and plain objects.",
+      "tags": ["security", "utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/log-redaction.ts:redactTranscriptEntryPaths",
+      "type": "function",
+      "name": "redactTranscriptEntryPaths",
+      "filePath": "packages/adapter-utils/src/log-redaction.ts",
+      "lineRange": [63, 97],
+      "summary": "Sanitizes all path-containing fields within a TranscriptEntry, replacing home directory user segments with masked placeholders.",
+      "tags": ["security", "serialization", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/remote-execution-env.ts",
+      "type": "file",
+      "name": "remote-execution-env.ts",
+      "filePath": "packages/adapter-utils/src/remote-execution-env.ts",
+      "summary": "Sanitizes environment variable maps for remote execution by filtering to only include the identity keys needed for the remote session.",
+      "tags": ["utility", "security", "execution"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/remote-managed-runtime.ts",
+      "type": "file",
+      "name": "remote-managed-runtime.ts",
+      "filePath": "packages/adapter-utils/src/remote-managed-runtime.ts",
+      "summary": "Manages remote SSH execution session identity, matching, and workspace preparation including syncing directories to SSH and restoring after execution.",
+      "tags": ["service", "execution", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/remote-managed-runtime.ts:prepareRemoteManagedRuntime",
+      "type": "function",
+      "name": "prepareRemoteManagedRuntime",
+      "filePath": "packages/adapter-utils/src/remote-managed-runtime.ts",
+      "lineRange": [65, 133],
+      "summary": "Prepares the remote managed runtime by syncing workspace directories to SSH, capturing snapshots, and wiring restore callbacks.",
+      "tags": ["execution", "service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-callback-bridge.test.ts",
+      "type": "file",
+      "name": "sandbox-callback-bridge.test.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.test.ts",
+      "summary": "Integration and unit test suite for the sandbox callback bridge, covering queue client behavior, bridge server lifecycle, worker synchronization, and HTTP proxying.",
+      "tags": ["test", "sandbox", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "type": "file",
+      "name": "sandbox-callback-bridge.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "summary": "Implements the sandbox callback bridge infrastructure: a local HTTP proxy that lets sandboxed agent processes communicate with the host Paperclip server via file-system or command-managed queues.",
+      "tags": ["middleware", "api-handler", "sandbox"],
+      "complexity": "complex",
+      "languageNotes": "getSandboxCallbackBridgeServerSource (lines 1016-1183) generates self-contained Node.js server source code as a string, dynamically embedded into the bridge asset."
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:createFileSystemSandboxCallbackBridgeQueueClient",
+      "type": "function",
+      "name": "createFileSystemSandboxCallbackBridgeQueueClient",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "lineRange": [352, 451],
+      "summary": "Creates a file-system-backed queue client that reads and writes bridge request/response JSON files for sandboxed process communication.",
+      "tags": ["service", "middleware", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:createCommandManagedSandboxCallbackBridgeQueueClient",
+      "type": "function",
+      "name": "createCommandManagedSandboxCallbackBridgeQueueClient",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "lineRange": [453, 570],
+      "summary": "Creates a command-managed queue client that drives the sandbox bridge over a remote execution runner command channel.",
+      "tags": ["service", "middleware", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:startSandboxCallbackBridgeWorker",
+      "type": "function",
+      "name": "startSandboxCallbackBridgeWorker",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "lineRange": [589, 773],
+      "summary": "Starts the background bridge worker process that polls the request queue, dispatches HTTP calls to the host, and writes responses back.",
+      "tags": ["service", "middleware", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:syncSandboxCallbackBridgeEntrypoint",
+      "type": "function",
+      "name": "syncSandboxCallbackBridgeEntrypoint",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "lineRange": [775, 866],
+      "summary": "Syncs the generated bridge server script to the remote sandbox environment and ensures it is executable.",
+      "tags": ["service", "execution", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:startSandboxCallbackBridgeServer",
+      "type": "function",
+      "name": "startSandboxCallbackBridgeServer",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "lineRange": [868, 1014],
+      "summary": "Starts the HTTP bridge server inside the sandbox environment and manages its lifecycle including start, health-check, and stop.",
+      "tags": ["service", "api-handler", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:getSandboxCallbackBridgeServerSource",
+      "type": "function",
+      "name": "getSandboxCallbackBridgeServerSource",
+      "filePath": "packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "lineRange": [1016, 1183],
+      "summary": "Returns the self-contained Node.js source code for the bridge server that runs inside the sandbox, dynamically generated as a string.",
+      "tags": ["factory", "middleware", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-install-command.test.ts",
+      "type": "file",
+      "name": "sandbox-install-command.test.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-install-command.test.ts",
+      "summary": "Unit tests for buildSandboxNpmInstallCommand verifying correct npm install command string construction.",
+      "tags": ["test", "sandbox", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-install-command.ts",
+      "type": "file",
+      "name": "sandbox-install-command.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-install-command.ts",
+      "summary": "Provides a helper to build the npm install command string for sandbox initialization, with support for scoped registries.",
+      "tags": ["utility", "sandbox", "installation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-install-command.ts:buildSandboxNpmInstallCommand",
+      "type": "function",
+      "name": "buildSandboxNpmInstallCommand",
+      "filePath": "packages/adapter-utils/src/sandbox-install-command.ts",
+      "lineRange": [32, 46],
+      "summary": "Builds an npm install shell command string for a given package, supporting scoped registry overrides.",
+      "tags": ["utility", "sandbox", "installation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-managed-runtime.test.ts",
+      "type": "file",
+      "name": "sandbox-managed-runtime.test.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-managed-runtime.test.ts",
+      "summary": "Unit tests for sandbox managed runtime helpers covering directory mirroring, tarball creation, and workspace preparation.",
+      "tags": ["test", "sandbox", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "type": "file",
+      "name": "sandbox-managed-runtime.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "summary": "Manages sandbox execution runtime preparation, including workspace mirroring, tarball-based workspace transfer, and command-based runtime scaffolding.",
+      "tags": ["service", "execution", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-managed-runtime.ts:mirrorDirectory",
+      "type": "function",
+      "name": "mirrorDirectory",
+      "filePath": "packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "lineRange": [177, 224],
+      "summary": "Mirrors a local directory tree to a destination, applying include/exclude filters for selective workspace synchronization.",
+      "tags": ["execution", "filesystem", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/sandbox-managed-runtime.ts:prepareSandboxManagedRuntime",
+      "type": "function",
+      "name": "prepareSandboxManagedRuntime",
+      "filePath": "packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "lineRange": [240, 341],
+      "summary": "Orchestrates full preparation of a sandbox managed runtime including workspace mirroring, runtime command installation, and bridge asset setup.",
+      "tags": ["execution", "service", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/sandbox-shell.ts",
+      "type": "file",
+      "name": "sandbox-shell.ts",
+      "filePath": "packages/adapter-utils/src/sandbox-shell.ts",
+      "summary": "Tiny utility exporting functions to resolve and build shell command arguments used in sandbox execution contexts.",
+      "tags": ["utility", "sandbox", "shell"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/server-utils.test.ts",
+      "type": "file",
+      "name": "server-utils.test.ts",
+      "filePath": "packages/adapter-utils/src/server-utils.test.ts",
+      "summary": "Test suite for server-utils covering wake prompt rendering, environment variable shaping, skill snapshot building, and process management utilities.",
+      "tags": ["test", "utility", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/server-utils.ts",
+      "type": "file",
+      "name": "server-utils.ts",
+      "filePath": "packages/adapter-utils/src/server-utils.ts",
+      "summary": "Comprehensive server-side utility module for adapter runtime management, providing functions for wake payload rendering, environment building, skill management, process spawning, and command resolution.",
+      "tags": ["service", "utility", "execution"],
+      "complexity": "complex",
+      "languageNotes": "The largest file in the batch (2109 lines, 76 functions, 48 exports). Acts as the primary utility hub for adapter-server interaction."
+    },
+    {
+      "id": "function:packages/adapter-utils/src/server-utils.ts:renderPaperclipWakePrompt",
+      "type": "function",
+      "name": "renderPaperclipWakePrompt",
+      "filePath": "packages/adapter-utils/src/server-utils.ts",
+      "lineRange": [635, 852],
+      "summary": "Renders the full wake prompt string given to an agent at task start, composing context sections from issue data, continuation summaries, and workspace state.",
+      "tags": ["service", "utility", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/server-utils.ts:shapePaperclipWorkspaceEnvForExecution",
+      "type": "function",
+      "name": "shapePaperclipWorkspaceEnvForExecution",
+      "filePath": "packages/adapter-utils/src/server-utils.ts",
+      "lineRange": [951, 1022],
+      "summary": "Shapes the full workspace environment variable map for an agent execution, merging Paperclip env, user config, and inherited host environment.",
+      "tags": ["execution", "service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/server-utils.ts:buildPersistentSkillSnapshot",
+      "type": "function",
+      "name": "buildPersistentSkillSnapshot",
+      "filePath": "packages/adapter-utils/src/server-utils.ts",
+      "lineRange": [1384, 1484],
+      "summary": "Builds a persistent snapshot of installed Paperclip skills, capturing metadata, sync preferences, and content hashes for change detection.",
+      "tags": ["service", "utility", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/server-utils.ts:materializePaperclipSkillCopy",
+      "type": "function",
+      "name": "materializePaperclipSkillCopy",
+      "filePath": "packages/adapter-utils/src/server-utils.ts",
+      "lineRange": [1752, 1836],
+      "summary": "Materializes a versioned copy of a Paperclip skill directory, using a lock to prevent concurrent writes and creating symlinks for the adapter.",
+      "tags": ["service", "utility", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/server-utils.ts:runChildProcess",
+      "type": "function",
+      "name": "runChildProcess",
+      "filePath": "packages/adapter-utils/src/server-utils.ts",
+      "lineRange": [1898, 2109],
+      "summary": "Runs a child process, streaming stdout/stderr events and returning exit code, with support for timeout, signal handling, and log callbacks.",
+      "tags": ["execution", "service", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/session-compaction.ts",
+      "type": "file",
+      "name": "session-compaction.ts",
+      "filePath": "packages/adapter-utils/src/session-compaction.ts",
+      "summary": "Defines session compaction policies and resolution logic for deciding when and how to compact agent session transcripts based on configured thresholds.",
+      "tags": ["service", "data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/session-compaction.ts:resolveSessionCompactionPolicy",
+      "type": "function",
+      "name": "resolveSessionCompactionPolicy",
+      "filePath": "packages/adapter-utils/src/session-compaction.ts",
+      "lineRange": [158, 186],
+      "summary": "Resolves the final session compaction policy by merging adapter defaults with any operator or workspace-level overrides.",
+      "tags": ["service", "data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/ssh-fixture.test.ts",
+      "type": "file",
+      "name": "ssh-fixture.test.ts",
+      "filePath": "packages/adapter-utils/src/ssh-fixture.test.ts",
+      "summary": "Integration test suite for SSH execution using a real SSH environment lab fixture, covering workspace syncing, script execution, and directory management over SSH.",
+      "tags": ["test", "service", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/ssh.ts",
+      "type": "file",
+      "name": "ssh.ts",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "summary": "Implements SSH-based remote execution including command running, directory syncing, git workspace management, loopback port allocation, and SSH environment lab fixture management.",
+      "tags": ["service", "execution", "utility"],
+      "complexity": "complex",
+      "languageNotes": "Uses both exec and spawn-based SSH invocations; contains a self-contained SSH environment lab fixture (startSshEnvLabFixture) that spins up a Docker-based SSH server for testing."
+    },
+    {
+      "id": "function:packages/adapter-utils/src/ssh.ts:createSshCommandManagedRuntimeRunner",
+      "type": "function",
+      "name": "createSshCommandManagedRuntimeRunner",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "lineRange": [31, 108],
+      "summary": "Creates a command-managed runtime runner that executes commands over SSH, managing session identity and connection lifecycle.",
+      "tags": ["service", "execution", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/ssh.ts:syncDirectoryToSsh",
+      "type": "function",
+      "name": "syncDirectoryToSsh",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "lineRange": [1026, 1115],
+      "summary": "Syncs a local directory to a remote SSH host using git-based or rsync-style transfer, supporting incremental updates.",
+      "tags": ["execution", "service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/ssh.ts:syncDirectoryFromSsh",
+      "type": "function",
+      "name": "syncDirectoryFromSsh",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "lineRange": [1117, 1206],
+      "summary": "Syncs a directory from a remote SSH host back to local, restoring files changed during remote execution.",
+      "tags": ["execution", "service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/ssh.ts:prepareWorkspaceForSshExecution",
+      "type": "function",
+      "name": "prepareWorkspaceForSshExecution",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "lineRange": [1208, 1249],
+      "summary": "Prepares the remote workspace for SSH execution by syncing local directories to the SSH host and verifying readiness.",
+      "tags": ["execution", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/ssh.ts:restoreWorkspaceFromSshExecution",
+      "type": "function",
+      "name": "restoreWorkspaceFromSshExecution",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "lineRange": [1251, 1330],
+      "summary": "Restores the local workspace after SSH execution by syncing changed files back and applying merge logic for concurrent modifications.",
+      "tags": ["execution", "service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/ssh.ts:startSshEnvLabFixture",
+      "type": "function",
+      "name": "startSshEnvLabFixture",
+      "filePath": "packages/adapter-utils/src/ssh.ts",
+      "lineRange": [1373, 1504],
+      "summary": "Starts a Docker-based SSH environment lab fixture for integration testing, configuring SSH keys and launching a containerized SSH server.",
+      "tags": ["test", "service", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/adapter-utils/src/types.ts",
+      "summary": "Defines all shared TypeScript types and interfaces for the adapter-utils package including AdapterAgent, AdapterRuntime, execution contexts, skill models, session codecs, and configuration schemas.",
+      "tags": ["type-definition", "data-model", "configuration"],
+      "complexity": "complex",
+      "languageNotes": "Pure type-definition file with no runtime exports (457 lines, 0 functions). Acts as the canonical schema for all adapter interactions."
+    },
+    {
+      "id": "file:packages/adapter-utils/src/workspace-restore-merge.test.ts",
+      "type": "file",
+      "name": "workspace-restore-merge.test.ts",
+      "filePath": "packages/adapter-utils/src/workspace-restore-merge.test.ts",
+      "summary": "Unit tests for workspace-restore-merge verifying directory merge lock acquisition and snapshot-based merge behavior.",
+      "tags": ["test", "utility", "execution"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "type": "file",
+      "name": "workspace-restore-merge.ts",
+      "filePath": "packages/adapter-utils/src/workspace-restore-merge.ts",
+      "summary": "Implements safe workspace directory merge with snapshot-based conflict detection, lock management, and copy semantics for restoring execution artifacts.",
+      "tags": ["utility", "execution", "filesystem"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/workspace-restore-merge.ts:acquireDirectoryMergeLock",
+      "type": "function",
+      "name": "acquireDirectoryMergeLock",
+      "filePath": "packages/adapter-utils/src/workspace-restore-merge.ts",
+      "lineRange": [131, 160],
+      "summary": "Acquires an exclusive file-system merge lock for a directory, waiting with exponential backoff if the lock is held by an active process.",
+      "tags": ["utility", "execution", "filesystem"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/workspace-restore-merge.ts:mergeDirectoryWithBaseline",
+      "type": "function",
+      "name": "mergeDirectoryWithBaseline",
+      "filePath": "packages/adapter-utils/src/workspace-restore-merge.ts",
+      "lineRange": [214, 249],
+      "summary": "Merges a post-execution directory into the baseline workspace, applying only files changed relative to a snapshot and skipping unchanged entries.",
+      "tags": ["utility", "execution", "filesystem"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/adapter-utils/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/adapter-utils/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the adapter-utils package, extending the root tsconfig with package-specific source inclusion.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/adapters/acpx-local/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/adapters/acpx-local/package.json",
+      "summary": "Package manifest for the acpx-local adapter, defining dependencies, build scripts, and entry points for the local ACPX adapter CLI and server.",
+      "tags": ["configuration", "build-system", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/acpx-local/src/cli/format-event.test.ts",
+      "type": "file",
+      "name": "format-event.test.ts",
+      "filePath": "packages/adapters/acpx-local/src/cli/format-event.test.ts",
+      "summary": "Unit tests for the ACPX CLI event formatter, verifying terminal output for various stream event types including tool calls, results, and text.",
+      "tags": ["test", "utility", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/acpx-local/src/cli/format-event.ts",
+      "type": "file",
+      "name": "format-event.ts",
+      "filePath": "packages/adapters/acpx-local/src/cli/format-event.ts",
+      "summary": "Formats ACPX stream events for terminal display in the CLI, rendering tool calls, results, text deltas, and status lines with structured output.",
+      "tags": ["utility", "component", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/acpx-local/src/cli/format-event.ts:printAcpxStreamEvent",
+      "type": "function",
+      "name": "printAcpxStreamEvent",
+      "filePath": "packages/adapters/acpx-local/src/cli/format-event.ts",
+      "lineRange": [51, 121],
+      "summary": "Prints a formatted representation of an ACPX stream event to the given output stream, dispatching on event type to produce terminal-friendly output.",
+      "tags": ["utility", "component", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/acpx-local/src/cli/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/acpx-local/src/cli/index.ts",
+      "summary": "Barrel entry point for the ACPX local adapter CLI module, re-exporting the public CLI interface.",
+      "tags": ["barrel", "entry-point", "exports"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:runAdapterExecutionTargetProcess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:runAdapterExecutionTargetShellCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:ensureSandboxCommandResolvable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:maybeRunSandboxInstallCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:ensureAdapterExecutionTargetRuntimeCommandInstalled",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:ensureAdapterExecutionTargetDirectory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:parseAdapterExecutionTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:prepareAdapterExecutionTargetRuntime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:startAdapterExecutionTargetPaperclipBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:runAdapterExecutionTargetProcess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:runAdapterExecutionTargetShellCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:ensureSandboxCommandResolvable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:maybeRunSandboxInstallCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:ensureAdapterExecutionTargetRuntimeCommandInstalled",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:ensureAdapterExecutionTargetDirectory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:parseAdapterExecutionTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:prepareAdapterExecutionTargetRuntime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "function:packages/adapter-utils/src/execution-target.ts:startAdapterExecutionTargetPaperclipBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/log-redaction.ts",
+      "target": "function:packages/adapter-utils/src/log-redaction.ts:redactHomePathUserSegmentsInValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/log-redaction.ts",
+      "target": "function:packages/adapter-utils/src/log-redaction.ts:redactTranscriptEntryPaths",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/log-redaction.ts",
+      "target": "function:packages/adapter-utils/src/log-redaction.ts:redactHomePathUserSegmentsInValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/log-redaction.ts",
+      "target": "function:packages/adapter-utils/src/log-redaction.ts:redactTranscriptEntryPaths",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/remote-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/remote-managed-runtime.ts:prepareRemoteManagedRuntime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/remote-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/remote-managed-runtime.ts:prepareRemoteManagedRuntime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:createFileSystemSandboxCallbackBridgeQueueClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:createCommandManagedSandboxCallbackBridgeQueueClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:startSandboxCallbackBridgeWorker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:syncSandboxCallbackBridgeEntrypoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:startSandboxCallbackBridgeServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:getSandboxCallbackBridgeServerSource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:createFileSystemSandboxCallbackBridgeQueueClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:createCommandManagedSandboxCallbackBridgeQueueClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:startSandboxCallbackBridgeWorker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:syncSandboxCallbackBridgeEntrypoint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-callback-bridge.ts:startSandboxCallbackBridgeServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-install-command.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-install-command.ts:buildSandboxNpmInstallCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-install-command.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-install-command.ts:buildSandboxNpmInstallCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-managed-runtime.ts:mirrorDirectory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-managed-runtime.ts:prepareSandboxManagedRuntime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-managed-runtime.ts:mirrorDirectory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/sandbox-managed-runtime.ts:prepareSandboxManagedRuntime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:renderPaperclipWakePrompt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:shapePaperclipWorkspaceEnvForExecution",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:buildPersistentSkillSnapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:materializePaperclipSkillCopy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:runChildProcess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:renderPaperclipWakePrompt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:shapePaperclipWorkspaceEnvForExecution",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:buildPersistentSkillSnapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:materializePaperclipSkillCopy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.ts",
+      "target": "function:packages/adapter-utils/src/server-utils.ts:runChildProcess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/session-compaction.ts",
+      "target": "function:packages/adapter-utils/src/session-compaction.ts:resolveSessionCompactionPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/session-compaction.ts",
+      "target": "function:packages/adapter-utils/src/session-compaction.ts:resolveSessionCompactionPolicy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:createSshCommandManagedRuntimeRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:syncDirectoryToSsh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:syncDirectoryFromSsh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:prepareWorkspaceForSshExecution",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:restoreWorkspaceFromSshExecution",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:startSshEnvLabFixture",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:createSshCommandManagedRuntimeRunner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:syncDirectoryToSsh",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:syncDirectoryFromSsh",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:prepareWorkspaceForSshExecution",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:restoreWorkspaceFromSshExecution",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh.ts",
+      "target": "function:packages/adapter-utils/src/ssh.ts:startSshEnvLabFixture",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "target": "function:packages/adapter-utils/src/workspace-restore-merge.ts:acquireDirectoryMergeLock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "target": "function:packages/adapter-utils/src/workspace-restore-merge.ts:mergeDirectoryWithBaseline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "target": "function:packages/adapter-utils/src/workspace-restore-merge.ts:acquireDirectoryMergeLock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "target": "function:packages/adapter-utils/src/workspace-restore-merge.ts:mergeDirectoryWithBaseline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/acpx-local/src/cli/format-event.ts",
+      "target": "function:packages/adapters/acpx-local/src/cli/format-event.ts:printAcpxStreamEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/acpx-local/src/cli/format-event.ts",
+      "target": "function:packages/adapters/acpx-local/src/cli/format-event.ts:printAcpxStreamEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-callback-bridge.test.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-install-command.test.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-install-command.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/sandbox-managed-runtime.test.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/server-utils.test.ts",
+      "target": "file:packages/adapter-utils/src/server-utils.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/ssh-fixture.test.ts",
+      "target": "file:packages/adapter-utils/src/ssh.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/workspace-restore-merge.test.ts",
+      "target": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/acpx-local/src/cli/format-event.test.ts",
+      "target": "file:packages/adapters/acpx-local/src/cli/format-event.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/adapter-utils/tsconfig.json",
+      "target": "file:packages/adapter-utils/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/acpx-local/package.json",
+      "target": "file:packages/adapters/acpx-local/src/cli/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/index.ts",
+      "target": "file:packages/adapter-utils/src/execution-target.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/index.ts",
+      "target": "file:packages/adapter-utils/src/log-redaction.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/index.ts",
+      "target": "file:packages/adapter-utils/src/session-compaction.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/index.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/index.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-install-command.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/index.ts",
+      "target": "file:packages/adapter-utils/src/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-callback-bridge.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "file:packages/adapter-utils/src/remote-managed-runtime.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target.ts",
+      "target": "file:packages/adapter-utils/src/sandbox-managed-runtime.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/remote-managed-runtime.ts",
+      "target": "file:packages/adapter-utils/src/ssh.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapter-utils/src/remote-managed-runtime.ts",
+      "target": "file:packages/adapter-utils/src/workspace-restore-merge.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/acpx-local/src/cli/index.ts",
+      "target": "file:packages/adapters/acpx-local/src/cli/format-event.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

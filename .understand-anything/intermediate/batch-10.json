@@ -1,0 +1,493 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/deploy/environment-variables.md",
+      "type": "document",
+      "name": "environment-variables.md",
+      "filePath": "docs/deploy/environment-variables.md",
+      "summary": "Reference guide for all environment variables required to configure Paperclip, covering server configuration, secrets, agent runtime injection, and LLM provider API keys.",
+      "tags": ["documentation", "configuration", "deployment", "infrastructure", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/deploy/local-development.md",
+      "type": "document",
+      "name": "local-development.md",
+      "filePath": "docs/deploy/local-development.md",
+      "summary": "Step-by-step guide for setting up a local development environment for Paperclip, covering prerequisites, dev server startup, one-command bootstrap, bind presets, health checks, and data reset.",
+      "tags": ["documentation", "deployment", "development", "getting-started"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/deploy/overview.md",
+      "type": "document",
+      "name": "overview.md",
+      "filePath": "docs/deploy/overview.md",
+      "summary": "High-level overview of Paperclip deployment modes — local trusted, authenticated-private, and authenticated-public — with a comparison table and guidance on choosing the right mode.",
+      "tags": ["documentation", "deployment", "infrastructure", "overview"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/deploy/secrets.md",
+      "type": "document",
+      "name": "secrets.md",
+      "filePath": "docs/deploy/secrets.md",
+      "summary": "Comprehensive reference for Paperclip's secrets management system, covering custody boundaries, provider vaults (local encrypted, AWS, external), CLI setup, strict mode, backup/restore, and portable secret declarations across 22 sections.",
+      "tags": ["documentation", "security", "configuration", "infrastructure", "deployment"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/deploy/storage.md",
+      "type": "document",
+      "name": "storage.md",
+      "filePath": "docs/deploy/storage.md",
+      "summary": "Guide for configuring Paperclip file storage, describing both the default local-disk option and S3-compatible object storage with configuration details.",
+      "tags": ["documentation", "infrastructure", "configuration", "deployment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/deploy/tailscale-private-access.md",
+      "type": "document",
+      "name": "tailscale-private-access.md",
+      "filePath": "docs/deploy/tailscale-private-access.md",
+      "summary": "Tutorial for securing Paperclip behind a Tailscale private network, enabling authenticated private-mode access for teams without exposing the server to the public internet.",
+      "tags": ["documentation", "security", "infrastructure", "deployment", "networking"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:docs/docs.json",
+      "type": "config",
+      "name": "docs.json",
+      "filePath": "docs/docs.json",
+      "summary": "Mintlify documentation site configuration defining navigation structure, theme colors, branding (logo, favicon), topbar links, and social footer for the Paperclip documentation portal.",
+      "tags": ["configuration", "documentation", "build-system"],
+      "complexity": "moderate",
+      "languageNotes": "Mintlify docs.json schema drives automatic navigation and theming for the hosted documentation site."
+    },
+    {
+      "id": "document:docs/feedback-voting.md",
+      "type": "document",
+      "name": "feedback-voting.md",
+      "filePath": "docs/feedback-voting.md",
+      "summary": "Local data guide explaining how Paperclip's feedback voting system works, what gets stored, API endpoints for querying votes, export/zip functionality, sharing preferences, data lifecycle, and remote sync behavior.",
+      "tags": ["documentation", "api-schema", "data-pipeline", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/comments-and-communication.md",
+      "type": "document",
+      "name": "comments-and-communication.md",
+      "filePath": "docs/guides/agent-developer/comments-and-communication.md",
+      "summary": "Agent developer guide covering how agents post comments and communicate on tasks, including comment style conventions, @-mention rules for notifying users and other agents, and structured decision reporting.",
+      "tags": ["documentation", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/cost-reporting.md",
+      "type": "document",
+      "name": "cost-reporting.md",
+      "filePath": "docs/guides/agent-developer/cost-reporting.md",
+      "summary": "Guide for agent developers on reporting LLM and resource costs using the Cost Events API, with budget awareness behavior and best practices for accurate cost attribution.",
+      "tags": ["documentation", "api-handler", "development", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/handling-approvals.md",
+      "type": "document",
+      "name": "handling-approvals.md",
+      "filePath": "docs/guides/agent-developer/handling-approvals.md",
+      "summary": "Agent developer reference for navigating the approval workflow — requesting hires, CEO strategy approvals, plan approval cards, and how to respond after an approval is resolved or rejected.",
+      "tags": ["documentation", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/heartbeat-protocol.md",
+      "type": "document",
+      "name": "heartbeat-protocol.md",
+      "filePath": "docs/guides/agent-developer/heartbeat-protocol.md",
+      "summary": "Detailed specification of the 9-step agent heartbeat protocol — identity, approval follow-up, assignment polling, work selection, checkout, context gathering, execution, status update, and delegation — plus critical rules and liveness requirements.",
+      "tags": ["documentation", "api-handler", "development", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/how-agents-work.md",
+      "type": "document",
+      "name": "how-agents-work.md",
+      "filePath": "docs/guides/agent-developer/how-agents-work.md",
+      "summary": "Conceptual overview of the Paperclip agent execution model, covering how agents are invoked, their identity structure, session persistence, and the agent status lifecycle.",
+      "tags": ["documentation", "overview", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/task-workflow.md",
+      "type": "document",
+      "name": "task-workflow.md",
+      "filePath": "docs/guides/agent-developer/task-workflow.md",
+      "summary": "Comprehensive reference of agent task workflow patterns — checkout, work-and-update, blocked, delegation, confirmation, plan approval, and release — with a worked IC heartbeat example.",
+      "tags": ["documentation", "api-handler", "development", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/guides/agent-developer/writing-a-skill.md",
+      "type": "document",
+      "name": "writing-a-skill.md",
+      "filePath": "docs/guides/agent-developer/writing-a-skill.md",
+      "summary": "Guide for creating Paperclip skills — reusable prompt-injection packages — covering directory structure, SKILL.md format and frontmatter fields, runtime behavior, best practices, and skill injection mechanics.",
+      "tags": ["documentation", "development", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/activity-log.md",
+      "type": "document",
+      "name": "activity-log.md",
+      "filePath": "docs/guides/board-operator/activity-log.md",
+      "summary": "Board operator guide to the activity log, explaining what events are captured, how to view activity via the web UI and API, the activity record format, and using the log for debugging agent behavior.",
+      "tags": ["documentation", "monitoring", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/approvals.md",
+      "type": "document",
+      "name": "approvals.md",
+      "filePath": "docs/guides/board-operator/approvals.md",
+      "summary": "Board operator guide covering approval types (hire agent, CEO strategy), the approval workflow, how to review pending approvals, and board override powers for urgent situations.",
+      "tags": ["documentation", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/costs-and-budgets.md",
+      "type": "document",
+      "name": "costs-and-budgets.md",
+      "filePath": "docs/guides/board-operator/costs-and-budgets.md",
+      "summary": "Board operator reference for cost tracking, setting company-wide and per-agent budgets, budget enforcement behavior, viewing costs via dashboard and API, with best practices for cost management.",
+      "tags": ["documentation", "monitoring", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/creating-a-company.md",
+      "type": "document",
+      "name": "creating-a-company.md",
+      "filePath": "docs/guides/board-operator/creating-a-company.md",
+      "summary": "Step-by-step guide for board operators to bootstrap a new AI company in Paperclip, covering company creation, goal-setting, CEO agent creation, org chart structure, budget configuration, and launch.",
+      "tags": ["documentation", "getting-started", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/dashboard.md",
+      "type": "document",
+      "name": "dashboard.md",
+      "filePath": "docs/guides/board-operator/dashboard.md",
+      "summary": "Overview of the Paperclip board operator dashboard, describing the visible metrics and panels, how to use the dashboard for monitoring, key metrics to watch, and the Dashboard API endpoint.",
+      "tags": ["documentation", "monitoring", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/delegation.md",
+      "type": "document",
+      "name": "delegation.md",
+      "filePath": "docs/guides/board-operator/delegation.md",
+      "summary": "Board operator guide to the delegation lifecycle — how operators trigger delegation, what the CEO agent does automatically, common delegation patterns (flat, three-level, hire-on-demand hierarchies), and troubleshooting tips.",
+      "tags": ["documentation", "api-handler", "development", "overview"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/guides/board-operator/execution-workspaces-and-runtime-services.md",
+      "type": "document",
+      "name": "execution-workspaces-and-runtime-services.md",
+      "filePath": "docs/guides/board-operator/execution-workspaces-and-runtime-services.md",
+      "summary": "Technical reference for execution workspaces and runtime services in Paperclip, covering project runtime configuration, manual control, workspace inheritance, lifecycle management, and resolved workspace logic during heartbeat runs.",
+      "tags": ["documentation", "infrastructure", "development", "data-pipeline"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/importing-and-exporting.md",
+      "type": "document",
+      "name": "importing-and-exporting.md",
+      "filePath": "docs/guides/board-operator/importing-and-exporting.md",
+      "summary": "Comprehensive guide for importing and exporting Paperclip companies, covering the package format, export options, import collision strategies, interactive selection, common CLI workflows, API endpoints, and GitHub-sourced imports.",
+      "tags": ["documentation", "api-handler", "development", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/guides/board-operator/managing-agents.md",
+      "type": "document",
+      "name": "managing-agents.md",
+      "filePath": "docs/guides/board-operator/managing-agents.md",
+      "summary": "Board operator reference for managing AI agents throughout their lifecycle — agent states, creating agents manually and via governance hiring, configuration, pausing/resuming, and termination.",
+      "tags": ["documentation", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/board-operator/managing-tasks.md",
+      "type": "document",
+      "name": "managing-tasks.md",
+      "filePath": "docs/guides/board-operator/managing-tasks.md",
+      "summary": "Board operator guide to task management in Paperclip, covering issue creation, task hierarchy, work assignment, the status lifecycle, and monitoring task progress.",
+      "tags": ["documentation", "api-handler", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:docs/docs.json",
+      "type": "config",
+      "name": "docs.json",
+      "filePath": "docs/docs.json",
+      "summary": "Mintlify documentation site configuration defining navigation structure, theme colors, branding (logo, favicon), topbar links, and social footer for the Paperclip documentation portal.",
+      "tags": ["configuration", "documentation", "build-system"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/deploy/environment-variables.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/deploy/local-development.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/deploy/overview.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/deploy/secrets.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/deploy/storage.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/deploy/tailscale-private-access.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/feedback-voting.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/comments-and-communication.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/cost-reporting.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/handling-approvals.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/heartbeat-protocol.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/how-agents-work.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/task-workflow.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/agent-developer/writing-a-skill.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/activity-log.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/approvals.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/costs-and-budgets.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/creating-a-company.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/dashboard.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/delegation.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/execution-workspaces-and-runtime-services.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/importing-and-exporting.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/managing-agents.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:docs/docs.json",
+      "target": "document:docs/guides/board-operator/managing-tasks.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:docs/deploy/overview.md",
+      "target": "document:docs/deploy/local-development.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/deploy/overview.md",
+      "target": "document:docs/deploy/tailscale-private-access.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/deploy/secrets.md",
+      "target": "document:docs/deploy/environment-variables.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/agent-developer/heartbeat-protocol.md",
+      "target": "document:docs/guides/agent-developer/task-workflow.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/agent-developer/heartbeat-protocol.md",
+      "target": "document:docs/guides/agent-developer/handling-approvals.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/agent-developer/how-agents-work.md",
+      "target": "document:docs/guides/agent-developer/heartbeat-protocol.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/agent-developer/cost-reporting.md",
+      "target": "document:docs/guides/board-operator/costs-and-budgets.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/agent-developer/handling-approvals.md",
+      "target": "document:docs/guides/board-operator/approvals.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/board-operator/creating-a-company.md",
+      "target": "document:docs/guides/board-operator/managing-agents.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/board-operator/creating-a-company.md",
+      "target": "document:docs/guides/board-operator/managing-tasks.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/board-operator/delegation.md",
+      "target": "document:docs/guides/board-operator/managing-agents.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/board-operator/importing-and-exporting.md",
+      "target": "document:docs/guides/board-operator/creating-a-company.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

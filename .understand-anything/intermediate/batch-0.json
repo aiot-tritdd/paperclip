@@ -1,0 +1,312 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/company-creator/references/companies-spec.md",
+      "type": "document",
+      "name": "companies-spec.md",
+      "filePath": ".agents/skills/company-creator/references/companies-spec.md",
+      "summary": "Formal specification for the agent company package format, covering directory layout, frontmatter fields, and required sections for COMPANY.md, AGENTS.md, TEAM.md, PROJECT.md, and TASK.md files.",
+      "tags": ["documentation", "schema-definition", "configuration", "agent-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/company-creator/references/example-company.md",
+      "type": "document",
+      "name": "example-company.md",
+      "filePath": ".agents/skills/company-creator/references/example-company.md",
+      "summary": "Worked example of a complete agent company package showing directory structure and content for COMPANY.md, multiple AGENTS.md files (CEO, CTO, engineer roles), TEAM.md, PROJECT.md, TASK.md, and a skill with an external reference.",
+      "tags": ["documentation", "example", "agent-system", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/company-creator/references/from-repo-guide.md",
+      "type": "document",
+      "name": "from-repo-guide.md",
+      "filePath": ".agents/skills/company-creator/references/from-repo-guide.md",
+      "summary": "Guide for generating an agent company package from an existing code repository, covering analysis steps, handling pre-existing skills and agent configurations, and common repo pattern templates for CLI, library, full-app, and skills-collection projects.",
+      "tags": ["documentation", "agent-system", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/company-creator/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/company-creator/SKILL.md",
+      "summary": "Agent skill definition for the Company Creator, which interviews users and generates a fully structured Paperclip agent company package either from scratch or from an existing repository, with detailed steps for gathering context, generating files, and handling .paperclip.yaml adapter rules.",
+      "tags": ["documentation", "agent-system", "configuration", "entry-point"],
+      "complexity": "complex",
+      "languageNotes": "References companion reference files companies-spec.md, example-company.md, and from-repo-guide.md as input to the generation process."
+    },
+    {
+      "id": "document:.agents/skills/create-agent-adapter/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/create-agent-adapter/SKILL.md",
+      "summary": "Comprehensive developer guide for creating a new Paperclip agent adapter, covering architecture overview, shared type interfaces from @paperclipai/adapter-utils, step-by-step module creation (server, UI, CLI), registration checklists, session management, security considerations, and a minimal adapter checklist.",
+      "tags": ["documentation", "infrastructure", "agent-system", "api-schema"],
+      "complexity": "complex",
+      "languageNotes": "Covers the three-layer adapter structure (server/execute.ts, ui/parse-stdout.ts, cli/format-event.ts) and the registration pattern across server, UI, and CLI registries."
+    },
+    {
+      "id": "document:.agents/skills/deal-with-security-advisory/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/deal-with-security-advisory/SKILL.md",
+      "summary": "Step-by-step agent skill for handling security vulnerability disclosures confidentially, including fetching advisory details, creating a temporary private fork, developing the fix, coordinating with reporters, requesting a CVE, and publishing the fix and advisory simultaneously.",
+      "tags": ["documentation", "security", "agent-system", "deployment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/doc-maintenance/references/audit-checklist.md",
+      "type": "document",
+      "name": "audit-checklist.md",
+      "filePath": ".agents/skills/doc-maintenance/references/audit-checklist.md",
+      "summary": "Structured audit checklist used by the doc-maintenance agent to verify that README.md, doc/SPEC.md, and doc/PRODUCT.md remain accurate and complete after code changes.",
+      "tags": ["documentation", "development", "agent-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/doc-maintenance/references/section-map.md",
+      "type": "document",
+      "name": "section-map.md",
+      "filePath": ".agents/skills/doc-maintenance/references/section-map.md",
+      "summary": "Mapping document that records which sections of documentation correspond to which parts of the codebase, used by the doc-maintenance agent to target precise edits.",
+      "tags": ["documentation", "agent-system", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/doc-maintenance/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/doc-maintenance/SKILL.md",
+      "summary": "Agent skill for keeping project documentation synchronized with code changes, with a seven-step workflow covering change detection, classification, summarization, per-document auditing, branch creation with minimal edits, PR opening, and cursor update.",
+      "tags": ["documentation", "agent-system", "ci-cd", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/pr-report/assets/html-report-starter.html",
+      "type": "file",
+      "name": "html-report-starter.html",
+      "filePath": ".agents/skills/pr-report/assets/html-report-starter.html",
+      "summary": "Starter HTML template for the PR Report skill providing a pre-styled, self-contained single-page report layout with dark/light theme support, typography, color tokens, and placeholder sections for agents to fill in PR analysis content.",
+      "tags": ["markup", "ui-component", "agent-system", "documentation"],
+      "complexity": "complex",
+      "languageNotes": "Self-contained HTML with embedded CSS and minimal JavaScript; designed to be populated by agents generating PR analysis reports."
+    },
+    {
+      "id": "document:.agents/skills/pr-report/references/style-guide.md",
+      "type": "document",
+      "name": "style-guide.md",
+      "filePath": ".agents/skills/pr-report/references/style-guide.md",
+      "summary": "Design style guide for PR report artifacts, specifying visual direction, typography scale, layout conventions, color palette, useful UI elements, motion guidance, and content presentation rules that agents must follow when generating HTML reports.",
+      "tags": ["documentation", "design", "agent-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/pr-report/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/pr-report/SKILL.md",
+      "summary": "Agent skill for performing deep pull request reviews and producing a styled HTML artifact, with an eight-step workflow covering target framing, system mental-model building, maintainer-perspective review, objection classification, external comparison, actionable recommendations, artifact construction, and pre-handoff verification.",
+      "tags": ["documentation", "agent-system", "ci-cd", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/prcheckloop/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/prcheckloop/SKILL.md",
+      "summary": "Agent skill for monitoring and fixing GitHub Actions CI checks on a pull request in a loop, tracking head SHAs, waiting for checks to run, investigating and fixing failures, pushing fixes, and escalating unresolvable blockers.",
+      "tags": ["documentation", "ci-cd", "agent-system", "development"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/release-changelog/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/release-changelog/SKILL.md",
+      "summary": "Agent skill for generating structured release changelogs using a calver versioning model, with steps for idempotency checking, stable range determination, raw input gathering, breaking-change detection, user-facing categorization with contributor attribution, and final file writing.",
+      "tags": ["documentation", "agent-system", "ci-cd", "deployment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/release/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/release/SKILL.md",
+      "summary": "End-to-end release coordination skill for Paperclip, guiding an agent through candidate selection, changelog drafting, SHA verification, canary validation and smoke testing, stable publication to npm, Docker, and GitHub Releases, plus failure handling and output summary.",
+      "tags": ["documentation", "agent-system", "deployment", "ci-cd"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.claude/skills/design-guide/references/component-index.md",
+      "type": "document",
+      "name": "component-index.md",
+      "filePath": ".claude/skills/design-guide/references/component-index.md",
+      "summary": "Comprehensive index of all Paperclip UI components covering shadcn/ui primitives, custom components (StatusBadge, EntityRow, MetricCard, etc.), layout components, dialog and form components, agent configuration components, and utility hooks with usage examples for each.",
+      "tags": ["documentation", "component", "design", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.claude/skills/design-guide/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".claude/skills/design-guide/SKILL.md",
+      "summary": "Paperclip frontend design guide for Claude Code, specifying design principles, tech stack, design tokens (colors, radius, shadows), typography scale, status and priority systems, component hierarchy rules, composition patterns, interactive patterns, layout system, and the /design-guide showcase page conventions.",
+      "tags": ["documentation", "design", "configuration", "component"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.claude/skills/company-creator",
+      "type": "file",
+      "name": "company-creator",
+      "filePath": ".claude/skills/company-creator",
+      "summary": "Symlink or stub entry pointing to the company-creator skill for use by the Claude Code harness.",
+      "tags": ["configuration", "agent-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.claude/skills/paperclip",
+      "type": "file",
+      "name": "paperclip",
+      "filePath": ".claude/skills/paperclip",
+      "summary": "Symlink or stub entry pointing to the Paperclip skill for use by the Claude Code harness.",
+      "tags": ["configuration", "agent-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.dockerignore",
+      "type": "file",
+      "name": ".dockerignore",
+      "filePath": ".dockerignore",
+      "summary": "Docker build context exclusion list preventing node_modules, local environment files, and development artifacts from being copied into the Docker image.",
+      "tags": ["configuration", "containerization", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": ".env.example",
+      "summary": "Example environment variable template documenting required runtime configuration keys: DATABASE_URL, PORT, SERVE_UI, and BETTER_AUTH_SECRET.",
+      "tags": ["configuration", "infrastructure", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.github/CODEOWNERS",
+      "type": "file",
+      "name": "CODEOWNERS",
+      "filePath": ".github/CODEOWNERS",
+      "summary": "GitHub CODEOWNERS file assigning code review ownership responsibilities to specific teams or individuals for different parts of the repository.",
+      "tags": ["configuration", "development", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.github/PULL_REQUEST_TEMPLATE.md",
+      "type": "document",
+      "name": "PULL_REQUEST_TEMPLATE.md",
+      "filePath": ".github/PULL_REQUEST_TEMPLATE.md",
+      "summary": "GitHub pull request template enforcing a structured format covering thinking path, what changed, verification steps, risk assessment, model used, and a contributor checklist.",
+      "tags": ["documentation", "development", "ci-cd"],
+      "complexity": "simple"
+    },
+    {
+      "id": "pipeline:.github/workflows/docker.yml",
+      "type": "pipeline",
+      "name": "docker.yml",
+      "filePath": ".github/workflows/docker.yml",
+      "summary": "GitHub Actions workflow that builds a multi-platform Docker image (linux/amd64 and linux/arm64) and pushes it to GitHub Container Registry (ghcr.io) on every push to master or version tag.",
+      "tags": ["ci-cd", "containerization", "deployment", "infrastructure"],
+      "complexity": "simple",
+      "languageNotes": "Uses docker/build-push-action with GHA layer caching and automatic semver/SHA tagging via docker/metadata-action."
+    },
+    {
+      "id": "pipeline:.github/workflows/e2e.yml",
+      "type": "pipeline",
+      "name": "e2e.yml",
+      "filePath": ".github/workflows/e2e.yml",
+      "summary": "GitHub Actions workflow for manually-triggered end-to-end tests using Playwright and Chromium, with an option to skip LLM-dependent assertions and automatic artifact upload of test results.",
+      "tags": ["ci-cd", "test", "deployment"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/company-creator/SKILL.md",
+      "target": "document:.agents/skills/company-creator/references/companies-spec.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/company-creator/SKILL.md",
+      "target": "document:.agents/skills/company-creator/references/example-company.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/company-creator/SKILL.md",
+      "target": "document:.agents/skills/company-creator/references/from-repo-guide.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/doc-maintenance/SKILL.md",
+      "target": "document:.agents/skills/doc-maintenance/references/audit-checklist.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/doc-maintenance/SKILL.md",
+      "target": "document:.agents/skills/doc-maintenance/references/section-map.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/pr-report/SKILL.md",
+      "target": "document:.agents/skills/pr-report/references/style-guide.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/pr-report/SKILL.md",
+      "target": "file:.agents/skills/pr-report/assets/html-report-starter.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.claude/skills/design-guide/SKILL.md",
+      "target": "document:.claude/skills/design-guide/references/component-index.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:.claude/skills/company-creator",
+      "target": "document:.agents/skills/company-creator/SKILL.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/release/SKILL.md",
+      "target": "document:.agents/skills/release-changelog/SKILL.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "pipeline:.github/workflows/docker.yml",
+      "target": "file:.dockerignore",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

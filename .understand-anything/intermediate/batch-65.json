@@ -1,0 +1,956 @@
+{
+  "nodes": [
+    {
+      "id": "file:ui/src/adapters/acpx-local/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/acpx-local/index.ts",
+      "summary": "Adapter entry point that defines and exports the ACPX local UI adapter object, wiring together its type identifier, config fields component, and schema configuration.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "file",
+      "name": "adapter-display-registry.ts",
+      "filePath": "ui/src/adapters/adapter-display-registry.ts",
+      "summary": "Central registry that maps adapter type identifiers to their display metadata (labels, icons, descriptions) and exports query helpers for looking up adapter display information.",
+      "tags": ["registry", "utility", "adapter", "display"],
+      "complexity": "moderate",
+      "languageNotes": "No imports — pure data registry with only internal function dependencies."
+    },
+    {
+      "id": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterLabel",
+      "type": "function",
+      "name": "getAdapterLabel",
+      "filePath": "ui/src/adapters/adapter-display-registry.ts",
+      "lineRange": [143, 146],
+      "summary": "Returns a human-readable display label for an adapter type by combining humanized type name with a category suffix.",
+      "tags": ["utility", "display", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterLabels",
+      "type": "function",
+      "name": "getAdapterLabels",
+      "filePath": "ui/src/adapters/adapter-display-registry.ts",
+      "lineRange": [148, 154],
+      "summary": "Returns a map of all adapter type identifiers to their display labels for use in selection UIs.",
+      "tags": ["utility", "display", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterDisplay",
+      "type": "function",
+      "name": "getAdapterDisplay",
+      "filePath": "ui/src/adapters/adapter-display-registry.ts",
+      "lineRange": [156, 167],
+      "summary": "Retrieves the full display descriptor for a given adapter type including icon, label, description, and enabled state.",
+      "tags": ["utility", "display", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/adapter-display-registry.ts:isKnownAdapterType",
+      "type": "function",
+      "name": "isKnownAdapterType",
+      "filePath": "ui/src/adapters/adapter-display-registry.ts",
+      "lineRange": [169, 171],
+      "summary": "Type guard that checks whether a string corresponds to a registered adapter type in the display registry.",
+      "tags": ["utility", "validation", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/claude-local/config-fields.tsx",
+      "summary": "Defines the React form components for configuring a Claude local adapter, including standard config fields (model selection, instructions file path) and an advanced fields panel (API key, context size settings).",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/adapters/claude-local/config-fields.tsx:ClaudeLocalConfigFields",
+      "type": "function",
+      "name": "ClaudeLocalConfigFields",
+      "filePath": "ui/src/adapters/claude-local/config-fields.tsx",
+      "lineRange": [18, 71],
+      "summary": "React component rendering the primary configuration fields for the Claude local adapter, including model dropdown and optional instructions file path input.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/adapters/claude-local/config-fields.tsx:ClaudeLocalAdvancedFields",
+      "type": "function",
+      "name": "ClaudeLocalAdvancedFields",
+      "filePath": "ui/src/adapters/claude-local/config-fields.tsx",
+      "lineRange": [73, 138],
+      "summary": "React component rendering the advanced configuration panel for the Claude local adapter, providing API key, max tokens, and context window size inputs.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/adapters/claude-local/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/claude-local/index.ts",
+      "summary": "Adapter entry point that assembles and exports the Claude local UI adapter, binding its type, config fields component, and advanced fields component.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/codex-local/config-fields.tsx",
+      "summary": "Defines the React form component for configuring a Codex local adapter, handling model selection, fast mode enablement, and instructions file path with Codex-specific model validation logic.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/adapters/codex-local/config-fields.tsx:CodexLocalConfigFields",
+      "type": "function",
+      "name": "CodexLocalConfigFields",
+      "filePath": "ui/src/adapters/codex-local/config-fields.tsx",
+      "lineRange": [21, 138],
+      "summary": "React component rendering the full configuration form for the Codex local adapter, including model picker, fast mode toggle (gated by supported model list), and instructions file path.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/adapters/codex-local/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/codex-local/index.ts",
+      "summary": "Adapter entry point that assembles and exports the Codex local UI adapter object with its associated config fields component.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/cursor-cloud/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/cursor-cloud/index.ts",
+      "summary": "Adapter entry point that assembles and exports the Cursor Cloud UI adapter, using the shared schema config fields for cloud-based adapter configuration.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/cursor/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/cursor/config-fields.tsx",
+      "summary": "Defines the React form component for configuring a local Cursor adapter, providing an instructions file path input.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/cursor/config-fields.tsx:CursorLocalConfigFields",
+      "type": "function",
+      "name": "CursorLocalConfigFields",
+      "filePath": "ui/src/adapters/cursor/config-fields.tsx",
+      "lineRange": [13, 49],
+      "summary": "React component rendering the configuration form for the local Cursor adapter, primarily exposing an instructions file path field.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/cursor/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/cursor/index.ts",
+      "summary": "Adapter entry point that assembles and exports the local Cursor UI adapter with its config fields component.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/disabled-store.ts",
+      "type": "file",
+      "name": "disabled-store.ts",
+      "filePath": "ui/src/adapters/disabled-store.ts",
+      "summary": "Maintains a runtime store of disabled/hidden adapter types, exposing utilities to check visibility and update the set of disabled adapters.",
+      "tags": ["store", "utility", "adapter", "state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/dynamic-loader.ts",
+      "type": "file",
+      "name": "dynamic-loader.ts",
+      "filePath": "ui/src/adapters/dynamic-loader.ts",
+      "summary": "Implements sandboxed dynamic loading of adapter UI parser modules via Web Workers, with caching, async line parsing, and invalidation support for hot-reloading third-party adapter parsers.",
+      "tags": ["service", "dynamic-loading", "worker", "adapter"],
+      "complexity": "complex",
+      "languageNotes": "Uses Web Worker sandboxing to isolate untrusted adapter parser code; maintains multiple Maps for caching loaded parsers, pending promises, and parse results."
+    },
+    {
+      "id": "function:ui/src/adapters/dynamic-loader.ts:initSandboxedWorker",
+      "type": "function",
+      "name": "initSandboxedWorker",
+      "filePath": "ui/src/adapters/dynamic-loader.ts",
+      "lineRange": [109, 171],
+      "summary": "Initializes a sandboxed Web Worker from parser source code, wiring up message handlers for parse results, errors, and timeouts, and returns a resolved sandbox object.",
+      "tags": ["worker", "initialization", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/adapters/dynamic-loader.ts:loadDynamicParser",
+      "type": "function",
+      "name": "loadDynamicParser",
+      "filePath": "ui/src/adapters/dynamic-loader.ts",
+      "lineRange": [218, 260],
+      "summary": "Fetches a dynamic UI parser script for the given adapter type from the API, initializes a sandboxed worker, caches the result, and returns the parser module (or null on failure).",
+      "tags": ["async", "dynamic-loading", "adapter", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/adapters/dynamic-loader.ts:invalidateDynamicParser",
+      "type": "function",
+      "name": "invalidateDynamicParser",
+      "filePath": "ui/src/adapters/dynamic-loader.ts",
+      "lineRange": [267, 285],
+      "summary": "Clears all cached state for a given adapter type's dynamic parser, terminates its worker, and drains any pending parse requests.",
+      "tags": ["cache", "invalidation", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/adapters/gemini-local/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/gemini-local/config-fields.tsx",
+      "summary": "Defines the React form component for configuring a local Gemini adapter, exposing model and instructions file path fields.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/gemini-local/config-fields.tsx:GeminiLocalConfigFields",
+      "type": "function",
+      "name": "GeminiLocalConfigFields",
+      "filePath": "ui/src/adapters/gemini-local/config-fields.tsx",
+      "lineRange": [13, 51],
+      "summary": "React component rendering the configuration form for the local Gemini adapter, including model selection and instructions file path inputs.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/gemini-local/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/gemini-local/index.ts",
+      "summary": "Adapter entry point that assembles and exports the local Gemini UI adapter with its config fields component.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/hermes-local/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/hermes-local/config-fields.tsx",
+      "summary": "Defines the React form component for configuring a local Hermes adapter, exposing model selection and instructions file path fields.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/hermes-local/config-fields.tsx:HermesLocalConfigFields",
+      "type": "function",
+      "name": "HermesLocalConfigFields",
+      "filePath": "ui/src/adapters/hermes-local/config-fields.tsx",
+      "lineRange": [13, 49],
+      "summary": "React component rendering the configuration form for the local Hermes adapter, including model selection and instructions file path inputs.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/hermes-local/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/hermes-local/index.ts",
+      "summary": "Adapter entry point that assembles and exports the local Hermes UI adapter, using the shared schema config fields.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/http/build-config.ts",
+      "type": "file",
+      "name": "build-config.ts",
+      "filePath": "ui/src/adapters/http/build-config.ts",
+      "summary": "Provides a factory function that constructs an HTTP adapter configuration object from raw form values, mapping UI field values to the adapter's config schema.",
+      "tags": ["utility", "factory", "adapter", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/http/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/http/config-fields.tsx",
+      "summary": "Defines the React form component for configuring an HTTP adapter, exposing the server URL endpoint field.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/http/config-fields.tsx:HttpConfigFields",
+      "type": "function",
+      "name": "HttpConfigFields",
+      "filePath": "ui/src/adapters/http/config-fields.tsx",
+      "lineRange": [11, 38],
+      "summary": "React component rendering the configuration form for the HTTP adapter, providing an endpoint URL input field.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/http/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/http/index.ts",
+      "summary": "Adapter entry point that assembles and exports the HTTP UI adapter, combining its config fields, stdout parser, and config builder.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/http/parse-stdout.ts",
+      "type": "file",
+      "name": "parse-stdout.ts",
+      "filePath": "ui/src/adapters/http/parse-stdout.ts",
+      "summary": "Exports a minimal stdout line parser function for the HTTP adapter that returns the raw line as a transcript entry.",
+      "tags": ["utility", "parser", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/index.ts",
+      "summary": "Main barrel entry point for the adapters module, re-exporting the adapter registry API and all public types from the transcript and registry modules.",
+      "tags": ["barrel", "entry-point", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/local-workspace-runtime-fields.tsx",
+      "type": "file",
+      "name": "local-workspace-runtime-fields.tsx",
+      "filePath": "ui/src/adapters/local-workspace-runtime-fields.tsx",
+      "summary": "Exports a stub React component for local workspace runtime fields that currently renders nothing, serving as a placeholder for future runtime configuration UI.",
+      "tags": ["component", "adapter", "placeholder"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/metadata.ts",
+      "type": "file",
+      "name": "metadata.ts",
+      "filePath": "ui/src/adapters/metadata.ts",
+      "summary": "Provides query helpers for adapter metadata — checking type validity, enabled state, and visibility — and for building adapter selection option lists used in UI dropdowns.",
+      "tags": ["utility", "metadata", "adapter", "query"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/adapters/metadata.ts:listAdapterOptions",
+      "type": "function",
+      "name": "listAdapterOptions",
+      "filePath": "ui/src/adapters/metadata.ts",
+      "lineRange": [60, 72],
+      "summary": "Builds a list of UI option objects for adapter selection dropdowns, filtering hidden adapters and enriching each with label, icon, and enabled state from the display registry.",
+      "tags": ["utility", "ui", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "summary": "Defines the comprehensive React form component for configuring the OpenClaw gateway adapter, covering gateway token, base URL, allowed origins, model overrides, request timeouts, and OAuth scope settings.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/adapters/openclaw-gateway/config-fields.tsx:OpenClawGatewayConfigFields",
+      "type": "function",
+      "name": "OpenClawGatewayConfigFields",
+      "filePath": "ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "lineRange": [59, 247],
+      "summary": "React component rendering the full configuration form for the OpenClaw gateway adapter, with many fields for authentication tokens, URL settings, CORS origins, model overrides, timeouts, and OAuth scopes.",
+      "tags": ["component", "form", "adapter", "gateway"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/adapters/openclaw-gateway/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "ui/src/adapters/openclaw-gateway/index.ts",
+      "summary": "Adapter entry point that assembles and exports the OpenClaw gateway UI adapter with its config fields component.",
+      "tags": ["adapter", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/adapters/opencode-local/config-fields.tsx",
+      "type": "file",
+      "name": "config-fields.tsx",
+      "filePath": "ui/src/adapters/opencode-local/config-fields.tsx",
+      "summary": "Defines the React form component for configuring a local OpenCode adapter, exposing model selection, instructions file path, and a working directory field.",
+      "tags": ["component", "adapter", "configuration", "form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ui/src/adapters/opencode-local/config-fields.tsx:OpenCodeLocalConfigFields",
+      "type": "function",
+      "name": "OpenCodeLocalConfigFields",
+      "filePath": "ui/src/adapters/opencode-local/config-fields.tsx",
+      "lineRange": [15, 72],
+      "summary": "React component rendering the configuration form for the local OpenCode adapter, providing model selection, instructions file path, and working directory inputs.",
+      "tags": ["component", "form", "adapter"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:ui/src/adapters/acpx-local/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/acpx-local/index.ts",
+      "target": "file:ui/src/adapters/schema-config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterLabel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterLabels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterDisplay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:isKnownAdapterType",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterLabel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterLabels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:getAdapterDisplay",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/adapter-display-registry.ts",
+      "target": "function:ui/src/adapters/adapter-display-registry.ts:isKnownAdapterType",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/local-workspace-runtime-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/claude-local/config-fields.tsx:ClaudeLocalConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/claude-local/config-fields.tsx:ClaudeLocalAdvancedFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/claude-local/config-fields.tsx:ClaudeLocalConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/claude-local/config-fields.tsx:ClaudeLocalAdvancedFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/claude-local/index.ts",
+      "target": "file:ui/src/adapters/claude-local/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/local-workspace-runtime-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/codex-local/config-fields.tsx:CodexLocalConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/codex-local/config-fields.tsx:CodexLocalConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/codex-local/index.ts",
+      "target": "file:ui/src/adapters/codex-local/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/cursor-cloud/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/cursor-cloud/index.ts",
+      "target": "file:ui/src/adapters/schema-config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/cursor/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/cursor/config-fields.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/cursor/config-fields.tsx",
+      "target": "function:ui/src/adapters/cursor/config-fields.tsx:CursorLocalConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/cursor/config-fields.tsx",
+      "target": "function:ui/src/adapters/cursor/config-fields.tsx:CursorLocalConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/cursor/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/cursor/index.ts",
+      "target": "file:ui/src/adapters/cursor/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "file:ui/src/adapters/sandboxed-parser-worker.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "function:ui/src/adapters/dynamic-loader.ts:initSandboxedWorker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "function:ui/src/adapters/dynamic-loader.ts:loadDynamicParser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "function:ui/src/adapters/dynamic-loader.ts:invalidateDynamicParser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "function:ui/src/adapters/dynamic-loader.ts:loadDynamicParser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/dynamic-loader.ts",
+      "target": "function:ui/src/adapters/dynamic-loader.ts:invalidateDynamicParser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/gemini-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/gemini-local/config-fields.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/gemini-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/gemini-local/config-fields.tsx:GeminiLocalConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/gemini-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/gemini-local/config-fields.tsx:GeminiLocalConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/gemini-local/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/gemini-local/index.ts",
+      "target": "file:ui/src/adapters/gemini-local/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/hermes-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/hermes-local/config-fields.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/hermes-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/hermes-local/config-fields.tsx:HermesLocalConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/hermes-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/hermes-local/config-fields.tsx:HermesLocalConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/hermes-local/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/hermes-local/index.ts",
+      "target": "file:ui/src/adapters/schema-config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/build-config.ts",
+      "target": "file:ui/src/components/AgentConfigForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/config-fields.tsx",
+      "target": "function:ui/src/adapters/http/config-fields.tsx:HttpConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/http/config-fields.tsx",
+      "target": "function:ui/src/adapters/http/config-fields.tsx:HttpConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/http/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/index.ts",
+      "target": "file:ui/src/adapters/http/parse-stdout.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/index.ts",
+      "target": "file:ui/src/adapters/http/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/index.ts",
+      "target": "file:ui/src/adapters/http/build-config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/http/parse-stdout.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/index.ts",
+      "target": "file:ui/src/adapters/transcript.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/local-workspace-runtime-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/metadata.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/metadata.ts",
+      "target": "file:ui/src/adapters/registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/metadata.ts",
+      "target": "file:ui/src/adapters/disabled-store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/metadata.ts",
+      "target": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/metadata.ts",
+      "target": "function:ui/src/adapters/metadata.ts:listAdapterOptions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/metadata.ts",
+      "target": "function:ui/src/adapters/metadata.ts:listAdapterOptions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "target": "function:ui/src/adapters/openclaw-gateway/config-fields.tsx:OpenClawGatewayConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "target": "function:ui/src/adapters/openclaw-gateway/config-fields.tsx:OpenClawGatewayConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/adapters/openclaw-gateway/index.ts",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/openclaw-gateway/index.ts",
+      "target": "file:ui/src/adapters/openclaw-gateway/config-fields.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/opencode-local/config-fields.tsx",
+      "target": "file:ui/src/adapters/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/opencode-local/config-fields.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/adapters/opencode-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/opencode-local/config-fields.tsx:OpenCodeLocalConfigFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/adapters/opencode-local/config-fields.tsx",
+      "target": "function:ui/src/adapters/opencode-local/config-fields.tsx:OpenCodeLocalConfigFields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

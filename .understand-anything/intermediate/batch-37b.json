@@ -1,0 +1,636 @@
+{
+  "batchIndex": "37b",
+  "nodes": [
+    {
+      "id": "config:packages/plugins/sdk/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/plugins/sdk/package.json",
+      "summary": "Package manifest for `@paperclipai/plugin-sdk`, defining dual entry-points (main SDK and `/ui` subpath), a `paperclip-plugin-dev` CLI binary, peer dependencies on React and Zod, and build/publish scripts.",
+      "tags": ["configuration", "build-system", "package-manifest", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:packages/plugins/sdk/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/plugins/sdk/README.md",
+      "summary": "Comprehensive plugin SDK reference (1215 lines, 56 sections) covering the worker quick-start, event system, scheduled jobs, UI slots, capabilities, scoped API routes, issue orchestration APIs, hooks reference, streaming, agent sessions, testing utilities, and bundler presets.",
+      "tags": ["documentation", "sdk", "plugin-development", "api-reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/bundlers.ts",
+      "type": "file",
+      "name": "bundlers.ts",
+      "filePath": "packages/plugins/sdk/src/bundlers.ts",
+      "summary": "Exports `createPluginBundlerPresets` which generates opinionated esbuild and Rollup bundler configuration presets for plugin authors, pre-wiring external packages, output formats, and plugin-sdk externals.",
+      "tags": ["utility", "build-system", "configuration", "plugin-development"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 161
+    },
+    {
+      "id": "function:packages/plugins/sdk/src/bundlers.ts:createPluginBundlerPresets",
+      "type": "function",
+      "name": "createPluginBundlerPresets",
+      "filePath": "packages/plugins/sdk/src/bundlers.ts",
+      "lineRange": [61, 161],
+      "summary": "Generates esbuild and Rollup configuration presets tailored for Paperclip plugin bundles, externalizing SDK peer dependencies and enforcing correct output formats for worker and UI entry points.",
+      "tags": ["utility", "build-system", "factory", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/define-plugin.ts",
+      "type": "file",
+      "name": "define-plugin.ts",
+      "filePath": "packages/plugins/sdk/src/define-plugin.ts",
+      "summary": "Defines the `definePlugin` factory function and associated TypeScript types (`PluginDefinition`, `PaperclipPlugin`, `PluginHealthDiagnostics`, etc.) that form the primary authoring contract for plugin workers.",
+      "tags": ["factory", "type-definition", "plugin-development", "entry-point"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 343
+    },
+    {
+      "id": "function:packages/plugins/sdk/src/define-plugin.ts:definePlugin",
+      "type": "function",
+      "name": "definePlugin",
+      "filePath": "packages/plugins/sdk/src/define-plugin.ts",
+      "lineRange": [341, 343],
+      "summary": "Identity factory that accepts a typed `PluginDefinition` object and returns a frozen `PaperclipPlugin`, providing TypeScript inference for the entire plugin contract including setup, health, webhook, and API handlers.",
+      "tags": ["factory", "plugin-development", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/dev-cli.ts",
+      "type": "file",
+      "name": "dev-cli.ts",
+      "filePath": "packages/plugins/sdk/src/dev-cli.ts",
+      "summary": "Implements the `paperclip-plugin-dev` CLI binary entry point: parses `--root`, `--ui-dir`, `--worker-path`, and `--port` arguments from argv and delegates to `startPluginDevServer` for hot-reload development.",
+      "tags": ["script", "cli", "dev-tooling", "plugin-development"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 54
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/dev-server.ts",
+      "type": "file",
+      "name": "dev-server.ts",
+      "filePath": "packages/plugins/sdk/src/dev-server.ts",
+      "summary": "Implements the local plugin development server with SSE-based hot-reload: serves static UI build artifacts, watches for file changes via polling and `fs.watch`, and broadcasts reload events to connected browser clients.",
+      "tags": ["service", "dev-tooling", "hot-reload", "plugin-development"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 228
+    },
+    {
+      "id": "function:packages/plugins/sdk/src/dev-server.ts:startPluginDevServer",
+      "type": "function",
+      "name": "startPluginDevServer",
+      "filePath": "packages/plugins/sdk/src/dev-server.ts",
+      "lineRange": [127, 208],
+      "summary": "Starts an HTTP server that serves plugin UI build artifacts and exposes a `/reload` SSE endpoint; starts a file watcher and pushes reload notifications to all connected clients when UI files change.",
+      "tags": ["service", "dev-tooling", "hot-reload"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/plugins/sdk/src/dev-server.ts:getUiBuildSnapshot",
+      "type": "function",
+      "name": "getUiBuildSnapshot",
+      "filePath": "packages/plugins/sdk/src/dev-server.ts",
+      "lineRange": [216, 228],
+      "summary": "Returns a sorted array of `{file, mtimeMs}` records for all files in the UI output directory, used as a baseline for detecting build changes in the dev-server watcher.",
+      "tags": ["utility", "dev-tooling", "file-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "type": "file",
+      "name": "host-client-factory.ts",
+      "filePath": "packages/plugins/sdk/src/host-client-factory.ts",
+      "summary": "Factory that creates the complete set of capability-gated host-service RPC handlers (`createHostClientHandlers`) used on the host side to service worker-to-host JSON-RPC calls, covering config, state, DB, entities, events, HTTP, secrets, issues, projects, agents, and more.",
+      "tags": ["factory", "service", "rpc", "capability"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 786
+    },
+    {
+      "id": "function:packages/plugins/sdk/src/host-client-factory.ts:createHostClientHandlers",
+      "type": "function",
+      "name": "createHostClientHandlers",
+      "filePath": "packages/plugins/sdk/src/host-client-factory.ts",
+      "lineRange": [452, 767],
+      "summary": "Builds a dispatch table mapping every `WorkerToHostMethodName` to a capability-gated handler that delegates to the appropriate `HostServices` method, enforcing plugin capability checks before any service call.",
+      "tags": ["factory", "rpc", "capability", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:packages/plugins/sdk/src/host-client-factory.ts:CapabilityDeniedError",
+      "type": "class",
+      "name": "CapabilityDeniedError",
+      "filePath": "packages/plugins/sdk/src/host-client-factory.ts",
+      "lineRange": [65, 74],
+      "summary": "Custom error thrown when a plugin worker attempts to call a host method that requires a capability not granted in its manifest, carrying a machine-readable `code` property for RPC error propagation.",
+      "tags": ["error-handling", "capability", "rpc"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/plugins/sdk/src/index.ts",
+      "summary": "Main barrel entry point for `@paperclipai/plugin-sdk`, re-exporting the full public API surface: `definePlugin`, testing utilities, bundler presets, dev-server helpers, worker RPC host, host-client factory, all JSON-RPC protocol helpers, and every public TypeScript type.",
+      "tags": ["entry-point", "barrel", "plugin-development"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 361
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/protocol.ts",
+      "type": "file",
+      "name": "protocol.ts",
+      "filePath": "packages/plugins/sdk/src/protocol.ts",
+      "summary": "Defines the complete JSON-RPC 2.0 message type system for host ↔ worker IPC: core envelope types, standard and plugin-specific error codes, typed method maps for both directions, and helper functions for creating and parsing protocol messages.",
+      "tags": ["type-definition", "rpc", "protocol", "plugin-development"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 100
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/testing.ts",
+      "type": "file",
+      "name": "testing.ts",
+      "filePath": "packages/plugins/sdk/src/testing.ts",
+      "summary": "Provides `createTestHarness`, `createEnvironmentTestHarness`, and `createFakeEnvironmentDriver` along with assertion helpers (`assertLeaseLifecycle`, `assertExecutionLifecycle`, etc.) for unit-testing plugin workers in-process without a real host.",
+      "tags": ["test", "utility", "plugin-development", "testing"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 80
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/plugins/sdk/src/types.ts",
+      "summary": "Defines and re-exports the stable public type API for plugin worker code: `PluginContext`, `PluginEvent`, `PluginJobContext`, `PluginWorkspace`, `ScopeKey`, `AgentSession`, and all host-service client interfaces that plugin authors use.",
+      "tags": ["type-definition", "plugin-development", "api-schema"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 80
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/ui/components.ts",
+      "type": "file",
+      "name": "components.ts",
+      "filePath": "packages/plugins/sdk/src/ui/components.ts",
+      "summary": "Declares host-injected shared React UI components (`MetricCard`, `StatusBadge`, `MarkdownRenderer`, `FileTree`, `AssigneePicker`, etc.) as thin forwarding stubs that delegate to the host's bridge registry at runtime, enabling visual consistency across plugins.",
+      "tags": ["component", "ui", "plugin-development", "bridge"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 60
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/ui/hooks.ts",
+      "type": "file",
+      "name": "hooks.ts",
+      "filePath": "packages/plugins/sdk/src/ui/hooks.ts",
+      "summary": "Exports React hooks (`usePluginData`, `usePluginAction`, `useHostContext`, `useHostNavigation`, `usePluginStream`) that bridge plugin UI components to the worker's data/action handlers and the host's navigation/context system via the SDK runtime bridge.",
+      "tags": ["hook", "ui", "plugin-development", "bridge"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 80
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/ui/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/plugins/sdk/src/ui/index.ts",
+      "summary": "Barrel entry point for the `@paperclipai/plugin-sdk/ui` subpath export, re-exporting all UI hooks, shared components, runtime utilities, and UI type definitions for plugin frontend bundles.",
+      "tags": ["entry-point", "barrel", "ui", "plugin-development"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 20
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/ui/runtime.ts",
+      "type": "file",
+      "name": "runtime.ts",
+      "filePath": "packages/plugins/sdk/src/ui/runtime.ts",
+      "summary": "Implements the `__paperclipPluginBridge__` global registry accessor used by all SDK UI hooks and components; provides `getSdkUiRuntimeValue` and `renderSdkUiComponent` to safely retrieve host-injected implementations at runtime.",
+      "tags": ["utility", "ui", "bridge", "plugin-development"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 52
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/ui/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/plugins/sdk/src/ui/types.ts",
+      "summary": "Defines the TypeScript types for the plugin UI surface: `PluginDataResult`, `PluginActionFn`, `HostLocation`, `HostNavigation`, `PluginHostContext`, `PluginStreamResult`, and slot component prop interfaces.",
+      "tags": ["type-definition", "ui", "plugin-development"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 60
+    },
+    {
+      "id": "file:packages/plugins/sdk/src/worker-rpc-host.ts",
+      "type": "file",
+      "name": "worker-rpc-host.ts",
+      "filePath": "packages/plugins/sdk/src/worker-rpc-host.ts",
+      "summary": "Implements the worker-side JSON-RPC 2.0 host (`startWorkerRpcHost`, `runWorker`): reads newline-delimited messages from stdin, dispatches to plugin handlers (initialize, onEvent, runJob, getData, performAction, etc.), and writes responses to stdout while providing a concrete `PluginContext` whose SDK calls round-trip to the host.",
+      "tags": ["service", "rpc", "plugin-development", "entry-point"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 120
+    },
+    {
+      "id": "file:packages/plugins/sdk/tests/worker-rpc-host.test.ts",
+      "type": "file",
+      "name": "worker-rpc-host.test.ts",
+      "filePath": "packages/plugins/sdk/tests/worker-rpc-host.test.ts",
+      "summary": "Vitest test suite for `worker-rpc-host.ts` that exercises the full stdin→stdout message dispatch loop: initialize, onEvent, runJob, shutdown, and error propagation paths.",
+      "tags": ["test", "rpc", "plugin-development"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 100
+    },
+    {
+      "id": "config:packages/plugins/sdk/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/plugins/sdk/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the plugin SDK package, extending the monorepo base config and setting module resolution to `bundler` to support dual CJS/ESM output.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/plugins/sdk/vitest.config.ts",
+      "type": "config",
+      "name": "vitest.config.ts",
+      "filePath": "packages/plugins/sdk/vitest.config.ts",
+      "summary": "Vitest configuration for the plugin SDK test suite, pointing at the `tests/` directory and configuring the Node.js test environment.",
+      "tags": ["configuration", "testing", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "function:packages/plugins/sdk/src/define-plugin.ts:definePlugin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/define-plugin.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/testing.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/bundlers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/dev-server.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/worker-rpc-host.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/protocol.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "file:packages/plugins/sdk/src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "function:packages/plugins/sdk/src/bundlers.ts:createPluginBundlerPresets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "function:packages/plugins/sdk/src/dev-server.ts:startPluginDevServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "function:packages/plugins/sdk/src/dev-server.ts:getUiBuildSnapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "function:packages/plugins/sdk/src/host-client-factory.ts:createHostClientHandlers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/index.ts",
+      "target": "class:packages/plugins/sdk/src/host-client-factory.ts:CapabilityDeniedError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/bundlers.ts",
+      "target": "function:packages/plugins/sdk/src/bundlers.ts:createPluginBundlerPresets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/bundlers.ts",
+      "target": "function:packages/plugins/sdk/src/bundlers.ts:createPluginBundlerPresets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/define-plugin.ts",
+      "target": "function:packages/plugins/sdk/src/define-plugin.ts:definePlugin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/define-plugin.ts",
+      "target": "function:packages/plugins/sdk/src/define-plugin.ts:definePlugin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/dev-server.ts",
+      "target": "function:packages/plugins/sdk/src/dev-server.ts:startPluginDevServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/dev-server.ts",
+      "target": "function:packages/plugins/sdk/src/dev-server.ts:startPluginDevServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/dev-server.ts",
+      "target": "function:packages/plugins/sdk/src/dev-server.ts:getUiBuildSnapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/dev-server.ts",
+      "target": "function:packages/plugins/sdk/src/dev-server.ts:getUiBuildSnapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "target": "function:packages/plugins/sdk/src/host-client-factory.ts:createHostClientHandlers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "target": "function:packages/plugins/sdk/src/host-client-factory.ts:createHostClientHandlers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "target": "class:packages/plugins/sdk/src/host-client-factory.ts:CapabilityDeniedError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "target": "class:packages/plugins/sdk/src/host-client-factory.ts:CapabilityDeniedError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/ui/index.ts",
+      "target": "file:packages/plugins/sdk/src/ui/hooks.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/ui/index.ts",
+      "target": "file:packages/plugins/sdk/src/ui/components.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/ui/index.ts",
+      "target": "file:packages/plugins/sdk/src/ui/runtime.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/ui/index.ts",
+      "target": "file:packages/plugins/sdk/src/ui/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/ui/hooks.ts",
+      "target": "file:packages/plugins/sdk/src/ui/runtime.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/ui/components.ts",
+      "target": "file:packages/plugins/sdk/src/ui/runtime.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/dev-cli.ts",
+      "target": "file:packages/plugins/sdk/src/dev-server.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/testing.ts",
+      "target": "file:packages/plugins/sdk/src/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/testing.ts",
+      "target": "file:packages/plugins/sdk/src/protocol.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/worker-rpc-host.ts",
+      "target": "file:packages/plugins/sdk/src/protocol.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/worker-rpc-host.ts",
+      "target": "file:packages/plugins/sdk/src/define-plugin.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/worker-rpc-host.ts",
+      "target": "file:packages/plugins/sdk/src/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/src/host-client-factory.ts",
+      "target": "file:packages/plugins/sdk/src/protocol.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sdk/tests/worker-rpc-host.test.ts",
+      "target": "file:packages/plugins/sdk/src/worker-rpc-host.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:packages/plugins/sdk/tsconfig.json",
+      "target": "file:packages/plugins/sdk/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/sdk/vitest.config.ts",
+      "target": "file:packages/plugins/sdk/tests/worker-rpc-host.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/sdk/package.json",
+      "target": "file:packages/plugins/sdk/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/sdk/package.json",
+      "target": "file:packages/plugins/sdk/src/ui/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/sdk/package.json",
+      "target": "file:packages/plugins/sdk/src/dev-cli.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/plugins/sdk/README.md",
+      "target": "file:packages/plugins/sdk/src/index.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sdk/README.md",
+      "target": "file:packages/plugins/sdk/src/define-plugin.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sdk/README.md",
+      "target": "file:packages/plugins/sdk/src/testing.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sdk/README.md",
+      "target": "file:packages/plugins/sdk/src/ui/hooks.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sdk/README.md",
+      "target": "file:packages/plugins/sdk/src/bundlers.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sdk/README.md",
+      "target": "file:packages/plugins/sdk/src/dev-server.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

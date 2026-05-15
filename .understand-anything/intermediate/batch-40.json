@@ -1,0 +1,422 @@
+{
+  "batchIndex": 40,
+  "nodes": [
+    {
+      "id": "file:packages/shared/src/types/issue-tree-control.ts",
+      "type": "file",
+      "name": "issue-tree-control.ts",
+      "filePath": "packages/shared/src/types/issue-tree-control.ts",
+      "summary": "Defines TypeScript interfaces for the issue tree hold and control preview system, including hold policies, hold membership records, and preview aggregates used for bulk issue tree operations.",
+      "tags": ["type-definition", "issue-management", "workflow-control"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 115
+    },
+    {
+      "id": "file:packages/shared/src/types/issue.ts",
+      "type": "file",
+      "name": "issue.ts",
+      "filePath": "packages/shared/src/types/issue.ts",
+      "summary": "Comprehensive type definitions for the issue domain, covering issue structure, comments, execution monitors, recovery actions, thread interactions, and agent run lifecycle shapes used throughout the platform.",
+      "tags": ["type-definition", "issue-management", "data-model"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 710
+    },
+    {
+      "id": "file:packages/shared/src/types/live.ts",
+      "type": "file",
+      "name": "live.ts",
+      "filePath": "packages/shared/src/types/live.ts",
+      "summary": "Minimal type definition for a LiveEvent — the real-time event envelope carrying a typed payload broadcast to connected clients.",
+      "tags": ["type-definition", "real-time", "event-driven"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 9
+    },
+    {
+      "id": "file:packages/shared/src/types/plugin.ts",
+      "type": "file",
+      "name": "plugin.ts",
+      "filePath": "packages/shared/src/types/plugin.ts",
+      "summary": "Extensive type definitions for the plugin system including manifest structures, launcher declarations, UI slots, API route configurations, database namespace management, and plugin-managed resources.",
+      "tags": ["type-definition", "plugin-system", "data-model"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 835
+    },
+    {
+      "id": "file:packages/shared/src/types/project.ts",
+      "type": "file",
+      "name": "project.ts",
+      "filePath": "packages/shared/src/types/project.ts",
+      "summary": "Type definitions for projects and their workspaces, including workspace source types, codebase origins, workspace runtime configuration, and plugin-managed project metadata.",
+      "tags": ["type-definition", "project-management", "data-model"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 92
+    },
+    {
+      "id": "file:packages/shared/src/types/quota.ts",
+      "type": "file",
+      "name": "quota.ts",
+      "filePath": "packages/shared/src/types/quota.ts",
+      "summary": "Type definitions for provider quota windows and results, representing rate-limit and usage data returned by LLM provider quota APIs.",
+      "tags": ["type-definition", "quota-management", "monitoring"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 26
+    },
+    {
+      "id": "file:packages/shared/src/types/routine.ts",
+      "type": "file",
+      "name": "routine.ts",
+      "filePath": "packages/shared/src/types/routine.ts",
+      "summary": "Type definitions for routines (scheduled recurring tasks), including trigger kinds, variable types, concurrency and catch-up policies, and routine summary shapes for UI display.",
+      "tags": ["type-definition", "scheduling", "data-model"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 212
+    },
+    {
+      "id": "file:packages/shared/src/types/search.ts",
+      "type": "file",
+      "name": "search.ts",
+      "filePath": "packages/shared/src/types/search.ts",
+      "summary": "Type definitions for the company-wide search feature, covering search scopes, result types, highlighted snippets, and the paginated search response shape.",
+      "tags": ["type-definition", "search", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 56
+    },
+    {
+      "id": "file:packages/shared/src/types/secrets.ts",
+      "type": "file",
+      "name": "secrets.ts",
+      "filePath": "packages/shared/src/types/secrets.ts",
+      "summary": "Type definitions for secrets management, including secret providers, binding types, env binding unions, agent env configs, and secret provider configuration health status.",
+      "tags": ["type-definition", "secrets-management", "security"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 244
+    },
+    {
+      "id": "file:packages/shared/src/types/sidebar-badges.ts",
+      "type": "file",
+      "name": "sidebar-badges.ts",
+      "filePath": "packages/shared/src/types/sidebar-badges.ts",
+      "summary": "Minimal interface defining the notification badge counts shown in the sidebar (inbox, approvals, failed runs, join requests).",
+      "tags": ["type-definition", "ui", "notification"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 6
+    },
+    {
+      "id": "file:packages/shared/src/types/sidebar-preferences.ts",
+      "type": "file",
+      "name": "sidebar-preferences.ts",
+      "filePath": "packages/shared/src/types/sidebar-preferences.ts",
+      "summary": "Minimal interface for user sidebar order preferences, storing an ordered list of item IDs with a last-updated timestamp.",
+      "tags": ["type-definition", "ui", "user-preferences"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 4
+    },
+    {
+      "id": "file:packages/shared/src/types/user-profile.ts",
+      "type": "file",
+      "name": "user-profile.ts",
+      "filePath": "packages/shared/src/types/user-profile.ts",
+      "summary": "Type definitions for user profile API responses, covering identity, windowed activity stats, daily data points, recent issues/activity, and per-agent/provider token usage breakdowns.",
+      "tags": ["type-definition", "user-management", "analytics"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 88
+    },
+    {
+      "id": "file:packages/shared/src/types/work-product.ts",
+      "type": "file",
+      "name": "work-product.ts",
+      "filePath": "packages/shared/src/types/work-product.ts",
+      "summary": "Type definitions for issue work products — the artifacts produced by agent runs such as pull requests, branches, preview URLs, documents, and commits with their health and review states.",
+      "tags": ["type-definition", "issue-management", "data-model"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 55
+    },
+    {
+      "id": "file:packages/shared/src/types/workspace-operation.ts",
+      "type": "file",
+      "name": "workspace-operation.ts",
+      "filePath": "packages/shared/src/types/workspace-operation.ts",
+      "summary": "Type definitions for workspace lifecycle operations (provision, teardown, worktree prepare/cleanup), capturing command execution results including exit codes, log references, and stdout/stderr excerpts.",
+      "tags": ["type-definition", "workspace-management", "infrastructure"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 31
+    },
+    {
+      "id": "file:packages/shared/src/types/workspace-runtime.ts",
+      "type": "file",
+      "name": "workspace-runtime.ts",
+      "filePath": "packages/shared/src/types/workspace-runtime.ts",
+      "summary": "Comprehensive type definitions for execution workspace strategies, modes, runtime services, command definitions, and workspace configuration settings used to manage agent execution environments.",
+      "tags": ["type-definition", "workspace-management", "infrastructure"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 314
+    },
+    {
+      "id": "file:packages/shared/src/validators/access.ts",
+      "type": "file",
+      "name": "access.ts",
+      "filePath": "packages/shared/src/validators/access.ts",
+      "summary": "Zod validators for all access and authentication API endpoints including company invites, join requests, CLI auth challenges, member permission updates, and user profile schemas.",
+      "tags": ["validation", "authentication", "api-handler"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 199
+    },
+    {
+      "id": "file:packages/shared/src/validators/adapter-skills.ts",
+      "type": "file",
+      "name": "adapter-skills.ts",
+      "filePath": "packages/shared/src/validators/adapter-skills.ts",
+      "summary": "Zod validators for agent adapter skill state, origin, sync mode, and snapshot shapes used to track skill synchronization between adapters and the platform.",
+      "tags": ["validation", "agent-management", "type-definition"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 55
+    },
+    {
+      "id": "file:packages/shared/src/validators/agent.ts",
+      "type": "file",
+      "name": "agent.ts",
+      "filePath": "packages/shared/src/validators/agent.ts",
+      "summary": "Zod validators for agent lifecycle API requests including creation, update, permissions, instruction bundle management, runtime config, and agent wake/reset operations.",
+      "tags": ["validation", "agent-management", "api-handler"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 163
+    },
+    {
+      "id": "file:packages/shared/src/validators/approval.test.ts",
+      "type": "file",
+      "name": "approval.test.ts",
+      "filePath": "packages/shared/src/validators/approval.test.ts",
+      "summary": "Vitest unit tests for approval validators, verifying that multiline text normalization, null handling, and line-break escaping behave correctly.",
+      "tags": ["test", "validation", "approval"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 31
+    },
+    {
+      "id": "file:packages/shared/src/validators/approval.ts",
+      "type": "file",
+      "name": "approval.ts",
+      "filePath": "packages/shared/src/validators/approval.ts",
+      "summary": "Zod validators for approval workflow operations: creating, resolving, requesting revisions, resubmitting approvals, and adding approval comments.",
+      "tags": ["validation", "approval-workflow", "api-handler"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 36
+    },
+    {
+      "id": "file:packages/shared/src/validators/asset.ts",
+      "type": "file",
+      "name": "asset.ts",
+      "filePath": "packages/shared/src/validators/asset.ts",
+      "summary": "Minimal Zod validator for image asset metadata creation, capturing width, height, and format properties.",
+      "tags": ["validation", "asset-management", "type-definition"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 14
+    },
+    {
+      "id": "file:packages/shared/src/validators/budget.ts",
+      "type": "file",
+      "name": "budget.ts",
+      "filePath": "packages/shared/src/validators/budget.ts",
+      "summary": "Zod validators for budget policy upsert and budget incident resolution, enforcing spending limit structure and resolution categorization.",
+      "tags": ["validation", "budget-management", "api-handler"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 37
+    },
+    {
+      "id": "file:packages/shared/src/validators/company-portability.ts",
+      "type": "file",
+      "name": "company-portability.ts",
+      "filePath": "packages/shared/src/validators/company-portability.ts",
+      "summary": "Comprehensive Zod validators for company portability export and import operations, defining manifest schemas for companies, agents, projects, issues, skills, and routines to enable cross-instance migration.",
+      "tags": ["validation", "data-portability", "company-management"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 261
+    },
+    {
+      "id": "file:packages/shared/src/validators/company-skill.ts",
+      "type": "file",
+      "name": "company-skill.ts",
+      "filePath": "packages/shared/src/validators/company-skill.ts",
+      "summary": "Zod validators for company skill entities including skill metadata, list items, detail views, project scan results, import/create operations, and file-level detail and update schemas.",
+      "tags": ["validation", "skill-management", "api-handler"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 137
+    },
+    {
+      "id": "file:packages/shared/src/validators/company.ts",
+      "type": "file",
+      "name": "company.ts",
+      "filePath": "packages/shared/src/validators/company.ts",
+      "summary": "Zod validators for company CRUD operations including creation, full update, and branding-specific update with hex color and logo asset validation.",
+      "tags": ["validation", "company-management", "api-handler"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 59
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/shared/src/types/issue.ts",
+      "target": "file:packages/shared/src/types/issue-tree-control.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/issue.ts",
+      "target": "file:packages/shared/src/types/work-product.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/issue.ts",
+      "target": "file:packages/shared/src/types/project.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/issue.ts",
+      "target": "file:packages/shared/src/types/workspace-runtime.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/project.ts",
+      "target": "file:packages/shared/src/types/workspace-runtime.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/project.ts",
+      "target": "file:packages/shared/src/types/secrets.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/workspace-operation.ts",
+      "target": "file:packages/shared/src/types/workspace-runtime.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/routine.ts",
+      "target": "file:packages/shared/src/types/workspace-operation.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/secrets.ts",
+      "target": "file:packages/shared/src/validators/access.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/plugin.ts",
+      "target": "file:packages/shared/src/types/routine.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/plugin.ts",
+      "target": "file:packages/shared/src/types/project.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/approval.test.ts",
+      "target": "file:packages/shared/src/validators/approval.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/shared/src/validators/agent.ts",
+      "target": "file:packages/shared/src/types/workspace-runtime.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/company-portability.ts",
+      "target": "file:packages/shared/src/types/routine.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/company-portability.ts",
+      "target": "file:packages/shared/src/types/issue.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/access.ts",
+      "target": "file:packages/shared/src/types/user-profile.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/company-skill.ts",
+      "target": "file:packages/shared/src/validators/adapter-skills.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/company.ts",
+      "target": "file:packages/shared/src/validators/access.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/validators/budget.ts",
+      "target": "file:packages/shared/src/types/quota.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/shared/src/types/sidebar-badges.ts",
+      "target": "file:packages/shared/src/types/sidebar-preferences.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

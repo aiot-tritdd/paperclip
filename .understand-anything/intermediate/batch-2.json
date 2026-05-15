@@ -1,0 +1,540 @@
+{
+  "nodes": [
+    {
+      "id": "file:cli/src/__tests__/env-lab.test.ts",
+      "type": "file",
+      "name": "env-lab.test.ts",
+      "filePath": "cli/src/__tests__/env-lab.test.ts",
+      "summary": "Test suite for CLI environment lab functionality, verifying environment variable parsing and isolation behavior.",
+      "tags": ["test", "cli", "environment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/__tests__/feedback.test.ts",
+      "type": "file",
+      "name": "feedback.test.ts",
+      "filePath": "cli/src/__tests__/feedback.test.ts",
+      "summary": "Test suite for the CLI feedback command, using a makeTrace helper to construct trace fixtures that simulate agent execution traces sent as feedback.",
+      "tags": ["test", "cli", "feedback"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/__tests__/feedback.test.ts:makeTrace",
+      "type": "function",
+      "name": "makeTrace",
+      "filePath": "cli/src/__tests__/feedback.test.ts",
+      "lineRange": [16, 62],
+      "summary": "Factory function that constructs a complete agent trace fixture with sensible defaults, accepting overrides for test parameterization.",
+      "tags": ["test", "factory", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/__tests__/helpers/embedded-postgres.ts",
+      "type": "file",
+      "name": "embedded-postgres.ts",
+      "filePath": "cli/src/__tests__/helpers/embedded-postgres.ts",
+      "summary": "Re-export barrel for embedded PostgreSQL test support utilities, providing helper functions and types used by integration tests that require a real database.",
+      "tags": ["test", "barrel", "database"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/__tests__/helpers/zip.ts",
+      "type": "file",
+      "name": "zip.ts",
+      "filePath": "cli/src/__tests__/helpers/zip.ts",
+      "summary": "Test helper that implements a minimal ZIP archive builder in pure TypeScript, used to create plugin zip fixtures for CLI tests without external dependencies.",
+      "tags": ["test", "utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/__tests__/helpers/zip.ts:createStoredZipArchive",
+      "type": "function",
+      "name": "createStoredZipArchive",
+      "filePath": "cli/src/__tests__/helpers/zip.ts",
+      "lineRange": [24, 87],
+      "summary": "Builds a stored (uncompressed) ZIP archive from a map of filename-to-content entries, producing a valid binary buffer conforming to the ZIP specification.",
+      "tags": ["utility", "serialization", "test"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cli/src/__tests__/home-paths.test.ts",
+      "type": "file",
+      "name": "home-paths.test.ts",
+      "filePath": "cli/src/__tests__/home-paths.test.ts",
+      "summary": "Test suite validating home directory path resolution utilities used by the CLI to locate configuration, data, and runtime files.",
+      "tags": ["test", "cli", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/__tests__/http.test.ts",
+      "type": "file",
+      "name": "http.test.ts",
+      "filePath": "cli/src/__tests__/http.test.ts",
+      "summary": "Test suite for the HTTP CLI adapter, verifying event formatting and output behavior when the CLI communicates with the Paperclip server over HTTP.",
+      "tags": ["test", "cli", "http"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/__tests__/network-bind.test.ts",
+      "type": "file",
+      "name": "network-bind.test.ts",
+      "filePath": "cli/src/__tests__/network-bind.test.ts",
+      "summary": "Test suite for network binding logic that determines how the CLI binds to local or remote hosts based on configuration.",
+      "tags": ["test", "cli", "network"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/__tests__/onboard.test.ts",
+      "type": "file",
+      "name": "onboard.test.ts",
+      "filePath": "cli/src/__tests__/onboard.test.ts",
+      "summary": "Integration test suite for the CLI onboarding flow, testing config file creation and migration using temporary directory fixtures.",
+      "tags": ["test", "cli", "config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/__tests__/onboard.test.ts:createExistingConfigFixture",
+      "type": "function",
+      "name": "createExistingConfigFixture",
+      "filePath": "cli/src/__tests__/onboard.test.ts",
+      "lineRange": [11, 76],
+      "summary": "Creates a fully-populated temporary config fixture directory on disk with representative agent, service, and runtime config files for onboarding migration tests.",
+      "tags": ["test", "factory", "config"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cli/src/__tests__/plugin-init.test.ts",
+      "type": "file",
+      "name": "plugin-init.test.ts",
+      "filePath": "cli/src/__tests__/plugin-init.test.ts",
+      "summary": "Test suite for the CLI plugin initialization command, verifying scaffold generation into temporary directories with cleanup between tests.",
+      "tags": ["test", "cli", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/__tests__/routines.test.ts",
+      "type": "file",
+      "name": "routines.test.ts",
+      "filePath": "cli/src/__tests__/routines.test.ts",
+      "summary": "Integration test suite for the CLI routines command, using a writeTestConfig helper to set up complete config fixtures before verifying routine scheduling and execution.",
+      "tags": ["test", "cli", "routines"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:cli/src/__tests__/routines.test.ts:writeTestConfig",
+      "type": "function",
+      "name": "writeTestConfig",
+      "filePath": "cli/src/__tests__/routines.test.ts",
+      "lineRange": [29, 87],
+      "summary": "Writes a complete Paperclip config JSON fixture to disk for routines integration tests, wiring up agents, services, and database connection strings.",
+      "tags": ["test", "factory", "config"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cli/src/__tests__/secrets.test.ts",
+      "type": "file",
+      "name": "secrets.test.ts",
+      "filePath": "cli/src/__tests__/secrets.test.ts",
+      "summary": "Test suite for the CLI secrets management commands, using factory helpers to construct agent, secret, and config fixtures with configurable secrets providers.",
+      "tags": ["test", "cli", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:cli/src/__tests__/secrets.test.ts:configWithSecretsProvider",
+      "type": "function",
+      "name": "configWithSecretsProvider",
+      "filePath": "cli/src/__tests__/secrets.test.ts",
+      "lineRange": [68, 125],
+      "summary": "Factory function that builds a full Paperclip config fixture pre-wired with a specific secrets provider, used to test secrets resolution across different provider backends.",
+      "tags": ["test", "factory", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cli/src/__tests__/telemetry.test.ts",
+      "type": "file",
+      "name": "telemetry.test.ts",
+      "filePath": "cli/src/__tests__/telemetry.test.ts",
+      "summary": "Test suite for CLI telemetry opt-in/opt-out behavior, using a makeConfigPath helper to create config fixtures with telemetry enabled or disabled.",
+      "tags": ["test", "cli", "telemetry"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/__tests__/telemetry.test.ts:makeConfigPath",
+      "type": "function",
+      "name": "makeConfigPath",
+      "filePath": "cli/src/__tests__/telemetry.test.ts",
+      "lineRange": [9, 69],
+      "summary": "Creates a temporary Paperclip config directory on disk with telemetry enabled or disabled, returning the config path for use in telemetry tests.",
+      "tags": ["test", "factory", "config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/__tests__/worktree-merge-history.test.ts",
+      "type": "file",
+      "name": "worktree-merge-history.test.ts",
+      "filePath": "cli/src/__tests__/worktree-merge-history.test.ts",
+      "summary": "Test suite for worktree merge history logic, providing factory helpers for issues, comments, document revisions, attachments, projects, and project workspaces to build complex merge scenario fixtures.",
+      "tags": ["test", "worktree", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cli/src/__tests__/worktree.test.ts",
+      "type": "file",
+      "name": "worktree.test.ts",
+      "filePath": "cli/src/__tests__/worktree.test.ts",
+      "summary": "Comprehensive test suite for CLI worktree operations, covering worktree creation, syncing, agent assignment, and lifecycle management across 1300+ lines of test scenarios.",
+      "tags": ["test", "worktree", "cli"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:cli/src/__tests__/worktree.test.ts:buildSourceConfig",
+      "type": "function",
+      "name": "buildSourceConfig",
+      "filePath": "cli/src/__tests__/worktree.test.ts",
+      "lineRange": [75, 133],
+      "summary": "Constructs a complete Paperclip source config fixture with agents, services, and runtime settings used as the baseline for worktree test scenarios.",
+      "tags": ["test", "factory", "config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/adapters/http/format-event.ts",
+      "type": "file",
+      "name": "format-event.ts",
+      "filePath": "cli/src/adapters/http/format-event.ts",
+      "summary": "Formats raw HTTP stdout events from the Paperclip server for CLI display, trimming whitespace before printing to console.",
+      "tags": ["cli", "http", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/adapters/http/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "cli/src/adapters/http/index.ts",
+      "summary": "Entry point for the HTTP CLI adapter module, exporting the httpCLIAdapter implementation used when the CLI communicates with the server over HTTP.",
+      "tags": ["cli", "http", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/adapters/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "cli/src/adapters/index.ts",
+      "summary": "Barrel re-export for the CLI adapters module, exposing getCLIAdapter and the CLIAdapterModule type to callers that need to select an adapter at runtime.",
+      "tags": ["cli", "barrel", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/adapters/process/format-event.ts",
+      "type": "file",
+      "name": "format-event.ts",
+      "filePath": "cli/src/adapters/process/format-event.ts",
+      "summary": "Formats raw process stdout events from agent subprocesses for CLI display, trimming whitespace before printing to console.",
+      "tags": ["cli", "utility", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/adapters/process/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "cli/src/adapters/process/index.ts",
+      "summary": "Entry point for the process CLI adapter module, exporting the processCLIAdapter implementation used when the CLI manages agents as local subprocesses.",
+      "tags": ["cli", "entry-point", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/adapters/registry.ts",
+      "type": "file",
+      "name": "registry.ts",
+      "filePath": "cli/src/adapters/registry.ts",
+      "summary": "Adapter registry that maps adapter type strings to their CLI adapter implementations, providing a getCLIAdapter factory used throughout the CLI to select HTTP or process adapters at runtime.",
+      "tags": ["cli", "factory", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/adapters/registry.ts:getCLIAdapter",
+      "type": "function",
+      "name": "getCLIAdapter",
+      "filePath": "cli/src/adapters/registry.ts",
+      "lineRange": [75, 77],
+      "summary": "Looks up and returns the registered CLI adapter for the given type string, acting as the central dispatch point for adapter selection.",
+      "tags": ["factory", "cli", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:cli/src/checks/agent-jwt-secret-check.ts",
+      "type": "file",
+      "name": "agent-jwt-secret-check.ts",
+      "filePath": "cli/src/checks/agent-jwt-secret-check.ts",
+      "summary": "Pre-flight check that validates and ensures the agent JWT secret is present — reading from env vars or an env file, then generating a new secret if absent.",
+      "tags": ["cli", "security", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:cli/src/checks/agent-jwt-secret-check.ts:agentJwtSecretCheck",
+      "type": "function",
+      "name": "agentJwtSecretCheck",
+      "filePath": "cli/src/checks/agent-jwt-secret-check.ts",
+      "lineRange": [9, 40],
+      "summary": "Runs the agent JWT secret pre-flight check: reads from env or env file, reports status, and auto-generates a secret when none exists.",
+      "tags": ["security", "validation", "cli"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/checks/config-check.ts",
+      "type": "file",
+      "name": "config-check.ts",
+      "filePath": "cli/src/checks/config-check.ts",
+      "summary": "Pre-flight check that verifies the Paperclip configuration file exists and is valid, reporting errors and the resolved config path to the user.",
+      "tags": ["cli", "config", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:cli/src/checks/config-check.ts:configCheck",
+      "type": "function",
+      "name": "configCheck",
+      "filePath": "cli/src/checks/config-check.ts",
+      "lineRange": [4, 33],
+      "summary": "Resolves and validates the CLI config file, returning a structured check result with pass/fail status and descriptive error messages.",
+      "tags": ["config", "validation", "cli"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/checks/database-check.ts",
+      "type": "file",
+      "name": "database-check.ts",
+      "filePath": "cli/src/checks/database-check.ts",
+      "summary": "Pre-flight check that verifies database connectivity and ensures required runtime directories exist, dynamically importing the Drizzle DB module to test the connection.",
+      "tags": ["cli", "database", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/checks/database-check.ts:databaseCheck",
+      "type": "function",
+      "name": "databaseCheck",
+      "filePath": "cli/src/checks/database-check.ts",
+      "lineRange": [6, 59],
+      "summary": "Runs the database pre-flight check: dynamically imports the DB driver, executes a test query, resolves runtime paths, and creates missing directories.",
+      "tags": ["database", "validation", "cli"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cli/src/checks/deployment-auth-check.ts",
+      "type": "file",
+      "name": "deployment-auth-check.ts",
+      "filePath": "cli/src/checks/deployment-auth-check.ts",
+      "summary": "Pre-flight check that verifies authentication secrets required for public deployment — validating BETTER_AUTH_SECRET and PAPERCLIP_AGENT_JWT_SECRET env vars based on the inferred bind mode.",
+      "tags": ["cli", "security", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:cli/src/checks/deployment-auth-check.ts:deploymentAuthCheck",
+      "type": "function",
+      "name": "deploymentAuthCheck",
+      "filePath": "cli/src/checks/deployment-auth-check.ts",
+      "lineRange": [5, 88],
+      "summary": "Checks that auth-related env vars are set when deploying publicly, returning detailed check results per secret with appropriate warnings for remote bind mode.",
+      "tags": ["security", "validation", "cli"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:cli/src/checks/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "cli/src/checks/index.ts",
+      "summary": "Barrel re-export for all CLI pre-flight check functions, consolidating agentJwtSecretCheck, configCheck, databaseCheck, deploymentAuthCheck, llmCheck, logCheck, portCheck, secretsCheck, and storageCheck into a single import surface.",
+      "tags": ["cli", "barrel", "validation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:cli/src/__tests__/feedback.test.ts",
+      "target": "function:cli/src/__tests__/feedback.test.ts:makeTrace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/__tests__/helpers/zip.ts",
+      "target": "function:cli/src/__tests__/helpers/zip.ts:createStoredZipArchive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/__tests__/helpers/zip.ts",
+      "target": "function:cli/src/__tests__/helpers/zip.ts:createStoredZipArchive",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:cli/src/__tests__/onboard.test.ts",
+      "target": "function:cli/src/__tests__/onboard.test.ts:createExistingConfigFixture",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/__tests__/routines.test.ts",
+      "target": "function:cli/src/__tests__/routines.test.ts:writeTestConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/__tests__/secrets.test.ts",
+      "target": "function:cli/src/__tests__/secrets.test.ts:configWithSecretsProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/__tests__/telemetry.test.ts",
+      "target": "function:cli/src/__tests__/telemetry.test.ts:makeConfigPath",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/__tests__/worktree.test.ts",
+      "target": "function:cli/src/__tests__/worktree.test.ts:buildSourceConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/adapters/registry.ts",
+      "target": "function:cli/src/adapters/registry.ts:getCLIAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/adapters/registry.ts",
+      "target": "function:cli/src/adapters/registry.ts:getCLIAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:cli/src/checks/agent-jwt-secret-check.ts",
+      "target": "function:cli/src/checks/agent-jwt-secret-check.ts:agentJwtSecretCheck",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/checks/agent-jwt-secret-check.ts",
+      "target": "function:cli/src/checks/agent-jwt-secret-check.ts:agentJwtSecretCheck",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:cli/src/checks/config-check.ts",
+      "target": "function:cli/src/checks/config-check.ts:configCheck",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/checks/config-check.ts",
+      "target": "function:cli/src/checks/config-check.ts:configCheck",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:cli/src/checks/database-check.ts",
+      "target": "function:cli/src/checks/database-check.ts:databaseCheck",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/checks/database-check.ts",
+      "target": "function:cli/src/checks/database-check.ts:databaseCheck",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:cli/src/checks/deployment-auth-check.ts",
+      "target": "function:cli/src/checks/deployment-auth-check.ts:deploymentAuthCheck",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:cli/src/checks/deployment-auth-check.ts",
+      "target": "function:cli/src/checks/deployment-auth-check.ts:deploymentAuthCheck",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:cli/src/adapters/index.ts",
+      "target": "file:cli/src/adapters/registry.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/checks/index.ts",
+      "target": "file:cli/src/checks/agent-jwt-secret-check.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/checks/index.ts",
+      "target": "file:cli/src/checks/config-check.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/checks/index.ts",
+      "target": "file:cli/src/checks/database-check.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/checks/index.ts",
+      "target": "file:cli/src/checks/deployment-auth-check.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/adapters/http/index.ts",
+      "target": "file:cli/src/adapters/http/format-event.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/adapters/process/index.ts",
+      "target": "file:cli/src/adapters/process/format-event.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/adapters/registry.ts",
+      "target": "file:cli/src/adapters/http/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:cli/src/adapters/registry.ts",
+      "target": "file:cli/src/adapters/process/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

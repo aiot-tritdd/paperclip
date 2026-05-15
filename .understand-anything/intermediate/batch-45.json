@@ -1,0 +1,446 @@
+{
+  "batchIndex": 45,
+  "nodes": [
+    {
+      "id": "file:scripts/screenshot.cjs",
+      "type": "file",
+      "name": "screenshot.cjs",
+      "filePath": "scripts/screenshot.cjs",
+      "summary": "Node.js CJS script that captures board screenshots using Playwright, reading auth tokens from the local Paperclip config and accepting CLI flags for URL, output path, and viewport dimensions.",
+      "tags": ["script", "utility", "testing", "automation"],
+      "complexity": "simple",
+      "language": "javascript",
+      "sizeLines": 92
+    },
+    {
+      "id": "file:scripts/smoke/openclaw-docker-ui.sh",
+      "type": "file",
+      "name": "openclaw-docker-ui.sh",
+      "filePath": "scripts/smoke/openclaw-docker-ui.sh",
+      "summary": "Shell smoke-test that spins up the Openclaw agent via Docker Compose, detects the Paperclip base URL, and exercises the UI end-to-end to verify the Docker-based deployment path.",
+      "tags": ["script", "smoke-test", "infrastructure", "docker"],
+      "complexity": "complex",
+      "language": "shell",
+      "sizeLines": 329
+    },
+    {
+      "id": "file:scripts/smoke/openclaw-gateway-e2e.sh",
+      "type": "file",
+      "name": "openclaw-gateway-e2e.sh",
+      "filePath": "scripts/smoke/openclaw-gateway-e2e.sh",
+      "summary": "The most comprehensive gateway smoke-test script: starts Openclaw in Docker, registers and approves a gateway join, runs three end-to-end issue/agent test cases (A, B, C) covering run lifecycle, pairing, and session strategy, then cleans up.",
+      "tags": ["script", "smoke-test", "e2e", "gateway"],
+      "complexity": "complex",
+      "language": "shell",
+      "sizeLines": 954
+    },
+    {
+      "id": "file:scripts/smoke/openclaw-join.sh",
+      "type": "file",
+      "name": "openclaw-join.sh",
+      "filePath": "scripts/smoke/openclaw-join.sh",
+      "summary": "Shell smoke-test focused on the Openclaw gateway join flow: sends a join request to a live Paperclip board, asserts HTTP status codes and JSON field presence, and verifies the join handshake completes successfully.",
+      "tags": ["script", "smoke-test", "gateway", "authentication"],
+      "complexity": "moderate",
+      "language": "shell",
+      "sizeLines": 295
+    },
+    {
+      "id": "file:scripts/smoke/openclaw-sse-standalone.sh",
+      "type": "file",
+      "name": "openclaw-sse-standalone.sh",
+      "filePath": "scripts/smoke/openclaw-sse-standalone.sh",
+      "summary": "Standalone SSE smoke-test that starts the Openclaw agent process locally (not via Docker) and verifies Server-Sent Events stream from the gateway without requiring a full Docker environment.",
+      "tags": ["script", "smoke-test", "sse", "gateway"],
+      "complexity": "moderate",
+      "language": "shell",
+      "sizeLines": 146
+    },
+    {
+      "id": "file:scripts/smoke/terminal-bench-loop-skill-smoke.mjs",
+      "type": "file",
+      "name": "terminal-bench-loop-skill-smoke.mjs",
+      "filePath": "scripts/smoke/terminal-bench-loop-skill-smoke.mjs",
+      "summary": "ES module smoke-test for the terminal-bench-loop skill: creates a Paperclip issue hierarchy with mocked benchmark run artifacts, diagnosis and fix-proposal documents, and a request_confirmation interaction, then asserts all expected state invariants via the Paperclip API.",
+      "tags": ["script", "smoke-test", "terminal-bench", "api-client"],
+      "complexity": "complex",
+      "language": "javascript",
+      "sizeLines": 361
+    },
+    {
+      "id": "file:scripts/verify-release-registry-state.mjs",
+      "type": "file",
+      "name": "verify-release-registry-state.mjs",
+      "filePath": "scripts/verify-release-registry-state.mjs",
+      "summary": "Release-verification script that fetches npm registry documents and manifests for Paperclip packages, then checks that dist-tag versions, internal dependency alignments, and canary/stable channel rules are all consistent before a release is promoted.",
+      "tags": ["script", "release-verification", "ci-cd", "npm-registry"],
+      "complexity": "complex",
+      "language": "javascript",
+      "sizeLines": 468
+    },
+    {
+      "id": "file:scripts/verify-release-registry-state.test.mjs",
+      "type": "file",
+      "name": "verify-release-registry-state.test.mjs",
+      "filePath": "scripts/verify-release-registry-state.test.mjs",
+      "summary": "Unit-test suite for the release registry verification script, covering canary-version detection, manifest lookup key creation, internal dependency problem collection, and the full verifyPackageRegistryState logic with mocked registry responses.",
+      "tags": ["test", "release-verification", "unit-test", "npm-registry"],
+      "complexity": "complex",
+      "language": "javascript",
+      "sizeLines": 363
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "Security policy document describing how to report vulnerabilities in the Paperclip project, directing reporters to GitHub's private vulnerability reporting feature.",
+      "tags": ["documentation", "security", "policy"],
+      "complexity": "simple",
+      "language": "markdown",
+      "sizeLines": 8
+    },
+    {
+      "id": "document:server/CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "server/CHANGELOG.md",
+      "summary": "Auto-generated changelog for the @paperclipai/server package, recording patch and minor changes from v0.2.1 through v0.3.1 including adapter, activity, and API improvements.",
+      "tags": ["documentation", "changelog", "release-history"],
+      "complexity": "simple",
+      "language": "markdown",
+      "sizeLines": 129
+    },
+    {
+      "id": "config:server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "server/package.json",
+      "summary": "Package manifest for @paperclipai/server defining its exports, build scripts (tsc, vitest), and dependencies including Express, Drizzle ORM, Zod, and internal Paperclip packages.",
+      "tags": ["configuration", "build-system", "dependencies", "package-manifest"],
+      "complexity": "moderate",
+      "language": "json",
+      "sizeLines": 97
+    },
+    {
+      "id": "file:server/scripts/dev-watch.ts",
+      "type": "file",
+      "name": "dev-watch.ts",
+      "filePath": "server/scripts/dev-watch.ts",
+      "summary": "Development watch script for the server package that uses chokidar to watch TypeScript source files and triggers incremental tsc compilation on changes.",
+      "tags": ["script", "development", "build-system", "watch"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 33
+    },
+    {
+      "id": "file:server/src/__tests__/access-service.test.ts",
+      "type": "file",
+      "name": "access-service.test.ts",
+      "filePath": "server/src/__tests__/access-service.test.ts",
+      "summary": "Integration tests for the server access service using an embedded Postgres database, verifying RBAC rules such as preventing demotion of the last active owner and enforcing permission grant constraints.",
+      "tags": ["test", "access-control", "integration-test", "service"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 224
+    },
+    {
+      "id": "file:server/src/__tests__/access-validators.test.ts",
+      "type": "file",
+      "name": "access-validators.test.ts",
+      "filePath": "server/src/__tests__/access-validators.test.ts",
+      "summary": "Small unit-test suite for access validator functions, checking input validation logic for membership role changes and permission grant payloads.",
+      "tags": ["test", "access-control", "validation", "unit-test"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 33
+    },
+    {
+      "id": "file:server/src/__tests__/acpx-local-adapter-environment.test.ts",
+      "type": "file",
+      "name": "acpx-local-adapter-environment.test.ts",
+      "filePath": "server/src/__tests__/acpx-local-adapter-environment.test.ts",
+      "summary": "Tests for the ACPX local adapter environment probe, asserting that credential and runtime environment checks are correctly categorized and reported.",
+      "tags": ["test", "adapter", "environment", "acpx"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 129
+    },
+    {
+      "id": "file:server/src/__tests__/acpx-local-execute.test.ts",
+      "type": "file",
+      "name": "acpx-local-execute.test.ts",
+      "filePath": "server/src/__tests__/acpx-local-execute.test.ts",
+      "summary": "Comprehensive unit tests for the ACPX local adapter executor, using a FakeRuntime stub to verify session management, turn lifecycle, skill invocation, and error handling without spawning a real ACP process.",
+      "tags": ["test", "adapter", "acpx", "execution"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 768
+    },
+    {
+      "id": "file:server/src/__tests__/acpx-local-skill-sync.test.ts",
+      "type": "file",
+      "name": "acpx-local-skill-sync.test.ts",
+      "filePath": "server/src/__tests__/acpx-local-skill-sync.test.ts",
+      "summary": "Unit tests for the ACPX local adapter skill-sync logic, verifying that local skill packages are discovered and their manifests are correctly synchronized.",
+      "tags": ["test", "adapter", "acpx", "skill-sync"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 78
+    },
+    {
+      "id": "file:server/src/__tests__/activity-routes.test.ts",
+      "type": "file",
+      "name": "activity-routes.test.ts",
+      "filePath": "server/src/__tests__/activity-routes.test.ts",
+      "summary": "HTTP route tests for the activity API endpoints, spinning up an in-process Express app with mocked auth and asserting response shapes and status codes for activity list and detail routes.",
+      "tags": ["test", "api-handler", "activity", "route"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 189
+    },
+    {
+      "id": "file:server/src/__tests__/activity-service.test.ts",
+      "type": "file",
+      "name": "activity-service.test.ts",
+      "filePath": "server/src/__tests__/activity-service.test.ts",
+      "summary": "Integration tests for the activity service backed by an embedded Postgres database, covering activity log limits, issue run tracking, heartbeat run lifecycle, and agent session event recording.",
+      "tags": ["test", "service", "activity", "integration-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 537
+    },
+    {
+      "id": "file:server/src/__tests__/adapter-model-refresh-routes.test.ts",
+      "type": "file",
+      "name": "adapter-model-refresh-routes.test.ts",
+      "filePath": "server/src/__tests__/adapter-model-refresh-routes.test.ts",
+      "summary": "HTTP route tests for the adapter model-refresh endpoint, verifying that POST requests trigger model list reloads and return updated model data while correctly mocking the plugin store and loader.",
+      "tags": ["test", "api-handler", "adapter", "route"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 251
+    },
+    {
+      "id": "file:server/src/__tests__/adapter-models.test.ts",
+      "type": "file",
+      "name": "adapter-models.test.ts",
+      "filePath": "server/src/__tests__/adapter-models.test.ts",
+      "summary": "Unit tests for adapter model listing and profile resolution, checking that model IDs, labels, and capability profiles are correctly derived from registered adapter modules.",
+      "tags": ["test", "adapter", "models", "unit-test"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 145
+    },
+    {
+      "id": "file:server/src/__tests__/adapter-registry.test.ts",
+      "type": "file",
+      "name": "adapter-registry.test.ts",
+      "filePath": "server/src/__tests__/adapter-registry.test.ts",
+      "summary": "Thorough unit tests for the server adapter registry, covering registration, lookup, deregistration, override-pause behavior, external adapter resolution, and the Hermes local adapter integration.",
+      "tags": ["test", "adapter", "registry", "unit-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 551
+    },
+    {
+      "id": "file:server/src/__tests__/adapter-routes-authz.test.ts",
+      "type": "file",
+      "name": "adapter-routes-authz.test.ts",
+      "filePath": "server/src/__tests__/adapter-routes-authz.test.ts",
+      "summary": "Authorization tests for the adapter HTTP routes, asserting that mutating operations (install, patch, delete, override) are correctly restricted by membership role and that non-owner roles receive 403 responses.",
+      "tags": ["test", "api-handler", "authorization", "adapter"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 343
+    },
+    {
+      "id": "file:server/src/__tests__/adapter-routes.test.ts",
+      "type": "file",
+      "name": "adapter-routes.test.ts",
+      "filePath": "server/src/__tests__/adapter-routes.test.ts",
+      "summary": "Functional HTTP route tests for the adapter CRUD endpoints, using vi.doMock to isolate the plugin store and loader, then verifying install, list, patch, and delete operations return correct status codes and payloads.",
+      "tags": ["test", "api-handler", "adapter", "route"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 333
+    },
+    {
+      "id": "file:server/src/__tests__/adapter-session-codecs.test.ts",
+      "type": "file",
+      "name": "adapter-session-codecs.test.ts",
+      "filePath": "server/src/__tests__/adapter-session-codecs.test.ts",
+      "summary": "Unit tests for adapter session codec serialization and deserialization, verifying that agent session state is correctly encoded to and decoded from its wire format across different adapter types.",
+      "tags": ["test", "adapter", "serialization", "codec"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 241
+    },
+    {
+      "id": "class:server/src/__tests__/acpx-local-execute.test.ts:FakeRuntime",
+      "type": "class",
+      "name": "FakeRuntime",
+      "filePath": "server/src/__tests__/acpx-local-execute.test.ts",
+      "lineRange": [24, 120],
+      "summary": "Test double implementing the AcpRuntime interface, recording all calls to ensureSession, startTurn, cancel, close, setMode, and setConfigOption to enable deterministic assertions on the ACPX executor under test.",
+      "tags": ["test", "mock", "acpx", "runtime"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:scripts/verify-release-registry-state.test.mjs",
+      "target": "file:scripts/verify-release-registry-state.mjs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:scripts/smoke/openclaw-docker-ui.sh",
+      "target": "file:scripts/smoke/openclaw-gateway-e2e.sh",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:scripts/smoke/openclaw-join.sh",
+      "target": "file:scripts/smoke/openclaw-gateway-e2e.sh",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:scripts/smoke/openclaw-sse-standalone.sh",
+      "target": "file:scripts/smoke/openclaw-gateway-e2e.sh",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:scripts/smoke/terminal-bench-loop-skill-smoke.mjs",
+      "target": "file:scripts/smoke/openclaw-gateway-e2e.sh",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:server/package.json",
+      "target": "file:server/scripts/dev-watch.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/__tests__/access-service.test.ts",
+      "target": "file:server/src/services/access.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/access-validators.test.ts",
+      "target": "file:server/src/access-validators.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/acpx-local-adapter-environment.test.ts",
+      "target": "file:server/src/adapters/acpx-local/environment.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/acpx-local-execute.test.ts",
+      "target": "file:server/src/adapters/acpx-local/execute.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/acpx-local-execute.test.ts",
+      "target": "class:server/src/__tests__/acpx-local-execute.test.ts:FakeRuntime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/acpx-local-skill-sync.test.ts",
+      "target": "file:server/src/adapters/acpx-local/skill-sync.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/activity-routes.test.ts",
+      "target": "file:server/src/routes/activities.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/activity-service.test.ts",
+      "target": "file:server/src/services/activity.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-model-refresh-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-models.test.ts",
+      "target": "file:server/src/adapters/models.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-registry.test.ts",
+      "target": "file:server/src/adapters/index.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-registry.test.ts",
+      "target": "file:server/src/adapters/registry.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-routes-authz.test.ts",
+      "target": "file:server/src/routes/adapters.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-routes.test.ts",
+      "target": "file:server/src/routes/adapters.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:server/src/__tests__/adapter-session-codecs.test.ts",
+      "target": "file:server/src/adapters/session-codecs.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:server/CHANGELOG.md",
+      "target": "config:server/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

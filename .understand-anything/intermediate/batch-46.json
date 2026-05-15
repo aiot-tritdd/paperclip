@@ -1,0 +1,569 @@
+{
+  "batchIndex": 46,
+  "nodes": [
+    {
+      "id": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "type": "file",
+      "name": "agent-adapter-validation-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "summary": "Integration tests for agent adapter validation routes, verifying that adapter registration, de-registration, and request handling behave correctly with mocked module dependencies.",
+      "tags": ["test", "api-handler", "agent", "adapter", "validation"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 264
+    },
+    {
+      "id": "file:server/src/__tests__/agent-auth-jwt.test.ts",
+      "type": "file",
+      "name": "agent-auth-jwt.test.ts",
+      "filePath": "server/src/__tests__/agent-auth-jwt.test.ts",
+      "summary": "Tests JWT-based authentication for the agent subsystem, ensuring tokens are correctly issued, validated, and rejected for agent actors.",
+      "tags": ["test", "agent", "authentication", "jwt", "security"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 100
+    },
+    {
+      "id": "file:server/src/__tests__/agent-cross-tenant-authz-routes.test.ts",
+      "type": "file",
+      "name": "agent-cross-tenant-authz-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-cross-tenant-authz-routes.test.ts",
+      "summary": "Integration tests for cross-tenant authorization on agent routes, verifying that company access boundaries, board membership, and instance-admin rules are enforced correctly.",
+      "tags": ["test", "agent", "authorization", "multi-tenant", "security"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 377
+    },
+    {
+      "id": "file:server/src/__tests__/agent-instructions-routes.test.ts",
+      "type": "file",
+      "name": "agent-instructions-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-instructions-routes.test.ts",
+      "summary": "Integration tests for the agent instructions HTTP routes, covering CRUD operations for per-agent instructions with mocked auth and service dependencies.",
+      "tags": ["test", "agent", "api-handler", "instructions", "routes"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 394
+    },
+    {
+      "id": "file:server/src/__tests__/agent-instructions-service.test.ts",
+      "type": "file",
+      "name": "agent-instructions-service.test.ts",
+      "filePath": "server/src/__tests__/agent-instructions-service.test.ts",
+      "summary": "Unit tests for the agent instructions service layer, exercising file-system-backed instruction storage and retrieval using temporary directories.",
+      "tags": ["test", "agent", "service", "instructions", "filesystem"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 361
+    },
+    {
+      "id": "file:server/src/__tests__/agent-live-run-routes.test.ts",
+      "type": "file",
+      "name": "agent-live-run-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-live-run-routes.test.ts",
+      "summary": "Integration tests for the agent live-run HTTP routes, covering listing, filtering, and status transitions for in-progress agent runs with a database stub.",
+      "tags": ["test", "agent", "api-handler", "live-run", "routes"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 600
+    },
+    {
+      "id": "file:server/src/__tests__/agent-permissions-routes.test.ts",
+      "type": "file",
+      "name": "agent-permissions-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-permissions-routes.test.ts",
+      "summary": "Comprehensive integration tests for agent permission routes (1436 lines), covering principal grants, role-based access checks, API key management, and access-service interactions across many scenarios.",
+      "tags": ["test", "agent", "permissions", "authorization", "api-handler"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 1436
+    },
+    {
+      "id": "file:server/src/__tests__/agent-shortname-collision.test.ts",
+      "type": "file",
+      "name": "agent-shortname-collision.test.ts",
+      "filePath": "server/src/__tests__/agent-shortname-collision.test.ts",
+      "summary": "Tests that agent short-name uniqueness constraints are enforced, preventing duplicate shortnames within the same company scope.",
+      "tags": ["test", "agent", "validation", "uniqueness"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 69
+    },
+    {
+      "id": "file:server/src/__tests__/agent-skill-contract.test.ts",
+      "type": "file",
+      "name": "agent-skill-contract.test.ts",
+      "filePath": "server/src/__tests__/agent-skill-contract.test.ts",
+      "summary": "Contract tests verifying that the agent skill data structures and their serialized shapes conform to the expected interface, preventing silent contract breakage.",
+      "tags": ["test", "agent", "skill", "contract", "type-definition"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 49
+    },
+    {
+      "id": "file:server/src/__tests__/agent-skills-routes.test.ts",
+      "type": "file",
+      "name": "agent-skills-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-skills-routes.test.ts",
+      "summary": "Integration tests for the agent skills HTTP routes, covering skill attachment, detachment, listing, and board-approval gating with mocked database and auth.",
+      "tags": ["test", "agent", "skill", "api-handler", "routes"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 817
+    },
+    {
+      "id": "file:server/src/__tests__/agent-test-environment-routes.test.ts",
+      "type": "file",
+      "name": "agent-test-environment-routes.test.ts",
+      "filePath": "server/src/__tests__/agent-test-environment-routes.test.ts",
+      "summary": "Integration tests for agent test-environment routes, validating environment provisioning, adapter lifecycle, and route responses with registered test adapters.",
+      "tags": ["test", "agent", "test-environment", "adapter", "routes"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 305
+    },
+    {
+      "id": "file:server/src/__tests__/app-hmr-port.test.ts",
+      "type": "file",
+      "name": "app-hmr-port.test.ts",
+      "filePath": "server/src/__tests__/app-hmr-port.test.ts",
+      "summary": "Minimal tests ensuring the Vite HMR port is correctly read and exposed by the application server configuration.",
+      "tags": ["test", "app", "vite", "hmr", "configuration"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 19
+    },
+    {
+      "id": "file:server/src/__tests__/app-private-hostname-gate.test.ts",
+      "type": "file",
+      "name": "app-private-hostname-gate.test.ts",
+      "filePath": "server/src/__tests__/app-private-hostname-gate.test.ts",
+      "summary": "Tests the private-hostname middleware gate that restricts certain routes to private network access only, verifying correct allow/deny behavior.",
+      "tags": ["test", "app", "middleware", "security", "hostname"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 32
+    },
+    {
+      "id": "file:server/src/__tests__/app-vite-dev-routing.test.ts",
+      "type": "file",
+      "name": "app-vite-dev-routing.test.ts",
+      "filePath": "server/src/__tests__/app-vite-dev-routing.test.ts",
+      "summary": "Tests the Vite development proxy routing logic, verifying that requests are forwarded or served based on Accept headers and path patterns.",
+      "tags": ["test", "app", "vite", "routing", "middleware"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 27
+    },
+    {
+      "id": "file:server/src/__tests__/approval-routes-idempotency.test.ts",
+      "type": "file",
+      "name": "approval-routes-idempotency.test.ts",
+      "filePath": "server/src/__tests__/approval-routes-idempotency.test.ts",
+      "summary": "Integration tests for approval route idempotency, ensuring that repeated approval or rejection requests produce consistent outcomes without duplicate side effects.",
+      "tags": ["test", "approvals", "idempotency", "api-handler", "routes"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 339
+    },
+    {
+      "id": "file:server/src/__tests__/approvals-service.test.ts",
+      "type": "file",
+      "name": "approvals-service.test.ts",
+      "filePath": "server/src/__tests__/approvals-service.test.ts",
+      "summary": "Unit tests for the approvals service, verifying state transitions, database query patterns, and guard logic for approve/reject operations.",
+      "tags": ["test", "approvals", "service", "state-machine"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 107
+    },
+    {
+      "id": "file:server/src/__tests__/assets.test.ts",
+      "type": "file",
+      "name": "assets.test.ts",
+      "filePath": "server/src/__tests__/assets.test.ts",
+      "summary": "Integration tests for the asset upload and retrieval HTTP routes, exercising signed URL generation, storage service interactions, and content-type handling.",
+      "tags": ["test", "assets", "api-handler", "storage", "routes"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 332
+    },
+    {
+      "id": "file:server/src/__tests__/attachment-types.test.ts",
+      "type": "file",
+      "name": "attachment-types.test.ts",
+      "filePath": "server/src/__tests__/attachment-types.test.ts",
+      "summary": "Tests for attachment type definitions and runtime type-guards, ensuring that all supported attachment shapes are correctly identified and validated.",
+      "tags": ["test", "attachments", "type-definition", "validation"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 125
+    },
+    {
+      "id": "file:server/src/__tests__/auth-routes.test.ts",
+      "type": "file",
+      "name": "auth-routes.test.ts",
+      "filePath": "server/src/__tests__/auth-routes.test.ts",
+      "summary": "Integration tests for authentication HTTP routes (login, logout, token refresh), verifying database interactions, session state, and HTTP response codes.",
+      "tags": ["test", "authentication", "api-handler", "routes", "session"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 164
+    },
+    {
+      "id": "file:server/src/__tests__/auth-session-route.test.ts",
+      "type": "file",
+      "name": "auth-session-route.test.ts",
+      "filePath": "server/src/__tests__/auth-session-route.test.ts",
+      "summary": "Tests for the session retrieval route, verifying that session data is correctly fetched from the database and returned with appropriate actor information.",
+      "tags": ["test", "authentication", "session", "api-handler"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 136
+    },
+    {
+      "id": "file:server/src/__tests__/authz-company-access.test.ts",
+      "type": "file",
+      "name": "authz-company-access.test.ts",
+      "filePath": "server/src/__tests__/authz-company-access.test.ts",
+      "summary": "Tests for the company-access authorization middleware, verifying that actors are correctly permitted or denied access based on company membership and board role.",
+      "tags": ["test", "authorization", "middleware", "company", "security"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 157
+    },
+    {
+      "id": "file:server/src/__tests__/aws-secrets-manager-provider.test.ts",
+      "type": "file",
+      "name": "aws-secrets-manager-provider.test.ts",
+      "filePath": "server/src/__tests__/aws-secrets-manager-provider.test.ts",
+      "summary": "Comprehensive unit tests (820 lines) for the AWS Secrets Manager provider, covering secret creation, versioning, rotation, retrieval, listing, and deletion with a stubbed AWS client.",
+      "tags": ["test", "aws", "secrets-manager", "provider", "security"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 820
+    },
+    {
+      "id": "file:server/src/__tests__/better-auth.test.ts",
+      "type": "file",
+      "name": "better-auth.test.ts",
+      "filePath": "server/src/__tests__/better-auth.test.ts",
+      "summary": "Tests for the better-auth integration, verifying that the third-party auth library is correctly wired to the Paperclip session and user models.",
+      "tags": ["test", "authentication", "better-auth", "integration"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 78
+    },
+    {
+      "id": "file:server/src/__tests__/board-mutation-guard.test.ts",
+      "type": "file",
+      "name": "board-mutation-guard.test.ts",
+      "filePath": "server/src/__tests__/board-mutation-guard.test.ts",
+      "summary": "Tests for the board mutation guard middleware, ensuring write operations are blocked for non-admin actors on boards that require admin approval.",
+      "tags": ["test", "middleware", "board", "authorization", "guard"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 143
+    },
+    {
+      "id": "file:server/src/__tests__/budgets-service.test.ts",
+      "type": "file",
+      "name": "budgets-service.test.ts",
+      "filePath": "server/src/__tests__/budgets-service.test.ts",
+      "summary": "Unit tests for the budgets service layer, covering budget creation, consumption tracking, limit enforcement, and database query chains via a fluent stub.",
+      "tags": ["test", "budgets", "service", "database"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 311
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-auth-jwt.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-cross-tenant-authz-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-instructions-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-instructions-service.test.ts",
+      "target": "file:server/src/services/agent-instructions.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-live-run-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-permissions-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-shortname-collision.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-skill-contract.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-skills-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-test-environment-routes.test.ts",
+      "target": "file:server/src/routes/agents.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/app-hmr-port.test.ts",
+      "target": "file:server/src/app.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/app-private-hostname-gate.test.ts",
+      "target": "file:server/src/app.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/app-vite-dev-routing.test.ts",
+      "target": "file:server/src/app.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/approval-routes-idempotency.test.ts",
+      "target": "file:server/src/routes/approvals.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/approvals-service.test.ts",
+      "target": "file:server/src/services/approvals.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/assets.test.ts",
+      "target": "file:server/src/routes/assets.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/attachment-types.test.ts",
+      "target": "file:server/src/types/attachments.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/auth-routes.test.ts",
+      "target": "file:server/src/routes/auth.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/auth-session-route.test.ts",
+      "target": "file:server/src/routes/auth.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/authz-company-access.test.ts",
+      "target": "file:server/src/middleware/company-access.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/aws-secrets-manager-provider.test.ts",
+      "target": "file:server/src/services/aws-secrets-manager-provider.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/better-auth.test.ts",
+      "target": "file:server/src/lib/better-auth.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/board-mutation-guard.test.ts",
+      "target": "file:server/src/middleware/board-mutation-guard.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/budgets-service.test.ts",
+      "target": "file:server/src/services/budgets.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-auth-jwt.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-cross-tenant-authz-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-instructions-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-permissions-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-skills-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-live-run-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-test-environment-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-shortname-collision.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-adapter-validation-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-skill-contract.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/agent-instructions-routes.test.ts",
+      "target": "file:server/src/__tests__/agent-instructions-service.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/app-hmr-port.test.ts",
+      "target": "file:server/src/__tests__/app-private-hostname-gate.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/app-hmr-port.test.ts",
+      "target": "file:server/src/__tests__/app-vite-dev-routing.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/auth-routes.test.ts",
+      "target": "file:server/src/__tests__/auth-session-route.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/auth-routes.test.ts",
+      "target": "file:server/src/__tests__/better-auth.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/auth-routes.test.ts",
+      "target": "file:server/src/__tests__/authz-company-access.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/approval-routes-idempotency.test.ts",
+      "target": "file:server/src/__tests__/approvals-service.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

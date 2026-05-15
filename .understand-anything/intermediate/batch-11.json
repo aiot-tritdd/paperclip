@@ -1,0 +1,441 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/guides/board-operator/org-structure.md",
+      "type": "document",
+      "name": "org-structure.md",
+      "filePath": "docs/guides/board-operator/org-structure.md",
+      "summary": "Guide covering how Paperclip models organizational hierarchy with a chain-of-command structure, explaining how agents inherit authority rules from their parent in the org chart.",
+      "tags": ["documentation", "governance", "agent-hierarchy", "board-operator"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/guides/execution-policy.md",
+      "type": "document",
+      "name": "execution-policy.md",
+      "filePath": "docs/guides/execution-policy.md",
+      "summary": "Comprehensive reference covering execution policy review and approval workflows, detailing the data model (executionPolicy, executionState, issue_execution_decisions), workflow variants, access control, API usage, and UI design principles.",
+      "tags": ["documentation", "governance", "api-reference", "workflow"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/guides/openclaw-docker-setup.md",
+      "type": "document",
+      "name": "openclaw-docker-setup.md",
+      "filePath": "docs/guides/openclaw-docker-setup.md",
+      "summary": "Step-by-step setup guide for running the OpenClaw gateway adapter in Docker for local development, covering sandbox mode, Docker Compose fallback, known issues, and configuration reference.",
+      "tags": ["documentation", "infrastructure", "deployment", "development"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/plans/2026-03-13-issue-documents-plan.md",
+      "type": "document",
+      "name": "2026-03-13-issue-documents-plan.md",
+      "filePath": "docs/plans/2026-03-13-issue-documents-plan.md",
+      "summary": "Detailed implementation plan for attaching structured documents to issues, covering data model (documents, document_revisions, issue_documents tables), API contract, UI design, agent protocol, and a 5-phase rollout from schema to legacy migration.",
+      "tags": ["documentation", "planning", "data-model", "api-schema"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/specs/agent-config-ui.md",
+      "type": "document",
+      "name": "agent-config-ui.md",
+      "filePath": "docs/specs/agent-config-ui.md",
+      "summary": "UI specification for the agent configuration and activity surfaces, detailing the agent creation dialog fields, agent detail page tabs (Overview, Configuration, Runs, Issues, Costs), component inventory, API surface, and implementation order.",
+      "tags": ["documentation", "ui-spec", "configuration", "agent-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/specs/cliphub-plan.md",
+      "type": "document",
+      "name": "cliphub-plan.md",
+      "filePath": "docs/specs/cliphub-plan.md",
+      "summary": "Product and technical specification for ClipHub, a marketplace for Paperclip team configurations, covering taxonomy (blueprints, skills, governance templates), data schemas, pages/routes, user flows, UI design, installation mechanics, revenue model, and MVP phases.",
+      "tags": ["documentation", "planning", "marketplace", "product-spec"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/start/architecture.md",
+      "type": "document",
+      "name": "architecture.md",
+      "filePath": "docs/start/architecture.md",
+      "summary": "High-level architecture overview describing Paperclip's monorepo structure, technology stack (Express/Hono, React/Vite, DrizzleORM, PostgreSQL), request flow, adapter model, and key design decisions.",
+      "tags": ["documentation", "architecture", "overview", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/start/core-concepts.md",
+      "type": "document",
+      "name": "core-concepts.md",
+      "filePath": "docs/start/core-concepts.md",
+      "summary": "Glossary-style reference explaining the fundamental Paperclip concepts: Company, Agents, Issues (tasks with status lifecycle), Delegation, Heartbeats, and Governance.",
+      "tags": ["documentation", "concepts", "reference", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/start/quickstart.md",
+      "type": "document",
+      "name": "quickstart.md",
+      "filePath": "docs/start/quickstart.md",
+      "summary": "Getting-started guide with recommended Docker-based quick-start and local development setup instructions, pointing readers to next steps like core concepts and architecture.",
+      "tags": ["documentation", "getting-started", "entry-point", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/start/what-is-paperclip.md",
+      "type": "document",
+      "name": "what-is-paperclip.md",
+      "filePath": "docs/start/what-is-paperclip.md",
+      "summary": "Introductory overview explaining Paperclip's two-layer design (Control Plane + Execution Adapters), the problem it solves, and its core orchestration principle.",
+      "tags": ["documentation", "overview", "entry-point", "concepts"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:evals/promptfoo/promptfooconfig.yaml",
+      "type": "config",
+      "name": "promptfooconfig.yaml",
+      "filePath": "evals/promptfoo/promptfooconfig.yaml",
+      "summary": "Promptfoo evaluation harness configuration wiring together model providers, prompt templates, default test variables, and test suite file references for evaluating heartbeat and governance LLM prompts.",
+      "tags": ["configuration", "ci-cd", "llm-evaluation", "testing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:evals/promptfoo/prompts/heartbeat-system.txt",
+      "type": "document",
+      "name": "heartbeat-system.txt",
+      "filePath": "evals/promptfoo/prompts/heartbeat-system.txt",
+      "summary": "System prompt template used for LLM evaluation of heartbeat behavior, defining the agent's identity and expected response format for the promptfoo eval harness.",
+      "tags": ["documentation", "llm-evaluation", "prompt-template", "agent-behavior"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:evals/promptfoo/tests/core.yaml",
+      "type": "config",
+      "name": "core.yaml",
+      "filePath": "evals/promptfoo/tests/core.yaml",
+      "summary": "Core LLM evaluation test cases for Paperclip agent prompts, containing six scenario-based assertions that validate expected heartbeat and task-handling behaviors.",
+      "tags": ["configuration", "testing", "llm-evaluation", "agent-behavior"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:evals/promptfoo/tests/governance.yaml",
+      "type": "config",
+      "name": "governance.yaml",
+      "filePath": "evals/promptfoo/tests/governance.yaml",
+      "summary": "Governance-focused LLM evaluation test cases asserting correct agent behavior around approval workflows and policy enforcement.",
+      "tags": ["configuration", "testing", "governance", "llm-evaluation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:evals/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "evals/README.md",
+      "summary": "Quick-start guide for the Paperclip promptfoo evaluation suite, covering prerequisites, how to run evals, what scenarios are tested, how to add new cases, and future evaluation phases.",
+      "tags": ["documentation", "llm-evaluation", "testing", "getting-started"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Root monorepo package.json using pnpm workspaces, defining project-wide scripts (build, test, lint, type-check, dev) and shared dev dependencies for the entire Paperclip repository.",
+      "tags": ["configuration", "build-system", "monorepo", "dependency-management"],
+      "complexity": "moderate",
+      "languageNotes": "Private pnpm workspace root; packageManager field pins the exact pnpm version for reproducibility."
+    },
+    {
+      "id": "document:packages/adapter-utils/CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "packages/adapter-utils/CHANGELOG.md",
+      "summary": "Automated changelog for the @paperclipai/adapter-utils package tracking patch and minor releases from v0.2.1 through v0.3.1 with changeset-generated entries.",
+      "tags": ["documentation", "changelog", "release-history"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/adapter-utils/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/adapter-utils/package.json",
+      "summary": "Package manifest for @paperclipai/adapter-utils defining ESM/CJS dual exports, published files, and build/test scripts for the shared adapter helper library.",
+      "tags": ["configuration", "build-system", "package-manifest", "library"],
+      "complexity": "simple",
+      "languageNotes": "Dual CJS/ESM export map pattern with publishConfig for npm registry scope."
+    },
+    {
+      "id": "file:packages/adapter-utils/src/billing.test.ts",
+      "type": "file",
+      "name": "billing.test.ts",
+      "filePath": "packages/adapter-utils/src/billing.test.ts",
+      "summary": "Unit tests for the inferOpenAiCompatibleBiller function, verifying correct biller inference from environment variables across different provider URL configurations.",
+      "tags": ["test", "billing", "adapter-utils", "unit-test"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/billing.ts",
+      "type": "file",
+      "name": "billing.ts",
+      "filePath": "packages/adapter-utils/src/billing.ts",
+      "summary": "Provides utility functions to infer the appropriate billing provider (OpenAI, OpenRouter, or custom) from adapter environment variables for OpenAI-compatible API integrations.",
+      "tags": ["utility", "billing", "adapter-utils", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/billing.ts:inferOpenAiCompatibleBiller",
+      "type": "function",
+      "name": "inferOpenAiCompatibleBiller",
+      "filePath": "packages/adapter-utils/src/billing.ts",
+      "lineRange": [6, 20],
+      "summary": "Inspects adapter environment variables to determine which billing provider (openai, openrouter, or a custom URL-based biller) should be attributed for token usage.",
+      "tags": ["billing", "utility", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/command-managed-runtime.test.ts",
+      "type": "file",
+      "name": "command-managed-runtime.test.ts",
+      "filePath": "packages/adapter-utils/src/command-managed-runtime.test.ts",
+      "summary": "Comprehensive test suite for the command-managed runtime client and preparation logic, covering file read/write, directory listing, install detection, and process execution scenarios.",
+      "tags": ["test", "adapter-utils", "runtime", "unit-test"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "type": "file",
+      "name": "command-managed-runtime.ts",
+      "filePath": "packages/adapter-utils/src/command-managed-runtime.ts",
+      "summary": "Implements command-line-driven runtime management for adapter execution environments, providing a filesystem/execution client and a preparation routine that handles install detection, sandbox setup, and shell environment configuration.",
+      "tags": ["service", "adapter-utils", "runtime", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/command-managed-runtime.ts:createCommandManagedRuntimeClient",
+      "type": "function",
+      "name": "createCommandManagedRuntimeClient",
+      "filePath": "packages/adapter-utils/src/command-managed-runtime.ts",
+      "lineRange": [58, 135],
+      "summary": "Factory that returns a runtime client object exposing file I/O, directory listing, and command execution operations by delegating to a shell runner within the target sandbox environment.",
+      "tags": ["factory", "service", "runtime", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/command-managed-runtime.ts:prepareCommandManagedRuntime",
+      "type": "function",
+      "name": "prepareCommandManagedRuntime",
+      "filePath": "packages/adapter-utils/src/command-managed-runtime.ts",
+      "lineRange": [137, 231],
+      "summary": "Orchestrates full runtime preparation: detects if an install command is needed, provisions a sandbox via prepareSandboxManagedRuntime, and applies merged runtime exclusions before returning a ready execution runtime.",
+      "tags": ["service", "runtime", "execution", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/command-redaction.ts",
+      "type": "file",
+      "name": "command-redaction.ts",
+      "filePath": "packages/adapter-utils/src/command-redaction.ts",
+      "summary": "Provides regex-based redaction of secrets (bearer tokens, CLI secret flags, env variable assignments, OpenAI keys, GitHub tokens) from shell command strings before logging.",
+      "tags": ["security", "utility", "adapter-utils", "redaction"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/adapter-utils/src/command-redaction.ts:redactCommandText",
+      "type": "function",
+      "name": "redactCommandText",
+      "filePath": "packages/adapter-utils/src/command-redaction.ts",
+      "lineRange": [13, 21],
+      "summary": "Applies a chain of regex replacements to scrub known secret patterns from a command string, replacing them with a configurable redacted placeholder.",
+      "tags": ["security", "utility", "redaction"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/execution-target-sandbox.test.ts",
+      "type": "file",
+      "name": "execution-target-sandbox.test.ts",
+      "filePath": "packages/adapter-utils/src/execution-target-sandbox.test.ts",
+      "summary": "Large integration-style test suite for the sandbox execution target, validating local sandbox runner creation, process spawning, memory limits, working directory resolution, and sandbox lifecycle edge cases.",
+      "tags": ["test", "adapter-utils", "sandbox", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapter-utils/src/execution-target.test.ts",
+      "type": "file",
+      "name": "execution-target.test.ts",
+      "filePath": "packages/adapter-utils/src/execution-target.test.ts",
+      "summary": "Test suite for the execution target module, covering target resolution, adapter configuration validation, and end-to-end execution paths for various adapter types.",
+      "tags": ["test", "adapter-utils", "execution", "unit-test"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/adapter-utils/src/billing.ts",
+      "target": "function:packages/adapter-utils/src/billing.ts:inferOpenAiCompatibleBiller",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/billing.ts",
+      "target": "function:packages/adapter-utils/src/billing.ts:inferOpenAiCompatibleBiller",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/command-managed-runtime.ts:createCommandManagedRuntimeClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/command-managed-runtime.ts:createCommandManagedRuntimeClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/command-managed-runtime.ts:prepareCommandManagedRuntime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "target": "function:packages/adapter-utils/src/command-managed-runtime.ts:prepareCommandManagedRuntime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-redaction.ts",
+      "target": "function:packages/adapter-utils/src/command-redaction.ts:redactCommandText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-redaction.ts",
+      "target": "function:packages/adapter-utils/src/command-redaction.ts:redactCommandText",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapter-utils/src/billing.test.ts",
+      "target": "file:packages/adapter-utils/src/billing.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/command-managed-runtime.test.ts",
+      "target": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapter-utils/src/execution-target-sandbox.test.ts",
+      "target": "file:packages/adapter-utils/src/execution-target-sandbox.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:evals/promptfoo/promptfooconfig.yaml",
+      "target": "document:evals/promptfoo/prompts/heartbeat-system.txt",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:evals/promptfoo/promptfooconfig.yaml",
+      "target": "config:evals/promptfoo/tests/core.yaml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:evals/promptfoo/promptfooconfig.yaml",
+      "target": "config:evals/promptfoo/tests/governance.yaml",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:evals/README.md",
+      "target": "config:evals/promptfoo/promptfooconfig.yaml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/start/what-is-paperclip.md",
+      "target": "document:docs/start/architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/start/quickstart.md",
+      "target": "document:docs/start/core-concepts.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/start/quickstart.md",
+      "target": "document:docs/start/architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/adapter-utils/package.json",
+      "target": "file:packages/adapter-utils/src/billing.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapter-utils/package.json",
+      "target": "file:packages/adapter-utils/src/command-managed-runtime.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapter-utils/package.json",
+      "target": "file:packages/adapter-utils/src/command-redaction.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/adapter-utils/CHANGELOG.md",
+      "target": "config:packages/adapter-utils/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/guides/execution-policy.md",
+      "target": "document:docs/start/core-concepts.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/specs/agent-config-ui.md",
+      "target": "document:docs/start/core-concepts.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

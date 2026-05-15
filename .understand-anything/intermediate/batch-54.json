@@ -1,0 +1,636 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/src/__tests__/routine-run-telemetry.test.ts",
+      "type": "file",
+      "name": "routine-run-telemetry.test.ts",
+      "filePath": "server/src/__tests__/routine-run-telemetry.test.ts",
+      "summary": "Tests telemetry event emission for routine run lifecycle, verifying that the correct telemetry events are fired when a routine run progresses through its states.",
+      "tags": ["test", "telemetry", "routine"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/routines-e2e.test.ts",
+      "type": "file",
+      "name": "routines-e2e.test.ts",
+      "filePath": "server/src/__tests__/routines-e2e.test.ts",
+      "summary": "End-to-end tests for the routines feature covering the full request-to-execution flow, including mocking the routine service and exercising the HTTP API via supertest.",
+      "tags": ["test", "e2e", "routine", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/routines-routes.test.ts",
+      "type": "file",
+      "name": "routines-routes.test.ts",
+      "filePath": "server/src/__tests__/routines-routes.test.ts",
+      "summary": "HTTP route-level tests for the routines API, validating request handling, authorization, and response shape by spinning up a minimal Express app with mocked dependencies.",
+      "tags": ["test", "api-handler", "routine", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/routines-service.test.ts",
+      "type": "file",
+      "name": "routines-service.test.ts",
+      "filePath": "server/src/__tests__/routines-service.test.ts",
+      "summary": "Comprehensive service-layer tests for the routines domain, covering scheduling logic, wakeup triggers, issue creation, and instance settings integration with a real database fixture.",
+      "tags": ["test", "service", "routine", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/run-continuations.test.ts",
+      "type": "file",
+      "name": "run-continuations.test.ts",
+      "filePath": "server/src/__tests__/run-continuations.test.ts",
+      "summary": "Tests for the run-continuation logic that handles re-queuing or resuming agent runs, using factory helpers to build test fixture objects for runs, issues, and agents.",
+      "tags": ["test", "service", "run-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/run-liveness.test.ts",
+      "type": "file",
+      "name": "run-liveness.test.ts",
+      "filePath": "server/src/__tests__/run-liveness.test.ts",
+      "summary": "Tests for the run liveness service that detects stale or dead agent runs and triggers appropriate recovery actions.",
+      "tags": ["test", "service", "run-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/runtime-api.test.ts",
+      "type": "file",
+      "name": "runtime-api.test.ts",
+      "filePath": "server/src/__tests__/runtime-api.test.ts",
+      "summary": "Tests for the runtime API endpoints that agents use to communicate with the platform during execution, covering request routing and response handling.",
+      "tags": ["test", "api-handler", "runtime"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/sandbox-provider-runtime.test.ts",
+      "type": "file",
+      "name": "sandbox-provider-runtime.test.ts",
+      "filePath": "server/src/__tests__/sandbox-provider-runtime.test.ts",
+      "summary": "Tests for the sandbox provider runtime implementation, verifying that sandbox environments are correctly provisioned and that runtime operations behave as expected.",
+      "tags": ["test", "service", "runtime", "sandbox"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/secret-provider-registry.test.ts",
+      "type": "file",
+      "name": "secret-provider-registry.test.ts",
+      "filePath": "server/src/__tests__/secret-provider-registry.test.ts",
+      "summary": "Tests for the secret provider registry that manages and resolves secret backend providers, ensuring correct provider lookup and fallback behavior.",
+      "tags": ["test", "service", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/secrets-routes.test.ts",
+      "type": "file",
+      "name": "secrets-routes.test.ts",
+      "filePath": "server/src/__tests__/secrets-routes.test.ts",
+      "summary": "HTTP route tests for the secrets API, validating CRUD operations on secrets with authorization checks and proper request/response handling via a minimal Express test app.",
+      "tags": ["test", "api-handler", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/secrets-service.test.ts",
+      "type": "file",
+      "name": "secrets-service.test.ts",
+      "filePath": "server/src/__tests__/secrets-service.test.ts",
+      "summary": "Comprehensive service-layer tests for the secrets domain covering creation, retrieval, scoping, and deletion of secrets across different provider backends.",
+      "tags": ["test", "service", "security", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/server-startup-feedback-export.test.ts",
+      "type": "file",
+      "name": "server-startup-feedback-export.test.ts",
+      "filePath": "server/src/__tests__/server-startup-feedback-export.test.ts",
+      "summary": "Tests for server startup feedback and export behavior, verifying that the server correctly signals readiness and exports necessary configuration to callers at startup.",
+      "tags": ["test", "service", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/setup-supertest.ts",
+      "type": "file",
+      "name": "setup-supertest.ts",
+      "filePath": "server/src/__tests__/setup-supertest.ts",
+      "summary": "Shared test setup helper that configures supertest for HTTP integration tests, providing a reusable baseline for request-level test suites.",
+      "tags": ["test", "utility", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/shared-telemetry-events.test.ts",
+      "type": "file",
+      "name": "shared-telemetry-events.test.ts",
+      "filePath": "server/src/__tests__/shared-telemetry-events.test.ts",
+      "summary": "Tests for shared telemetry event definitions and client construction, ensuring consistent event naming and client interface contract.",
+      "tags": ["test", "telemetry", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/sidebar-preferences-routes.test.ts",
+      "type": "file",
+      "name": "sidebar-preferences-routes.test.ts",
+      "filePath": "server/src/__tests__/sidebar-preferences-routes.test.ts",
+      "summary": "HTTP route tests for sidebar preferences endpoints, verifying read and update operations with user actor context and proper authorization via a minimal Express test app.",
+      "tags": ["test", "api-handler", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/storage-local-provider.test.ts",
+      "type": "file",
+      "name": "storage-local-provider.test.ts",
+      "filePath": "server/src/__tests__/storage-local-provider.test.ts",
+      "summary": "Tests for the local filesystem storage provider, verifying file read, write, and stream operations on disk-backed storage.",
+      "tags": ["test", "service", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/telemetry-client-flush.test.ts",
+      "type": "file",
+      "name": "telemetry-client-flush.test.ts",
+      "filePath": "server/src/__tests__/telemetry-client-flush.test.ts",
+      "summary": "Tests for telemetry client flush behavior ensuring that buffered events are reliably sent before process shutdown.",
+      "tags": ["test", "telemetry", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/ui-branding.test.ts",
+      "type": "file",
+      "name": "ui-branding.test.ts",
+      "filePath": "server/src/__tests__/ui-branding.test.ts",
+      "summary": "Tests for UI branding configuration including logo, colors, and theme overrides to ensure correct branding values are resolved and served.",
+      "tags": ["test", "component", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/user-profile-routes.test.ts",
+      "type": "file",
+      "name": "user-profile-routes.test.ts",
+      "filePath": "server/src/__tests__/user-profile-routes.test.ts",
+      "summary": "HTTP route tests for user profile endpoints, covering retrieval and update operations with authenticated actor context in a minimal Express test app.",
+      "tags": ["test", "api-handler", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/vite-html-renderer.test.ts",
+      "type": "file",
+      "name": "vite-html-renderer.test.ts",
+      "filePath": "server/src/__tests__/vite-html-renderer.test.ts",
+      "summary": "Tests for the Vite HTML renderer that injects server-side data into the HTML shell, using a mock file watcher to simulate hot-reload events.",
+      "tags": ["test", "component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/work-products.test.ts",
+      "type": "file",
+      "name": "work-products.test.ts",
+      "filePath": "server/src/__tests__/work-products.test.ts",
+      "summary": "Tests for the work-products service that manages agent-produced artifacts, verifying creation, retrieval, and data shaping logic.",
+      "tags": ["test", "service", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "type": "file",
+      "name": "workspace-runtime-routes-authz.test.ts",
+      "filePath": "server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "summary": "Authorization tests for workspace runtime HTTP routes, verifying that project and execution workspace endpoints enforce correct permission checks for different actor roles.",
+      "tags": ["test", "api-handler", "security", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/workspace-runtime-service-authz.test.ts",
+      "type": "file",
+      "name": "workspace-runtime-service-authz.test.ts",
+      "filePath": "server/src/__tests__/workspace-runtime-service-authz.test.ts",
+      "summary": "Authorization tests for the workspace runtime service layer, ensuring that service-level operations enforce membership and permission requirements using database-seeded fixtures.",
+      "tags": ["test", "service", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "type": "file",
+      "name": "workspace-runtime.test.ts",
+      "filePath": "server/src/__tests__/workspace-runtime.test.ts",
+      "summary": "Large integration test suite for the workspace runtime covering git operations, workspace setup/teardown, pnpm dependency installation, and the full workspace operation lifecycle against real temporary repositories.",
+      "tags": ["test", "service", "runtime", "e2e"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/__tests__/worktree-config.test.ts",
+      "type": "file",
+      "name": "worktree-config.test.ts",
+      "filePath": "server/src/__tests__/worktree-config.test.ts",
+      "summary": "Tests for worktree configuration parsing and migration, verifying that both legacy and current config formats are correctly resolved to canonical path structures.",
+      "tags": ["test", "configuration", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/__tests__/routines-e2e.test.ts:registerRoutineServiceMock",
+      "type": "function",
+      "name": "registerRoutineServiceMock",
+      "filePath": "server/src/__tests__/routines-e2e.test.ts",
+      "lineRange": [31, 77],
+      "summary": "Registers a dynamic vi.doMock for the routine service module, replacing the real service with a test double that simulates issue lookup and run creation via direct DB writes.",
+      "tags": ["test", "utility", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/routines-routes.test.ts:registerModuleMocks",
+      "type": "function",
+      "name": "registerModuleMocks",
+      "filePath": "server/src/__tests__/routines-routes.test.ts",
+      "lineRange": [126, 155],
+      "summary": "Sets up all vi.doMock overrides needed by the routines route tests, stubbing out auth, access, routine service, and related dependencies.",
+      "tags": ["test", "utility", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/routines-routes.test.ts:createApp",
+      "type": "function",
+      "name": "createApp",
+      "filePath": "server/src/__tests__/routines-routes.test.ts",
+      "lineRange": [157, 171],
+      "summary": "Dynamically imports and wires up a minimal Express app with routine routes and a fake auth middleware for use in route-level integration tests.",
+      "tags": ["test", "factory", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/__tests__/secrets-routes.test.ts:createApp",
+      "type": "function",
+      "name": "createApp",
+      "filePath": "server/src/__tests__/secrets-routes.test.ts",
+      "lineRange": [32, 48],
+      "summary": "Creates a minimal Express app mounting the secret routes with a fake auth middleware for integration testing of secrets HTTP endpoints.",
+      "tags": ["test", "factory", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/__tests__/server-startup-feedback-export.test.ts:buildTestConfig",
+      "type": "function",
+      "name": "buildTestConfig",
+      "filePath": "server/src/__tests__/server-startup-feedback-export.test.ts",
+      "lineRange": [53, 92],
+      "summary": "Constructs a full server configuration object for testing startup feedback, with sensible defaults and support for per-test overrides.",
+      "tags": ["test", "factory", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/sidebar-preferences-routes.test.ts:registerModuleMocks",
+      "type": "function",
+      "name": "registerModuleMocks",
+      "filePath": "server/src/__tests__/sidebar-preferences-routes.test.ts",
+      "lineRange": [13, 18],
+      "summary": "Registers vi.doMock stubs for the sidebar preferences route's dependency modules before dynamic import.",
+      "tags": ["test", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/__tests__/sidebar-preferences-routes.test.ts:createApp",
+      "type": "function",
+      "name": "createApp",
+      "filePath": "server/src/__tests__/sidebar-preferences-routes.test.ts",
+      "lineRange": [20, 34],
+      "summary": "Dynamically imports and wires a minimal Express app with sidebar preference routes and fake auth for route-level integration tests.",
+      "tags": ["test", "factory", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:registerWorkspaceRouteMocks",
+      "type": "function",
+      "name": "registerWorkspaceRouteMocks",
+      "filePath": "server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "lineRange": [59, 84],
+      "summary": "Sets up vi.doMock stubs for workspace runtime route dependencies including auth middleware, workspace service, and access control modules.",
+      "tags": ["test", "utility", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:createProjectApp",
+      "type": "function",
+      "name": "createProjectApp",
+      "filePath": "server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "lineRange": [88, 106],
+      "summary": "Builds a minimal Express app mounting project workspace routes with a fake auth actor for authz testing.",
+      "tags": ["test", "factory", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:createExecutionWorkspaceApp",
+      "type": "function",
+      "name": "createExecutionWorkspaceApp",
+      "filePath": "server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "lineRange": [108, 126],
+      "summary": "Builds a minimal Express app mounting execution workspace routes with a fake auth actor for authz testing.",
+      "tags": ["test", "factory", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:buildProject",
+      "type": "function",
+      "name": "buildProject",
+      "filePath": "server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "lineRange": [128, 154],
+      "summary": "Factory helper that constructs a test project data object with safe defaults and optional field overrides for workspace authz tests.",
+      "tags": ["test", "factory", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:buildExecutionWorkspace",
+      "type": "function",
+      "name": "buildExecutionWorkspace",
+      "filePath": "server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "lineRange": [156, 186],
+      "summary": "Factory helper that constructs a test execution workspace data object with defaults and optional overrides for authz test scenarios.",
+      "tags": ["test", "factory", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime.test.ts:createWorkspaceOperationRecorderDouble",
+      "type": "function",
+      "name": "createWorkspaceOperationRecorderDouble",
+      "filePath": "server/src/__tests__/workspace-runtime.test.ts",
+      "lineRange": [98, 158],
+      "summary": "Creates a test double for workspace operations that records all operations performed, enabling assertions on the sequence and parameters of workspace lifecycle calls.",
+      "tags": ["test", "factory", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime.test.ts:createTempRepo",
+      "type": "function",
+      "name": "createTempRepo",
+      "filePath": "server/src/__tests__/workspace-runtime.test.ts",
+      "lineRange": [69, 79],
+      "summary": "Creates a temporary git repository in the system's temp directory with an initial commit, used as a fixture for workspace runtime integration tests.",
+      "tags": ["test", "utility", "factory"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/__tests__/workspace-runtime.test.ts:buildWorkspace",
+      "type": "function",
+      "name": "buildWorkspace",
+      "filePath": "server/src/__tests__/workspace-runtime.test.ts",
+      "lineRange": [81, 96],
+      "summary": "Constructs a workspace configuration object from a given working directory path, used to seed test inputs for workspace runtime tests.",
+      "tags": ["test", "factory", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/__tests__/worktree-config.test.ts:buildLegacyConfig",
+      "type": "function",
+      "name": "buildLegacyConfig",
+      "filePath": "server/src/__tests__/worktree-config.test.ts",
+      "lineRange": [27, 82],
+      "summary": "Builds a legacy worktree configuration structure from shared root and public base URL inputs, used to test backward-compatible config migration paths.",
+      "tags": ["test", "factory", "configuration"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/__tests__/routine-run-telemetry.test.ts",
+      "target": "file:server/src/services/routines.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/routines-service.test.ts",
+      "target": "file:server/src/services/issues.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/routines-service.test.ts",
+      "target": "file:server/src/services/instance-settings.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/routines-service.test.ts",
+      "target": "file:server/src/secrets/provider-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/routines-service.test.ts",
+      "target": "file:server/src/services/routines.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/run-liveness.test.ts",
+      "target": "file:server/src/services/run-liveness.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/server-startup-feedback-export.test.ts",
+      "target": "file:server/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/work-products.test.ts",
+      "target": "file:server/src/services/work-products.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "target": "file:server/src/services/local-service-supervisor.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "target": "file:server/src/paths.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "target": "file:server/src/services/workspace-operations.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/src/__tests__/routines-e2e.test.ts",
+      "target": "function:server/src/__tests__/routines-e2e.test.ts:registerRoutineServiceMock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/routines-routes.test.ts",
+      "target": "function:server/src/__tests__/routines-routes.test.ts:registerModuleMocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/routines-routes.test.ts",
+      "target": "function:server/src/__tests__/routines-routes.test.ts:createApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/secrets-routes.test.ts",
+      "target": "function:server/src/__tests__/secrets-routes.test.ts:createApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/server-startup-feedback-export.test.ts",
+      "target": "function:server/src/__tests__/server-startup-feedback-export.test.ts:buildTestConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/sidebar-preferences-routes.test.ts",
+      "target": "function:server/src/__tests__/sidebar-preferences-routes.test.ts:registerModuleMocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/sidebar-preferences-routes.test.ts",
+      "target": "function:server/src/__tests__/sidebar-preferences-routes.test.ts:createApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:registerWorkspaceRouteMocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:createProjectApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:createExecutionWorkspaceApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:buildProject",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime-routes-authz.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime-routes-authz.test.ts:buildExecutionWorkspace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime.test.ts:createWorkspaceOperationRecorderDouble",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime.test.ts:createTempRepo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "target": "function:server/src/__tests__/workspace-runtime.test.ts:buildWorkspace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/__tests__/worktree-config.test.ts",
+      "target": "function:server/src/__tests__/worktree-config.test.ts:buildLegacyConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/routines.ts",
+      "target": "file:server/src/__tests__/routine-run-telemetry.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/services/routines.ts",
+      "target": "file:server/src/__tests__/routines-e2e.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/services/routines.ts",
+      "target": "file:server/src/__tests__/routines-routes.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/services/routines.ts",
+      "target": "file:server/src/__tests__/routines-service.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/services/run-liveness.ts",
+      "target": "file:server/src/__tests__/run-liveness.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/index.ts",
+      "target": "file:server/src/__tests__/server-startup-feedback-export.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/services/work-products.ts",
+      "target": "file:server/src/__tests__/work-products.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/services/workspace-operations.ts",
+      "target": "file:server/src/__tests__/workspace-runtime.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

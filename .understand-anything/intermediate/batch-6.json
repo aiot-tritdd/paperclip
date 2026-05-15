@@ -1,0 +1,310 @@
+{
+  "nodes": [
+    {
+      "id": "document:doc/plans/2026-02-19-agent-mgmt-followup-plan.md",
+      "type": "document",
+      "name": "2026-02-19-agent-mgmt-followup-plan.md",
+      "filePath": "doc/plans/2026-02-19-agent-mgmt-followup-plan.md",
+      "summary": "Follow-up implementation plan addressing CEO agent PATCH authorization failures, config rollback gaps, and Issue-to-Approval linkage — covering data model, API, UI, and skill update phases.",
+      "tags": ["documentation", "planning", "agent-management", "authorization", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:doc/plans/2026-02-19-ceo-agent-creation-and-hiring.md",
+      "type": "document",
+      "name": "2026-02-19-ceo-agent-creation-and-hiring.md",
+      "filePath": "doc/plans/2026-02-19-ceo-agent-creation-and-hiring.md",
+      "summary": "Detailed product and implementation plan for CEO agent creation workflows and agent hiring mechanics, defining how the CEO can spawn, configure, and manage subordinate agents within a company.",
+      "tags": ["documentation", "planning", "agent-management", "orchestration", "deployment"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-02-20-issue-run-orchestration-plan.md",
+      "type": "document",
+      "name": "2026-02-20-issue-run-orchestration-plan.md",
+      "filePath": "doc/plans/2026-02-20-issue-run-orchestration-plan.md",
+      "summary": "Plan for orchestrating issue run execution — describing how the platform coordinates agent task execution against issues, including scheduling, state management, and handoff logic.",
+      "tags": ["documentation", "planning", "orchestration", "agent-management", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:doc/plans/2026-02-20-storage-system-implementation.md",
+      "type": "document",
+      "name": "2026-02-20-storage-system-implementation.md",
+      "filePath": "doc/plans/2026-02-20-storage-system-implementation.md",
+      "summary": "Implementation plan for the Paperclip storage system, covering file/artifact persistence, storage backend abstraction, and integration points with agent workspaces.",
+      "tags": ["documentation", "planning", "infrastructure", "data-pipeline", "deployment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:doc/plans/2026-02-21-humans-and-permissions-implementation.md",
+      "type": "document",
+      "name": "2026-02-21-humans-and-permissions-implementation.md",
+      "filePath": "doc/plans/2026-02-21-humans-and-permissions-implementation.md",
+      "summary": "Comprehensive implementation plan for the humans and permissions system, detailing RBAC roles, data model schemas, API endpoints, UI flows, and phased rollout for human-agent collaboration.",
+      "tags": ["documentation", "planning", "authorization", "security", "api-schema"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-02-21-humans-and-permissions.md",
+      "type": "document",
+      "name": "2026-02-21-humans-and-permissions.md",
+      "filePath": "doc/plans/2026-02-21-humans-and-permissions.md",
+      "summary": "Product design document for the humans and permissions feature, outlining how human users participate alongside agents, defining role hierarchies and access control semantics.",
+      "tags": ["documentation", "planning", "authorization", "security", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-02-23-cursor-cloud-adapter.md",
+      "type": "document",
+      "name": "2026-02-23-cursor-cloud-adapter.md",
+      "filePath": "doc/plans/2026-02-23-cursor-cloud-adapter.md",
+      "summary": "Design plan for a Cursor cloud adapter enabling Paperclip agents to operate inside Cursor IDE cloud environments, covering authentication, workspace mounting, and tool invocation protocols.",
+      "tags": ["documentation", "planning", "infrastructure", "deployment", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-02-23-deployment-auth-mode-consolidation.md",
+      "type": "document",
+      "name": "2026-02-23-deployment-auth-mode-consolidation.md",
+      "filePath": "doc/plans/2026-02-23-deployment-auth-mode-consolidation.md",
+      "summary": "Plan to consolidate the multiple deployment authentication modes (cloud, self-hosted, local) into a unified auth configuration model, reducing complexity and improving consistency.",
+      "tags": ["documentation", "planning", "security", "authorization", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:doc/plans/2026-03-10-workspace-strategy-and-git-worktrees.md",
+      "type": "document",
+      "name": "2026-03-10-workspace-strategy-and-git-worktrees.md",
+      "filePath": "doc/plans/2026-03-10-workspace-strategy-and-git-worktrees.md",
+      "summary": "Comprehensive strategy document for agent workspace isolation using Git worktrees, covering workspace lifecycle, concurrency, branch management, and the product model for work products.",
+      "tags": ["documentation", "planning", "infrastructure", "orchestration", "deployment"],
+      "complexity": "complex",
+      "languageNotes": "At 1335 lines, this is the most detailed single planning document in the batch, covering Git worktree isolation strategy in depth."
+    },
+    {
+      "id": "document:doc/plans/2026-03-11-agent-chat-ui-and-issue-backed-conversations.md",
+      "type": "document",
+      "name": "2026-03-11-agent-chat-ui-and-issue-backed-conversations.md",
+      "filePath": "doc/plans/2026-03-11-agent-chat-ui-and-issue-backed-conversations.md",
+      "summary": "Product and implementation plan for the agent chat UI feature, describing how conversations are backed by issues to provide persistent, structured communication channels between humans and agents.",
+      "tags": ["documentation", "planning", "api-handler", "component", "orchestration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-agent-evals-framework.md",
+      "type": "document",
+      "name": "2026-03-13-agent-evals-framework.md",
+      "filePath": "doc/plans/2026-03-13-agent-evals-framework.md",
+      "summary": "Framework design for automated agent evaluation, covering eval harness architecture, metric collection, scenario definitions, and integration with the CI pipeline for quality regression testing.",
+      "tags": ["documentation", "planning", "ci-cd", "data-pipeline", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-company-import-export-v2.md",
+      "type": "document",
+      "name": "2026-03-13-company-import-export-v2.md",
+      "filePath": "doc/plans/2026-03-13-company-import-export-v2.md",
+      "summary": "Version 2 design plan for the company import/export feature, detailing the serialization format, migration logic, and API for moving Paperclip company configurations across environments.",
+      "tags": ["documentation", "planning", "api-schema", "data-pipeline", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-features.md",
+      "type": "document",
+      "name": "2026-03-13-features.md",
+      "filePath": "doc/plans/2026-03-13-features.md",
+      "summary": "Broad feature roadmap document cataloguing planned Paperclip capabilities across agent management, workspace, billing, skills, and UI, serving as a high-level product backlog reference.",
+      "tags": ["documentation", "planning", "overview", "configuration", "deployment"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-paperclip-skill-tightening-plan.md",
+      "type": "document",
+      "name": "2026-03-13-paperclip-skill-tightening-plan.md",
+      "filePath": "doc/plans/2026-03-13-paperclip-skill-tightening-plan.md",
+      "summary": "Plan for tightening and improving the Paperclip skills system — refining skill invocation, reducing token usage, improving skill authoring DX, and enforcing skill quality standards.",
+      "tags": ["documentation", "planning", "configuration", "agent-management", "build-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-plugin-kitchen-sink-example.md",
+      "type": "document",
+      "name": "2026-03-13-plugin-kitchen-sink-example.md",
+      "filePath": "doc/plans/2026-03-13-plugin-kitchen-sink-example.md",
+      "summary": "Comprehensive kitchen-sink example document for Paperclip plugins, demonstrating all available plugin extension points, tool registrations, event hooks, and configuration patterns for plugin authors.",
+      "tags": ["documentation", "planning", "configuration", "api-schema", "build-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-TOKEN-OPTIMIZATION-PLAN.md",
+      "type": "document",
+      "name": "2026-03-13-TOKEN-OPTIMIZATION-PLAN.md",
+      "filePath": "doc/plans/2026-03-13-TOKEN-OPTIMIZATION-PLAN.md",
+      "summary": "Technical plan for optimizing LLM token usage across the Paperclip platform, covering context window management, prompt compression strategies, and token budget enforcement for agent runs.",
+      "tags": ["documentation", "planning", "configuration", "data-pipeline", "monitoring"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-13-workspace-product-model-and-work-product.md",
+      "type": "document",
+      "name": "2026-03-13-workspace-product-model-and-work-product.md",
+      "filePath": "doc/plans/2026-03-13-workspace-product-model-and-work-product.md",
+      "summary": "In-depth product model document defining workspace semantics, work product lifecycle (drafts, artifacts, outputs), and the conceptual relationship between agents, issues, and deliverables.",
+      "tags": ["documentation", "planning", "orchestration", "data-pipeline", "schema-definition"],
+      "complexity": "complex",
+      "languageNotes": "At 1126 lines, this is the second largest planning document, establishing the core conceptual model for workspaces and work products."
+    },
+    {
+      "id": "document:doc/plans/2026-03-14-adapter-skill-sync-rollout.md",
+      "type": "document",
+      "name": "2026-03-14-adapter-skill-sync-rollout.md",
+      "filePath": "doc/plans/2026-03-14-adapter-skill-sync-rollout.md",
+      "summary": "Rollout plan for syncing adapter skills across agent instances, describing the sync protocol, conflict resolution, versioning, and phased deployment strategy for skill distribution.",
+      "tags": ["documentation", "planning", "deployment", "configuration", "agent-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-14-billing-ledger-and-reporting.md",
+      "type": "document",
+      "name": "2026-03-14-billing-ledger-and-reporting.md",
+      "filePath": "doc/plans/2026-03-14-billing-ledger-and-reporting.md",
+      "summary": "Design plan for the billing ledger and reporting system, covering usage tracking, cost attribution per agent/company, ledger data model, and reporting UI for usage and cost visibility.",
+      "tags": ["documentation", "planning", "database", "monitoring", "api-schema"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-14-budget-policies-and-enforcement.md",
+      "type": "document",
+      "name": "2026-03-14-budget-policies-and-enforcement.md",
+      "filePath": "doc/plans/2026-03-14-budget-policies-and-enforcement.md",
+      "summary": "Comprehensive plan for budget policy definition and runtime enforcement, detailing how spending limits are set per agent/company, enforced during runs, and surfaced through alerts and hard stops.",
+      "tags": ["documentation", "planning", "security", "monitoring", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-14-skills-ui-product-plan.md",
+      "type": "document",
+      "name": "2026-03-14-skills-ui-product-plan.md",
+      "filePath": "doc/plans/2026-03-14-skills-ui-product-plan.md",
+      "summary": "Product plan for the Skills UI — defining the browsing, installation, configuration, and authoring interfaces for managing Paperclip skills within the web dashboard.",
+      "tags": ["documentation", "planning", "component", "configuration", "build-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-17-docker-release-browser-e2e.md",
+      "type": "document",
+      "name": "2026-03-17-docker-release-browser-e2e.md",
+      "filePath": "doc/plans/2026-03-17-docker-release-browser-e2e.md",
+      "summary": "Plan for Docker-based release packaging and browser end-to-end test infrastructure, covering container build pipelines, browser automation harness setup, and CI integration for release validation.",
+      "tags": ["documentation", "planning", "ci-cd", "containerization", "deployment"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-17-memory-service-surface-api.md",
+      "type": "document",
+      "name": "2026-03-17-memory-service-surface-api.md",
+      "filePath": "doc/plans/2026-03-17-memory-service-surface-api.md",
+      "summary": "Design plan for surfacing the memory service API, describing how agent memory is stored, retrieved, and exposed through the Paperclip API for persistent context across agent runs.",
+      "tags": ["documentation", "planning", "api-schema", "data-pipeline", "agent-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-03-17-release-automation-and-versioning.md",
+      "type": "document",
+      "name": "2026-03-17-release-automation-and-versioning.md",
+      "filePath": "doc/plans/2026-03-17-release-automation-and-versioning.md",
+      "summary": "Plan for automating the release process and versioning strategy, covering changelog generation, semantic versioning, npm publish workflows, and GitHub release automation.",
+      "tags": ["documentation", "planning", "ci-cd", "deployment", "build-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:doc/plans/2026-04-06-smart-model-routing.md",
+      "type": "document",
+      "name": "2026-04-06-smart-model-routing.md",
+      "filePath": "doc/plans/2026-04-06-smart-model-routing.md",
+      "summary": "Design plan for smart LLM model routing — automatically selecting the most cost-effective or capable model based on task type, complexity, and budget constraints for agent runs.",
+      "tags": ["documentation", "planning", "configuration", "monitoring", "agent-management"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:doc/plans/2026-02-21-humans-and-permissions-implementation.md",
+      "target": "document:doc/plans/2026-02-21-humans-and-permissions.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-02-19-agent-mgmt-followup-plan.md",
+      "target": "document:doc/plans/2026-02-19-ceo-agent-creation-and-hiring.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-13-workspace-product-model-and-work-product.md",
+      "target": "document:doc/plans/2026-03-10-workspace-strategy-and-git-worktrees.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-14-billing-ledger-and-reporting.md",
+      "target": "document:doc/plans/2026-03-14-budget-policies-and-enforcement.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-17-release-automation-and-versioning.md",
+      "target": "document:doc/plans/2026-03-17-docker-release-browser-e2e.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-13-TOKEN-OPTIMIZATION-PLAN.md",
+      "target": "document:doc/plans/2026-04-06-smart-model-routing.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-14-adapter-skill-sync-rollout.md",
+      "target": "document:doc/plans/2026-03-13-paperclip-skill-tightening-plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-14-skills-ui-product-plan.md",
+      "target": "document:doc/plans/2026-03-13-paperclip-skill-tightening-plan.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-13-features.md",
+      "target": "document:doc/plans/2026-03-13-agent-evals-framework.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-13-features.md",
+      "target": "document:doc/plans/2026-03-14-billing-ledger-and-reporting.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:doc/plans/2026-03-13-features.md",
+      "target": "document:doc/plans/2026-03-17-memory-service-surface-api.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

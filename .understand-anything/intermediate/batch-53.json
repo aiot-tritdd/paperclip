@@ -1,0 +1,394 @@
+{
+  "batchIndex": 53,
+  "nodes": [
+    {
+      "id": "file:server/src/__tests__/plugin-database.test.ts",
+      "type": "file",
+      "name": "plugin-database.test.ts",
+      "filePath": "server/src/__tests__/plugin-database.test.ts",
+      "summary": "Integration tests for the plugin database subsystem, covering plugin package creation, installation of plugin records, and database lifecycle management with temporary filesystem artifacts.",
+      "tags": ["test", "plugin", "database", "integration-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 446
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-dev-watcher.test.ts",
+      "type": "file",
+      "name": "plugin-dev-watcher.test.ts",
+      "filePath": "server/src/__tests__/plugin-dev-watcher.test.ts",
+      "summary": "Tests for the plugin development file watcher, verifying hot-reload behavior when plugin source files change using a mock chokidar filesystem watcher.",
+      "tags": ["test", "plugin", "file-watcher", "hot-reload"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 148
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-environment-driver-seam.test.ts",
+      "type": "file",
+      "name": "plugin-environment-driver-seam.test.ts",
+      "filePath": "server/src/__tests__/plugin-environment-driver-seam.test.ts",
+      "summary": "Tests the seam between the plugin system and its environment drivers, verifying that responses are dispatched correctly across async driver boundaries.",
+      "tags": ["test", "plugin", "environment-driver", "integration-test"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 168
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-local-folders.test.ts",
+      "type": "file",
+      "name": "plugin-local-folders.test.ts",
+      "filePath": "server/src/__tests__/plugin-local-folders.test.ts",
+      "summary": "Tests the local folder plugin subsystem, covering filesystem-rooted plugin discovery and mounting using temporary directories.",
+      "tags": ["test", "plugin", "local-folders", "filesystem"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 274
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-managed-agents.test.ts",
+      "type": "file",
+      "name": "plugin-managed-agents.test.ts",
+      "filePath": "server/src/__tests__/plugin-managed-agents.test.ts",
+      "summary": "Tests for the managed agents plugin, verifying agent lifecycle, manifest parsing, event bus interactions, and database seeding behavior.",
+      "tags": ["test", "plugin", "managed-agents", "integration-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 365
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-managed-routines.test.ts",
+      "type": "file",
+      "name": "plugin-managed-routines.test.ts",
+      "filePath": "server/src/__tests__/plugin-managed-routines.test.ts",
+      "summary": "Tests for the managed routines plugin, covering routine manifest definition, plugin seeding, and host service orchestration via the event bus stub.",
+      "tags": ["test", "plugin", "managed-routines", "integration-test"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 249
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-managed-skills.test.ts",
+      "type": "file",
+      "name": "plugin-managed-skills.test.ts",
+      "filePath": "server/src/__tests__/plugin-managed-skills.test.ts",
+      "summary": "Tests for the managed skills plugin, verifying skill manifest declaration, plugin installation, and host service interactions through the event bus.",
+      "tags": ["test", "plugin", "managed-skills", "integration-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 281
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-orchestration-apis.test.ts",
+      "type": "file",
+      "name": "plugin-orchestration-apis.test.ts",
+      "filePath": "server/src/__tests__/plugin-orchestration-apis.test.ts",
+      "summary": "Tests for the plugin orchestration API surface, verifying that agents can interact with orchestration endpoints and that database state is correctly managed across API calls.",
+      "tags": ["test", "plugin", "orchestration", "api-handler"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 677
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-routes-authz.test.ts",
+      "type": "file",
+      "name": "plugin-routes-authz.test.ts",
+      "filePath": "server/src/__tests__/plugin-routes-authz.test.ts",
+      "summary": "Authorization tests for plugin HTTP routes, verifying that actor-based access control is correctly enforced across all plugin route endpoints including local folder plugins.",
+      "tags": ["test", "plugin", "authorization", "api-handler"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 666
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-scoped-api-routes.test.ts",
+      "type": "file",
+      "name": "plugin-scoped-api-routes.test.ts",
+      "filePath": "server/src/__tests__/plugin-scoped-api-routes.test.ts",
+      "summary": "Tests for scoped API routes exposed by plugins, verifying that plugins can declare custom API routes and that those routes are correctly mounted and dispatched.",
+      "tags": ["test", "plugin", "api-handler", "routing"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 477
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-sdk-orchestration-contract.test.ts",
+      "type": "file",
+      "name": "plugin-sdk-orchestration-contract.test.ts",
+      "filePath": "server/src/__tests__/plugin-sdk-orchestration-contract.test.ts",
+      "summary": "Contract tests for the plugin SDK orchestration interface, ensuring that the SDK's manifest and issue shapes conform to the expected orchestration contract.",
+      "tags": ["test", "plugin", "sdk", "contract-test"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 257
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-sdk-testing.test.ts",
+      "type": "file",
+      "name": "plugin-sdk-testing.test.ts",
+      "filePath": "server/src/__tests__/plugin-sdk-testing.test.ts",
+      "summary": "Minimal smoke tests for the plugin SDK testing utilities, verifying basic functionality of the SDK test harness.",
+      "tags": ["test", "plugin", "sdk", "smoke-test"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 28
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-secrets-handler.test.ts",
+      "type": "file",
+      "name": "plugin-secrets-handler.test.ts",
+      "filePath": "server/src/__tests__/plugin-secrets-handler.test.ts",
+      "summary": "Smoke tests for the plugin secrets handler, verifying that secrets are properly scoped and retrieved for plugins.",
+      "tags": ["test", "plugin", "security", "secrets"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 29
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-telemetry-bridge.test.ts",
+      "type": "file",
+      "name": "plugin-telemetry-bridge.test.ts",
+      "filePath": "server/src/__tests__/plugin-telemetry-bridge.test.ts",
+      "summary": "Tests for the plugin telemetry bridge, verifying that telemetry events emitted by plugins are correctly forwarded through the event bus.",
+      "tags": ["test", "plugin", "telemetry", "event-bus"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 114
+    },
+    {
+      "id": "file:server/src/__tests__/plugin-worker-manager.test.ts",
+      "type": "file",
+      "name": "plugin-worker-manager.test.ts",
+      "filePath": "server/src/__tests__/plugin-worker-manager.test.ts",
+      "summary": "Tests for the plugin worker manager, covering worker process lifecycle, spawning, and teardown behavior for plugin execution environments.",
+      "tags": ["test", "plugin", "worker", "process-management"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 181
+    },
+    {
+      "id": "file:server/src/__tests__/private-hostname-guard.test.ts",
+      "type": "file",
+      "name": "private-hostname-guard.test.ts",
+      "filePath": "server/src/__tests__/private-hostname-guard.test.ts",
+      "summary": "Tests the private hostname guard middleware, verifying that requests targeting private/internal hostnames are blocked while public hostnames pass through.",
+      "tags": ["test", "security", "middleware", "networking"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 79
+    },
+    {
+      "id": "file:server/src/__tests__/productivity-review-service.test.ts",
+      "type": "file",
+      "name": "productivity-review-service.test.ts",
+      "filePath": "server/src/__tests__/productivity-review-service.test.ts",
+      "summary": "Integration tests for the productivity review service, exercising review creation, run insertion, and refresh comment lifecycle against a seeded database.",
+      "tags": ["test", "productivity-review", "service", "integration-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 566
+    },
+    {
+      "id": "file:server/src/__tests__/project-goal-telemetry-routes.test.ts",
+      "type": "file",
+      "name": "project-goal-telemetry-routes.test.ts",
+      "filePath": "server/src/__tests__/project-goal-telemetry-routes.test.ts",
+      "summary": "Tests for project goal and telemetry HTTP routes, verifying that project and goal route handlers are correctly mounted and respond to requests with mocked dependencies.",
+      "tags": ["test", "project", "telemetry", "api-handler"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 154
+    },
+    {
+      "id": "file:server/src/__tests__/project-routes-env.test.ts",
+      "type": "file",
+      "name": "project-routes-env.test.ts",
+      "filePath": "server/src/__tests__/project-routes-env.test.ts",
+      "summary": "Tests for project route environment variable handling, verifying that environment configuration is correctly read, validated, and applied to project-scoped route responses.",
+      "tags": ["test", "project", "environment", "api-handler"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 222
+    },
+    {
+      "id": "file:server/src/__tests__/project-shortname-resolution.test.ts",
+      "type": "file",
+      "name": "project-shortname-resolution.test.ts",
+      "filePath": "server/src/__tests__/project-shortname-resolution.test.ts",
+      "summary": "Unit tests for project short-name resolution logic, ensuring that project identifiers are resolved to canonical short names correctly.",
+      "tags": ["test", "project", "utility", "resolution"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 45
+    },
+    {
+      "id": "file:server/src/__tests__/quota-windows-service.test.ts",
+      "type": "file",
+      "name": "quota-windows-service.test.ts",
+      "filePath": "server/src/__tests__/quota-windows-service.test.ts",
+      "summary": "Unit tests for the quota windows service, verifying quota window calculation and boundary conditions at the service level.",
+      "tags": ["test", "quota", "service", "unit-test"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 56
+    },
+    {
+      "id": "file:server/src/__tests__/quota-windows.test.ts",
+      "type": "file",
+      "name": "quota-windows.test.ts",
+      "filePath": "server/src/__tests__/quota-windows.test.ts",
+      "summary": "Comprehensive tests for the quota windows subsystem, covering window creation, consumption tracking, rate limiting enforcement, and fetch-based quota checks across many scenarios.",
+      "tags": ["test", "quota", "rate-limiting", "integration-test"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 853
+    },
+    {
+      "id": "document:server/src/__tests__/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "server/src/__tests__/README.md",
+      "summary": "Brief overview documentation for the server test suite, describing the structure and conventions of the tests directory.",
+      "tags": ["documentation", "testing", "overview"],
+      "complexity": "simple",
+      "language": "markdown",
+      "sizeLines": 10
+    },
+    {
+      "id": "file:server/src/__tests__/recovery-classifiers.test.ts",
+      "type": "file",
+      "name": "recovery-classifiers.test.ts",
+      "filePath": "server/src/__tests__/recovery-classifiers.test.ts",
+      "summary": "Tests for the source-scoped recovery classifier logic, verifying that error conditions are correctly classified into recoverable categories for retry and recovery decisions.",
+      "tags": ["test", "recovery", "error-handling", "classification"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 248
+    },
+    {
+      "id": "file:server/src/__tests__/redaction.test.ts",
+      "type": "file",
+      "name": "redaction.test.ts",
+      "filePath": "server/src/__tests__/redaction.test.ts",
+      "summary": "Tests for the redaction utilities, verifying that sensitive data (secrets, tokens, credentials) are correctly masked in log output and API responses.",
+      "tags": ["test", "security", "redaction", "utility"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 134
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:server/src/__tests__/README.md",
+      "target": "file:server/src/__tests__/plugin-database.test.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-dev-watcher.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-environment-driver-seam.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-local-folders.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-managed-agents.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-managed-routines.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-managed-skills.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-orchestration-apis.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-routes-authz.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-scoped-api-routes.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-sdk-orchestration-contract.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-sdk-testing.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-secrets-handler.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-telemetry-bridge.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/plugin-database.test.ts",
+      "target": "file:server/src/__tests__/plugin-worker-manager.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:server/src/__tests__/quota-windows-service.test.ts",
+      "target": "file:server/src/__tests__/quota-windows.test.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

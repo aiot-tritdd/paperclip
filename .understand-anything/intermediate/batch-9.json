@@ -1,0 +1,406 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/adapters/http.md",
+      "type": "document",
+      "name": "http.md",
+      "filePath": "docs/adapters/http.md",
+      "summary": "Reference guide for the HTTP adapter, describing when to use it, its configuration options, and how it delivers agent tasks via outbound HTTP webhooks.",
+      "tags": ["documentation", "adapter", "http", "configuration", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/adapters/overview.md",
+      "type": "document",
+      "name": "overview.md",
+      "filePath": "docs/adapters/overview.md",
+      "summary": "Architectural overview of the Paperclip adapter system, covering built-in adapters, external plugin adapters, adapter lifecycle, and guidance for choosing the right adapter.",
+      "tags": ["documentation", "adapter", "architecture", "overview", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/adapters/process.md",
+      "type": "document",
+      "name": "process.md",
+      "filePath": "docs/adapters/process.md",
+      "summary": "Reference guide for the process adapter that launches agent logic as a local subprocess, with configuration, usage guidance, and a concrete example.",
+      "tags": ["documentation", "adapter", "process", "configuration", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/agents-runtime.md",
+      "type": "document",
+      "name": "agents-runtime.md",
+      "filePath": "docs/agents-runtime.md",
+      "summary": "Comprehensive agent runtime guide covering adapter selection, runtime behavior, prompt templates, session resume semantics, logs, live UI updates, common operating patterns, troubleshooting, security notes, and a setup checklist.",
+      "tags": ["documentation", "agents", "runtime", "configuration", "deployment"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/api/activity.md",
+      "type": "document",
+      "name": "activity.md",
+      "filePath": "docs/api/activity.md",
+      "summary": "API reference for the activity log endpoint, documenting the List Activity route, the ActivityRecord schema, and what categories of system events are recorded.",
+      "tags": ["documentation", "api-schema", "activity", "logging"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/api/agents.md",
+      "type": "document",
+      "name": "agents.md",
+      "filePath": "docs/api/agents.md",
+      "summary": "Full API reference for agent management, covering CRUD operations, lifecycle transitions (pause/resume/terminate), API key creation, heartbeat, org chart, and config revisions.",
+      "tags": ["documentation", "api-schema", "agents", "lifecycle"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/api/approvals.md",
+      "type": "document",
+      "name": "approvals.md",
+      "filePath": "docs/api/approvals.md",
+      "summary": "API reference for the approvals system, covering approval CRUD, hire requests, approval lifecycle transitions (approve/reject/revise/resubmit), linked issues, and comments.",
+      "tags": ["documentation", "api-schema", "approvals", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/api/authentication.md",
+      "type": "document",
+      "name": "authentication.md",
+      "filePath": "docs/api/authentication.md",
+      "summary": "API authentication guide explaining Run JWTs and agent API keys for agent callers, board operator local-trusted and authenticated modes, and company scoping.",
+      "tags": ["documentation", "authentication", "security", "api-schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/api/companies.md",
+      "type": "document",
+      "name": "companies.md",
+      "filePath": "docs/api/companies.md",
+      "summary": "API reference for company management, covering list, get, create, update, logo upload, archive, and the company fields schema.",
+      "tags": ["documentation", "api-schema", "companies", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/api/costs.md",
+      "type": "document",
+      "name": "costs.md",
+      "filePath": "docs/api/costs.md",
+      "summary": "API reference for cost tracking and budget management, covering cost event reporting, company and per-agent/project cost summaries, and budget enforcement behavior.",
+      "tags": ["documentation", "api-schema", "costs", "monitoring"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/api/dashboard.md",
+      "type": "document",
+      "name": "dashboard.md",
+      "filePath": "docs/api/dashboard.md",
+      "summary": "API reference for the dashboard endpoint, documenting the single GET route that returns aggregated counts of agents, issues, approvals, and routines.",
+      "tags": ["documentation", "api-schema", "dashboard"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/api/goals-and-projects.md",
+      "type": "document",
+      "name": "goals-and-projects.md",
+      "filePath": "docs/api/goals-and-projects.md",
+      "summary": "API reference for goals and projects, covering CRUD for both resources, project workspaces management, and how projects link to goals.",
+      "tags": ["documentation", "api-schema", "goals", "projects"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/api/issues.md",
+      "type": "document",
+      "name": "issues.md",
+      "filePath": "docs/api/issues.md",
+      "summary": "Comprehensive API reference for the issues subsystem covering CRUD, checkout/release task lifecycle, comments, issue-thread interactions, documents, attachments, and the full issue lifecycle state machine.",
+      "tags": ["documentation", "api-schema", "issues", "workflow"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/api/overview.md",
+      "type": "document",
+      "name": "overview.md",
+      "filePath": "docs/api/overview.md",
+      "summary": "API overview covering the base URL, authentication methods, request/response format, error codes, pagination, and rate limiting for the Paperclip REST API.",
+      "tags": ["documentation", "api-schema", "overview", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/api/routines.md",
+      "type": "document",
+      "name": "routines.md",
+      "filePath": "docs/api/routines.md",
+      "summary": "Full API reference for the routines subsystem, documenting CRUD, trigger management (add/update/delete/rotate), manual runs, public trigger firing, run history, agent access rules, and the routine lifecycle.",
+      "tags": ["documentation", "api-schema", "routines", "scheduling"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/api/secrets-remote-import.md",
+      "type": "document",
+      "name": "secrets-remote-import.md",
+      "filePath": "docs/api/secrets-remote-import.md",
+      "summary": "API reference for importing secrets from AWS Secrets Manager, covering the preview endpoint that lists remote candidates and the import endpoint that creates local references.",
+      "tags": ["documentation", "api-schema", "secrets", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/api/secrets.md",
+      "type": "document",
+      "name": "secrets.md",
+      "filePath": "docs/api/secrets.md",
+      "summary": "Comprehensive API reference for secrets management covering list/create, provider vaults (CRUD, health checks, default selection), AWS remote import, secret rotation, use in agent config, and portability.",
+      "tags": ["documentation", "api-schema", "secrets", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/cli/control-plane-commands.md",
+      "type": "document",
+      "name": "control-plane-commands.md",
+      "filePath": "docs/cli/control-plane-commands.md",
+      "summary": "Reference for CLI control-plane commands covering issue, company, agent, approval, activity, dashboard, and heartbeat subcommands used to interact with a live Paperclip instance.",
+      "tags": ["documentation", "cli", "api-handler", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/cli/overview.md",
+      "type": "document",
+      "name": "overview.md",
+      "filePath": "docs/cli/overview.md",
+      "summary": "CLI overview documenting usage patterns, global options (server URL, API key, output format), context profiles for multi-environment use, and a summary of command categories.",
+      "tags": ["documentation", "cli", "configuration", "overview"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/cli/setup-commands.md",
+      "type": "document",
+      "name": "setup-commands.md",
+      "filePath": "docs/cli/setup-commands.md",
+      "summary": "Reference for CLI setup commands including run, onboard, doctor, configure, env, and allowed-hostname, plus local storage paths used by the CLI.",
+      "tags": ["documentation", "cli", "configuration", "deployment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/companies/companies-spec.md",
+      "type": "document",
+      "name": "companies-spec.md",
+      "filePath": "docs/companies/companies-spec.md",
+      "summary": "Formal specification for the Agent Companies package format, detailing all reserved files (COMPANY.md, TEAM.md, AGENTS.md, PROJECT.md, TASK.md, SKILL.md), resolution rules, import graphs, vendor extensions, export rules, and the Paperclip mapping.",
+      "tags": ["documentation", "schema-definition", "agents", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/deploy/aws-ecs.md",
+      "type": "document",
+      "name": "aws-ecs.md",
+      "filePath": "docs/deploy/aws-ecs.md",
+      "summary": "Step-by-step guide for deploying Paperclip to AWS ECS covering ECR, Docker build, VPC/networking, RDS PostgreSQL, EFS, IAM roles, ECS cluster/task definition, ALB with TLS, service creation, verification, security hardening, update/rollback procedures, and cost reference.",
+      "tags": ["documentation", "deployment", "infrastructure", "aws"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/deploy/database.md",
+      "type": "document",
+      "name": "database.md",
+      "filePath": "docs/deploy/database.md",
+      "summary": "Guide for configuring Paperclip's PostgreSQL database connection, covering embedded PostgreSQL (default), local Docker PostgreSQL, and hosted Supabase options with mode-switching instructions.",
+      "tags": ["documentation", "database", "deployment", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/deploy/deployment-modes.md",
+      "type": "document",
+      "name": "deployment-modes.md",
+      "filePath": "docs/deploy/deployment-modes.md",
+      "summary": "Explains Paperclip's authentication deployment modes (local_trusted vs authenticated with private/public variants), the board claim flow, and how to switch between modes.",
+      "tags": ["documentation", "deployment", "authentication", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/deploy/docker.md",
+      "type": "document",
+      "name": "docker.md",
+      "filePath": "docs/deploy/docker.md",
+      "summary": "Guide for running Paperclip in Docker via Docker Compose quickstart or manual build, covering data persistence and the special adapter socket requirements for Claude/Codex adapters.",
+      "tags": ["documentation", "deployment", "containerization", "infrastructure"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:docs/adapters/overview.md",
+      "target": "document:docs/adapters/http.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/adapters/overview.md",
+      "target": "document:docs/adapters/process.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/agents-runtime.md",
+      "target": "document:docs/adapters/overview.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/agents-runtime.md",
+      "target": "document:docs/adapters/http.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/agents-runtime.md",
+      "target": "document:docs/adapters/process.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/authentication.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/agents.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/issues.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/routines.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/approvals.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/companies.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/activity.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/costs.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/goals-and-projects.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/overview.md",
+      "target": "document:docs/api/secrets.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/secrets.md",
+      "target": "document:docs/api/secrets-remote-import.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/api/authentication.md",
+      "target": "document:docs/deploy/deployment-modes.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/cli/overview.md",
+      "target": "document:docs/cli/control-plane-commands.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/cli/overview.md",
+      "target": "document:docs/cli/setup-commands.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/deploy/aws-ecs.md",
+      "target": "document:docs/deploy/docker.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/deploy/aws-ecs.md",
+      "target": "document:docs/deploy/database.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/deploy/aws-ecs.md",
+      "target": "document:docs/deploy/deployment-modes.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/deploy/docker.md",
+      "target": "document:docs/deploy/database.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/companies/companies-spec.md",
+      "target": "document:docs/api/companies.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/companies/companies-spec.md",
+      "target": "document:docs/agents-runtime.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

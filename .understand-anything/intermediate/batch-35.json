@@ -1,0 +1,710 @@
+{
+  "batchIndex": 35,
+  "nodes": [
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.test.ts",
+      "type": "file",
+      "name": "auth.test.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.test.ts",
+      "summary": "Unit tests for the bridge-template authentication helpers, covering bearer token parsing and timing-safe authorization checks.",
+      "tags": ["test", "security", "authentication"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 30
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "type": "file",
+      "name": "auth.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "summary": "Provides authentication utilities for the Cloudflare bridge Worker: reads Bearer tokens from request headers and performs timing-safe string comparison to authorize incoming requests.",
+      "tags": ["security", "authentication", "utility", "middleware"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 40,
+      "exports": ["readBearerToken", "isAuthorizedRequest"]
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts:isAuthorizedRequest",
+      "type": "function",
+      "name": "isAuthorizedRequest",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "lineRange": [32, 40],
+      "summary": "Authorizes an incoming HTTP request by comparing its Bearer token against the expected token using a timing-safe comparison to prevent timing attacks.",
+      "tags": ["security", "authentication", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.test.ts",
+      "type": "file",
+      "name": "exec.test.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.test.ts",
+      "summary": "Comprehensive unit tests for the bridge-template's sandbox execution logic, testing shell script building, timeout handling, and exec result coercion.",
+      "tags": ["test", "execution", "sandbox"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 151
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "type": "file",
+      "name": "exec.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "summary": "Core execution engine for the Cloudflare bridge Worker: builds login-shell scripts with environment injection, writes stdin files, and runs commands inside Cloudflare Containers via the sandbox API.",
+      "tags": ["execution", "sandbox", "utility", "service"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 147,
+      "exports": ["buildLoginShellScript", "executeInSandbox"]
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts:buildLoginShellScript",
+      "type": "function",
+      "name": "buildLoginShellScript",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "lineRange": [29, 64],
+      "summary": "Constructs a POSIX login-shell script that injects environment variables, sets up the working directory, writes stdin content to a temp file, and invokes the target command with proper quoting.",
+      "tags": ["execution", "shell", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts:executeInSandbox",
+      "type": "function",
+      "name": "executeInSandbox",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "lineRange": [86, 147],
+      "summary": "Runs a command inside a Cloudflare Container sandbox: writes stdin, resolves the execution target (direct sandbox or named session), executes via the login shell script, handles timeout cleanup, and cleans up temp files.",
+      "tags": ["execution", "sandbox", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/helpers.ts",
+      "type": "file",
+      "name": "helpers.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/helpers.ts",
+      "summary": "Pure utility helpers shared across the bridge-template Worker: lease ID normalization and construction, sentinel file path building, timeout error detection, and shell argument quoting.",
+      "tags": ["utility", "helper", "shell"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 39,
+      "exports": ["normalizeLeaseIdPart", "buildLeaseSandboxId", "buildSentinelPath", "isTimeoutError", "shellQuote"]
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "summary": "Cloudflare Worker entry point that wires together the Sandbox Durable Object export and the fetch handler, delegating all HTTP requests to handleBridgeRequest.",
+      "tags": ["entry-point", "service", "infrastructure"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 25
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.test.ts",
+      "type": "file",
+      "name": "routes.test.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.test.ts",
+      "summary": "Integration-style tests for the bridge-template HTTP route handler, exercising lease acquisition, execution, release, and destroy endpoints with mocked sandbox and environment bindings.",
+      "tags": ["test", "api-handler", "routing"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 143
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "type": "file",
+      "name": "routes.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "summary": "Main HTTP request router for the Cloudflare bridge Worker: implements all sandbox API endpoints (health, probe, acquire/resume/release/destroy lease, workspace setup, file operations, execute with SSE streaming) and enforces bearer-token authentication on every request.",
+      "tags": ["api-handler", "routing", "service", "execution"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 468,
+      "exports": ["handleBridgeRequest"]
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts:handleBridgeRequest",
+      "type": "function",
+      "name": "handleBridgeRequest",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "lineRange": [199, 468],
+      "summary": "Central HTTP dispatch function for the bridge Worker: authenticates each request, routes it by URL pathname to the appropriate lease/execution/file endpoint handler, and serializes responses as JSON or SSE streams.",
+      "tags": ["api-handler", "routing", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.test.ts",
+      "type": "file",
+      "name": "sandboxes.test.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.test.ts",
+      "summary": "Unit tests for the sandbox resolution and response helper utilities in the bridge-template Worker.",
+      "tags": ["test", "sandbox", "utility"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 32
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.ts",
+      "type": "file",
+      "name": "sandboxes.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.ts",
+      "summary": "Defines bridge-template constants (default CWD, session ID, timeout, sentinel filename) and helper functions for building HTTP JSON/error responses, resolving Cloudflare Container sandbox instances, and applying keep-alive settings.",
+      "tags": ["utility", "helper", "sandbox", "service"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 57,
+      "exports": ["DEFAULT_REMOTE_CWD", "DEFAULT_SESSION_ID", "DEFAULT_TIMEOUT_MS", "LEASE_SENTINEL_FILE", "toJsonResponse", "toErrorResponse", "resolveSandbox", "applySandboxKeepAlive"]
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts",
+      "type": "file",
+      "name": "sessions.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts",
+      "summary": "Manages named persistent sessions within a Cloudflare Container sandbox: retrieves or creates sessions by ID, resolves the correct execution target (session vs. direct sandbox), and cleans up after execution timeouts.",
+      "tags": ["service", "session", "sandbox"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 84,
+      "exports": ["getNamedSession", "resolveExecutionTarget", "cleanupTimedOutExecution"]
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts:resolveExecutionTarget",
+      "type": "function",
+      "name": "resolveExecutionTarget",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts",
+      "lineRange": [58, 70],
+      "summary": "Returns the appropriate execution target for a command run: either a named session (for persistent shell state) or the raw sandbox object (for stateless execution).",
+      "tags": ["service", "session", "sandbox"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the bridge-template Cloudflare Worker, extending a shared config and targeting Cloudflare Workers runtime types.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/vitest.config.ts",
+      "summary": "Vitest configuration for the bridge-template test suite, likely configuring the Cloudflare Workers pool environment for accurate edge-runtime testing.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 8
+    },
+    {
+      "id": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/wrangler.jsonc",
+      "type": "config",
+      "name": "wrangler.jsonc",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/wrangler.jsonc",
+      "summary": "Wrangler deployment configuration for the bridge-template Cloudflare Worker: declares the Sandbox container binding, the Durable Object class and binding, and the migration tag for the Durable Object storage.",
+      "tags": ["configuration", "infrastructure", "deployment", "containerization"],
+      "complexity": "simple",
+      "languageNotes": "Uses JSONC (JSON with comments) as Wrangler's native config format; the `containers` and `durable_objects` fields wire the Worker to Cloudflare's Container and Durable Object primitives."
+    },
+    {
+      "id": "config:packages/plugins/sandbox-providers/cloudflare/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/package.json",
+      "summary": "NPM package manifest for `@paperclipai/plugin-cloudflare-sandbox`, declaring the Paperclip plugin entry points, build scripts, and dev dependencies needed to compile and test the Cloudflare sandbox provider.",
+      "tags": ["configuration", "build-system", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/sandbox-providers/cloudflare/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/README.md",
+      "summary": "Usage guide for the Cloudflare sandbox provider plugin covering installation, configuration options, bridge-template deployment steps, and local development workflow.",
+      "tags": ["documentation", "configuration", "deployment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.test.ts",
+      "type": "file",
+      "name": "bridge-client.test.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/bridge-client.test.ts",
+      "summary": "Unit tests for the Cloudflare bridge HTTP client, covering request lifecycle, SSE stream parsing, error handling, and timeout behaviour.",
+      "tags": ["test", "api-handler", "service"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 92
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "type": "file",
+      "name": "bridge-client.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "summary": "HTTP client for communicating with the Cloudflare bridge Worker from the Paperclip plugin side: implements health, probe, lease lifecycle (acquire/resume/release/destroy), and execute (with SSE streaming) operations against the deployed bridge endpoints.",
+      "tags": ["api-handler", "service", "utility"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 357,
+      "exports": ["CloudflareBridgeError", "resolveRequestTimeoutMs", "createCloudflareBridgeClient"]
+    },
+    {
+      "id": "class:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:CloudflareBridgeError",
+      "type": "class",
+      "name": "CloudflareBridgeError",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "lineRange": [38, 50],
+      "summary": "Custom error class carrying HTTP status, error code, and structured details from a failed bridge API response, enabling callers to distinguish bridge-specific errors from generic failures.",
+      "tags": ["utility", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:createCloudflareBridgeClient",
+      "type": "function",
+      "name": "createCloudflareBridgeClient",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "lineRange": [272, 357],
+      "summary": "Factory that constructs and returns an object implementing all bridge API operations (health, probe, acquire/resume/release/destroy lease, execute) with shared request configuration and SSE stream consumption.",
+      "tags": ["factory", "service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:consumeExecuteEventStream",
+      "type": "function",
+      "name": "consumeExecuteEventStream",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "lineRange": [222, 270],
+      "summary": "Reads an SSE response body from the bridge execute endpoint, parsing chunked events and dispatching stdout/stderr output chunks and the final exit result to callbacks.",
+      "tags": ["service", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/config.ts",
+      "type": "file",
+      "name": "config.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/config.ts",
+      "summary": "Parses and validates the Cloudflare driver configuration object from raw plugin environment variables, enforcing required fields like bridge URL, auth token, and container image.",
+      "tags": ["configuration", "validation", "utility"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 84,
+      "exports": ["parseCloudflareDriverConfig", "validateCloudflareDriverConfig"]
+    },
+    {
+      "id": "function:packages/plugins/sandbox-providers/cloudflare/src/config.ts:validateCloudflareDriverConfig",
+      "type": "function",
+      "name": "validateCloudflareDriverConfig",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/config.ts",
+      "lineRange": [43, 84],
+      "summary": "Validates a parsed Cloudflare driver config, accumulating error messages for missing or invalid fields (bridge URL, auth token, image, timeout values, CWD format) and returning the error list.",
+      "tags": ["validation", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/index.ts",
+      "summary": "Barrel entry point for the Cloudflare sandbox provider package, re-exporting manifest and plugin for Paperclip plugin discovery.",
+      "tags": ["entry-point", "barrel"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 2,
+      "exports": ["manifest", "plugin"]
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/manifest.ts",
+      "type": "file",
+      "name": "manifest.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/manifest.ts",
+      "summary": "Declares the Paperclip plugin manifest for the Cloudflare sandbox provider, specifying the plugin ID, supported capabilities, required configuration schema, and references to the bridge-template Worker that must be deployed to Cloudflare.",
+      "tags": ["configuration", "infrastructure", "deployment"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 97
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.test.ts",
+      "type": "file",
+      "name": "plugin.test.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/plugin.test.ts",
+      "summary": "End-to-end tests for the Cloudflare sandbox provider plugin lifecycle: validates config, probes the bridge, and exercises lease acquisition, execution, and teardown via a mocked bridge HTTP server.",
+      "tags": ["test", "service", "api-handler"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 323
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "type": "file",
+      "name": "plugin.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "summary": "Implements the Paperclip sandbox provider plugin for Cloudflare: handles the full environment lifecycle (validate config, probe, acquire/resume/release/destroy lease, realize workspace, execute) by delegating to the bridge client and translating results into Paperclip's sandbox API contract.",
+      "tags": ["service", "api-handler", "middleware"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 351
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/types.ts",
+      "summary": "TypeScript type definitions for the Cloudflare sandbox provider: configuration shape, bridge API request/response payloads, lease metadata, and execute result types.",
+      "tags": ["type-definition", "configuration"],
+      "complexity": "moderate",
+      "language": "typescript",
+      "sizeLines": 99
+    },
+    {
+      "id": "file:packages/plugins/sandbox-providers/cloudflare/src/worker.ts",
+      "type": "file",
+      "name": "worker.ts",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/src/worker.ts",
+      "summary": "Minimal re-export shim that exposes the bridge-template Worker module from the plugin package, enabling the plugin to bundle and reference the bridge code at deployment time.",
+      "tags": ["barrel", "infrastructure", "deployment"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 5
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.test.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts:isAuthorizedRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts:isAuthorizedRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.test.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts:buildLoginShellScript",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts:executeInSandbox",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts:buildLoginShellScript",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts:executeInSandbox",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.test.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts:handleBridgeRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts:handleBridgeRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.test.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts:resolveExecutionTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts:resolveExecutionTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/helpers.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/helpers.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sessions.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/helpers.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/tsconfig.json",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/wrangler.jsonc",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/vitest.config.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/auth.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/vitest.config.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/exec.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/vitest.config.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/vitest.config.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/sandboxes.test.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.test.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "target": "class:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:CloudflareBridgeError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "target": "class:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:CloudflareBridgeError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:createCloudflareBridgeClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:createCloudflareBridgeClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts:consumeExecuteEventStream",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/config.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/src/config.ts:validateCloudflareDriverConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/config.ts",
+      "target": "function:packages/plugins/sandbox-providers/cloudflare/src/config.ts:validateCloudflareDriverConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/index.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/manifest.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/index.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.test.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/config.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/plugin.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/manifest.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/worker.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/sandbox-providers/cloudflare/src/bridge-client.ts",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/routes.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/plugins/sandbox-providers/cloudflare/package.json",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/plugins/sandbox-providers/cloudflare/README.md",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/src/index.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sandbox-providers/cloudflare/README.md",
+      "target": "file:packages/plugins/sandbox-providers/cloudflare/bridge-template/src/index.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

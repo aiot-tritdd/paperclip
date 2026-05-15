@@ -1,0 +1,677 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/ui/build-config.test.ts",
+      "type": "file",
+      "name": "build-config.test.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/build-config.test.ts",
+      "summary": "Unit tests for the cursor-cloud UI build-config module, verifying correct parsing of environment variables and bindings into Cursor Cloud configuration objects.",
+      "tags": ["test", "configuration", "cursor-cloud", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "type": "file",
+      "name": "build-config.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "summary": "Builds Cursor Cloud adapter configuration objects by parsing env var strings and binding objects from form values, exported as the primary config-building function.",
+      "tags": ["configuration", "cursor-cloud", "utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/ui/build-config.ts:buildCursorCloudConfig",
+      "type": "function",
+      "name": "buildCursorCloudConfig",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "lineRange": [46, 67],
+      "summary": "Assembles the complete Cursor Cloud configuration object from raw form values, parsing env variable text and binding objects into a structured config.",
+      "tags": ["configuration", "factory", "cursor-cloud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/ui/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/index.ts",
+      "summary": "Barrel entry point for the cursor-cloud UI module, re-exporting the config builder and stdout line parser.",
+      "tags": ["barrel", "entry-point", "cursor-cloud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.test.ts",
+      "type": "file",
+      "name": "parse-stdout.test.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/parse-stdout.test.ts",
+      "summary": "Tests for the cursor-cloud stdout parser, covering various SDK message types, tool call events, and error payloads emitted by the Cursor Cloud agent.",
+      "tags": ["test", "cursor-cloud", "parsing", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "type": "file",
+      "name": "parse-stdout.ts",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "summary": "Parses individual JSON-encoded lines from Cursor Cloud agent stdout, normalizing assistant messages, SDK events, tool calls, and error states into structured platform events.",
+      "tags": ["parsing", "cursor-cloud", "utility", "serialization"],
+      "complexity": "complex",
+      "languageNotes": "Uses a deeply branching message-type dispatch over raw SDK events; helper coercion functions (asRecord, asString, stringifyUnknown) provide safe access to unknown JSON payloads."
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts:parseCursorCloudStdoutLine",
+      "type": "function",
+      "name": "parseCursorCloudStdoutLine",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "lineRange": [140, 186],
+      "summary": "Main exported entry point that parses a single raw stdout line from the Cursor Cloud process, routing to sub-parsers based on event type.",
+      "tags": ["parsing", "cursor-cloud", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts:parseSdkMessage",
+      "type": "function",
+      "name": "parseSdkMessage",
+      "filePath": "packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "lineRange": [55, 138],
+      "summary": "Parses a raw SDK message object from Cursor Cloud, extracting assistant text, tool calls, tool results, and token usage into normalized platform event structures.",
+      "tags": ["parsing", "cursor-cloud", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:packages/adapters/cursor-cloud/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/adapters/cursor-cloud/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the cursor-cloud adapter package, extending a shared base config with compiler options and source includes.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/adapters/cursor-local/CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "packages/adapters/cursor-local/CHANGELOG.md",
+      "summary": "Changelog for the @paperclipai/adapter-cursor-local package, documenting patch and minor changes across versions 0.2.7, 0.3.0, and 0.3.1.",
+      "tags": ["documentation", "changelog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/adapters/cursor-local/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/adapters/cursor-local/package.json",
+      "summary": "Package manifest for the @paperclipai/adapter-cursor-local npm package, defining exports, scripts, dependencies, and publish configuration for the cursor-local adapter.",
+      "tags": ["configuration", "build-system", "package-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/cli/format-event.ts",
+      "type": "file",
+      "name": "format-event.ts",
+      "filePath": "packages/adapters/cursor-local/src/cli/format-event.ts",
+      "summary": "Formats and prints Cursor Local stream events to the terminal using picocolors, handling assistant messages, user messages, tool calls, tool results, and token usage stats.",
+      "tags": ["utility", "event-handler", "cli", "cursor-local"],
+      "complexity": "complex",
+      "languageNotes": "Uses a type-based dispatch pattern over raw stream events; printing functions use picocolors for colored terminal output."
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/cli/format-event.ts:printCursorStreamEvent",
+      "type": "function",
+      "name": "printCursorStreamEvent",
+      "filePath": "packages/adapters/cursor-local/src/cli/format-event.ts",
+      "lineRange": [198, 317],
+      "summary": "Top-level exported event printer that dispatches raw cursor stream lines to specialized sub-printers based on parsed event type, rendering colored terminal output.",
+      "tags": ["utility", "event-handler", "cli"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/cli/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-local/src/cli/index.ts",
+      "summary": "Barrel entry point for the cursor-local CLI module, re-exporting the stream event formatter.",
+      "tags": ["barrel", "entry-point", "cursor-local"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-local/src/index.ts",
+      "summary": "Main entry point for the cursor-local adapter package, exporting the adapter type, label, constants, model list, model profiles, and agent configuration documentation.",
+      "tags": ["entry-point", "cursor-local", "configuration", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/execute.remote.test.ts",
+      "type": "file",
+      "name": "execute.remote.test.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/execute.remote.test.ts",
+      "summary": "Integration tests for remote execution of the cursor-local adapter, testing Cursor agent invocation through a sandboxed remote execution target.",
+      "tags": ["test", "cursor-local", "execution", "integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/execute.test.ts",
+      "type": "file",
+      "name": "execute.test.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/execute.test.ts",
+      "summary": "Unit and integration tests for the cursor-local execute module, using sandbox runners with simulated Cursor agent scripts to verify execution and streaming behavior.",
+      "tags": ["test", "cursor-local", "execution", "integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "type": "file",
+      "name": "execute.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/execute.ts",
+      "summary": "Core execution engine for the cursor-local adapter, handling Cursor process invocation with sandbox preparation, skills injection, prompt building, streaming stdout parsing, retry on session errors, and billing resolution.",
+      "tags": ["service", "cursor-local", "execution", "api-handler"],
+      "complexity": "complex",
+      "languageNotes": "The main execute function spans over 560 lines with inner closures (buildArgs, runAttempt, emitNormalizedStdoutLine, flushStdoutChunk, toResult) — effectively an execution state machine."
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/execute.ts:execute",
+      "type": "function",
+      "name": "execute",
+      "filePath": "packages/adapters/cursor-local/src/server/execute.ts",
+      "lineRange": [196, 757],
+      "summary": "Main exported execution function that orchestrates the full lifecycle of running a Cursor Local agent task: sandbox preparation, skills injection, prompt assembly, process invocation, streaming, and result resolution.",
+      "tags": ["service", "execution", "cursor-local"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/execute.ts:ensureCursorSkillsInjected",
+      "type": "function",
+      "name": "ensureCursorSkillsInjected",
+      "filePath": "packages/adapters/cursor-local/src/server/execute.ts",
+      "lineRange": [140, 194],
+      "summary": "Ensures Cursor skills markdown files are injected into the appropriate skills home directory before agent execution, copying from the plugin cache.",
+      "tags": ["service", "cursor-local", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/index.ts",
+      "summary": "Server-side barrel for cursor-local adapter, re-exporting execution functions, skill management, environment testing, parse utilities, and the session codec.",
+      "tags": ["barrel", "entry-point", "cursor-local", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/parse.ts",
+      "type": "file",
+      "name": "parse.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/parse.ts",
+      "summary": "Parses Cursor Local agent stdout JSONL output into structured results including assistant messages, token usage, tool events, and error state; also detects unknown session errors from combined stdout/stderr.",
+      "tags": ["parsing", "cursor-local", "utility", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/parse.ts:parseCursorJsonl",
+      "type": "function",
+      "name": "parseCursorJsonl",
+      "filePath": "packages/adapters/cursor-local/src/server/parse.ts",
+      "lineRange": [52, 150],
+      "summary": "Parses the full stdout of a Cursor Local agent run from JSONL format, collecting messages, token usage, tool results, and error state into a typed result object.",
+      "tags": ["parsing", "cursor-local", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/remote-command.test.ts",
+      "type": "file",
+      "name": "remote-command.test.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/remote-command.test.ts",
+      "summary": "Tests for remote sandbox command preparation and Cursor runtime discovery, using a local sandbox runner and fake agent scripts.",
+      "tags": ["test", "cursor-local", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "type": "file",
+      "name": "remote-command.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/remote-command.ts",
+      "summary": "Probes and prepares the Cursor command in a sandbox environment by discovering the installed binary location, resolving PATH entries, and building sandbox command metadata.",
+      "tags": ["service", "cursor-local", "execution", "utility"],
+      "complexity": "complex",
+      "languageNotes": "Uses a shell probe via runAdapterExecutionTargetShellCommand to sniff the remote home directory and confirm cursor binary locations before actual execution."
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/remote-command.ts:prepareCursorSandboxCommand",
+      "type": "function",
+      "name": "prepareCursorSandboxCommand",
+      "filePath": "packages/adapters/cursor-local/src/server/remote-command.ts",
+      "lineRange": [171, 238],
+      "summary": "Prepares sandbox command metadata for Cursor execution, probing the remote system for the cursor binary location and adjusting PATH entries accordingly.",
+      "tags": ["service", "cursor-local", "execution"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/remote-command.ts:readSandboxCursorRuntimeInfo",
+      "type": "function",
+      "name": "readSandboxCursorRuntimeInfo",
+      "filePath": "packages/adapters/cursor-local/src/server/remote-command.ts",
+      "lineRange": [71, 157],
+      "summary": "Runs a shell probe command in the execution target to discover the home directory and preferred Cursor binary path, returning cursor runtime metadata.",
+      "tags": ["service", "cursor-local", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/skills.ts",
+      "type": "file",
+      "name": "skills.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/skills.ts",
+      "summary": "Manages Cursor Local skills — listing, syncing, and resolving desired skill names — by reading from the Paperclip runtime skill registry and managing symlinks in the cursor skills home directory.",
+      "tags": ["service", "cursor-local", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/skills.ts:syncCursorSkills",
+      "type": "function",
+      "name": "syncCursorSkills",
+      "filePath": "packages/adapters/cursor-local/src/server/skills.ts",
+      "lineRange": [55, 84],
+      "summary": "Synchronizes the cursor skills directory by creating symlinks for desired skills and removing symlinks for skills that are no longer desired.",
+      "tags": ["service", "cursor-local", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/test.test.ts",
+      "type": "file",
+      "name": "test.test.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/test.test.ts",
+      "summary": "Tests for the cursor-local environment testing module, verifying that testEnvironment correctly validates Cursor setup through a sandboxed probe with fake agent scripts.",
+      "tags": ["test", "cursor-local", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "type": "file",
+      "name": "test.ts",
+      "filePath": "packages/adapters/cursor-local/src/server/test.ts",
+      "summary": "Implements the cursor-local environment validation probe, running health checks against the Cursor installation including binary resolution, auth info, sandbox accessibility, and a live \"hello\" test invocation.",
+      "tags": ["service", "cursor-local", "validation", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/server/test.ts:testEnvironment",
+      "type": "function",
+      "name": "testEnvironment",
+      "filePath": "packages/adapters/cursor-local/src/server/test.ts",
+      "lineRange": [93, 364],
+      "summary": "Runs a comprehensive series of health checks against a Cursor Local environment, testing binary resolution, authentication, and a live agent invocation to confirm readiness.",
+      "tags": ["service", "validation", "cursor-local"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/shared/stream.ts",
+      "type": "file",
+      "name": "stream.ts",
+      "filePath": "packages/adapters/cursor-local/src/shared/stream.ts",
+      "summary": "Provides the normalizeCursorStreamLine utility that strips SSE/data prefixes from raw Cursor stream lines before JSON parsing.",
+      "tags": ["utility", "parsing", "cursor-local"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/shared/trust.ts",
+      "type": "file",
+      "name": "trust.ts",
+      "filePath": "packages/adapters/cursor-local/src/shared/trust.ts",
+      "summary": "Exports hasCursorTrustBypassArg, a helper that checks whether CLI args already include a Cursor trust-bypass flag to avoid duplicate injection.",
+      "tags": ["utility", "cursor-local", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/ui/build-config.ts",
+      "type": "file",
+      "name": "build-config.ts",
+      "filePath": "packages/adapters/cursor-local/src/ui/build-config.ts",
+      "summary": "Builds cursor-local adapter configuration objects from raw UI form values, parsing env var strings, binding objects, comma-separated args, and mode normalization.",
+      "tags": ["configuration", "cursor-local", "utility", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/adapters/cursor-local/src/ui/build-config.ts:buildCursorLocalConfig",
+      "type": "function",
+      "name": "buildCursorLocalConfig",
+      "filePath": "packages/adapters/cursor-local/src/ui/build-config.ts",
+      "lineRange": [60, 80],
+      "summary": "Assembles the full cursor-local config object from raw UI form values, parsing mode, env vars, bindings, and extra CLI args.",
+      "tags": ["configuration", "factory", "cursor-local"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/adapters/cursor-local/src/ui/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/adapters/cursor-local/src/ui/index.ts",
+      "summary": "Barrel entry point for the cursor-local UI module, re-exporting the stdout line parser and config builder.",
+      "tags": ["barrel", "entry-point", "cursor-local"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/ui/build-config.ts:buildCursorCloudConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/ui/build-config.ts:buildCursorCloudConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts:parseCursorCloudStdoutLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts:parseSdkMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "target": "function:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts:parseCursorCloudStdoutLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/build-config.test.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.test.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/index.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/ui/build-config.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-cloud/src/ui/index.ts",
+      "target": "file:packages/adapters/cursor-cloud/src/ui/parse-stdout.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/adapters/cursor-cloud/tsconfig.json",
+      "target": "file:packages/adapters/cursor-cloud/src/ui/index.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/cli/format-event.ts",
+      "target": "function:packages/adapters/cursor-local/src/cli/format-event.ts:printCursorStreamEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/cli/format-event.ts",
+      "target": "function:packages/adapters/cursor-local/src/cli/format-event.ts:printCursorStreamEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/cli/index.ts",
+      "target": "file:packages/adapters/cursor-local/src/cli/format-event.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/execute.ts:execute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/execute.ts:ensureCursorSkillsInjected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/execute.ts:execute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/execute.ts:ensureCursorSkillsInjected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/parse.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/parse.ts:parseCursorJsonl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/parse.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/parse.ts:parseCursorJsonl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/remote-command.ts:prepareCursorSandboxCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/remote-command.ts:readSandboxCursorRuntimeInfo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/remote-command.ts:prepareCursorSandboxCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/skills.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/skills.ts:syncCursorSkills",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/skills.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/skills.ts:syncCursorSkills",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/test.ts:testEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "target": "function:packages/adapters/cursor-local/src/server/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/skills.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/index.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/parse.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/ui/build-config.ts",
+      "target": "function:packages/adapters/cursor-local/src/ui/build-config.ts:buildCursorLocalConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/ui/build-config.ts",
+      "target": "function:packages/adapters/cursor-local/src/ui/build-config.ts:buildCursorLocalConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/ui/index.ts",
+      "target": "file:packages/adapters/cursor-local/src/ui/build-config.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.test.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.remote.test.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/remote-command.test.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/test.test.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/parse.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "file:packages/adapters/cursor-local/src/shared/stream.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/execute.ts",
+      "target": "file:packages/adapters/cursor-local/src/shared/trust.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/remote-command.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "target": "file:packages/adapters/cursor-local/src/server/parse.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/server/test.ts",
+      "target": "file:packages/adapters/cursor-local/src/shared/trust.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/adapters/cursor-local/src/cli/format-event.ts",
+      "target": "file:packages/adapters/cursor-local/src/shared/stream.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/adapters/cursor-local/CHANGELOG.md",
+      "target": "config:packages/adapters/cursor-local/package.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

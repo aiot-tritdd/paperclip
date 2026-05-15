@@ -1,0 +1,1615 @@
+{
+  "nodes": [
+    {
+      "id": "file:ui/src/components/MarkdownBody.tsx",
+      "type": "file",
+      "name": "MarkdownBody.tsx",
+      "filePath": "ui/src/components/MarkdownBody.tsx",
+      "summary": "Rich markdown rendering component with support for mermaid diagrams, wiki-links, issue reference links, code blocks with copy, and mention chips. Acts as the primary read-only markdown display layer used throughout the application.",
+      "tags": ["component", "markdown", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownBody.tsx:MarkdownBody",
+      "type": "function",
+      "name": "MarkdownBody",
+      "filePath": "ui/src/components/MarkdownBody.tsx",
+      "lineRange": [490, 664],
+      "summary": "Main exported React component that renders markdown content with configurable features including wiki-links, issue references, image handling, and custom remark plugins.",
+      "tags": ["component", "markdown", "exports"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownBody.tsx:CodeBlock",
+      "type": "function",
+      "name": "CodeBlock",
+      "filePath": "ui/src/components/MarkdownBody.tsx",
+      "lineRange": [358, 433],
+      "summary": "Renders a fenced code block with syntax highlighting and a clipboard copy button, with fallback for browsers lacking clipboard API.",
+      "tags": ["component", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownBody.tsx:MermaidDiagramBlock",
+      "type": "function",
+      "name": "MermaidDiagramBlock",
+      "filePath": "ui/src/components/MarkdownBody.tsx",
+      "lineRange": [435, 488],
+      "summary": "Lazily loads the Mermaid library and renders diagram SVG from source, adapting theme to dark/light mode.",
+      "tags": ["component", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/MarkdownEditor.tsx",
+      "type": "file",
+      "name": "MarkdownEditor.tsx",
+      "filePath": "ui/src/components/MarkdownEditor.tsx",
+      "summary": "Full-featured rich markdown editor component with @mention autocomplete, keyboard-driven mention menu positioning, paste normalization, and caret management utilities exported for use by other components.",
+      "tags": ["component", "markdown", "editor"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownEditor.tsx:MarkdownEditor",
+      "type": "function",
+      "name": "MarkdownEditor",
+      "filePath": "ui/src/components/MarkdownEditor.tsx",
+      "lineRange": [544, 1311],
+      "summary": "Primary exported editor component supporting markdown authoring with rich text, @mention autocomplete, image uploads, keyboard shortcuts, and paste handling.",
+      "tags": ["component", "editor", "markdown"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownEditor.tsx:findMentionMatch",
+      "type": "function",
+      "name": "findMentionMatch",
+      "filePath": "ui/src/components/MarkdownEditor.tsx",
+      "lineRange": [241, 272],
+      "summary": "Exported utility that scans text to detect an active @mention trigger at the given caret offset, returning the match details for the autocomplete menu.",
+      "tags": ["utility", "editor"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownEditor.tsx:computeMentionMenuPosition",
+      "type": "function",
+      "name": "computeMentionMenuPosition",
+      "filePath": "ui/src/components/MarkdownEditor.tsx",
+      "lineRange": [357, 384],
+      "summary": "Exported utility that calculates the floating mention menu position relative to the caret anchor and viewport bounds.",
+      "tags": ["utility", "editor"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/MarkdownEditor.tsx:findClosestAutocompleteAnchor",
+      "type": "function",
+      "name": "findClosestAutocompleteAnchor",
+      "filePath": "ui/src/components/MarkdownEditor.tsx",
+      "lineRange": [476, 500],
+      "summary": "Exported utility that locates the nearest existing mention anchor element in the editor DOM closest to the cursor origin point.",
+      "tags": ["utility", "editor"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/MetricCard.tsx",
+      "type": "file",
+      "name": "MetricCard.tsx",
+      "filePath": "ui/src/components/MetricCard.tsx",
+      "summary": "Simple presentational card component for displaying a metric with an icon, numeric value, label, description, and optional navigation link.",
+      "tags": ["component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/MobileBottomNav.tsx",
+      "type": "file",
+      "name": "MobileBottomNav.tsx",
+      "filePath": "ui/src/components/MobileBottomNav.tsx",
+      "summary": "Mobile-specific bottom navigation bar that renders primary app navigation links, an inbox badge counter, and a new-issue trigger.",
+      "tags": ["component", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/MobileBottomNav.tsx:MobileBottomNav",
+      "type": "function",
+      "name": "MobileBottomNav",
+      "filePath": "ui/src/components/MobileBottomNav.tsx",
+      "lineRange": [37, 125],
+      "summary": "Exported React component rendering mobile bottom navigation with active route highlighting and inbox badge.",
+      "tags": ["component", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/NewAgentDialog.tsx",
+      "type": "file",
+      "name": "NewAgentDialog.tsx",
+      "filePath": "ui/src/components/NewAgentDialog.tsx",
+      "summary": "Dialog component for creating a new agent, presenting available adapter types in a visual grid and allowing navigation to the adapter configuration page.",
+      "tags": ["component", "dialog", "agent-config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/NewAgentDialog.tsx:NewAgentDialog",
+      "type": "function",
+      "name": "NewAgentDialog",
+      "filePath": "ui/src/components/NewAgentDialog.tsx",
+      "lineRange": [34, 215],
+      "summary": "Exported dialog component that lists available agent adapter types, filters disabled ones, and navigates to the creation page on selection.",
+      "tags": ["component", "dialog"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/NewGoalDialog.tsx",
+      "type": "file",
+      "name": "NewGoalDialog.tsx",
+      "filePath": "ui/src/components/NewGoalDialog.tsx",
+      "summary": "Dialog for creating a new organizational goal with title, description, status, level, and optional parent goal selection.",
+      "tags": ["component", "dialog"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/NewGoalDialog.tsx:NewGoalDialog",
+      "type": "function",
+      "name": "NewGoalDialog",
+      "filePath": "ui/src/components/NewGoalDialog.tsx",
+      "lineRange": [36, 282],
+      "summary": "Exported dialog component with form state management for creating goals, including goal hierarchy and asset image upload.",
+      "tags": ["component", "dialog"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/NewIssueDialog.tsx",
+      "type": "file",
+      "name": "NewIssueDialog.tsx",
+      "filePath": "ui/src/components/NewIssueDialog.tsx",
+      "summary": "The most complex dialog in the application, handling new issue creation with full support for project selection, agent assignment, execution workspace modes, draft persistence, document file staging, priority, and markdown description.",
+      "tags": ["component", "dialog", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/NewIssueDialog.tsx:NewIssueDialog",
+      "type": "function",
+      "name": "NewIssueDialog",
+      "filePath": "ui/src/components/NewIssueDialog.tsx",
+      "lineRange": [403, 2038],
+      "summary": "Exported component that implements the full new-issue creation flow with draft save/restore, file attachments, agent and workspace selection, and submission mutation.",
+      "tags": ["component", "dialog", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/NewProjectDialog.tsx",
+      "type": "file",
+      "name": "NewProjectDialog.tsx",
+      "filePath": "ui/src/components/NewProjectDialog.tsx",
+      "summary": "Dialog for creating a new project with name, description, status, goals association, and optional agent / path instructions configuration.",
+      "tags": ["component", "dialog"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/NewProjectDialog.tsx:NewProjectDialog",
+      "type": "function",
+      "name": "NewProjectDialog",
+      "filePath": "ui/src/components/NewProjectDialog.tsx",
+      "lineRange": [50, 447],
+      "summary": "Exported dialog component for project creation with form fields, member access control, and path instructions configuration.",
+      "tags": ["component", "dialog"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/OnboardingWizard.tsx",
+      "type": "file",
+      "name": "OnboardingWizard.tsx",
+      "filePath": "ui/src/components/OnboardingWizard.tsx",
+      "summary": "Multi-step onboarding wizard that guides new users through company setup, adapter configuration, goal creation, and first issue creation with ASCII art animations.",
+      "tags": ["component", "onboarding"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/OnboardingWizard.tsx:OnboardingWizard",
+      "type": "function",
+      "name": "OnboardingWizard",
+      "filePath": "ui/src/components/OnboardingWizard.tsx",
+      "lineRange": [72, 1273],
+      "summary": "Exported multi-step wizard orchestrating the full onboarding flow with adapter selection, approval setup, goal creation, and first issue submission.",
+      "tags": ["component", "onboarding"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/OpenCodeLogoIcon.tsx",
+      "type": "file",
+      "name": "OpenCodeLogoIcon.tsx",
+      "filePath": "ui/src/components/OpenCodeLogoIcon.tsx",
+      "summary": "Simple SVG logo icon component for the OpenCode adapter, used in adapter picker and agent configuration UI.",
+      "tags": ["component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/OutputFeedbackButtons.tsx",
+      "type": "file",
+      "name": "OutputFeedbackButtons.tsx",
+      "filePath": "ui/src/components/OutputFeedbackButtons.tsx",
+      "summary": "Component rendering thumbs-up/thumbs-down feedback buttons for agent output, persisting feedback state and submitting to the API.",
+      "tags": ["component", "feedback"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/OutputFeedbackButtons.tsx:OutputFeedbackButtons",
+      "type": "function",
+      "name": "OutputFeedbackButtons",
+      "filePath": "ui/src/components/OutputFeedbackButtons.tsx",
+      "lineRange": [16, 268],
+      "summary": "Exported component that shows feedback controls with optimistic state, submission mutation, and optional comment collection.",
+      "tags": ["component", "feedback"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/PackageFileTree.tsx",
+      "type": "file",
+      "name": "PackageFileTree.tsx",
+      "filePath": "ui/src/components/PackageFileTree.tsx",
+      "summary": "Thin re-export barrel that exposes the FileTree component and all its associated types and utilities under a single import path.",
+      "tags": ["barrel", "component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/PageSkeleton.tsx",
+      "type": "file",
+      "name": "PageSkeleton.tsx",
+      "filePath": "ui/src/components/PageSkeleton.tsx",
+      "summary": "Loading skeleton component that renders a full-page placeholder with header and content shimmer blocks while data is being fetched.",
+      "tags": ["component", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/PageTabBar.tsx",
+      "type": "file",
+      "name": "PageTabBar.tsx",
+      "filePath": "ui/src/components/PageTabBar.tsx",
+      "summary": "Horizontal tab bar component for page-level navigation that integrates with the sidebar context to adjust its positioning.",
+      "tags": ["component", "navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "file",
+      "name": "PathInstructionsModal.tsx",
+      "filePath": "ui/src/components/PathInstructionsModal.tsx",
+      "summary": "Modal and button components that display platform-specific instructions for configuring repository path settings for agent execution environments.",
+      "tags": ["component", "dialog", "agent-config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/PriorityIcon.tsx",
+      "type": "file",
+      "name": "PriorityIcon.tsx",
+      "filePath": "ui/src/components/PriorityIcon.tsx",
+      "summary": "Renders a colored icon representing an issue priority level, mapping priority values to status colors and SVG icons.",
+      "tags": ["component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/ProductivityReviewBadge.tsx",
+      "type": "file",
+      "name": "ProductivityReviewBadge.tsx",
+      "filePath": "ui/src/components/ProductivityReviewBadge.tsx",
+      "summary": "Badge component that displays a productivity review trigger label with a tooltip and links to the relevant issue detail page.",
+      "tags": ["component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/ProjectProperties.tsx",
+      "type": "file",
+      "name": "ProjectProperties.tsx",
+      "filePath": "ui/src/components/ProjectProperties.tsx",
+      "summary": "Comprehensive project settings panel that allows editing of project name, description, status, agent configuration, environment variables, secrets, and archive/danger-zone actions.",
+      "tags": ["component", "api-handler", "agent-config"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/ProjectProperties.tsx:ProjectProperties",
+      "type": "function",
+      "name": "ProjectProperties",
+      "filePath": "ui/src/components/ProjectProperties.tsx",
+      "lineRange": [224, 1183],
+      "summary": "Exported main component orchestrating all project property editing sub-panels, mutation handlers, and auto-save indicator.",
+      "tags": ["component", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "type": "file",
+      "name": "ProjectWorkspacesContent.tsx",
+      "filePath": "ui/src/components/ProjectWorkspacesContent.tsx",
+      "summary": "Tab content component displaying the list of execution workspaces for a project with close/delete actions.",
+      "tags": ["component", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "type": "file",
+      "name": "ProjectWorkspaceSummaryCard.tsx",
+      "filePath": "ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "summary": "Card component summarizing an execution workspace, showing workspace kind, path, associated issues, and relative creation time.",
+      "tags": ["component", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ProjectWorkspaceSummaryCard.tsx:ProjectWorkspaceSummaryCard",
+      "type": "function",
+      "name": "ProjectWorkspaceSummaryCard",
+      "filePath": "ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "lineRange": [39, 250],
+      "summary": "Exported card component rendering workspace metadata, issue quicklook, and copy-text controls for workspace path.",
+      "tags": ["component", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/PropertiesPanel.tsx",
+      "type": "file",
+      "name": "PropertiesPanel.tsx",
+      "filePath": "ui/src/components/PropertiesPanel.tsx",
+      "summary": "Thin wrapper component that conditionally renders a sliding properties panel based on context, deferring panel open/close state to PanelContext.",
+      "tags": ["component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/ProviderQuotaCard.tsx",
+      "type": "file",
+      "name": "ProviderQuotaCard.tsx",
+      "filePath": "ui/src/components/ProviderQuotaCard.tsx",
+      "summary": "Card component that displays LLM provider quota usage with subscription panels for Claude and Codex, rendering a usage bar and skeleton loading state.",
+      "tags": ["component", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:ui/src/components/ProviderQuotaCard.tsx:ProviderQuotaCard",
+      "type": "function",
+      "name": "ProviderQuotaCard",
+      "filePath": "ui/src/components/ProviderQuotaCard.tsx",
+      "lineRange": [38, 385],
+      "summary": "Exported component rendering provider quota overview with active subscription details and usage breakdown.",
+      "tags": ["component", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ui/src/components/QuotaBar.tsx",
+      "type": "file",
+      "name": "QuotaBar.tsx",
+      "filePath": "ui/src/components/QuotaBar.tsx",
+      "summary": "Simple progress-bar component for visualizing quota utilization, coloring the fill based on consumption thresholds.",
+      "tags": ["component", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ui/src/components/ReportsToPicker.tsx",
+      "type": "file",
+      "name": "ReportsToPicker.tsx",
+      "filePath": "ui/src/components/ReportsToPicker.tsx",
+      "summary": "Dropdown picker component for selecting the reporting-to agent in agent configuration, displaying agent icons and names.",
+      "tags": ["component", "agent-config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ui/src/components/ResizableSidebarPane.tsx",
+      "type": "file",
+      "name": "ResizableSidebarPane.tsx",
+      "filePath": "ui/src/components/ResizableSidebarPane.tsx",
+      "summary": "Sidebar pane component that supports drag-to-resize with persisted width stored in localStorage, clamped to min/max bounds.",
+      "tags": ["component", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ui/src/components/ResizableSidebarPane.tsx:ResizableSidebarPane",
+      "type": "function",
+      "name": "ResizableSidebarPane",
+      "filePath": "ui/src/components/ResizableSidebarPane.tsx",
+      "lineRange": [54, 176],
+      "summary": "Exported component implementing a resizable sidebar pane with mouse-drag resize handle, persisting width to localStorage.",
+      "tags": ["component", "utility"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "function:ui/src/components/MarkdownBody.tsx:MarkdownBody",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "function:ui/src/components/MarkdownBody.tsx:MarkdownBody",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "function:ui/src/components/MarkdownBody.tsx:CodeBlock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "function:ui/src/components/MarkdownBody.tsx:MermaidDiagramBlock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/context/ThemeContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/lib/mention-chips.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/api/issues.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/lib/issue-reference.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/lib/remark-soft-breaks.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownBody.tsx",
+      "target": "file:ui/src/components/StatusIcon.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:MarkdownEditor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:MarkdownEditor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:findMentionMatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:findMentionMatch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:computeMentionMenuPosition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:computeMentionMenuPosition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:findClosestAutocompleteAnchor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "function:ui/src/components/MarkdownEditor.tsx:findClosestAutocompleteAnchor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/components/AgentIconPicker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/mention-chips.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/mention-aware-link-node.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/mention-deletion.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/markdownPaste.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/normalize-markdown.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/paste-normalization.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MarkdownEditor.tsx",
+      "target": "file:ui/src/context/EditorAutocompleteContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "function:ui/src/components/MobileBottomNav.tsx:MobileBottomNav",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "function:ui/src/components/MobileBottomNav.tsx:MobileBottomNav",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "file:ui/src/lib/navigation-scroll.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/MobileBottomNav.tsx",
+      "target": "file:ui/src/hooks/useInboxBadge.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "function:ui/src/components/NewAgentDialog.tsx:NewAgentDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "function:ui/src/components/NewAgentDialog.tsx:NewAgentDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/api/adapters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/adapters/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/adapters/metadata.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewAgentDialog.tsx",
+      "target": "file:ui/src/adapters/use-disabled-adapters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "function:ui/src/components/NewGoalDialog.tsx:NewGoalDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "function:ui/src/components/NewGoalDialog.tsx:NewGoalDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/api/goals.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/api/assets.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/components/MarkdownEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewGoalDialog.tsx",
+      "target": "file:ui/src/components/StatusBadge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "function:ui/src/components/NewIssueDialog.tsx:NewIssueDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "function:ui/src/components/NewIssueDialog.tsx:NewIssueDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/adapters/use-adapter-capabilities.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/execution-workspaces.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/issues.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/instanceSettings.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/access.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/api/assets.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/company-members.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/reusable-execution-workspaces.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/hooks/useProjectOrder.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/recent-assignees.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/recent-projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/issue-execution-policy.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/context/ToastContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/model-utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/lib/status-colors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/components/MarkdownEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/components/AgentIconPicker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewIssueDialog.tsx",
+      "target": "file:ui/src/components/InlineEntitySelector.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "function:ui/src/components/NewProjectDialog.tsx:NewProjectDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "function:ui/src/components/NewProjectDialog.tsx:NewProjectDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/api/access.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/api/projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/api/goals.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/api/assets.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/lib/company-members.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/components/MarkdownEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/components/StatusBadge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/NewProjectDialog.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "function:ui/src/components/OnboardingWizard.tsx:OnboardingWizard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "function:ui/src/components/OnboardingWizard.tsx:OnboardingWizard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/context/DialogContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/api/companies.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/api/goals.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/api/agents.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/api/approvals.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/api/issues.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/api/projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/adapters/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/adapters/metadata.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/adapters/use-disabled-adapters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/adapters/use-adapter-capabilities.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/adapters/adapter-display-registry.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/components/agent-config-defaults.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/lib/onboarding-goal.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/lib/new-agent-runtime-config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/lib/onboarding-route.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OnboardingWizard.tsx",
+      "target": "file:ui/src/components/AsciiArtAnimation.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OpenCodeLogoIcon.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/OutputFeedbackButtons.tsx",
+      "target": "function:ui/src/components/OutputFeedbackButtons.tsx:OutputFeedbackButtons",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/OutputFeedbackButtons.tsx",
+      "target": "function:ui/src/components/OutputFeedbackButtons.tsx:OutputFeedbackButtons",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/OutputFeedbackButtons.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/PackageFileTree.tsx",
+      "target": "file:ui/src/components/FileTree.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/PageTabBar.tsx",
+      "target": "file:ui/src/context/SidebarContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/PriorityIcon.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/PriorityIcon.tsx",
+      "target": "file:ui/src/lib/status-colors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProductivityReviewBadge.tsx",
+      "target": "file:ui/src/lib/router.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProductivityReviewBadge.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProductivityReviewBadge.tsx",
+      "target": "file:ui/src/lib/issueDetailBreadcrumb.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProductivityReviewBadge.tsx",
+      "target": "file:ui/src/components/ui/tooltip.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "function:ui/src/components/ProjectProperties.tsx:ProjectProperties",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "function:ui/src/components/ProjectProperties.tsx:ProjectProperties",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/components/StatusBadge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/api/environments.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/api/goals.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/api/instanceSettings.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/api/projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/api/secrets.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/context/CompanyContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/lib/status-colors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/components/PathInstructionsModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/components/agent-config-primitives.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/components/InlineEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectProperties.tsx",
+      "target": "file:ui/src/components/EnvVarEditor.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "target": "file:ui/src/api/execution-workspaces.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "target": "file:ui/src/api/projects.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "target": "file:ui/src/lib/queryKeys.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "target": "file:ui/src/lib/project-workspaces-tab.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "target": "file:ui/src/components/ExecutionWorkspaceCloseDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspacesContent.tsx",
+      "target": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "function:ui/src/components/ProjectWorkspaceSummaryCard.tsx:ProjectWorkspaceSummaryCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "function:ui/src/components/ProjectWorkspaceSummaryCard.tsx:ProjectWorkspaceSummaryCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "file:ui/src/components/CopyText.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "file:ui/src/components/IssuesQuicklook.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "file:ui/src/lib/project-workspaces-tab.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProjectWorkspaceSummaryCard.tsx",
+      "target": "file:ui/src/lib/timeAgo.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/PropertiesPanel.tsx",
+      "target": "file:ui/src/context/PanelContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProviderQuotaCard.tsx",
+      "target": "function:ui/src/components/ProviderQuotaCard.tsx:ProviderQuotaCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ProviderQuotaCard.tsx",
+      "target": "function:ui/src/components/ProviderQuotaCard.tsx:ProviderQuotaCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:ui/src/components/ProviderQuotaCard.tsx",
+      "target": "file:ui/src/components/QuotaBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProviderQuotaCard.tsx",
+      "target": "file:ui/src/components/ClaudeSubscriptionPanel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ProviderQuotaCard.tsx",
+      "target": "file:ui/src/components/CodexSubscriptionPanel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ReportsToPicker.tsx",
+      "target": "file:ui/src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ReportsToPicker.tsx",
+      "target": "file:ui/src/components/agent-config-primitives.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ReportsToPicker.tsx",
+      "target": "file:ui/src/components/AgentIconPicker.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:ui/src/components/ResizableSidebarPane.tsx",
+      "target": "function:ui/src/components/ResizableSidebarPane.tsx:ResizableSidebarPane",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ui/src/components/ResizableSidebarPane.tsx",
+      "target": "function:ui/src/components/ResizableSidebarPane.tsx:ResizableSidebarPane",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

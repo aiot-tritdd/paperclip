@@ -1,0 +1,1121 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/src/adapters/builtin-adapter-types.ts",
+      "type": "file",
+      "name": "builtin-adapter-types.ts",
+      "filePath": "server/src/adapters/builtin-adapter-types.ts",
+      "summary": "Defines and exports the set of built-in adapter type identifiers used throughout the adapter registry to distinguish first-party adapters from external plugins.",
+      "tags": ["type-definition", "configuration", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/adapters/codex-models.ts",
+      "type": "file",
+      "name": "codex-models.ts",
+      "filePath": "server/src/adapters/codex-models.ts",
+      "summary": "Handles discovery and caching of OpenAI Codex models by fetching from the OpenAI API with fallback to a hardcoded list, deduplicating and sorting results.",
+      "tags": ["service", "api-handler", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/codex-models.ts:loadCodexModels",
+      "type": "function",
+      "name": "loadCodexModels",
+      "filePath": "server/src/adapters/codex-models.ts",
+      "lineRange": [73, 101],
+      "summary": "Fetches and caches the list of available Codex/OpenAI models, using a fingerprint to invalidate the cache when API keys rotate.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/codex-models.ts:fetchOpenAiModels",
+      "type": "function",
+      "name": "fetchOpenAiModels",
+      "filePath": "server/src/adapters/codex-models.ts",
+      "lineRange": [44, 71],
+      "summary": "Fetches the available model list from the OpenAI API with a timeout-protected AbortController, returning deduplicated models.",
+      "tags": ["api-handler", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/adapters/cursor-models.ts",
+      "type": "file",
+      "name": "cursor-models.ts",
+      "filePath": "server/src/adapters/cursor-models.ts",
+      "summary": "Discovers available Cursor AI models by spawning the Cursor CLI and parsing its stdout/stderr output, with caching and test override support.",
+      "tags": ["service", "utility", "adapter"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/adapters/cursor-models.ts:parseCursorModelsOutput",
+      "type": "function",
+      "name": "parseCursorModelsOutput",
+      "filePath": "server/src/adapters/cursor-models.ts",
+      "lineRange": [70, 106],
+      "summary": "Parses raw stdout and stderr from the Cursor CLI to extract model IDs using JSON parsing, regex matching, and line-by-line fallback strategies.",
+      "tags": ["utility", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/adapters/cursor-models.ts:listCursorModels",
+      "type": "function",
+      "name": "listCursorModels",
+      "filePath": "server/src/adapters/cursor-models.ts",
+      "lineRange": [141, 162],
+      "summary": "Returns a cached list of Cursor models, refreshing from the CLI if the cache is stale or empty.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/adapters/http/execute.ts",
+      "type": "file",
+      "name": "execute.ts",
+      "filePath": "server/src/adapters/http/execute.ts",
+      "summary": "Implements the HTTP adapter execution function that forwards agent invocations to a remote HTTP endpoint with timeout control and streaming support.",
+      "tags": ["api-handler", "service", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/http/execute.ts:execute",
+      "type": "function",
+      "name": "execute",
+      "filePath": "server/src/adapters/http/execute.ts",
+      "lineRange": [4, 53],
+      "summary": "Executes an HTTP adapter call by constructing and sending a fetch request with body and headers extracted from the adapter execution context.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/adapters/http/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "server/src/adapters/http/index.ts",
+      "summary": "Assembles and exports the HTTP server adapter module, wiring together execute and test functions with adapter metadata.",
+      "tags": ["entry-point", "adapter", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/adapters/http/test.ts",
+      "type": "file",
+      "name": "test.ts",
+      "filePath": "server/src/adapters/http/test.ts",
+      "summary": "Provides the HTTP adapter environment test function that validates connectivity and configuration by making test HTTP requests and reporting individual check results.",
+      "tags": ["test", "adapter", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/http/test.ts:testEnvironment",
+      "type": "function",
+      "name": "testEnvironment",
+      "filePath": "server/src/adapters/http/test.ts",
+      "lineRange": [19, 116],
+      "summary": "Tests the HTTP adapter environment by verifying URL reachability, authentication headers, and response codes, returning a structured check report.",
+      "tags": ["test", "validation", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/adapters/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "server/src/adapters/index.ts",
+      "summary": "Public barrel for the adapters subsystem, re-exporting all registry functions, types, and the running-processes map for consumers throughout the server.",
+      "tags": ["entry-point", "barrel", "adapter"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/adapters/plugin-loader.ts",
+      "type": "file",
+      "name": "plugin-loader.ts",
+      "filePath": "server/src/adapters/plugin-loader.ts",
+      "summary": "Handles dynamic loading, validation, and hot-reloading of external adapter plugins from npm packages, including UI parser source extraction and cache management.",
+      "tags": ["service", "factory", "adapter"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/adapters/plugin-loader.ts:loadExternalAdapterPackage",
+      "type": "function",
+      "name": "loadExternalAdapterPackage",
+      "filePath": "server/src/adapters/plugin-loader.ts",
+      "lineRange": [166, 188],
+      "summary": "Dynamically imports an external adapter package from a given npm package name or local path, validates the module interface, and caches the UI parser source.",
+      "tags": ["factory", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/plugin-loader.ts:reloadExternalAdapter",
+      "type": "function",
+      "name": "reloadExternalAdapter",
+      "filePath": "server/src/adapters/plugin-loader.ts",
+      "lineRange": [206, 253],
+      "summary": "Hot-reloads an external adapter by clearing module caches, re-importing the package entry point, and refreshing the UI parser source cache.",
+      "tags": ["service", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/adapters/plugin-loader.ts:buildExternalAdapters",
+      "type": "function",
+      "name": "buildExternalAdapters",
+      "filePath": "server/src/adapters/plugin-loader.ts",
+      "lineRange": [258, 277],
+      "summary": "Iterates all registered adapter plugin records and loads each as an external adapter package, collecting successful and failed load results.",
+      "tags": ["factory", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/plugin-loader.ts:extractUiParserSource",
+      "type": "function",
+      "name": "extractUiParserSource",
+      "filePath": "server/src/adapters/plugin-loader.ts",
+      "lineRange": [84, 141],
+      "summary": "Reads and validates the UI parser source bundle from an adapter package directory, checking contract version compatibility before returning the source string.",
+      "tags": ["utility", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/adapters/process/execute.ts",
+      "type": "file",
+      "name": "execute.ts",
+      "filePath": "server/src/adapters/process/execute.ts",
+      "summary": "Implements the process adapter execution function that spawns a child process with the configured command, environment, and streams, forwarding output back through the execution context.",
+      "tags": ["api-handler", "service", "adapter"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/adapters/process/execute.ts:execute",
+      "type": "function",
+      "name": "execute",
+      "filePath": "server/src/adapters/process/execute.ts",
+      "lineRange": [14, 86],
+      "summary": "Spawns a child process for adapter execution, wiring together command resolution, environment variables, and Paperclip-specific env injection before delegating to runChildProcess.",
+      "tags": ["api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/adapters/process/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "server/src/adapters/process/index.ts",
+      "summary": "Assembles and exports the process server adapter module, combining execute, test, and metadata into a single adapter definition.",
+      "tags": ["entry-point", "adapter", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/adapters/process/test.ts",
+      "type": "file",
+      "name": "test.ts",
+      "filePath": "server/src/adapters/process/test.ts",
+      "summary": "Provides the process adapter environment test function that validates command availability, working directory existence, and environment variable configuration.",
+      "tags": ["test", "adapter", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/process/test.ts:testEnvironment",
+      "type": "function",
+      "name": "testEnvironment",
+      "filePath": "server/src/adapters/process/test.ts",
+      "lineRange": [20, 89],
+      "summary": "Tests the process adapter environment by checking command resolvability, working directory, and environment variable paths, returning a structured check report.",
+      "tags": ["test", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/adapters/registry.ts",
+      "type": "file",
+      "name": "registry.ts",
+      "filePath": "server/src/adapters/registry.ts",
+      "summary": "Core adapter registry that manages registration, lookup, model listing, and pause/resume override of all server adapters, including built-in and external plugin adapters.",
+      "tags": ["service", "singleton", "adapter"],
+      "complexity": "complex",
+      "languageNotes": "741-line file with 28 functions and 17 exports; acts as the central adapter registry with in-memory Maps for adapter state and pause overrides."
+    },
+    {
+      "id": "function:server/src/adapters/registry.ts:registerServerAdapter",
+      "type": "function",
+      "name": "registerServerAdapter",
+      "filePath": "server/src/adapters/registry.ts",
+      "lineRange": [584, 592],
+      "summary": "Registers a server adapter in the registry, handling built-in fallback tracking when an external adapter overrides a built-in type.",
+      "tags": ["service", "factory"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/adapters/registry.ts:unregisterServerAdapter",
+      "type": "function",
+      "name": "unregisterServerAdapter",
+      "filePath": "server/src/adapters/registry.ts",
+      "lineRange": [594, 608],
+      "summary": "Removes an adapter from the registry, restoring the built-in fallback if one exists, or deleting the entry entirely for external adapters.",
+      "tags": ["service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/registry.ts:findActiveServerAdapter",
+      "type": "function",
+      "name": "findActiveServerAdapter",
+      "filePath": "server/src/adapters/registry.ts",
+      "lineRange": [735, 741],
+      "summary": "Returns the active adapter for a given type, respecting pause overrides by falling back to the built-in adapter when an override is paused.",
+      "tags": ["service", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/adapters/registry.ts:listAdapterModels",
+      "type": "function",
+      "name": "listAdapterModels",
+      "filePath": "server/src/adapters/registry.ts",
+      "lineRange": [622, 630],
+      "summary": "Lists available models for a given adapter type by delegating to the active adapter's listModels method.",
+      "tags": ["service", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/adapters/registry.ts:registerBuiltInAdapters",
+      "type": "function",
+      "name": "registerBuiltInAdapters",
+      "filePath": "server/src/adapters/registry.ts",
+      "lineRange": [479, 496],
+      "summary": "Initializes the adapter registry with all built-in adapter implementations on startup.",
+      "tags": ["factory", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/adapters/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "server/src/adapters/types.ts",
+      "summary": "Central type definition file for the adapters subsystem, exporting all interface and type contracts including execution context, session management, model profiles, and configuration schema types.",
+      "tags": ["type-definition", "adapter", "schema-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Pure type/interface file with 30 exports and no runtime code."
+    },
+    {
+      "id": "file:server/src/adapters/utils.ts",
+      "type": "file",
+      "name": "utils.ts",
+      "filePath": "server/src/adapters/utils.ts",
+      "summary": "Utility module for the adapters subsystem providing process execution helpers, environment variable manipulation, log redaction, and value parsing functions re-exported from a shared utilities module.",
+      "tags": ["utility", "barrel", "adapter"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/adapters/utils.ts:runChildProcess",
+      "type": "function",
+      "name": "runChildProcess",
+      "filePath": "server/src/adapters/utils.ts",
+      "lineRange": [78, 94],
+      "summary": "Spawns a child process for adapter execution and tracks it in the runningProcesses map, delegating to the underlying _runChildProcess implementation.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/adapters/utils.ts:buildInvocationEnvForLogs",
+      "type": "function",
+      "name": "buildInvocationEnvForLogs",
+      "filePath": "server/src/adapters/utils.ts",
+      "lineRange": [38, 72],
+      "summary": "Builds a sanitized environment variable record for logging adapter invocations, redacting sensitive values and including the resolved command.",
+      "tags": ["utility", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/agent-auth-jwt.ts",
+      "type": "file",
+      "name": "agent-auth-jwt.ts",
+      "filePath": "server/src/agent-auth-jwt.ts",
+      "summary": "Provides lightweight HMAC-SHA256 JWT creation and verification for local agent authentication, without requiring a full JWT library dependency.",
+      "tags": ["security", "utility", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/agent-auth-jwt.ts:createLocalAgentJwt",
+      "type": "function",
+      "name": "createLocalAgentJwt",
+      "filePath": "server/src/agent-auth-jwt.ts",
+      "lineRange": [68, 93],
+      "summary": "Creates a signed JWT token encoding agent identity, company, adapter type, and run ID with configurable expiration.",
+      "tags": ["security", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/agent-auth-jwt.ts:verifyLocalAgentJwt",
+      "type": "function",
+      "name": "verifyLocalAgentJwt",
+      "filePath": "server/src/agent-auth-jwt.ts",
+      "lineRange": [95, 141],
+      "summary": "Verifies a local agent JWT token by checking the HMAC signature, expiry, and payload structure, returning the decoded claims on success.",
+      "tags": ["security", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/app.ts",
+      "type": "file",
+      "name": "app.ts",
+      "filePath": "server/src/app.ts",
+      "summary": "Main application factory that wires together the Express server with all route handlers, middleware, plugin systems, Vite dev server integration, and lifecycle management.",
+      "tags": ["entry-point", "factory", "service"],
+      "complexity": "complex",
+      "languageNotes": "449-line createApp function mounts over 20 route namespaces and initializes the full plugin host service infrastructure."
+    },
+    {
+      "id": "function:server/src/app.ts:createApp",
+      "type": "function",
+      "name": "createApp",
+      "filePath": "server/src/app.ts",
+      "lineRange": [108, 449],
+      "summary": "Constructs and returns the Express application instance with all routes, middleware, plugin infrastructure, static file serving, and shutdown handlers configured.",
+      "tags": ["factory", "entry-point", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/attachment-types.ts",
+      "type": "file",
+      "name": "attachment-types.ts",
+      "filePath": "server/src/attachment-types.ts",
+      "summary": "Defines allowed content types, size limits, and validation helpers for issue attachments, including MIME type matching and inline attachment detection.",
+      "tags": ["validation", "utility", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/attachment-types.ts:isAllowedContentType",
+      "type": "function",
+      "name": "isAllowedContentType",
+      "filePath": "server/src/attachment-types.ts",
+      "lineRange": [93, 95],
+      "summary": "Checks whether a given content type is permitted for attachments based on the configured allowed type patterns.",
+      "tags": ["validation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/auth/better-auth.ts",
+      "type": "file",
+      "name": "better-auth.ts",
+      "filePath": "server/src/auth/better-auth.ts",
+      "summary": "Configures and provides the Better Auth authentication instance and session resolution helpers, including cookie prefix derivation, trusted origins, and Express request adapter.",
+      "tags": ["security", "middleware", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/auth/better-auth.ts:createBetterAuthInstance",
+      "type": "function",
+      "name": "createBetterAuthInstance",
+      "filePath": "server/src/auth/better-auth.ts",
+      "lineRange": [93, 131],
+      "summary": "Instantiates the Better Auth instance with drizzle database adapter, email/password plugin, and configured trusted origins and cookie prefix.",
+      "tags": ["factory", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/auth/better-auth.ts:resolveBetterAuthSessionFromHeaders",
+      "type": "function",
+      "name": "resolveBetterAuthSessionFromHeaders",
+      "filePath": "server/src/auth/better-auth.ts",
+      "lineRange": [140, 169],
+      "summary": "Resolves an authenticated session from HTTP headers by querying the Better Auth API, returning the session and user on success.",
+      "tags": ["security", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/auth/better-auth.ts:deriveAuthTrustedOrigins",
+      "type": "function",
+      "name": "deriveAuthTrustedOrigins",
+      "filePath": "server/src/auth/better-auth.ts",
+      "lineRange": [64, 91],
+      "summary": "Derives the list of trusted auth origins from server config and runtime options, including localhost variants and configured public URL hostname.",
+      "tags": ["security", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/board-claim.ts",
+      "type": "file",
+      "name": "board-claim.ts",
+      "filePath": "server/src/board-claim.ts",
+      "summary": "Implements the board ownership claim flow using a challenge-response mechanism, allowing a user to claim instance admin and company owner roles via a time-limited token and code pair.",
+      "tags": ["security", "service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/board-claim.ts:claimBoardOwnership",
+      "type": "function",
+      "name": "claimBoardOwnership",
+      "filePath": "server/src/board-claim.ts",
+      "lineRange": [85, 149],
+      "summary": "Transactionally claims board ownership for a user by verifying the challenge, assigning instance admin role, and setting company owner membership.",
+      "tags": ["security", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/board-claim.ts:initializeBoardClaimChallenge",
+      "type": "function",
+      "name": "initializeBoardClaimChallenge",
+      "filePath": "server/src/board-claim.ts",
+      "lineRange": [43, 66],
+      "summary": "Initializes or retrieves an active board claim challenge, checking whether any admin users exist before issuing a new challenge.",
+      "tags": ["security", "factory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/config-file.ts",
+      "type": "file",
+      "name": "config-file.ts",
+      "filePath": "server/src/config-file.ts",
+      "summary": "Reads and parses the Paperclip YAML/JSON configuration file from the resolved config path, returning a validated config object.",
+      "tags": ["configuration", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/config.ts",
+      "type": "file",
+      "name": "config.ts",
+      "filePath": "server/src/config.ts",
+      "summary": "Loads and normalizes the complete server runtime configuration from environment variables and the config file, resolving ports, bind modes, storage paths, and authentication settings.",
+      "tags": ["configuration", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/config.ts:loadConfig",
+      "type": "function",
+      "name": "loadConfig",
+      "filePath": "server/src/config.ts",
+      "lineRange": [111, 337],
+      "summary": "Produces the complete runtime server configuration object by merging environment variables, config file values, and computed defaults for all deployment options.",
+      "tags": ["configuration", "factory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/dev-runner-worktree.ts",
+      "type": "file",
+      "name": "dev-runner-worktree.ts",
+      "filePath": "server/src/dev-runner-worktree.ts",
+      "summary": "Detects and bootstraps environment variables from git worktree-specific .env files, enabling isolated dev runner environments when the server runs inside a git worktree checkout.",
+      "tags": ["utility", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/dev-runner-worktree.ts:bootstrapDevRunnerWorktreeEnv",
+      "type": "function",
+      "name": "bootstrapDevRunnerWorktreeEnv",
+      "filePath": "server/src/dev-runner-worktree.ts",
+      "lineRange": [58, 87],
+      "summary": "Loads and applies worktree-specific environment variables from a .env file when running inside a linked git worktree, merging into the provided env object.",
+      "tags": ["utility", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/dev-server-status.ts",
+      "type": "file",
+      "name": "dev-server-status.ts",
+      "filePath": "server/src/dev-server-status.ts",
+      "summary": "Reads and normalizes persisted dev server status from a file, converting it into a structured health status object used by development tooling.",
+      "tags": ["utility", "monitoring"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/dev-server-status.ts:readPersistedDevServerStatus",
+      "type": "function",
+      "name": "readPersistedDevServerStatus",
+      "filePath": "server/src/dev-server-status.ts",
+      "lineRange": [42, 77],
+      "summary": "Reads and parses a JSON status file written by the dev server, normalizing paths, counts, and timestamps into a typed status object.",
+      "tags": ["utility", "monitoring"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/dev-watch-ignore.ts",
+      "type": "file",
+      "name": "dev-watch-ignore.ts",
+      "filePath": "server/src/dev-watch-ignore.ts",
+      "summary": "Resolves the set of file paths and glob patterns that the dev server watcher should ignore, handling symlink resolution for accurate exclusion.",
+      "tags": ["utility", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/errors.ts",
+      "type": "file",
+      "name": "errors.ts",
+      "filePath": "server/src/errors.ts",
+      "summary": "Defines the HttpError class and factory functions for standard HTTP error responses (400, 401, 403, 404, 409, 422) used throughout the server route handlers.",
+      "tags": ["utility", "api-handler", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:server/src/errors.ts:HttpError",
+      "type": "class",
+      "name": "HttpError",
+      "filePath": "server/src/errors.ts",
+      "lineRange": [1, 10],
+      "summary": "Custom error class carrying an HTTP status code and optional structured details, thrown by route handlers and caught by Express error middleware.",
+      "tags": ["utility", "middleware"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/adapters/codex-models.ts",
+      "target": "function:server/src/adapters/codex-models.ts:loadCodexModels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/codex-models.ts",
+      "target": "function:server/src/adapters/codex-models.ts:fetchOpenAiModels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/codex-models.ts",
+      "target": "function:server/src/adapters/codex-models.ts:loadCodexModels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/cursor-models.ts",
+      "target": "function:server/src/adapters/cursor-models.ts:parseCursorModelsOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/cursor-models.ts",
+      "target": "function:server/src/adapters/cursor-models.ts:listCursorModels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/cursor-models.ts",
+      "target": "function:server/src/adapters/cursor-models.ts:parseCursorModelsOutput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/cursor-models.ts",
+      "target": "function:server/src/adapters/cursor-models.ts:listCursorModels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/http/execute.ts",
+      "target": "function:server/src/adapters/http/execute.ts:execute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/http/execute.ts",
+      "target": "function:server/src/adapters/http/execute.ts:execute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/http/test.ts",
+      "target": "function:server/src/adapters/http/test.ts:testEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/http/test.ts",
+      "target": "function:server/src/adapters/http/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:loadExternalAdapterPackage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:reloadExternalAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:buildExternalAdapters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:extractUiParserSource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:loadExternalAdapterPackage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:reloadExternalAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "function:server/src/adapters/plugin-loader.ts:buildExternalAdapters",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/process/execute.ts",
+      "target": "function:server/src/adapters/process/execute.ts:execute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/process/execute.ts",
+      "target": "function:server/src/adapters/process/execute.ts:execute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/process/test.ts",
+      "target": "function:server/src/adapters/process/test.ts:testEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/process/test.ts",
+      "target": "function:server/src/adapters/process/test.ts:testEnvironment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:registerServerAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:unregisterServerAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:findActiveServerAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:listAdapterModels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:registerBuiltInAdapters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:registerServerAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:unregisterServerAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:findActiveServerAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "function:server/src/adapters/registry.ts:listAdapterModels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/utils.ts",
+      "target": "function:server/src/adapters/utils.ts:runChildProcess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/utils.ts",
+      "target": "function:server/src/adapters/utils.ts:buildInvocationEnvForLogs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/adapters/utils.ts",
+      "target": "function:server/src/adapters/utils.ts:runChildProcess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/utils.ts",
+      "target": "function:server/src/adapters/utils.ts:buildInvocationEnvForLogs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/agent-auth-jwt.ts",
+      "target": "function:server/src/agent-auth-jwt.ts:createLocalAgentJwt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/agent-auth-jwt.ts",
+      "target": "function:server/src/agent-auth-jwt.ts:verifyLocalAgentJwt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/agent-auth-jwt.ts",
+      "target": "function:server/src/agent-auth-jwt.ts:createLocalAgentJwt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/agent-auth-jwt.ts",
+      "target": "function:server/src/agent-auth-jwt.ts:verifyLocalAgentJwt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "function:server/src/app.ts:createApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "function:server/src/app.ts:createApp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/attachment-types.ts",
+      "target": "function:server/src/attachment-types.ts:isAllowedContentType",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/attachment-types.ts",
+      "target": "function:server/src/attachment-types.ts:isAllowedContentType",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/auth/better-auth.ts",
+      "target": "function:server/src/auth/better-auth.ts:createBetterAuthInstance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/auth/better-auth.ts",
+      "target": "function:server/src/auth/better-auth.ts:resolveBetterAuthSessionFromHeaders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/auth/better-auth.ts",
+      "target": "function:server/src/auth/better-auth.ts:deriveAuthTrustedOrigins",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/auth/better-auth.ts",
+      "target": "function:server/src/auth/better-auth.ts:createBetterAuthInstance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/auth/better-auth.ts",
+      "target": "function:server/src/auth/better-auth.ts:resolveBetterAuthSessionFromHeaders",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/auth/better-auth.ts",
+      "target": "function:server/src/auth/better-auth.ts:deriveAuthTrustedOrigins",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/board-claim.ts",
+      "target": "function:server/src/board-claim.ts:claimBoardOwnership",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/board-claim.ts",
+      "target": "function:server/src/board-claim.ts:initializeBoardClaimChallenge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/board-claim.ts",
+      "target": "function:server/src/board-claim.ts:claimBoardOwnership",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/board-claim.ts",
+      "target": "function:server/src/board-claim.ts:initializeBoardClaimChallenge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/config.ts",
+      "target": "function:server/src/config.ts:loadConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/config.ts",
+      "target": "function:server/src/config.ts:loadConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/dev-runner-worktree.ts",
+      "target": "function:server/src/dev-runner-worktree.ts:bootstrapDevRunnerWorktreeEnv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/dev-runner-worktree.ts",
+      "target": "function:server/src/dev-runner-worktree.ts:bootstrapDevRunnerWorktreeEnv",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/dev-server-status.ts",
+      "target": "function:server/src/dev-server-status.ts:readPersistedDevServerStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/dev-server-status.ts",
+      "target": "function:server/src/dev-server-status.ts:readPersistedDevServerStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/errors.ts",
+      "target": "class:server/src/errors.ts:HttpError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/errors.ts",
+      "target": "class:server/src/errors.ts:HttpError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/adapters/index.ts",
+      "target": "file:server/src/adapters/registry.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/index.ts",
+      "target": "file:server/src/adapters/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/index.ts",
+      "target": "file:server/src/adapters/utils.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/http/index.ts",
+      "target": "file:server/src/adapters/http/execute.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/http/index.ts",
+      "target": "file:server/src/adapters/http/test.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/process/index.ts",
+      "target": "file:server/src/adapters/process/execute.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/process/index.ts",
+      "target": "file:server/src/adapters/process/test.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "file:server/src/adapters/builtin-adapter-types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "file:server/src/adapters/codex-models.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "file:server/src/adapters/cursor-models.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "file:server/src/adapters/http/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "file:server/src/adapters/process/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/registry.ts",
+      "target": "file:server/src/adapters/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/config.ts",
+      "target": "file:server/src/config-file.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "file:server/src/auth/better-auth.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "file:server/src/errors.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "file:server/src/adapters/index.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "file:server/src/agent-auth-jwt.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/app.ts",
+      "target": "file:server/src/config.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/adapters/plugin-loader.ts",
+      "target": "file:server/src/adapters/types.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

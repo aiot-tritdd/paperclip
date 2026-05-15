@@ -1,0 +1,761 @@
+{
+  "nodes": [
+    {
+      "id": "table:packages/db/src/migrations/0008_amused_zzzax.sql",
+      "type": "table",
+      "name": "0008_amused_zzzax.sql",
+      "filePath": "packages/db/src/migrations/0008_amused_zzzax.sql",
+      "summary": "Adds a nullable `hidden_at` timestamp column to the `issues` table to support soft-hiding of issues.",
+      "tags": ["database", "migration", "issues"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0009_fast_jackal.sql",
+      "type": "table",
+      "name": "0009_fast_jackal.sql",
+      "filePath": "packages/db/src/migrations/0009_fast_jackal.sql",
+      "summary": "Creates the `company_secrets` and `company_secret_versions` tables for storing versioned, encrypted secrets scoped to companies, with uniqueness and lookup indexes.",
+      "tags": ["database", "migration", "schema-definition", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0009_fast_jackal.sql:company_secrets",
+      "type": "table",
+      "name": "company_secrets",
+      "filePath": "packages/db/src/migrations/0009_fast_jackal.sql",
+      "summary": "Stores secret metadata (name, provider, external reference, versioning) scoped to a company, with audit timestamps.",
+      "tags": ["database", "security", "secrets-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0009_fast_jackal.sql:company_secret_versions",
+      "type": "table",
+      "name": "company_secret_versions",
+      "filePath": "packages/db/src/migrations/0009_fast_jackal.sql",
+      "summary": "Stores individual versioned secret material (encrypted value + SHA-256 hash) linked to a parent secret, supporting revocation tracking.",
+      "tags": ["database", "security", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql",
+      "type": "table",
+      "name": "0010_stale_justin_hammer.sql",
+      "filePath": "packages/db/src/migrations/0010_stale_justin_hammer.sql",
+      "summary": "Creates `assets` and `issue_attachments` tables to enable file upload tracking and issue attachment linking within a company scope.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql:assets",
+      "type": "table",
+      "name": "assets",
+      "filePath": "packages/db/src/migrations/0010_stale_justin_hammer.sql",
+      "summary": "Tracks uploaded file assets with provider, object key, content type, size, and SHA-256 hash scoped to a company.",
+      "tags": ["database", "storage", "assets"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql:issue_attachments",
+      "type": "table",
+      "name": "issue_attachments",
+      "filePath": "packages/db/src/migrations/0010_stale_justin_hammer.sql",
+      "summary": "Junction table linking assets to issues and optionally to issue comments, supporting file attachments on issues.",
+      "tags": ["database", "issues", "attachments"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0011_windy_corsair.sql",
+      "type": "table",
+      "name": "0011_windy_corsair.sql",
+      "filePath": "packages/db/src/migrations/0011_windy_corsair.sql",
+      "summary": "Creates the `project_goals` junction table linking projects to goals within a company, with compound indexes for efficient querying.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0011_windy_corsair.sql:project_goals",
+      "type": "table",
+      "name": "project_goals",
+      "filePath": "packages/db/src/migrations/0011_windy_corsair.sql",
+      "summary": "Junction table associating projects with goals within a company scope, with timestamps for creation and update tracking.",
+      "tags": ["database", "projects", "goals"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0012_perpetual_ser_duncan.sql",
+      "type": "table",
+      "name": "0012_perpetual_ser_duncan.sql",
+      "filePath": "packages/db/src/migrations/0012_perpetual_ser_duncan.sql",
+      "summary": "Adds `checkout_run_id` foreign key column to `issues`, linking an issue to the heartbeat run responsible for its checkout.",
+      "tags": ["database", "migration", "issues"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0013_dashing_wasp.sql",
+      "type": "table",
+      "name": "0013_dashing_wasp.sql",
+      "filePath": "packages/db/src/migrations/0013_dashing_wasp.sql",
+      "summary": "Adds `execution_run_id`, `execution_agent_name_key`, and `execution_locked_at` columns to `issues` to track agent execution locking and run association.",
+      "tags": ["database", "migration", "issues", "agent-execution"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "type": "table",
+      "name": "0014_many_mikhail_rasputin.sql",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Large migration creating the full authentication and authorization schema: `user`, `account`, `session`, `verification`, `company_memberships`, `instance_user_roles`, `invites`, `join_requests`, and `principal_permission_grants` tables.",
+      "tags": ["database", "migration", "schema-definition", "authentication"],
+      "complexity": "complex"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:user",
+      "type": "table",
+      "name": "user",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Core user identity table storing name, email, verification status, and avatar image with audit timestamps.",
+      "tags": ["database", "authentication", "user"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:account",
+      "type": "table",
+      "name": "account",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "OAuth/password account table linking external provider credentials (access token, refresh token, scopes) to a user identity.",
+      "tags": ["database", "authentication", "oauth"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:session",
+      "type": "table",
+      "name": "session",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Active session table with expiry, token, and request metadata (IP, user agent) linked to a user.",
+      "tags": ["database", "authentication", "session"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:company_memberships",
+      "type": "table",
+      "name": "company_memberships",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Records principal (user or agent) membership in a company with status and role for RBAC enforcement.",
+      "tags": ["database", "authorization", "multi-tenancy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:invites",
+      "type": "table",
+      "name": "invites",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Stores invitation tokens for users to join a company, with expiry, revocation, and acceptance timestamps.",
+      "tags": ["database", "authentication", "invitations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:join_requests",
+      "type": "table",
+      "name": "join_requests",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Tracks agent and user join requests to a company, capturing approval/rejection workflow and agent provisioning metadata.",
+      "tags": ["database", "authorization", "agent-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:principal_permission_grants",
+      "type": "table",
+      "name": "principal_permission_grants",
+      "filePath": "packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "summary": "Fine-grained permission grant records assigning specific permission keys and scopes to principals within a company.",
+      "tags": ["database", "authorization", "permissions"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0015_project_color_archived.sql",
+      "type": "table",
+      "name": "0015_project_color_archived.sql",
+      "filePath": "packages/db/src/migrations/0015_project_color_archived.sql",
+      "summary": "Adds `color` and `archived_at` columns to the `projects` table to support visual customization and soft-archiving of projects.",
+      "tags": ["database", "migration", "projects"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0016_agent_icon.sql",
+      "type": "table",
+      "name": "0016_agent_icon.sql",
+      "filePath": "packages/db/src/migrations/0016_agent_icon.sql",
+      "summary": "Adds an `icon` column to the `agents` table for storing a custom icon identifier per agent.",
+      "tags": ["database", "migration", "agents"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0017_tiresome_gabe_jones.sql",
+      "type": "table",
+      "name": "0017_tiresome_gabe_jones.sql",
+      "filePath": "packages/db/src/migrations/0017_tiresome_gabe_jones.sql",
+      "summary": "Data migration that rebuilds company-scoped issue prefixes, reassigns sequential issue numbers per company, and recreates unique indexes for identifiers.",
+      "tags": ["database", "migration", "issues", "data-pipeline"],
+      "complexity": "moderate",
+      "languageNotes": "Uses window functions (ROW_NUMBER with PARTITION BY) to deterministically assign unique prefixes and sequential issue numbers across all existing companies."
+    },
+    {
+      "id": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql",
+      "type": "table",
+      "name": "0018_flat_sleepwalker.sql",
+      "filePath": "packages/db/src/migrations/0018_flat_sleepwalker.sql",
+      "summary": "Creates `labels` and `issue_labels` tables enabling colored label tagging on issues, with company-scoped indexes.",
+      "tags": ["database", "migration", "schema-definition", "issues"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql:labels",
+      "type": "table",
+      "name": "labels",
+      "filePath": "packages/db/src/migrations/0018_flat_sleepwalker.sql",
+      "summary": "Defines named, colored labels scoped to a company for categorizing issues.",
+      "tags": ["database", "issues", "labels"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql:issue_labels",
+      "type": "table",
+      "name": "issue_labels",
+      "filePath": "packages/db/src/migrations/0018_flat_sleepwalker.sql",
+      "summary": "Junction table associating labels with issues within a company scope.",
+      "tags": ["database", "issues", "labels"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0019_public_victor_mancha.sql",
+      "type": "table",
+      "name": "0019_public_victor_mancha.sql",
+      "filePath": "packages/db/src/migrations/0019_public_victor_mancha.sql",
+      "summary": "Creates the `project_workspaces` table to store code workspace configuration (repo URL, ref, cwd, metadata) associated with a project.",
+      "tags": ["database", "migration", "schema-definition", "workspace"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0019_public_victor_mancha.sql:project_workspaces",
+      "type": "table",
+      "name": "project_workspaces",
+      "filePath": "packages/db/src/migrations/0019_public_victor_mancha.sql",
+      "summary": "Stores workspace environment configuration for a project including repository URL, ref, working directory, and primary workspace flag.",
+      "tags": ["database", "workspace", "projects"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0020_white_anita_blake.sql",
+      "type": "table",
+      "name": "0020_white_anita_blake.sql",
+      "filePath": "packages/db/src/migrations/0020_white_anita_blake.sql",
+      "summary": "Makes the `cwd` column on `project_workspaces` nullable to allow workspaces without an explicit working directory.",
+      "tags": ["database", "migration", "workspace"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0021_chief_vindicator.sql",
+      "type": "table",
+      "name": "0021_chief_vindicator.sql",
+      "filePath": "packages/db/src/migrations/0021_chief_vindicator.sql",
+      "summary": "Adds `assignee_adapter_overrides` JSONB column to `issues` for per-issue agent adapter configuration overrides.",
+      "tags": ["database", "migration", "issues", "agent-execution"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0022_company_brand_color.sql",
+      "type": "table",
+      "name": "0022_company_brand_color.sql",
+      "filePath": "packages/db/src/migrations/0022_company_brand_color.sql",
+      "summary": "Adds a `brand_color` text column to the `companies` table for white-label/theming support.",
+      "tags": ["database", "migration", "companies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0023_fair_lethal_legion.sql",
+      "type": "table",
+      "name": "0023_fair_lethal_legion.sql",
+      "filePath": "packages/db/src/migrations/0023_fair_lethal_legion.sql",
+      "summary": "Adds `claim_secret_hash`, `claim_secret_expires_at`, and `claim_secret_consumed_at` columns to `join_requests` for one-time claim token support.",
+      "tags": ["database", "migration", "authentication", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0024_far_beast.sql",
+      "type": "table",
+      "name": "0024_far_beast.sql",
+      "filePath": "packages/db/src/migrations/0024_far_beast.sql",
+      "summary": "Adds composite indexes on `issue_comments` for efficient per-company issue comment listing and per-author comment lookup.",
+      "tags": ["database", "migration", "issues", "performance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0025_nasty_salo.sql",
+      "type": "table",
+      "name": "0025_nasty_salo.sql",
+      "filePath": "packages/db/src/migrations/0025_nasty_salo.sql",
+      "summary": "Creates the `issue_read_states` table to track per-user last-read timestamps on issues for unread notification support.",
+      "tags": ["database", "migration", "schema-definition", "issues"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0025_nasty_salo.sql:issue_read_states",
+      "type": "table",
+      "name": "issue_read_states",
+      "filePath": "packages/db/src/migrations/0025_nasty_salo.sql",
+      "summary": "Tracks when a user last read a specific issue within a company, enabling unread state calculations.",
+      "tags": ["database", "issues", "notifications"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0026_lying_pete_wisdom.sql",
+      "type": "table",
+      "name": "0026_lying_pete_wisdom.sql",
+      "filePath": "packages/db/src/migrations/0026_lying_pete_wisdom.sql",
+      "summary": "Creates the `workspace_runtime_services` table for tracking long-running services (ports, URLs, health) launched by agents within project workspaces.",
+      "tags": ["database", "migration", "schema-definition", "workspace"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0026_lying_pete_wisdom.sql:workspace_runtime_services",
+      "type": "table",
+      "name": "workspace_runtime_services",
+      "filePath": "packages/db/src/migrations/0026_lying_pete_wisdom.sql",
+      "summary": "Stores live service instances (command, port, URL, health status, lifecycle policy) started by agent runs within a project workspace.",
+      "tags": ["database", "workspace", "agent-execution", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0027_tranquil_tenebrous.sql",
+      "type": "table",
+      "name": "0027_tranquil_tenebrous.sql",
+      "filePath": "packages/db/src/migrations/0027_tranquil_tenebrous.sql",
+      "summary": "Adds `execution_workspace_settings` JSONB to `issues` and `execution_workspace_policy` JSONB to `projects` for runtime workspace configuration.",
+      "tags": ["database", "migration", "workspace", "agent-execution"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0028_harsh_goliath.sql",
+      "type": "table",
+      "name": "0028_harsh_goliath.sql",
+      "filePath": "packages/db/src/migrations/0028_harsh_goliath.sql",
+      "summary": "Creates `documents`, `document_revisions`, and `issue_documents` tables for a versioned document system linked to issues.",
+      "tags": ["database", "migration", "schema-definition", "documents"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0028_harsh_goliath.sql:documents",
+      "type": "table",
+      "name": "documents",
+      "filePath": "packages/db/src/migrations/0028_harsh_goliath.sql",
+      "summary": "Core document entity storing title, format, and cached latest body with revision pointer and audit metadata.",
+      "tags": ["database", "documents", "content-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0028_harsh_goliath.sql:document_revisions",
+      "type": "table",
+      "name": "document_revisions",
+      "filePath": "packages/db/src/migrations/0028_harsh_goliath.sql",
+      "summary": "Immutable revision history for documents, storing the full body and change summary per numbered revision.",
+      "tags": ["database", "documents", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0028_harsh_goliath.sql:issue_documents",
+      "type": "table",
+      "name": "issue_documents",
+      "filePath": "packages/db/src/migrations/0028_harsh_goliath.sql",
+      "summary": "Junction table attaching documents to issues with a semantic key, allowing multiple documents per issue.",
+      "tags": ["database", "documents", "issues"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "type": "table",
+      "name": "0029_plugin_tables.sql",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Comprehensive migration creating nine plugin system tables: `plugins`, `plugin_config`, `plugin_state`, `plugin_entities`, `plugin_jobs`, `plugin_job_runs`, `plugin_webhook_deliveries`, `plugin_company_settings`, and `plugin_logs` — the full persistence layer for the extensibility framework.",
+      "tags": ["database", "migration", "schema-definition", "plugins"],
+      "complexity": "complex",
+      "languageNotes": "Includes a full rollback comment block at the top, making this migration self-documented and reversible."
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugins",
+      "type": "table",
+      "name": "plugins",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Registry of installed plugins with key, package info, API version, manifest JSON, install status, and install ordering.",
+      "tags": ["database", "plugins", "registry"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_config",
+      "type": "table",
+      "name": "plugin_config",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Stores JSON configuration blob per plugin with error tracking.",
+      "tags": ["database", "plugins", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_state",
+      "type": "table",
+      "name": "plugin_state",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Key-value state store for plugins scoped by scope kind, scope ID, and namespace, allowing plugins to persist arbitrary runtime state.",
+      "tags": ["database", "plugins", "state-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_entities",
+      "type": "table",
+      "name": "plugin_entities",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Stores plugin-managed external entities with type, scope, external ID, and arbitrary data JSON for syncing with third-party systems.",
+      "tags": ["database", "plugins", "integration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_jobs",
+      "type": "table",
+      "name": "plugin_jobs",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Defines scheduled/recurring jobs for plugins with cron schedule, status, and next-run tracking.",
+      "tags": ["database", "plugins", "scheduling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_job_runs",
+      "type": "table",
+      "name": "plugin_job_runs",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Execution history for plugin job runs, capturing trigger, status, duration, errors, and logs per run.",
+      "tags": ["database", "plugins", "audit-log"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_webhook_deliveries",
+      "type": "table",
+      "name": "plugin_webhook_deliveries",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Records incoming webhook deliveries to plugins, storing payload, headers, delivery status, and timing for observability.",
+      "tags": ["database", "plugins", "webhooks"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_company_settings",
+      "type": "table",
+      "name": "plugin_company_settings",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Per-company plugin settings with enable flag, JSON config, and error tracking for multi-tenant plugin configuration.",
+      "tags": ["database", "plugins", "multi-tenancy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_logs",
+      "type": "table",
+      "name": "plugin_logs",
+      "filePath": "packages/db/src/migrations/0029_plugin_tables.sql",
+      "summary": "Structured log entries from plugin execution with level, message, and metadata for debugging and auditing.",
+      "tags": ["database", "plugins", "audit-log"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0030_rich_magneto.sql",
+      "type": "table",
+      "name": "0030_rich_magneto.sql",
+      "filePath": "packages/db/src/migrations/0030_rich_magneto.sql",
+      "summary": "Creates the `company_logos` table linking a company to an asset record for logo storage, with unique constraints.",
+      "tags": ["database", "migration", "schema-definition", "companies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0030_rich_magneto.sql:company_logos",
+      "type": "table",
+      "name": "company_logos",
+      "filePath": "packages/db/src/migrations/0030_rich_magneto.sql",
+      "summary": "Stores the logo asset association for a company, enforcing one logo per company and one use per asset via unique indexes.",
+      "tags": ["database", "companies", "branding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0031_zippy_magma.sql",
+      "type": "table",
+      "name": "0031_zippy_magma.sql",
+      "filePath": "packages/db/src/migrations/0031_zippy_magma.sql",
+      "summary": "Creates the `finance_events` table for recording granular billing and cost events (token usage, compute) across agents, issues, and projects with multi-dimension indexing.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0031_zippy_magma.sql:finance_events",
+      "type": "table",
+      "name": "finance_events",
+      "filePath": "packages/db/src/migrations/0031_zippy_magma.sql",
+      "summary": "Immutable ledger of financial events (LLM token costs, compute charges) with model, quantity, unit, amount in cents, and linkage to agent runs.",
+      "tags": ["database", "billing", "financial"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql",
+      "type": "table",
+      "name": "0032_pretty_doctor_octopus.sql",
+      "filePath": "packages/db/src/migrations/0032_pretty_doctor_octopus.sql",
+      "summary": "Creates `budget_policies` and `budget_incidents` tables for the budget enforcement system, adds pause columns to agents and projects, and seeds default company-level budget policies.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql:budget_policies",
+      "type": "table",
+      "name": "budget_policies",
+      "filePath": "packages/db/src/migrations/0032_pretty_doctor_octopus.sql",
+      "summary": "Defines spend budget policies scoped to company, project, or agent with configurable window, amount limit, warn threshold, and hard-stop/notify flags.",
+      "tags": ["database", "billing", "policies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql:budget_incidents",
+      "type": "table",
+      "name": "budget_incidents",
+      "filePath": "packages/db/src/migrations/0032_pretty_doctor_octopus.sql",
+      "summary": "Records budget threshold breach incidents with observed vs. limit amounts, approval linkage, and resolution tracking.",
+      "tags": ["database", "billing", "incidents"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "table:packages/db/src/migrations/0009_fast_jackal.sql",
+      "target": "table:packages/db/src/migrations/0009_fast_jackal.sql:company_secrets",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0009_fast_jackal.sql",
+      "target": "table:packages/db/src/migrations/0009_fast_jackal.sql:company_secret_versions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql",
+      "target": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql:assets",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql",
+      "target": "table:packages/db/src/migrations/0010_stale_justin_hammer.sql:issue_attachments",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0011_windy_corsair.sql",
+      "target": "table:packages/db/src/migrations/0011_windy_corsair.sql:project_goals",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:user",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:account",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:session",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:company_memberships",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:invites",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:join_requests",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql",
+      "target": "table:packages/db/src/migrations/0014_many_mikhail_rasputin.sql:principal_permission_grants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql",
+      "target": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql:labels",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql",
+      "target": "table:packages/db/src/migrations/0018_flat_sleepwalker.sql:issue_labels",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0019_public_victor_mancha.sql",
+      "target": "table:packages/db/src/migrations/0019_public_victor_mancha.sql:project_workspaces",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0025_nasty_salo.sql",
+      "target": "table:packages/db/src/migrations/0025_nasty_salo.sql:issue_read_states",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0026_lying_pete_wisdom.sql",
+      "target": "table:packages/db/src/migrations/0026_lying_pete_wisdom.sql:workspace_runtime_services",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0028_harsh_goliath.sql",
+      "target": "table:packages/db/src/migrations/0028_harsh_goliath.sql:documents",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0028_harsh_goliath.sql",
+      "target": "table:packages/db/src/migrations/0028_harsh_goliath.sql:document_revisions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0028_harsh_goliath.sql",
+      "target": "table:packages/db/src/migrations/0028_harsh_goliath.sql:issue_documents",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugins",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_config",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_state",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_entities",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_jobs",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_job_runs",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_webhook_deliveries",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_company_settings",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0029_plugin_tables.sql",
+      "target": "table:packages/db/src/migrations/0029_plugin_tables.sql:plugin_logs",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0030_rich_magneto.sql",
+      "target": "table:packages/db/src/migrations/0030_rich_magneto.sql:company_logos",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0031_zippy_magma.sql",
+      "target": "table:packages/db/src/migrations/0031_zippy_magma.sql:finance_events",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql",
+      "target": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql:budget_policies",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql",
+      "target": "table:packages/db/src/migrations/0032_pretty_doctor_octopus.sql:budget_incidents",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

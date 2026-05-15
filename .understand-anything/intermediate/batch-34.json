@@ -1,0 +1,720 @@
+{
+  "batchIndex": 34,
+  "nodes": [
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/src/wiki.ts",
+      "type": "file",
+      "name": "wiki.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki.ts",
+      "summary": "Barrel re-export that exposes all public symbols from the wiki/core module as the plugin's main wiki API surface.",
+      "tags": ["barrel", "entry-point", "utility"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 1
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "type": "file",
+      "name": "core.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "summary": "The main knowledge management engine for the LLM Wiki plugin, providing 191 functions covering wiki space CRUD, distillation pipeline management, ingestion profiles, source processing, page operations, resource binding, and all domain logic for the plugin's AI-driven wiki maintenance system.",
+      "tags": ["service", "api-handler", "data-model", "validation", "utility"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 4980
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:createSpace",
+      "type": "function",
+      "name": "createSpace",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1409, 1463],
+      "summary": "Creates a new wiki space with validation, slug normalization, and database insertion, wiring default configuration and folder structure.",
+      "tags": ["service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:updateSpace",
+      "type": "function",
+      "name": "updateSpace",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1465, 1503],
+      "summary": "Updates wiki space properties with conflict detection and validation of slug/name uniqueness.",
+      "tags": ["service", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:getPaperclipIngestionProfile",
+      "type": "function",
+      "name": "getPaperclipIngestionProfile",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [897, 938],
+      "summary": "Retrieves and normalizes the Paperclip ingestion profile for a company, returning defaults when none is configured.",
+      "tags": ["service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:validatePaperclipIngestionProfile",
+      "type": "function",
+      "name": "validatePaperclipIngestionProfile",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [979, 1020],
+      "summary": "Validates ingestion profile settings including scope overlaps, source counts, and policy compliance before save.",
+      "tags": ["validation", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:updatePaperclipIngestionProfile",
+      "type": "function",
+      "name": "updatePaperclipIngestionProfile",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1022, 1068],
+      "summary": "Persists ingestion profile changes after validation, atomically updating the company's distillation configuration.",
+      "tags": ["service", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:updateEventIngestionSettings",
+      "type": "function",
+      "name": "updateEventIngestionSettings",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1105, 1155],
+      "summary": "Updates event-driven ingestion settings controlling which sources (issues, comments, documents) are automatically processed into the wiki.",
+      "tags": ["service", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:requirePaperclipIngestionPolicy",
+      "type": "function",
+      "name": "requirePaperclipIngestionPolicy",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [457, 477],
+      "summary": "Enforces ingestion policy constraints for a given context, throwing on policy violations for authenticated/public deployment modes.",
+      "tags": ["validation", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:resolvePaperclipDistillationLimits",
+      "type": "function",
+      "name": "resolvePaperclipDistillationLimits",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [640, 667],
+      "summary": "Resolves character and cost limits for a distillation run from plugin config and ingestion profile settings.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:normalizePaperclipIngestionProfile",
+      "type": "function",
+      "name": "normalizePaperclipIngestionProfile",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [784, 826],
+      "summary": "Normalizes raw ingestion profile input, filling defaults and coercing field types for storage.",
+      "tags": ["validation", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:listPaperclipIngestionCandidates",
+      "type": "function",
+      "name": "listPaperclipIngestionCandidates",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1070, 1103],
+      "summary": "Queries the database to list project and issue candidates eligible for Paperclip distillation ingestion under the current profile.",
+      "tags": ["service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:upsertResourceBinding",
+      "type": "function",
+      "name": "upsertResourceBinding",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1556, 1578],
+      "summary": "Creates or updates a resource binding linking a wiki space to an external agent, project, or skill resource.",
+      "tags": ["service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:filterReadableRows",
+      "type": "function",
+      "name": "filterReadableRows",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1693, 1709],
+      "summary": "Filters database rows to those the current user context has read permission for within a wiki space.",
+      "tags": ["middleware", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:upsertWikiInstance",
+      "type": "function",
+      "name": "upsertWikiInstance",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [1766, 1786],
+      "summary": "Creates or updates the wiki instance record for a company, establishing the root wiki entry in the database.",
+      "tags": ["service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:protectDistillationSourceBody",
+      "type": "function",
+      "name": "protectDistillationSourceBody",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [605, 638],
+      "summary": "Sanitizes and redacts sensitive fields from distillation source bodies before they are sent to the LLM for processing.",
+      "tags": ["utility", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:getDistillationOverview",
+      "type": "function",
+      "name": "getDistillationOverview",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "lineRange": [4957, 4975],
+      "summary": "Returns an overview of distillation run status and progress for a company's wiki ingestion pipeline.",
+      "tags": ["service", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "type": "file",
+      "name": "worker.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "summary": "Plugin worker entry point that wires all API request handlers, managed routines, and tool registrations to the Paperclip plugin SDK, orchestrating the full lifecycle of wiki maintenance including distillation, ingestion, and space management operations.",
+      "tags": ["entry-point", "api-handler", "service", "event-handler"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 1081
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/worker.ts:normalizeRoutineTemplateText",
+      "type": "function",
+      "name": "normalizeRoutineTemplateText",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "lineRange": [79, 120],
+      "summary": "Normalizes and validates template text for managed wiki maintenance routines before storage.",
+      "tags": ["validation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/worker.ts:buildManualDistillPrompt",
+      "type": "function",
+      "name": "buildManualDistillPrompt",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "lineRange": [200, 280],
+      "summary": "Constructs the LLM prompt for a manual distillation run, assembling context from source bundle, wiki scope, and user instructions.",
+      "tags": ["service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/plugins/plugin-llm-wiki/src/worker.ts:withManagedRoutineDefaultDrift",
+      "type": "function",
+      "name": "withManagedRoutineDefaultDrift",
+      "filePath": "packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "lineRange": [300, 380],
+      "summary": "Wraps routine execution with default drift detection, handling schedule overrides and ensuring routine settings remain synchronized with plugin defaults.",
+      "tags": ["service", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/templates/AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/AGENTS.md",
+      "summary": "Operational schema template for the wiki maintainer agent, defining wiki directory layout, page conventions, frontmatter requirements, and workflows for source ingestion, querying, and Paperclip project distillation.",
+      "tags": ["documentation", "configuration", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/templates/IDEA.md",
+      "type": "document",
+      "name": "IDEA.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/IDEA.md",
+      "summary": "Foundational philosophy document (based on Karpathy's LLM Wiki gist) explaining the persistent compounding wiki pattern — how LLMs incrementally build and maintain a structured knowledge base rather than performing one-off RAG retrieval.",
+      "tags": ["documentation", "design-guide"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/templates/raw/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/raw/.gitkeep",
+      "summary": "Empty placeholder to preserve the raw sources directory in version control as part of the wiki bootstrap template.",
+      "tags": ["infrastructure", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/templates/wiki/concepts/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/concepts/.gitkeep",
+      "summary": "Empty placeholder preserving the wiki/concepts directory in the bootstrap template for LLM-generated concept pages.",
+      "tags": ["infrastructure", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/templates/wiki/entities/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/entities/.gitkeep",
+      "summary": "Empty placeholder preserving the wiki/entities directory in the bootstrap template for LLM-generated entity pages.",
+      "tags": ["infrastructure", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/templates/wiki/index.md",
+      "type": "document",
+      "name": "index.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/index.md",
+      "summary": "Bootstrap template for the wiki catalog index page, providing section scaffolding for sources, projects, entities, concepts, and synthesis that the agent populates during ingestion.",
+      "tags": ["documentation", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/plugin-llm-wiki/templates/wiki/log.md",
+      "type": "document",
+      "name": "log.md",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/log.md",
+      "summary": "Bootstrap template for the wiki append-only operation log, providing initial structure for timestamped entries recording agent ingestion and maintenance actions.",
+      "tags": ["documentation", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/templates/wiki/projects/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/projects/.gitkeep",
+      "summary": "Empty placeholder preserving the wiki/projects directory for Paperclip project distillation output pages.",
+      "tags": ["infrastructure", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/templates/wiki/sources/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/sources/.gitkeep",
+      "summary": "Empty placeholder preserving the wiki/sources directory for LLM-generated source summary pages.",
+      "tags": ["infrastructure", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/templates/wiki/synthesis/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "packages/plugins/plugin-llm-wiki/templates/wiki/synthesis/.gitkeep",
+      "summary": "Empty placeholder preserving the wiki/synthesis directory for cross-cutting analysis and synthesis pages.",
+      "tags": ["infrastructure", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/issue-attachments.spec.ts",
+      "type": "file",
+      "name": "issue-attachments.spec.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/issue-attachments.spec.ts",
+      "summary": "Unit tests for the issue attachment upload functionality, covering successful uploads, error surfacing, and issue ID extraction from ingest operation results.",
+      "tags": ["test", "api-handler", "validation"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 60
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/plugin.spec.ts",
+      "type": "file",
+      "name": "plugin.spec.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/plugin.spec.ts",
+      "summary": "Comprehensive integration test suite for the LLM Wiki plugin worker covering wiki space management, distillation pipeline, ingestion profiles, routine handling, agent/project resource reconciliation, and UI rendering across 3746 lines.",
+      "tags": ["test", "service", "integration"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 3746
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/capture.mjs",
+      "type": "file",
+      "name": "capture.mjs",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/screenshots/capture.mjs",
+      "summary": "Screenshot capture script for the plugin UI harness, launching a headless browser, iterating through UI views, and saving PNG screenshots for visual regression reference.",
+      "tags": ["test", "utility", "script"],
+      "complexity": "moderate",
+      "language": "javascript",
+      "sizeLines": 167
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/entry.tsx",
+      "type": "file",
+      "name": "entry.tsx",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/screenshots/entry.tsx",
+      "summary": "Minimal React entry point that mounts the screenshot harness App component into the DOM for browser-based screenshot capture.",
+      "tags": ["entry-point", "component", "test"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 6
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/harness.tsx",
+      "type": "file",
+      "name": "harness.tsx",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/screenshots/harness.tsx",
+      "summary": "React screenshot harness providing mock bridge data, canned plugin state fixtures, and an App component that renders all wiki plugin UI views (SettingsPage, WikiRouteSidebar, WikiPage, SidebarLink) for visual screenshot capture.",
+      "tags": ["test", "component", "mock"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 1061
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/screenshots/index.html",
+      "summary": "HTML shell page that loads the screenshot harness entry script and provides the root DOM element for React mounting during screenshot capture.",
+      "tags": ["markup", "test"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/tests/wiki-route-sidebar-ui.spec.ts",
+      "type": "file",
+      "name": "wiki-route-sidebar-ui.spec.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/tests/wiki-route-sidebar-ui.spec.ts",
+      "summary": "jsdom-based UI tests for the WikiRouteSidebar and WikiPage components, covering file tree rendering, drag-and-drop behavior, expand/collapse state persistence, and route navigation.",
+      "tags": ["test", "component", "ui"],
+      "complexity": "complex",
+      "language": "typescript",
+      "sizeLines": 781
+    },
+    {
+      "id": "config:packages/plugins/plugin-llm-wiki/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/plugins/plugin-llm-wiki/tsconfig.json",
+      "summary": "TypeScript compiler configuration for the plugin-llm-wiki package, enabling strict mode, NodeNext module resolution, React JSX transform, and ES2022 targeting with source maps and declaration files.",
+      "tags": ["configuration", "build-system", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/plugins/plugin-llm-wiki/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/plugins/plugin-llm-wiki/vitest.config.ts",
+      "summary": "Vitest configuration for the plugin-llm-wiki package, targeting all spec files under the tests directory in a Node.js test environment.",
+      "tags": ["configuration", "test", "build-system"],
+      "complexity": "simple",
+      "language": "typescript",
+      "sizeLines": 8
+    },
+    {
+      "id": "service:packages/plugins/sandbox-providers/cloudflare/bridge-template/Dockerfile",
+      "type": "service",
+      "name": "Dockerfile",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/Dockerfile",
+      "summary": "Docker image definition for the Cloudflare sandbox bridge, extending the official Cloudflare sandbox base image with essential Unix tools (bash, git, curl, tar) and configuring /workspace as the working directory.",
+      "tags": ["containerization", "infrastructure", "deployment"],
+      "complexity": "simple",
+      "languageNotes": "Extends cloudflare/sandbox:0.7.0 base; the installed toolset (git, curl, tar) supports typical agent workspace operations."
+    },
+    {
+      "id": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/package.json",
+      "summary": "Package manifest for the Cloudflare sandbox bridge template Worker, declaring Wrangler as the deployment tool and @cloudflare/sandbox as the runtime dependency for sandbox lease and command management.",
+      "tags": ["configuration", "deployment", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/plugins/sandbox-providers/cloudflare/bridge-template/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/plugins/sandbox-providers/cloudflare/bridge-template/README.md",
+      "summary": "Operator-facing guide for the Cloudflare sandbox bridge Worker, covering the authenticated JSON API it exposes under /api/paperclip-sandbox/v1, prerequisites, local development workflow, and deployment configuration for bridgeBaseUrl and bridgeAuthToken.",
+      "tags": ["documentation", "deployment", "infrastructure"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:createSpace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:updateSpace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:getPaperclipIngestionProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:validatePaperclipIngestionProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:updatePaperclipIngestionProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:updateEventIngestionSettings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:requirePaperclipIngestionPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:resolvePaperclipDistillationLimits",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:normalizePaperclipIngestionProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:listPaperclipIngestionCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:upsertResourceBinding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:filterReadableRows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:upsertWikiInstance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:protectDistillationSourceBody",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/wiki/core.ts:getDistillationOverview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/worker.ts:normalizeRoutineTemplateText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/worker.ts:buildManualDistillPrompt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "target": "function:packages/plugins/plugin-llm-wiki/src/worker.ts:withManagedRoutineDefaultDrift",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/plugin.spec.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/plugin.spec.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/issue-attachments.spec.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/wiki-route-sidebar-ui.spec.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/entry.tsx",
+      "target": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/harness.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/capture.mjs",
+      "target": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/index.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/index.html",
+      "target": "file:packages/plugins/plugin-llm-wiki/tests/screenshots/entry.tsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:packages/plugins/plugin-llm-wiki/tsconfig.json",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:packages/plugins/plugin-llm-wiki/tsconfig.json",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/vitest.config.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/tests/plugin.spec.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/vitest.config.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/tests/issue-attachments.spec.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/vitest.config.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/tests/wiki-route-sidebar-ui.spec.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/templates/AGENTS.md",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/templates/IDEA.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/templates/AGENTS.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/templates/wiki/index.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/templates/AGENTS.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/plugin-llm-wiki/templates/wiki/log.md",
+      "target": "document:packages/plugins/plugin-llm-wiki/templates/AGENTS.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "service:packages/plugins/sandbox-providers/cloudflare/bridge-template/Dockerfile",
+      "target": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/package.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sandbox-providers/cloudflare/bridge-template/README.md",
+      "target": "service:packages/plugins/sandbox-providers/cloudflare/bridge-template/Dockerfile",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:packages/plugins/sandbox-providers/cloudflare/bridge-template/README.md",
+      "target": "config:packages/plugins/sandbox-providers/cloudflare/bridge-template/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki.ts",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:packages/plugins/plugin-llm-wiki/src/worker.ts",
+      "target": "file:packages/plugins/plugin-llm-wiki/src/wiki/core.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

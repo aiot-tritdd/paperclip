@@ -1,0 +1,1241 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/src/services/plugin-database.ts",
+      "type": "file",
+      "name": "plugin-database.ts",
+      "filePath": "server/src/services/plugin-database.ts",
+      "summary": "Provides SQL validation, namespace derivation, migration execution, and a sandboxed database service for plugins, enforcing strict restrictions on DDL/DML to prevent plugins from accessing unauthorized data.",
+      "tags": ["service", "database", "validation", "security", "plugin"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-database.ts:derivePluginDatabaseNamespace",
+      "type": "function",
+      "name": "derivePluginDatabaseNamespace",
+      "filePath": "server/src/services/plugin-database.ts",
+      "lineRange": [28, 41],
+      "summary": "Derives a safe, deterministic database namespace string for a plugin by combining a SHA-256 hash prefix with a slugified human-readable name.",
+      "tags": ["utility", "security", "database"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/plugin-database.ts:validatePluginMigrationStatement",
+      "type": "function",
+      "name": "validatePluginMigrationStatement",
+      "filePath": "server/src/services/plugin-database.ts",
+      "lineRange": [172, 204],
+      "summary": "Validates a single SQL migration statement to ensure it only touches the plugin's own namespace and does not use banned SQL constructs.",
+      "tags": ["validation", "database", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-database.ts:validatePluginRuntimeQuery",
+      "type": "function",
+      "name": "validatePluginRuntimeQuery",
+      "filePath": "server/src/services/plugin-database.ts",
+      "lineRange": [206, 234],
+      "summary": "Validates a runtime SELECT query from a plugin, ensuring it only reads from its own namespace or explicitly allowed core tables.",
+      "tags": ["validation", "database", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-database.ts:validatePluginRuntimeExecute",
+      "type": "function",
+      "name": "validatePluginRuntimeExecute",
+      "filePath": "server/src/services/plugin-database.ts",
+      "lineRange": [236, 261],
+      "summary": "Validates a runtime INSERT/UPDATE/DELETE statement from a plugin, restricting modifications to the plugin's own namespace tables.",
+      "tags": ["validation", "database", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-database.ts:pluginDatabaseService",
+      "type": "function",
+      "name": "pluginDatabaseService",
+      "filePath": "server/src/services/plugin-database.ts",
+      "lineRange": [318, 532],
+      "summary": "Factory that creates a fully scoped database service for a plugin, exposing migration running, query execution, and data access all confined to the plugin's namespace.",
+      "tags": ["factory", "service", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-dev-watcher.ts",
+      "type": "file",
+      "name": "plugin-dev-watcher.ts",
+      "filePath": "server/src/services/plugin-dev-watcher.ts",
+      "summary": "Implements a filesystem watcher for local plugin development, detecting source changes and triggering automatic plugin reloads during development.",
+      "tags": ["service", "development", "file-watching", "plugin"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-dev-watcher.ts:resolvePluginWatchTargets",
+      "type": "function",
+      "name": "resolvePluginWatchTargets",
+      "filePath": "server/src/services/plugin-dev-watcher.ts",
+      "lineRange": [75, 153],
+      "summary": "Resolves the list of filesystem paths that should be watched for a plugin, including source directories and manifest files.",
+      "tags": ["utility", "file-watching", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-dev-watcher.ts:createPluginDevWatcher",
+      "type": "function",
+      "name": "createPluginDevWatcher",
+      "filePath": "server/src/services/plugin-dev-watcher.ts",
+      "lineRange": [159, 355],
+      "summary": "Creates and manages a chokidar-based file watcher for local plugin development, debouncing changes and dispatching reload events.",
+      "tags": ["factory", "service", "event-handler", "development"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-environment-driver.ts",
+      "type": "file",
+      "name": "plugin-environment-driver.ts",
+      "filePath": "server/src/services/plugin-environment-driver.ts",
+      "summary": "Provides resolution and lifecycle management utilities for plugin environment drivers and sandbox providers, including validation, probing, and workspace command execution.",
+      "tags": ["service", "plugin", "environment", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-environment-driver.ts:resolvePluginEnvironmentDriver",
+      "type": "function",
+      "name": "resolvePluginEnvironmentDriver",
+      "filePath": "server/src/services/plugin-environment-driver.ts",
+      "lineRange": [22, 42],
+      "summary": "Resolves the appropriate environment driver for a plugin based on its configuration and registered drivers.",
+      "tags": ["service", "plugin", "environment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/plugin-environment-driver.ts:validatePluginEnvironmentDriverConfig",
+      "type": "function",
+      "name": "validatePluginEnvironmentDriverConfig",
+      "filePath": "server/src/services/plugin-environment-driver.ts",
+      "lineRange": [145, 170],
+      "summary": "Validates the configuration object for a plugin environment driver, reporting structured errors for misconfigured fields.",
+      "tags": ["validation", "plugin", "environment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-environment-driver.ts:executePluginEnvironmentCommand",
+      "type": "function",
+      "name": "executePluginEnvironmentCommand",
+      "filePath": "server/src/services/plugin-environment-driver.ts",
+      "lineRange": [306, 329],
+      "summary": "Executes a shell command within a plugin's managed environment workspace via the environment driver.",
+      "tags": ["service", "plugin", "environment", "execution"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-event-bus.ts",
+      "type": "file",
+      "name": "plugin-event-bus.ts",
+      "filePath": "server/src/services/plugin-event-bus.ts",
+      "summary": "Implements a typed publish-subscribe event bus for plugin system events, supporting pattern-based topic matching and per-subscriber filtering.",
+      "tags": ["service", "event-handler", "pub-sub", "plugin"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-event-bus.ts:createPluginEventBus",
+      "type": "function",
+      "name": "createPluginEventBus",
+      "filePath": "server/src/services/plugin-event-bus.ts",
+      "lineRange": [149, 302],
+      "summary": "Factory that creates a plugin event bus instance with subscribe, publish, and unsubscribe capabilities including wildcard pattern matching.",
+      "tags": ["factory", "service", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-host-service-cleanup.ts",
+      "type": "file",
+      "name": "plugin-host-service-cleanup.ts",
+      "filePath": "server/src/services/plugin-host-service-cleanup.ts",
+      "summary": "Provides a cleanup coordinator for plugin host services, managing ordered teardown of registered disposable resources on plugin unload.",
+      "tags": ["service", "plugin", "lifecycle", "cleanup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/plugin-host-services.ts",
+      "type": "file",
+      "name": "plugin-host-services.ts",
+      "filePath": "server/src/services/plugin-host-services.ts",
+      "summary": "Implements the comprehensive host services API exposed to plugins at runtime, including HTTP fetch, filesystem access, logging, state management, and tool invocation, all with strict capability enforcement.",
+      "tags": ["service", "api-handler", "plugin", "security", "middleware"],
+      "complexity": "complex",
+      "languageNotes": "The largest service file at 2151 lines; buildHostServices is the central factory assembling all host-facing plugin APIs."
+    },
+    {
+      "id": "function:server/src/services/plugin-host-services.ts:buildHostServices",
+      "type": "function",
+      "name": "buildHostServices",
+      "filePath": "server/src/services/plugin-host-services.ts",
+      "lineRange": [475, 2151],
+      "summary": "Master factory that assembles all host service capabilities (HTTP, storage, logging, tools, events, secrets) into a single object passed to plugin sandboxes.",
+      "tags": ["factory", "service", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-host-services.ts:flushPluginLogBuffer",
+      "type": "function",
+      "name": "flushPluginLogBuffer",
+      "filePath": "server/src/services/plugin-host-services.ts",
+      "lineRange": [413, 447],
+      "summary": "Flushes buffered plugin log entries to persistent storage, batching inserts to reduce database write pressure.",
+      "tags": ["utility", "service", "logging"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-job-coordinator.ts",
+      "type": "file",
+      "name": "plugin-job-coordinator.ts",
+      "filePath": "server/src/services/plugin-job-coordinator.ts",
+      "summary": "Coordinates concurrent plugin job execution by managing worker assignment, concurrency limits, and job lifecycle transitions across multiple plugin workers.",
+      "tags": ["service", "plugin", "job-queue", "concurrency"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-job-coordinator.ts:createPluginJobCoordinator",
+      "type": "function",
+      "name": "createPluginJobCoordinator",
+      "filePath": "server/src/services/plugin-job-coordinator.ts",
+      "lineRange": [95, 260],
+      "summary": "Creates the job coordinator that routes incoming jobs to available workers, enforces concurrency limits, and handles job queuing and cancellation.",
+      "tags": ["factory", "service", "job-queue"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-job-scheduler.ts",
+      "type": "file",
+      "name": "plugin-job-scheduler.ts",
+      "filePath": "server/src/services/plugin-job-scheduler.ts",
+      "summary": "Implements a cron-based job scheduler for plugins, managing scheduled trigger registration, firing, and lifecycle tied to plugin enable/disable state.",
+      "tags": ["service", "plugin", "scheduler", "cron"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-job-scheduler.ts:createPluginJobScheduler",
+      "type": "function",
+      "name": "createPluginJobScheduler",
+      "filePath": "server/src/services/plugin-job-scheduler.ts",
+      "lineRange": [203, 752],
+      "summary": "Creates the plugin job scheduler, registering cron schedules from plugin manifests and dispatching jobs at the configured intervals.",
+      "tags": ["factory", "service", "scheduler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-job-store.ts",
+      "type": "file",
+      "name": "plugin-job-store.ts",
+      "filePath": "server/src/services/plugin-job-store.ts",
+      "summary": "Provides a persistent store for plugin job records including creation, status updates, result storage, and querying of job history.",
+      "tags": ["service", "database", "plugin", "job-queue"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-job-store.ts:pluginJobStore",
+      "type": "function",
+      "name": "pluginJobStore",
+      "filePath": "server/src/services/plugin-job-store.ts",
+      "lineRange": [103, 462],
+      "summary": "Factory that creates the plugin job store with CRUD operations for job records, leveraging the database layer for persistence.",
+      "tags": ["factory", "service", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-lifecycle.ts",
+      "type": "file",
+      "name": "plugin-lifecycle.ts",
+      "filePath": "server/src/services/plugin-lifecycle.ts",
+      "summary": "Manages the complete lifecycle state machine for plugins (loading, installing, enabling, disabling, uninstalling), coordinating transitions and emitting lifecycle events.",
+      "tags": ["service", "plugin", "lifecycle", "state-machine"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-lifecycle.ts:pluginLifecycleManager",
+      "type": "function",
+      "name": "pluginLifecycleManager",
+      "filePath": "server/src/services/plugin-lifecycle.ts",
+      "lineRange": [304, 821],
+      "summary": "Creates the plugin lifecycle manager that orchestrates all state transitions, calling install, enable, disable, and uninstall hooks in the correct order.",
+      "tags": ["factory", "service", "lifecycle"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-loader.ts",
+      "type": "file",
+      "name": "plugin-loader.ts",
+      "filePath": "server/src/services/plugin-loader.ts",
+      "summary": "Central plugin loading engine that discovers, reads, validates, and prepares plugin packages for installation, handling both npm-published and local plugins.",
+      "tags": ["service", "plugin", "loader", "factory"],
+      "complexity": "complex",
+      "languageNotes": "Second largest service file at 2066 lines; pluginLoader is the primary factory coordinating all loading concerns."
+    },
+    {
+      "id": "function:server/src/services/plugin-loader.ts:pluginLoader",
+      "type": "function",
+      "name": "pluginLoader",
+      "filePath": "server/src/services/plugin-loader.ts",
+      "lineRange": [737, 1960],
+      "summary": "Core plugin loader factory that discovers plugin packages, reads manifests, validates compatibility, and prepares plugin descriptors for the registry.",
+      "tags": ["factory", "service", "loader"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-loader.ts:resolveWorkerEntrypoint",
+      "type": "function",
+      "name": "resolveWorkerEntrypoint",
+      "filePath": "server/src/services/plugin-loader.ts",
+      "lineRange": [1976, 2032],
+      "summary": "Resolves the JavaScript entrypoint file for a plugin worker process, validating its existence and format.",
+      "tags": ["utility", "loader", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-local-folders.ts",
+      "type": "file",
+      "name": "plugin-local-folders.ts",
+      "filePath": "server/src/services/plugin-local-folders.ts",
+      "summary": "Implements sandboxed local folder access for plugins, providing validated read/write/list/delete operations restricted to declared folder boundaries.",
+      "tags": ["service", "filesystem", "plugin", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-local-folders.ts:inspectPluginLocalFolder",
+      "type": "function",
+      "name": "inspectPluginLocalFolder",
+      "filePath": "server/src/services/plugin-local-folders.ts",
+      "lineRange": [134, 269],
+      "summary": "Performs a full inspection of a plugin's local folder, gathering metadata, validating configuration, and returning a structured report.",
+      "tags": ["utility", "filesystem", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-local-folders.ts:writePluginLocalFolderTextAtomic",
+      "type": "function",
+      "name": "writePluginLocalFolderTextAtomic",
+      "filePath": "server/src/services/plugin-local-folders.ts",
+      "lineRange": [483, 539],
+      "summary": "Atomically writes text content to a file within a plugin's declared local folder, using a temp-file rename pattern to prevent partial writes.",
+      "tags": ["utility", "filesystem", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-local-folders.ts:listPluginLocalFolderEntries",
+      "type": "function",
+      "name": "listPluginLocalFolderEntries",
+      "filePath": "server/src/services/plugin-local-folders.ts",
+      "lineRange": [417, 481],
+      "summary": "Lists entries in a plugin's local folder with pagination, filtering, and stat collection, respecting maxEntries limits.",
+      "tags": ["utility", "filesystem", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-log-retention.ts",
+      "type": "file",
+      "name": "plugin-log-retention.ts",
+      "filePath": "server/src/services/plugin-log-retention.ts",
+      "summary": "Implements log retention management for plugins, periodically pruning old log records to prevent unbounded database growth.",
+      "tags": ["service", "plugin", "logging", "maintenance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/src/services/plugin-managed-agents.ts",
+      "type": "file",
+      "name": "plugin-managed-agents.ts",
+      "filePath": "server/src/services/plugin-managed-agents.ts",
+      "summary": "Manages plugin-declared managed agents, handling CRUD synchronization between plugin manifests and the database agent records with adapter preference resolution.",
+      "tags": ["service", "plugin", "agents", "synchronization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-managed-agents.ts:pluginManagedAgentService",
+      "type": "function",
+      "name": "pluginManagedAgentService",
+      "filePath": "server/src/services/plugin-managed-agents.ts",
+      "lineRange": [173, 562],
+      "summary": "Creates the managed agent service that syncs plugin-declared agents to the database, applying defaults and managing lifecycle upserts and deletions.",
+      "tags": ["factory", "service", "agents"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-managed-routines.ts",
+      "type": "file",
+      "name": "plugin-managed-routines.ts",
+      "filePath": "server/src/services/plugin-managed-routines.ts",
+      "summary": "Manages plugin-declared scheduled routines, syncing manifest-defined routines to the database and handling upsert/delete lifecycle for routine records.",
+      "tags": ["service", "plugin", "scheduler", "synchronization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-managed-routines.ts:pluginManagedRoutineService",
+      "type": "function",
+      "name": "pluginManagedRoutineService",
+      "filePath": "server/src/services/plugin-managed-routines.ts",
+      "lineRange": [125, 523],
+      "summary": "Creates the managed routine service that synchronizes plugin-declared routines with the database, computing trigger schedules and handling full lifecycle management.",
+      "tags": ["factory", "service", "scheduler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-managed-skills.ts",
+      "type": "file",
+      "name": "plugin-managed-skills.ts",
+      "filePath": "server/src/services/plugin-managed-skills.ts",
+      "summary": "Manages plugin-declared skills, generating skill package files from manifest declarations and synchronizing skill metadata with the database.",
+      "tags": ["service", "plugin", "skills", "synchronization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-managed-skills.ts:pluginManagedSkillService",
+      "type": "function",
+      "name": "pluginManagedSkillService",
+      "filePath": "server/src/services/plugin-managed-skills.ts",
+      "lineRange": [156, 359],
+      "summary": "Creates the managed skill service that syncs plugin-declared skills to the database, building YAML package files and managing upsert/delete lifecycle.",
+      "tags": ["factory", "service", "skills"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-manifest-validator.ts",
+      "type": "file",
+      "name": "plugin-manifest-validator.ts",
+      "filePath": "server/src/services/plugin-manifest-validator.ts",
+      "summary": "Validates plugin manifest files against the schema, reporting structured validation errors for malformed or missing manifest fields.",
+      "tags": ["service", "validation", "plugin", "manifest"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-manifest-validator.ts:pluginManifestValidator",
+      "type": "function",
+      "name": "pluginManifestValidator",
+      "filePath": "server/src/services/plugin-manifest-validator.ts",
+      "lineRange": [119, 163],
+      "summary": "Creates a manifest validator instance that checks plugin manifests and returns typed validation results.",
+      "tags": ["factory", "validation", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-registry.ts",
+      "type": "file",
+      "name": "plugin-registry.ts",
+      "filePath": "server/src/services/plugin-registry.ts",
+      "summary": "Maintains the central in-memory and database registry of installed plugins, tracking plugin metadata, status, configuration, and providing lookup APIs.",
+      "tags": ["service", "plugin", "registry", "singleton"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-registry.ts:pluginRegistryService",
+      "type": "function",
+      "name": "pluginRegistryService",
+      "filePath": "server/src/services/plugin-registry.ts",
+      "lineRange": [63, 742],
+      "summary": "Creates the plugin registry service with full CRUD over plugin records, reactive state tracking, and query capabilities for the plugin management system.",
+      "tags": ["factory", "service", "registry"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-runtime-sandbox.ts",
+      "type": "file",
+      "name": "plugin-runtime-sandbox.ts",
+      "filePath": "server/src/services/plugin-runtime-sandbox.ts",
+      "summary": "Implements a Node.js VM-based sandbox for loading and executing plugin modules with capability-scoped APIs and strict module isolation.",
+      "tags": ["service", "plugin", "security", "sandbox"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:server/src/services/plugin-runtime-sandbox.ts:PluginSandboxError",
+      "type": "class",
+      "name": "PluginSandboxError",
+      "filePath": "server/src/services/plugin-runtime-sandbox.ts",
+      "lineRange": [7, 12],
+      "summary": "Custom error class representing failures that occur within the plugin sandbox execution environment.",
+      "tags": ["error-handling", "sandbox", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/plugin-runtime-sandbox.ts:loadPluginModuleInSandbox",
+      "type": "function",
+      "name": "loadPluginModuleInSandbox",
+      "filePath": "server/src/services/plugin-runtime-sandbox.ts",
+      "lineRange": [76, 176],
+      "summary": "Loads a plugin module into a Node.js VM sandbox context, injecting scoped host APIs and intercepting require calls to enforce module access policies.",
+      "tags": ["service", "sandbox", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-secrets-handler.ts",
+      "type": "file",
+      "name": "plugin-secrets-handler.ts",
+      "filePath": "server/src/services/plugin-secrets-handler.ts",
+      "summary": "Handles resolution and injection of secret references declared in plugin configurations, with rate limiting and access control enforcement.",
+      "tags": ["service", "security", "plugin", "secrets"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-secrets-handler.ts:createPluginSecretsHandler",
+      "type": "function",
+      "name": "createPluginSecretsHandler",
+      "filePath": "server/src/services/plugin-secrets-handler.ts",
+      "lineRange": [199, 238],
+      "summary": "Creates a secrets handler for a plugin that resolves secret references from the store with rate limiting to prevent secret enumeration attacks.",
+      "tags": ["factory", "service", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/src/services/plugin-secrets-handler.ts:extractSecretRefPathsFromConfig",
+      "type": "function",
+      "name": "extractSecretRefPathsFromConfig",
+      "filePath": "server/src/services/plugin-secrets-handler.ts",
+      "lineRange": [74, 114],
+      "summary": "Recursively extracts all secret reference paths from a plugin configuration object for validation and resolution.",
+      "tags": ["utility", "security", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-state-store.ts",
+      "type": "file",
+      "name": "plugin-state-store.ts",
+      "filePath": "server/src/services/plugin-state-store.ts",
+      "summary": "Provides a scoped key-value state store for plugins, persisting plugin-specific state to the database with namespace isolation per plugin.",
+      "tags": ["service", "database", "plugin", "state"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-state-store.ts:pluginStateStore",
+      "type": "function",
+      "name": "pluginStateStore",
+      "filePath": "server/src/services/plugin-state-store.ts",
+      "lineRange": [69, 235],
+      "summary": "Creates a namespaced state store for a plugin with get, set, delete, and list operations backed by database persistence.",
+      "tags": ["factory", "service", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-stream-bus.ts",
+      "type": "file",
+      "name": "plugin-stream-bus.ts",
+      "filePath": "server/src/services/plugin-stream-bus.ts",
+      "summary": "Implements a lightweight streaming message bus for plugin-to-host and host-to-plugin data streams, supporting multiplexed channels.",
+      "tags": ["service", "event-handler", "streaming", "plugin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/src/services/plugin-stream-bus.ts:createPluginStreamBus",
+      "type": "function",
+      "name": "createPluginStreamBus",
+      "filePath": "server/src/services/plugin-stream-bus.ts",
+      "lineRange": [51, 81],
+      "summary": "Creates the stream bus instance that manages multiplexed streams keyed by plugin and channel identifier.",
+      "tags": ["factory", "service", "streaming"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/src/services/plugin-tool-dispatcher.ts",
+      "type": "file",
+      "name": "plugin-tool-dispatcher.ts",
+      "filePath": "server/src/services/plugin-tool-dispatcher.ts",
+      "summary": "Dispatches tool invocations from plugin workers to registered tool handlers, managing capability validation, timeouts, and result serialization.",
+      "tags": ["service", "plugin", "tool-dispatch", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-tool-dispatcher.ts:createPluginToolDispatcher",
+      "type": "function",
+      "name": "createPluginToolDispatcher",
+      "filePath": "server/src/services/plugin-tool-dispatcher.ts",
+      "lineRange": [222, 448],
+      "summary": "Creates the tool dispatcher that routes plugin tool calls to the correct handler, enforcing capability checks and handling streaming responses.",
+      "tags": ["factory", "service", "tool-dispatch"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-tool-registry.ts",
+      "type": "file",
+      "name": "plugin-tool-registry.ts",
+      "filePath": "server/src/services/plugin-tool-registry.ts",
+      "summary": "Maintains the registry of tools contributed by plugins, handling tool registration, deregistration, conflict detection, and namespace-qualified lookups.",
+      "tags": ["service", "plugin", "registry", "tool-dispatch"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-tool-registry.ts:createPluginToolRegistry",
+      "type": "function",
+      "name": "createPluginToolRegistry",
+      "filePath": "server/src/services/plugin-tool-registry.ts",
+      "lineRange": [227, 449],
+      "summary": "Creates the plugin tool registry with add, remove, and lookup operations for namespace-qualified tool definitions contributed by plugins.",
+      "tags": ["factory", "service", "registry"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server/src/services/plugin-worker-manager.ts",
+      "type": "file",
+      "name": "plugin-worker-manager.ts",
+      "filePath": "server/src/services/plugin-worker-manager.ts",
+      "summary": "Manages the lifecycle of plugin worker processes, handling spawning, health monitoring, IPC message routing, crash recovery, and graceful shutdown.",
+      "tags": ["service", "plugin", "worker", "process-management"],
+      "complexity": "complex",
+      "languageNotes": "Uses Node.js child_process with structured IPC for worker communication and implements exponential backoff for crash recovery."
+    },
+    {
+      "id": "function:server/src/services/plugin-worker-manager.ts:createPluginWorkerHandle",
+      "type": "function",
+      "name": "createPluginWorkerHandle",
+      "filePath": "server/src/services/plugin-worker-manager.ts",
+      "lineRange": [359, 1180],
+      "summary": "Creates a handle for a single plugin worker process, managing its spawn, IPC communication, health checks, and restart logic on failure.",
+      "tags": ["factory", "service", "worker", "process-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/src/services/plugin-worker-manager.ts:createPluginWorkerManager",
+      "type": "function",
+      "name": "createPluginWorkerManager",
+      "filePath": "server/src/services/plugin-worker-manager.ts",
+      "lineRange": [1229, 1353],
+      "summary": "Creates the top-level worker manager that orchestrates multiple plugin worker handles, managing the pool of active workers per plugin.",
+      "tags": ["factory", "service", "worker"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:derivePluginDatabaseNamespace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:derivePluginDatabaseNamespace",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:validatePluginMigrationStatement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:validatePluginMigrationStatement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:validatePluginRuntimeQuery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:validatePluginRuntimeQuery",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:validatePluginRuntimeExecute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:validatePluginRuntimeExecute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:pluginDatabaseService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-database.ts",
+      "target": "function:server/src/services/plugin-database.ts:pluginDatabaseService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-dev-watcher.ts",
+      "target": "function:server/src/services/plugin-dev-watcher.ts:resolvePluginWatchTargets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-dev-watcher.ts",
+      "target": "function:server/src/services/plugin-dev-watcher.ts:resolvePluginWatchTargets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-dev-watcher.ts",
+      "target": "function:server/src/services/plugin-dev-watcher.ts:createPluginDevWatcher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-dev-watcher.ts",
+      "target": "function:server/src/services/plugin-dev-watcher.ts:createPluginDevWatcher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-environment-driver.ts",
+      "target": "function:server/src/services/plugin-environment-driver.ts:resolvePluginEnvironmentDriver",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-environment-driver.ts",
+      "target": "function:server/src/services/plugin-environment-driver.ts:resolvePluginEnvironmentDriver",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-environment-driver.ts",
+      "target": "function:server/src/services/plugin-environment-driver.ts:validatePluginEnvironmentDriverConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-environment-driver.ts",
+      "target": "function:server/src/services/plugin-environment-driver.ts:validatePluginEnvironmentDriverConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-environment-driver.ts",
+      "target": "function:server/src/services/plugin-environment-driver.ts:executePluginEnvironmentCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-environment-driver.ts",
+      "target": "function:server/src/services/plugin-environment-driver.ts:executePluginEnvironmentCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-event-bus.ts",
+      "target": "function:server/src/services/plugin-event-bus.ts:createPluginEventBus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-event-bus.ts",
+      "target": "function:server/src/services/plugin-event-bus.ts:createPluginEventBus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "function:server/src/services/plugin-host-services.ts:buildHostServices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "function:server/src/services/plugin-host-services.ts:buildHostServices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "function:server/src/services/plugin-host-services.ts:flushPluginLogBuffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "function:server/src/services/plugin-host-services.ts:flushPluginLogBuffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-job-coordinator.ts",
+      "target": "function:server/src/services/plugin-job-coordinator.ts:createPluginJobCoordinator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-job-coordinator.ts",
+      "target": "function:server/src/services/plugin-job-coordinator.ts:createPluginJobCoordinator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-job-scheduler.ts",
+      "target": "function:server/src/services/plugin-job-scheduler.ts:createPluginJobScheduler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-job-scheduler.ts",
+      "target": "function:server/src/services/plugin-job-scheduler.ts:createPluginJobScheduler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-job-store.ts",
+      "target": "function:server/src/services/plugin-job-store.ts:pluginJobStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-job-store.ts",
+      "target": "function:server/src/services/plugin-job-store.ts:pluginJobStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "function:server/src/services/plugin-lifecycle.ts:pluginLifecycleManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "function:server/src/services/plugin-lifecycle.ts:pluginLifecycleManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-loader.ts",
+      "target": "function:server/src/services/plugin-loader.ts:pluginLoader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-loader.ts",
+      "target": "function:server/src/services/plugin-loader.ts:pluginLoader",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-loader.ts",
+      "target": "function:server/src/services/plugin-loader.ts:resolveWorkerEntrypoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-local-folders.ts",
+      "target": "function:server/src/services/plugin-local-folders.ts:inspectPluginLocalFolder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-local-folders.ts",
+      "target": "function:server/src/services/plugin-local-folders.ts:inspectPluginLocalFolder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-local-folders.ts",
+      "target": "function:server/src/services/plugin-local-folders.ts:writePluginLocalFolderTextAtomic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-local-folders.ts",
+      "target": "function:server/src/services/plugin-local-folders.ts:writePluginLocalFolderTextAtomic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-local-folders.ts",
+      "target": "function:server/src/services/plugin-local-folders.ts:listPluginLocalFolderEntries",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-local-folders.ts",
+      "target": "function:server/src/services/plugin-local-folders.ts:listPluginLocalFolderEntries",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-managed-agents.ts",
+      "target": "function:server/src/services/plugin-managed-agents.ts:pluginManagedAgentService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-managed-agents.ts",
+      "target": "function:server/src/services/plugin-managed-agents.ts:pluginManagedAgentService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-managed-routines.ts",
+      "target": "function:server/src/services/plugin-managed-routines.ts:pluginManagedRoutineService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-managed-routines.ts",
+      "target": "function:server/src/services/plugin-managed-routines.ts:pluginManagedRoutineService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-managed-skills.ts",
+      "target": "function:server/src/services/plugin-managed-skills.ts:pluginManagedSkillService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-managed-skills.ts",
+      "target": "function:server/src/services/plugin-managed-skills.ts:pluginManagedSkillService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-manifest-validator.ts",
+      "target": "function:server/src/services/plugin-manifest-validator.ts:pluginManifestValidator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-manifest-validator.ts",
+      "target": "function:server/src/services/plugin-manifest-validator.ts:pluginManifestValidator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-registry.ts",
+      "target": "function:server/src/services/plugin-registry.ts:pluginRegistryService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-registry.ts",
+      "target": "function:server/src/services/plugin-registry.ts:pluginRegistryService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-runtime-sandbox.ts",
+      "target": "class:server/src/services/plugin-runtime-sandbox.ts:PluginSandboxError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-runtime-sandbox.ts",
+      "target": "class:server/src/services/plugin-runtime-sandbox.ts:PluginSandboxError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-runtime-sandbox.ts",
+      "target": "function:server/src/services/plugin-runtime-sandbox.ts:loadPluginModuleInSandbox",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-runtime-sandbox.ts",
+      "target": "function:server/src/services/plugin-runtime-sandbox.ts:loadPluginModuleInSandbox",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-secrets-handler.ts",
+      "target": "function:server/src/services/plugin-secrets-handler.ts:createPluginSecretsHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-secrets-handler.ts",
+      "target": "function:server/src/services/plugin-secrets-handler.ts:createPluginSecretsHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-secrets-handler.ts",
+      "target": "function:server/src/services/plugin-secrets-handler.ts:extractSecretRefPathsFromConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-secrets-handler.ts",
+      "target": "function:server/src/services/plugin-secrets-handler.ts:extractSecretRefPathsFromConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-state-store.ts",
+      "target": "function:server/src/services/plugin-state-store.ts:pluginStateStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-state-store.ts",
+      "target": "function:server/src/services/plugin-state-store.ts:pluginStateStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-stream-bus.ts",
+      "target": "function:server/src/services/plugin-stream-bus.ts:createPluginStreamBus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-stream-bus.ts",
+      "target": "function:server/src/services/plugin-stream-bus.ts:createPluginStreamBus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-tool-dispatcher.ts",
+      "target": "function:server/src/services/plugin-tool-dispatcher.ts:createPluginToolDispatcher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-tool-dispatcher.ts",
+      "target": "function:server/src/services/plugin-tool-dispatcher.ts:createPluginToolDispatcher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-tool-registry.ts",
+      "target": "function:server/src/services/plugin-tool-registry.ts:createPluginToolRegistry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-tool-registry.ts",
+      "target": "function:server/src/services/plugin-tool-registry.ts:createPluginToolRegistry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-worker-manager.ts",
+      "target": "function:server/src/services/plugin-worker-manager.ts:createPluginWorkerHandle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-worker-manager.ts",
+      "target": "function:server/src/services/plugin-worker-manager.ts:createPluginWorkerHandle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-worker-manager.ts",
+      "target": "function:server/src/services/plugin-worker-manager.ts:createPluginWorkerManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/src/services/plugin-worker-manager.ts",
+      "target": "function:server/src/services/plugin-worker-manager.ts:createPluginWorkerManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "file:server/src/services/plugin-database.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "file:server/src/services/plugin-state-store.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "file:server/src/services/plugin-local-folders.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "file:server/src/services/plugin-secrets-handler.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "file:server/src/services/plugin-event-bus.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-host-services.ts",
+      "target": "file:server/src/services/plugin-stream-bus.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "file:server/src/services/plugin-registry.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "file:server/src/services/plugin-worker-manager.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "file:server/src/services/plugin-managed-agents.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "file:server/src/services/plugin-managed-routines.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-lifecycle.ts",
+      "target": "file:server/src/services/plugin-managed-skills.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-loader.ts",
+      "target": "file:server/src/services/plugin-manifest-validator.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-loader.ts",
+      "target": "file:server/src/services/plugin-registry.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-job-coordinator.ts",
+      "target": "file:server/src/services/plugin-job-store.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-job-coordinator.ts",
+      "target": "file:server/src/services/plugin-worker-manager.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-job-scheduler.ts",
+      "target": "file:server/src/services/plugin-job-coordinator.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-tool-dispatcher.ts",
+      "target": "file:server/src/services/plugin-tool-registry.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/src/services/plugin-runtime-sandbox.ts",
+      "target": "file:server/src/services/plugin-host-services.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}
