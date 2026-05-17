@@ -1,0 +1,13 @@
+# Vendor tree-sitter grammars — deeply nested JSON (600KB+) crashes the parser
+**/vendor/
+
+# Lock files — not source code, causes parser issues at scale
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+
+# Migration snapshots — large JSON blobs, no logic or architecture value
+packages/db/src/migrations/meta/
+
+# Test fixtures — large files crash the tree-sitter TypeScript parser on Intel Mac
+**/test/
