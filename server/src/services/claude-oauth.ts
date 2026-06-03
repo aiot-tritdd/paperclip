@@ -94,7 +94,7 @@ async function postToken(body: Record<string, unknown>): Promise<ClaudeTokenResu
   const attempt = async (url: string): Promise<Response> =>
     fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "User-Agent": "anthropic" },
+      headers: { "Content-Type": "application/json", "User-Agent": "claude-cli/1.0.0 (external, cli)" },
       body: JSON.stringify(body),
     });
 
