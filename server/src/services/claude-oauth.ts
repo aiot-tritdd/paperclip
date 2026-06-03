@@ -123,10 +123,13 @@ async function postToken(body: Record<string, unknown>): Promise<ClaudeTokenResu
 }
 
 /** Exchange an authorization code (+ PKCE verifier) for tokens. */
-export function exchangeCode(code: string, codeVerifier: string): Promise<ClaudeTokenResult> {
+export function exchangeCode(code: string, codeVerifier: string, state: string): Promise<ClaudeTokenResult> {
   return postToken({
     grant_type: "authorization_code",
     code,
+    // Anthropic's token endpoint REQUIRES `state` in the exchange body — without
+    // it the request is rejected with "Invalid request format" (verified).
+    state,
     code_verifier: codeVerifier,
     client_id: CLAUDE_OAUTH.clientId,
     redirect_uri: CLAUDE_OAUTH.redirectUri,

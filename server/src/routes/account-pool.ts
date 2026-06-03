@@ -207,7 +207,9 @@ export function accountPoolRoutes(db: Db) {
 
     let token;
     try {
-      token = await exchangeCode(code, codeVerifier);
+      // Anthropic requires `state` in the exchange body. Use the pasted state
+      // when present (it matched above), else the expected state from /start.
+      token = await exchangeCode(code, codeVerifier, pastedState ?? expectedState);
     } catch (error) {
       res.status(400).json({ error: error instanceof Error ? error.message : "token exchange failed" });
       return;
