@@ -261,8 +261,10 @@ export function AccountPool() {
     onSuccess: (data) => {
       setOauth(data);
       setAddError(null);
-      // open the authorize URL in a new tab for convenience
-      window.open(data.authorizeUrl, "_blank", "noopener,noreferrer");
+      // NOTE: do NOT auto-open in this browser — it's signed into the default
+      // account, so it would just re-authorize the SAME account. The user must
+      // open the link in a browser/profile signed into the account they want to
+      // pool. We surface a copyable link instead.
     },
     onError: (error) => {
       setAddError(error instanceof ApiError ? error.message : "Failed to start login");
@@ -500,8 +502,8 @@ export function AccountPool() {
           <DialogHeader>
             <DialogTitle>Add a Claude account</DialogTitle>
             <DialogDescription>
-              Log in with Claude in any browser, then paste the code it shows you back here. The
-              account is stored encrypted in the company secret store.
+              Generate a login link, open it in a browser signed into the account you want to pool,
+              then paste the code it shows back here. Stored encrypted in the company secret store.
             </DialogDescription>
           </DialogHeader>
 
@@ -521,18 +523,29 @@ export function AccountPool() {
               </Button>
             ) : (
               <div className="flex flex-col gap-3">
-                <p className="text-xs text-muted-foreground">
-                  A Claude login tab was opened. Didn&apos;t open?{" "}
-                  <a
-                    href={oauth.authorizeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary underline"
-                  >
-                    Open the login link
-                  </a>
-                  . After approving, copy the code Claude shows and paste it below.
-                </p>
+                <div className="rounded-md border border-amber-600/40 bg-amber-600/5 p-2.5">
+                  <p className="text-xs text-amber-700 dark:text-amber-500">
+                    <strong>Open this link in a browser signed into the account you want to add</strong>
+                    {" "}— e.g. a different browser, an incognito/private window, or another profile.
+                    Opening it here would just re-add this machine&apos;s current account.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-foreground">Login link</label>
+                  <div className="flex items-center gap-2">
+                    <Input readOnly value={oauth.authorizeUrl} className="font-mono text-[11px]" onFocus={(e) => e.currentTarget.select()} />
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        void navigator.clipboard?.writeText(oauth.authorizeUrl);
+                        pushToast({ title: "Login link copied", tone: "success" });
+                      }}
+                    >
+                      Copy
+                    </Button>
+                  </div>
+                </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-medium text-foreground" htmlFor="pool-oauth-code">
                     Authorization code
@@ -541,9 +554,12 @@ export function AccountPool() {
                     id="pool-oauth-code"
                     value={pastedCode}
                     onChange={(event) => setPastedCode(event.target.value)}
-                    placeholder="paste the CODE#STATE shown by Claude"
+                    placeholder="paste the CODE#STATE shown after you approve"
                     className="font-mono text-xs"
                   />
+                  <p className="text-[11px] text-muted-foreground">
+                    After approving in that browser, Claude shows a code — paste it here and click Finish.
+                  </p>
                 </div>
               </div>
             )}
