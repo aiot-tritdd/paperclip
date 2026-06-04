@@ -9,9 +9,15 @@ import type { IssueAssignmentWakeupDeps } from "./issue-assignment-wakeup.js";
 import {
   DEFAULT_ACCOUNT_ID,
   ensureFreshPoolToken,
+  getDefaultAccountHealth,
   getPoolState,
   getStopSwitch,
+  isSnapshotCappedNow,
   listPoolAccounts,
+  listPoolAccountRows,
+  markDefaultAccountCapped,
+  markPoolAccountCapped,
+  readPoolAccountHealth,
   savePoolAccountHealth,
   saveDefaultAccountHealth,
   setActiveAccount,
@@ -372,5 +378,87 @@ export function accountPoolBalancer(db: Db, deps: BalancerDeps = {}) {
     };
   }
 
-  return { tick, runForCompany, fetchAccountHealth, probeCompany };
+  /**
+   * REACTIVE rotation: an agent run just hit a quota cap on `cappedAccountId`
+   * (DEFAULT_ACCOUNT_ID sentinel when the local/default account was active).
+   * Marks it capped until `cappedUntil`, then moves the team to the next account
+   * that is NOT currently capped. Does NOT call the usage API (no health probe) —
+   * selection is "next available" so a run never has to wait on a rate-limited
+   * usage endpoint to fail over. Returns the new active account id (string or
+   * null=default), or undefined when there is no healthy alternative.
+   */
+  async function rotateOnCap(
+    companyId: string,
+    cappedAccountId: string,
+    cappedUntil: Date | null,
+  ): Promise<string | null | undefined> {
+    const untilIso = cappedUntil ? cappedUntil.toISOString() : null;
+    // 1) Mark the capped account so we don't immediately pick it again.
+    if (cappedAccountId === DEFAULT_ACCOUNT_ID) {
+      await markDefaultAccountCapped(db, companyId, untilIso);
+    } else {
+      await markPoolAccountCapped(db, cappedAccountId, untilIso);
+    }
+
+    const now = new Date();
+    // 2) Build the candidate list: default first, then pooled accounts by id.
+    //    Exclude the just-capped one and anything still capped (resetsAt in future).
+    const candidates: string[] = [];
+    if (cappedAccountId !== DEFAULT_ACCOUNT_ID) {
+      const defaultSnap = await getDefaultAccountHealth(db, companyId);
+      if (!isSnapshotCappedNow(defaultSnap, now)) candidates.push(DEFAULT_ACCOUNT_ID);
+    }
+    const poolRows = await listPoolAccountRows(db, companyId);
+    for (const row of poolRows.sort((a, b) => a.id.localeCompare(b.id))) {
+      if (row.id === cappedAccountId) continue;
+      if (isSnapshotCappedNow(readPoolAccountHealth(row.providerMetadata), now)) continue;
+      candidates.push(row.id);
+    }
+
+    if (candidates.length === 0) {
+      logger.warn({ companyId, cappedAccountId }, "account-pool: capped account but no healthy alternative");
+      await logActivity(db, {
+        companyId,
+        actorType: "system",
+        actorId: "account-pool-balancer",
+        action: "account_pool.rotation_blocked",
+        entityType: "account_pool_state",
+        entityId: companyId,
+        details: { cappedAccountId, reason: "no_healthy_alternative", retryAfter: untilIso },
+      });
+      return undefined;
+    }
+
+    const winner = candidates[0]!;
+    const winnerActiveId = effectiveActiveId(winner); // null when default wins
+    const fromActiveId = effectiveActiveId(cappedAccountId);
+
+    await setActiveAccount(db, {
+      companyId,
+      activeAccountId: winnerActiveId,
+      prevAccountId: fromActiveId,
+      reason: "rotation",
+    });
+    await logActivity(db, {
+      companyId,
+      actorType: "system",
+      actorId: "account-pool-balancer",
+      action: "account_pool.rotated",
+      entityType: "account_pool_state",
+      entityId: companyId,
+      details: {
+        fromAccountId: fromActiveId,
+        toAccountId: winnerActiveId,
+        reason: "quota_exhausted_during_run",
+        cappedUntil: untilIso,
+      },
+    });
+    // No explicit wake here: the failed run is retried by the caller
+    // (scheduleBoundedRetryForRun) which re-resolves the now-rotated active
+    // account, and other agents pick it up on their next run.
+    logger.info({ companyId, from: fromActiveId, to: winnerActiveId }, "account-pool: reactive rotation on quota cap");
+    return winnerActiveId;
+  }
+
+  return { tick, runForCompany, fetchAccountHealth, probeCompany, rotateOnCap };
 }

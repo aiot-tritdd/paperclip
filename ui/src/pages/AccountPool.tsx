@@ -118,8 +118,6 @@ function AccountCard(props: {
   removeDisabled: boolean;
 }) {
   const { account, isActive, removable, onRemove, removeDisabled } = props;
-  const pct = account.usedPercent;
-  const barWidth = pct == null ? 0 : Math.min(100, Math.max(0, pct));
   const windows = uniqueWindows(account.windows);
 
   return (
@@ -162,25 +160,9 @@ function AccountCard(props: {
       </div>
 
       <div className="flex flex-col gap-2">
-        {/* Peak usage across all windows — the number the Balancer ranks on */}
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Peak usage</span>
-            <span className="font-medium text-foreground">
-              {pct == null ? "Unknown" : `${Math.round(pct)}%`}
-            </span>
-          </div>
-          <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
-            <div
-              className={cn("h-full rounded-full transition-all", healthBarColor(pct, account.capped))}
-              style={{ width: `${barWidth}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Per-window breakdown (session / week / …) with reset times */}
+        {/* Per-window breakdown (session / week / extra usage) with reset times */}
         {windows.length > 0 ? (
-          <div className="flex flex-col gap-2 border-t border-border/60 pt-2">
+          <div className="flex flex-col gap-2">
             {windows.map((window, index) => (
               <WindowRow key={`${window.label}-${index}`} window={window} />
             ))}
@@ -195,9 +177,7 @@ function AccountCard(props: {
         ) : null}
         {windows.length === 0 && !account.error ? (
           <p className="text-xs text-muted-foreground">
-            {isActive
-              ? "No quota windows reported yet — waiting for the next Balancer probe."
-              : "Live quota is only available for the active account."}
+            Click <span className="font-medium text-foreground">Reload</span> to load this account&apos;s quota.
           </p>
         ) : null}
       </div>

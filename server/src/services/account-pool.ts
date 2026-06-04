@@ -73,6 +73,15 @@ export async function listPoolAccounts(db: Db, companyId: string): Promise<PoolA
   return rows.filter(isPoolAccount).map(toPoolAccount);
 }
 
+/** Full pool-account rows (with providerMetadata) — for reading poolHealth snapshots. */
+export async function listPoolAccountRows(db: Db, companyId: string): Promise<CompanySecretRow[]> {
+  const rows = await db
+    .select()
+    .from(companySecrets)
+    .where(and(eq(companySecrets.companyId, companyId), isNull(companySecrets.deletedAt)));
+  return rows.filter(isPoolAccount);
+}
+
 /** Resolve a single pool account row (with full secret metadata) by id. */
 export async function getPoolAccountRow(
   db: Db,
@@ -327,6 +336,56 @@ export async function getDefaultAccountHealth(
     .where(eq(accountPoolState.companyId, companyId))
     .then((rows) => rows[0] ?? null);
   return readPoolAccountHealth(row?.defaultHealth);
+}
+
+/** True when a snapshot says the account is capped and its reset time is still in the future. */
+export function isSnapshotCappedNow(snapshot: PoolAccountHealthSnapshot | null, now = new Date()): boolean {
+  if (!snapshot?.capped) return false;
+  if (!snapshot.resetsAt) return true; // capped with unknown reset → treat as capped
+  const reset = new Date(snapshot.resetsAt);
+  return Number.isNaN(reset.getTime()) ? true : reset.getTime() > now.getTime();
+}
+
+/**
+ * Mark a POOL account capped until `untilIso` (reactive cap on a quota hit during
+ * a run). Preserves last-good metrics; only flips capped + resetsAt so the
+ * account is skipped for selection until it resets.
+ */
+export async function markPoolAccountCapped(db: Db, accountId: string, untilIso: string | null): Promise<void> {
+  const row = await db
+    .select({ providerMetadata: companySecrets.providerMetadata })
+    .from(companySecrets)
+    .where(eq(companySecrets.id, accountId))
+    .then((rows) => rows[0] ?? null);
+  const prev = readPoolAccountHealth(row?.providerMetadata) ?? defaultSnapshot();
+  const next: PoolAccountHealthSnapshot = { ...prev, capped: true, resetsAt: untilIso };
+  const patch = JSON.stringify({ poolHealth: next });
+  await db
+    .update(companySecrets)
+    .set({
+      providerMetadata: sql`COALESCE(${companySecrets.providerMetadata}, '{}'::jsonb) || ${patch}::jsonb`,
+      updatedAt: new Date(),
+    })
+    .where(eq(companySecrets.id, accountId));
+}
+
+/** Mark the DEFAULT (local) account capped until `untilIso`. */
+export async function markDefaultAccountCapped(db: Db, companyId: string, untilIso: string | null): Promise<void> {
+  const existing = await db
+    .select({ defaultHealth: accountPoolState.defaultHealth })
+    .from(accountPoolState)
+    .where(eq(accountPoolState.companyId, companyId))
+    .then((rows) => rows[0] ?? null);
+  const prev = readPoolAccountHealth(existing?.defaultHealth) ?? defaultSnapshot();
+  const next: PoolAccountHealthSnapshot = { ...prev, capped: true, resetsAt: untilIso };
+  const now = new Date();
+  await db
+    .insert(accountPoolState)
+    .values({ companyId, reason: "initial", defaultHealth: { poolHealth: next }, updatedAt: now })
+    .onConflictDoUpdate({
+      target: accountPoolState.companyId,
+      set: { defaultHealth: { poolHealth: next }, updatedAt: now },
+    });
 }
 
 /** refresh when the access token has < this long left (or is already expired) */

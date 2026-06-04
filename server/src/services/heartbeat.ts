@@ -71,7 +71,8 @@ import { getTelemetryClient } from "../telemetry.js";
 import { companySkillService } from "./company-skills.js";
 import { budgetService, type BudgetEnforcementScope } from "./budgets.js";
 import { secretService } from "./secrets.js";
-import { ensureFreshPoolToken } from "./account-pool.js";
+import { DEFAULT_ACCOUNT_ID, ensureFreshPoolToken, getPoolState, listPoolAccounts } from "./account-pool.js";
+import { accountPoolBalancer } from "./account-pool-balancer.js";
 import { resolveDefaultAgentWorkspaceDir, resolveManagedProjectWorkspaceDir } from "../home-paths.js";
 import {
   buildHeartbeatRunIssueComment,
@@ -8226,6 +8227,28 @@ export function heartbeatService(db: Db, options: HeartbeatServiceOptions = {}) 
             });
           }
         } else if (outcome === "failed" && readTransientRecoveryContractFromRun(livenessRun)) {
+          // Account Pool — REACTIVE rotation: when a claude_local run fails on a
+          // real quota cap (the transient contract carries a reset time only for
+          // usage-limit-reached errors, not generic 503/overload), rotate the
+          // team off the capped account so the bounded retry below runs on a
+          // healthy one. Best-effort + guarded; never breaks run completion.
+          const transientContract = readTransientRecoveryContractFromRun(livenessRun);
+          if (agent.adapterType === "claude_local" && transientContract?.retryNotBefore) {
+            try {
+              const poolAccounts = await listPoolAccounts(db, agent.companyId);
+              if (poolAccounts.length > 0) {
+                const poolState = await getPoolState(db, agent.companyId);
+                const cappedId = poolState?.activeAccountId ?? DEFAULT_ACCOUNT_ID;
+                await accountPoolBalancer(db).rotateOnCap(
+                  agent.companyId,
+                  cappedId,
+                  new Date(transientContract.retryNotBefore),
+                );
+              }
+            } catch (err) {
+              logger.warn({ err, runId: livenessRun.id, companyId: agent.companyId }, "account-pool reactive rotation failed");
+            }
+          }
           await scheduleBoundedRetryForRun(livenessRun, agent);
         }
         const issueCommentPolicyResult = await finalizeIssueCommentPolicy(livenessRun, agent);
