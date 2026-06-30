@@ -1,1 +1,0 @@
-ALTER TABLE "account_pool_state" ADD COLUMN "default_health" jsonb;
